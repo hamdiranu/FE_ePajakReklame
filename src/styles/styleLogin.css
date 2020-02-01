@@ -169,6 +169,19 @@ input[type="submit"] {
   font-size: 15px;
 }
 
+.loginInputPassword {
+  position: relative;
+}
+
+.loginInputPassword svg {
+  position: absolute;
+  left: 320px;
+  top: 19px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 @media (max-width: 767px) {
   .loginLogo {
     margin-top: 50px;
@@ -226,5 +239,18 @@ input[type="submit"] {
 
   .loginPilihRole {
     margin: 5px 10px 5px 40px;
+  }
+
+  .loginInputPassword {
+    position: relative;
+  }
+
+  .loginInputPassword svg {
+    position: absolute;
+    left: 220px;
+    top: 19px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
   }
 }

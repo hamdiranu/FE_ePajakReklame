@@ -33,15 +33,14 @@ class Login extends Component {
                 Wajib Pajak
               </option>
               <option value="Officer">Petugas Pajak</option>
-              <option value="Surveyor">Surveyor</option>
             </select>
           </div>
           {/* <!-- Login Form --> */}
-          {this.props.officer ? <FormLoginOfficer /> : <FormLoginPayer />}
+          {this.props.formOfficer ? <FormLoginOfficer /> : <FormLoginPayer />}
         </div>
       </div>
     );
   }
 }
 
-export default connect("officer", actions)(withRouter(Login));
+export default connect("formOfficer", actions)(withRouter(Login));
