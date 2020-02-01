@@ -17,6 +17,7 @@ export const actions = store => ({
     console.log(`${event.target.name} :`, event.target.value);
   },
 
+  // Fungsi untuk mengganti status form login menjadi form login payer/officer
   handleGantiRole: (state, event) => {
     store.setState({ [event.target.name]: event.target.value });
     if (event.target.value === "Payer") {
