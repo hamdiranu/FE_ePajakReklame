@@ -1,6 +1,4 @@
 import React from "react";
-import "../styles/styleNavigasiOfficer.css";
-import "../styles/bootstrap.min.css";
 import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";

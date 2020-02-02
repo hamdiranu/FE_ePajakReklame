@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "unistore/react";
 import { store } from "../store";
 import Login from "../pages/login";
-import HomeOfficer from "../pages/homeOfficer";
+import BerandaOfficer from "../pages/berandaOfficer";
 import DaftarKodeQrOfficer from "../pages/daftarKodeQrOfficer";
 
 const MainRoute = () => {
@@ -13,7 +13,7 @@ const MainRoute = () => {
         <Switch>
           {/* PAGES ROUTING */}
           <Route exact path="/login" component={Login} />
-          <Route exact path="/home/officer" component={HomeOfficer} />
+          <Route exact path="/home/officer" component={BerandaOfficer} />
           <Route
             exact
             path="/home/officer/daftar-kode-QR"

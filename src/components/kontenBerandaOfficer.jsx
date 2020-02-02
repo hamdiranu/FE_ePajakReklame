@@ -1,13 +1,11 @@
 import React from "react";
-import "../styles/styleHomeOfficer.css";
-import "../styles/bootstrap.min.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Button } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 
-class LoginPayer extends React.Component {
+class KontenBerandaOfficer extends React.Component {
   render() {
     return (
       <div className="bodyHomeOfficer">
@@ -117,4 +115,4 @@ class LoginPayer extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(LoginPayer));
+export default connect("", actions)(withRouter(KontenBerandaOfficer));

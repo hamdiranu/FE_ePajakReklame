@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-// import "../styles/styleLogin.css";
+import "../styles/styleBerandaOfficer.css";
+import "../styles/styleNavigasiOfficer.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import Navigasi from "../components/navigasiOfficer";
-import BodyOfficer from "../components/officerHome";
+import KontenBerandaOfficer from "../components/kontenBerandaOfficer";
 
-class Login extends Component {
+class BerandaOfficer extends Component {
   render() {
     return (
       <React.Fragment>
         <Navigasi />
-        <BodyOfficer />
+        <KontenBerandaOfficer />
       </React.Fragment>
     );
   }
 }
 
-export default connect("formOfficer", actions)(withRouter(Login));
+export default connect("", actions)(withRouter(BerandaOfficer));

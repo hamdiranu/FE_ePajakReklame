@@ -1,6 +1,4 @@
 import React from "react";
-import "../styles/styleHomeOfficer.css";
-import "../styles/bootstrap.min.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
@@ -9,7 +7,7 @@ import { FaSearch, FaDownload } from "react-icons/fa";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { TiArrowBackOutline } from "react-icons/ti";
 
-class ListQrCode extends React.Component {
+class DaftarKodeQrOfficer extends React.Component {
   render() {
     return (
       <div className="bodyHomeOfficer">
@@ -116,4 +114,4 @@ class ListQrCode extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(ListQrCode));
+export default connect("", actions)(withRouter(DaftarKodeQrOfficer));

@@ -1,7 +1,4 @@
 import React from "react";
-import "../styles/styleLogin.css";
-import "../styles/bootstrap.min.css";
-// import logo from "../images/logoM.png";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
