@@ -17,6 +17,7 @@
     "react-icons": "^3.8.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "react-table": "^7.0.0-rc.15",
     "unistore": "^3.5.1"
   },
   "scripts": {
