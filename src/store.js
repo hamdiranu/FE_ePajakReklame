@@ -8,7 +8,7 @@ const initialState = {
   role: "",
   formOfficer: false,
   statusInputPassword: "password",
-  statusShowPassword: true
+  statusShowPassword: false
 };
 
 export const store = createStore(initialState);
