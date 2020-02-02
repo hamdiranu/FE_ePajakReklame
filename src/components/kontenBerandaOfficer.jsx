@@ -8,7 +8,7 @@ import { FaSearch } from "react-icons/fa";
 class KontenBerandaOfficer extends React.Component {
   render() {
     return (
-      <div className="bodyHomeOfficer">
+      <div className="kontenBerandaOfficer">
         <div style={{ textAlign: "center" }}>
           <h2 className="judulHomeOfficer">Daftar SSPD</h2>
         </div>

@@ -7,10 +7,10 @@ import { FaSearch, FaDownload } from "react-icons/fa";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { TiArrowBackOutline } from "react-icons/ti";
 
-class DaftarKodeQrOfficer extends React.Component {
+class KontenDaftarKodeQrOfficer extends React.Component {
   render() {
     return (
-      <div className="bodyHomeOfficer">
+      <div className="kontenBerandaOfficer">
         <div className="container">
           <div className="col-md-2" style={{ paddingLeft: "0px" }}>
             <div className="tombolBacktoDaftarSSPD">
@@ -114,4 +114,4 @@ class DaftarKodeQrOfficer extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(DaftarKodeQrOfficer));
+export default connect("", actions)(withRouter(KontenDaftarKodeQrOfficer));
