@@ -18,6 +18,20 @@ export const actions = store => ({
   handleInput: (state, event) => {
     store.setState({ [event.target.name]: event.target.value });
     console.log(`${event.target.name} :`, event.target.value);
+    event.target.setCustomValidity("");
+  },
+
+  // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
+  validasiInput: (state, event) => {
+    if (event.target.name === "npwp") {
+      event.target.setCustomValidity(
+        "NPWP harus terdiri dari 1 huruf dan sejumlah angka"
+      );
+    } else if (event.target.name === "nip") {
+      event.target.setCustomValidity("NIP harus terdiri dari 18 digit angka");
+    } else if (event.target.name === "pin") {
+      event.target.setCustomValidity("PIN harus terdiri dari 8 digit angka");
+    }
   },
 
   // Fungsi untuk mengganti status form login menjadi form login payer/officer
