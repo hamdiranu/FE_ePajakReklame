@@ -7,6 +7,13 @@
   padding-top: 30px;
 }
 
+.kontenDaftarKodeQrOfficer {
+  margin-top: 81px;
+  background-color: white;
+  padding-bottom: 150px;
+  padding-top: 30px;
+}
+
 .judulHomeOfficer {
   padding: 20px 0px;
   margin-bottom: 30px;
@@ -18,7 +25,7 @@
 
 .officerCariSSPD svg {
   position: absolute;
-  left: 280px;
+  left: 195px;
   top: 8px;
   width: 25px;
   height: 25px;
@@ -38,7 +45,7 @@
 
 .officerCariID svg {
   position: absolute;
-  left: 180px;
+  left: 134px;
   top: 8px;
   width: 25px;
   height: 25px;
@@ -55,6 +62,13 @@
 .inputSSPD {
   border-radius: 5px;
   height: 40px;
+  width: 25%;
+}
+
+.inputIdQr {
+  border-radius: 5px;
+  height: 40px;
+  width: 79%;
 }
 
 .tombolTambahSSPD {
@@ -99,12 +113,28 @@
   color: black;
   transition: 0.4s;
   cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 
 .tombolDownloadKodeQrSatuan svg:hover {
   color: #2e84be;
   transition: 0.4s;
   cursor: pointer;
+}
+
+.tombolCetakKodeQrSatuan svg {
+  width: 30px;
+  height: 30px;
+  color: grey;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.tombolCetakKodeQrSatuan svg:hover {
+  color: rgb(206, 112, 6);
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 .tombolBacktoDaftarSSPD {
@@ -130,5 +160,177 @@
   width: 25px;
 }
 
+.listSspd {
+  margin-top: 30px;
+  text-align: center;
+  padding-left: 0px;
+}
+
+.btn-group-xs > .btn,
+.btn-xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  border-radius: 0.2rem;
+}
+.dh {
+  font-weight: bold;
+}
+.dt .row {
+  align-items: top;
+}
+
+.dt-right {
+  text-align: center;
+}
+
+.kodeQr {
+  margin: auto;
+}
+
+.tombolPrintSemuaQr {
+  margin-bottom: 20px;
+  display: flex;
+  text-align: right;
+}
+
+.tombolDownloadSemuaQr {
+  display: flex;
+  text-align: right;
+}
+
+.barisNomorSspd {
+  margin: auto;
+}
+
+.statusValidasi {
+  margin: auto;
+}
+
+.namaReklame {
+  margin: auto;
+}
+
+.jenisReklame {
+  padding-left: 0px;
+  margin: auto;
+}
+
+.namaWp {
+  margin: auto;
+}
+
 @media (max-width: 767px) {
+  .cariSspdMobile {
+    width: 56%;
+  }
+
+  .tombolTambahSSPD {
+    width: 41%;
+  }
+
+  .kontenBerandaOfficer {
+    margin-top: 123px;
+    background-color: white;
+    padding-bottom: 150px;
+    padding-top: 30px;
+  }
+
+  .kontenDaftarKodeQrOfficer {
+    margin-top: 145px;
+    background-color: white;
+    padding-bottom: 150px;
+    padding-top: 30px;
+  }
+
+  .judulHomeOfficer {
+    margin-bottom: 10px;
+  }
+
+  .listSspd {
+    margin-top: 30px;
+    text-align: initial;
+  }
+
+  .inputSSPD {
+    border-radius: 5px;
+    height: 40px;
+    width: 180px;
+  }
+
+  .officerCariSSPD svg {
+    position: absolute;
+    left: 145px;
+    top: 8px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    color: grey;
+    transition: 0.4s;
+  }
+
+  .dh {
+    display: none;
+  }
+  .dt .row {
+    align-items: center;
+  }
+  .dt-title {
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  .dt-bold {
+    font-weight: bold;
+  }
+  .dt-small {
+    font-size: 10px;
+  }
+  .dt-center {
+    text-align: center;
+  }
+  .dt-right {
+    text-align: right;
+  }
+
+  .jenisReklame {
+    padding-left: 0px;
+    margin: initial;
+  }
+
+  .namaReklame {
+    margin: initial;
+  }
+
+  .namaWp {
+    margin: initial;
+  }
+
+  .tombolDownloadSemuaQr {
+    font-size: 14px;
+    display: grid;
+    text-align: center;
+    width: 50%;
+  }
+
+  .tombolPrintSemuaQr {
+    font-size: 14px;
+    display: grid;
+    text-align: center;
+    width: 50%;
+    margin-bottom: 0px;
+  }
+
+  .officerCariID {
+    margin-bottom: 20px;
+  }
+
+  .tombolDownloadKodeQrSatuan {
+    padding-right: 20px;
+  }
+
+  .inputIdQr {
+    border-radius: 5px;
+    height: 40px;
+    width: 53%;
+  }
 }

@@ -20,10 +20,12 @@ class LoginOfficer extends React.Component {
           <span style={{ marginLeft: "5px" }}>NIP :</span>
           <input
             type="text"
-            id="npwp"
+            id="nip"
             className="col-md-12 col-sm-12 fadeIn second"
-            name="npwp"
+            name="nip"
             placeholder="Input NIP"
+            pattern="[0-9A-Z]{1,}"
+            onInvalid={e => this.props.validasiFormLogin(e)}
             onChange={e => this.props.handleInput(e)}
           />
         </div>
@@ -44,6 +46,8 @@ class LoginOfficer extends React.Component {
               className="col-md-11 col-sm-10 fadeIn second"
               name="pin"
               placeholder="Input PIN"
+              pattern="[0-9]{8}"
+              onInvalid={e => this.props.validasiFormLogin(e)}
               onChange={e => this.props.handleInput(e)}
             />
             {this.props.statusShowPassword ? (
