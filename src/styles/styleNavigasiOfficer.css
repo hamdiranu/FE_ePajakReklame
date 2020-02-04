@@ -11,7 +11,7 @@
 }
 
 .tombolKeluar {
-  margin-left: 95px;
+  margin-left: 55px;
   transition: 0.4s;
 }
 
@@ -42,6 +42,11 @@
   }
 
   .tombolKeluar {
-    margin-left: 15px;
+    margin-left: 0px;
+  }
+
+  .infoKota {
+    text-align: right;
+    margin-right: 0px;
   }
 }

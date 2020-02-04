@@ -5,6 +5,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import FormLoginPayer from "../components/loginPayer";
 import FormLoginOfficer from "../components/loginOfficer";
+import { Form } from "react-bootstrap";
 
 class Login extends Component {
   render() {
@@ -24,16 +25,15 @@ class Login extends Component {
           </div>
           <div style={{ display: "flex", marginBottom: "10px" }}>
             <span className="loginPilihRole">Masuk Sebagai : </span>
-            <select
-              name="role"
-              class="loginRole"
+            <Form.Control
               onChange={e => this.props.handleGantiRole(e)}
+              name="role"
+              className="pilihRole"
+              as="select"
             >
-              <option value="Payer" selected>
-                Wajib Pajak
-              </option>
-              <option value="Officer">Petugas Pajak</option>
-            </select>
+              <option value="Payer">Wajib Pajak</option>
+              <option calue="officer">Petugas Pajak</option>
+            </Form.Control>
           </div>
           {/* <!-- Login Form --> */}
           {this.props.formOfficer ? <FormLoginOfficer /> : <FormLoginPayer />}

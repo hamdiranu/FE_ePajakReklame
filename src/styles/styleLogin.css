@@ -182,7 +182,16 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+.pilihRole {
+  width: 33%;
+}
+
 @media (max-width: 767px) {
+  .pilihRole {
+    width: 39%;
+    font-size: 13px;
+  }
+
   .loginLogo {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -234,7 +243,7 @@ input[type="submit"] {
   }
 
   #loginFormContent {
-    margin-top: 40px;
+    margin-top: 10px;
   }
 
   .loginPilihRole {
