@@ -8,9 +8,15 @@ import NavigasiOfficer from "../components/navigasiOfficer";
 import KontenBerandaOfficer from "../components/kontenBerandaOfficer";
 
 class BerandaOfficer extends Component {
+  
+  componentDidMount = async () => {
+    await this.props.getDataOfficer();
+    await this.props.getDataBuktiPembayaranOfficer();
+  };
+
   render() {
     return (
-      <React.Fragment>
+       <React.Fragment>
         <NavigasiOfficer />
         <KontenBerandaOfficer />
       </React.Fragment>

@@ -18,19 +18,21 @@ class NavigasiOfficer extends React.Component {
         variant="light"
       >
         <Navbar.Brand>
-          <img onClick={"#"} className="logoNavigasi" src={logo} alt="" />
+          <Link to="/home/officer">
+            <img className="logoNavigasi" src={logo} alt="" />
+          </Link>
         </Navbar.Brand>
         <Navbar.Brand className="infoKota">
           <div>
             <h6>E-Pajak</h6>
           </div>
           <div>
-            <h6>Kota Malang</h6>
+            <h6>{this.props.dataOfficer.daerah_id}</h6>
           </div>
         </Navbar.Brand>
         <Navbar.Brand>
           <div className="col-sm-12" style={{ textAlign: "center" }}>
-            <h3 className="sambutanHeader">Halo (Nama Officer) !</h3>
+            <h3 className="sambutanHeader">Halo {this.props.dataOfficer.nama} !</h3>
           </div>
         </Navbar.Brand>
         <ButtonGroup aria-label="Third group">
@@ -45,4 +47,4 @@ class NavigasiOfficer extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(NavigasiOfficer));
+export default connect("dataOfficer", actions)(withRouter(NavigasiOfficer));
