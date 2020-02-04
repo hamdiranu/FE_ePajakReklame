@@ -1,11 +1,13 @@
 import createStore from "unistore";
-// import axios from "axios";
+import axios from "axios";
 
 const initialState = {
-  npwp: "",
+  npwpd: "",
   nip: "",
   pin: "",
+  roleFormLogin: "officer",
   role: "",
+  token: "",
   formOfficer: false,
   statusInputPassword: "password",
   statusShowPassword: false
@@ -23,14 +25,17 @@ export const actions = store => ({
 
   // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
   validasiFormLogin: (state, event) => {
-    if (event.target.name === "npwp") {
+    if (event.target.name === "npwpd") {
       event.target.setCustomValidity(
-        "NPWP harus terdiri dari 1 huruf dan sejumlah angka"
+        "NPWPD harus terdiri dari 1 huruf dan sejumlah angka"
       );
+      store.setState({ validasiInputNpwp: false });
     } else if (event.target.name === "nip") {
       event.target.setCustomValidity("NIP harus terdiri dari 18 digit angka");
+      store.setState({ validasiInputNip: false });
     } else if (event.target.name === "pin") {
       event.target.setCustomValidity("PIN harus terdiri dari 8 digit angka");
+      store.setState({ validasiInputPin: false });
     }
   },
 
@@ -54,5 +59,51 @@ export const actions = store => ({
         statusShowPassword: false
       });
     }
+  },
+
+  handleLoginPayer: state => {
+    const req = {
+      method: "post",
+      url: "https://alterratax.my.id/login/",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        npwpd: state.npwpd,
+        pin: state.pin
+      }
+    };
+    axios(req)
+      .then(function(response) {
+        if (response.data.hasOwnProperty("token")) {
+          localStorage.setItem("token", response.data.token);
+        }
+      })
+      .catch(function(error) {
+        // alert("invalid username or password");
+      });
+  },
+
+  handleLoginOfficer: state => {
+    const req = {
+      method: "post",
+      url: "https://alterratax.my.id/login/",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        nip: state.nip,
+        pin: state.pin
+      }
+    };
+    axios(req)
+      .then(function(response) {
+        if (response.data.hasOwnProperty("token")) {
+          localStorage.setItem("token", response.data.token);
+        }
+      })
+      .catch(function(error) {
+        // alert("invalid username or password");
+      });
   }
 });

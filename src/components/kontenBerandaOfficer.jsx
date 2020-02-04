@@ -16,7 +16,7 @@ class KontenBerandaOfficer extends React.Component {
           <div className="row">
             <div className="col-md-10 col-sm-4 cariSspdMobile">
               <form onSubmit={e => e.preventDefault(e)}>
-                <span>Cari berdasarkan SSPD :</span>
+                <span className="keteranganCari">Cari berdasarkan SSPD :</span>
                 <div className="officerCariSSPD">
                   <Form.Control
                     type={this.props.statusInputPassword}
@@ -48,18 +48,21 @@ class KontenBerandaOfficer extends React.Component {
               </li>
               <li className="list-group-item dt">
                 <div className="row">
-                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
+                  <div className="col-6 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
                     12345678123123
                   </div>
-                  <div className="col-4 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
+                  <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
                     Belum Tervalidasi
                   </div>
-                  <div className="col-8 col-sm order-sm-2 namaWp dt-title">
+                  <div className="col-7 col-sm order-sm-2 namaWp dt-title">
                     PT Adi Karya Makmur
                   </div>
-                  <div className="col-4 col-sm order-sm-6 kodeQr dt-right">
-                    <Button className="btn btn-xs" variant="success">
-                      Generate Kode QR
+                  <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
+                    <Button
+                      className="btn btn-xs tombolGenerateQr"
+                      variant="success"
+                    >
+                      Generate QR
                     </Button>
                   </div>
                   <div className="col-auto col-sm order-sm-3 namaReklame dt-small">
@@ -73,18 +76,21 @@ class KontenBerandaOfficer extends React.Component {
 
               <li className="list-group-item dt">
                 <div className="row">
-                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
+                  <div className="col-6 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
                     12345678123123
                   </div>
-                  <div className="col-4 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
+                  <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
                     Belum Tervalidasi
                   </div>
-                  <div className="col-8 col-sm order-sm-2 namaWp dt-title">
+                  <div className="col-7 col-sm order-sm-2 namaWp dt-title">
                     PT Adi Karya Makmur
                   </div>
-                  <div className="col-4 col-sm order-sm-6 kodeQr dt-right">
-                    <Button className="btn btn-xs" variant="success">
-                      Generate Kode QR
+                  <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
+                    <Button
+                      className="btn btn-xs tombolGenerateQr"
+                      variant="success"
+                    >
+                      Generate QR
                     </Button>
                   </div>
                   <div className="col-auto col-sm order-sm-3 namaReklame dt-small">
@@ -97,18 +103,21 @@ class KontenBerandaOfficer extends React.Component {
               </li>
               <li className="list-group-item dt">
                 <div className="row">
-                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
+                  <div className="col-6 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
                     12345678123123
                   </div>
-                  <div className="col-4 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
+                  <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
                     Belum Tervalidasi
                   </div>
-                  <div className="col-8 col-sm order-sm-2 namaWp dt-title">
+                  <div className="col-7 col-sm order-sm-2 namaWp dt-title">
                     PT Adi Karya Makmur
                   </div>
-                  <div className="col-4 col-sm order-sm-6 kodeQr dt-right">
-                    <Button className="btn btn-xs" variant="success">
-                      Generate Kode QR
+                  <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
+                    <Button
+                      className="btn btn-xs tombolGenerateQr"
+                      variant="success"
+                    >
+                      Generate QR
                     </Button>
                   </div>
                   <div className="col-auto col-sm order-sm-3 namaReklame dt-small">
@@ -121,22 +130,25 @@ class KontenBerandaOfficer extends React.Component {
               </li>
               <li className="list-group-item dt">
                 <div className="row">
-                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
+                  <div className="col-6 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
                     12345678123123
                   </div>
-                  <div className="col-4 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
+                  <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
                     Sudah Tervalidasi
                     <br />
                     <a href="https://www.google.com/">
                       <small className="text-danger">Lihat pelanggaran</small>
                     </a>
                   </div>
-                  <div className="col-8 col-sm order-sm-2 namaWp dt-title">
+                  <div className="col-7 col-sm order-sm-2 namaWp dt-title">
                     PT Adi Karya Makmur
                   </div>
-                  <div className="col-4 col-sm order-sm-6 kodeQr dt-right">
-                    <Button className="btn btn-xs" variant="success">
-                      Generate Kode QR
+                  <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
+                    <Button
+                      className="btn btn-xs tombolGenerateQr"
+                      variant="success"
+                    >
+                      Generate QR
                     </Button>
                   </div>
                   <div className="col-auto col-sm order-sm-3 namaReklame dt-small">

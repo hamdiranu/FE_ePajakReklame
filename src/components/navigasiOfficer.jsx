@@ -1,46 +1,39 @@
 import React from "react";
-import logo from "../images/logo.png";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { Navbar, Button, ButtonGroup } from "react-bootstrap";
 
 class NavigasiOfficer extends React.Component {
   render() {
     return (
-      <Navbar
-        fixed="top"
-        className="navbar_react"
-        collapseOnSelect
-        expand="lg"
-        bg="light"
-        variant="light"
-      >
-        <Navbar.Brand>
-          <img onClick={"#"} className="logoNavigasi" src={logo} alt="" />
-        </Navbar.Brand>
-        <Navbar.Brand className="infoKota">
-          <div>
-            <h6>E-Pajak</h6>
+      <React.Fragment>
+        <nav
+          className="navbar navbar-light bg-light "
+          style={{ position: "fixed", zIndex: "2", width: "100%" }}
+        >
+          <a class="navbar-brand" style={{ display: "flex" }} href="/">
+            <div style={{ margin: "auto" }}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/57/Kab_Bandung_Barat.svg"
+                width="40"
+                height="40"
+                class="d-inline-block align-top "
+                alt=""
+              />
+            </div>
+            <div class="navbar-brand-text d-inline-block ml-1 navigasiKota">
+              <div class="system-name">ePajak</div>
+              <div class="area-name">Kabupaten Bandung Barat</div>
+            </div>
+          </a>
+          <div class="text-right">
+            <div class="navigasiUserName">Halo, Officer</div>
+            <a href="/" class="btn btn-xs btn-outline-secondary tombolKeluar">
+              Logout
+            </a>
           </div>
-          <div>
-            <h6>Kota Malang</h6>
-          </div>
-        </Navbar.Brand>
-        <Navbar.Brand>
-          <div className="col-sm-12" style={{ textAlign: "center" }}>
-            <h3 className="sambutanHeader">Halo (Nama Officer) !</h3>
-          </div>
-        </Navbar.Brand>
-        <ButtonGroup aria-label="Third group">
-          <Button className="tombolKeluar" variant="outline-secondary">
-            <Link className="textTombol" onClick={() => this.logOut()}>
-              Keluar
-            </Link>
-          </Button>
-        </ButtonGroup>
-      </Navbar>
+        </nav>
+      </React.Fragment>
     );
   }
 }
