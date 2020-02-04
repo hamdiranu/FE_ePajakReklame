@@ -20,7 +20,7 @@ class NavigasiOfficer extends React.Component {
         <Navbar.Brand>
           <img onClick={"#"} className="logoNavigasi" src={logo} alt="" />
         </Navbar.Brand>
-        <Navbar.Brand>
+        <Navbar.Brand className="infoKota">
           <div>
             <h6>E-Pajak</h6>
           </div>
