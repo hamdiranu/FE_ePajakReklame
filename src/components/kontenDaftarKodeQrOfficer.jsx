@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { FaSearch, FaDownload } from "react-icons/fa";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { TiArrowBackOutline } from "react-icons/ti";
@@ -11,7 +11,7 @@ import { AiFillPrinter } from "react-icons/ai";
 class KontenDaftarKodeQrOfficer extends React.Component {
   render() {
     return (
-      <div className="kontenBerandaOfficer">
+      <div className="kontenDaftarKodeQrOfficer">
         <div className="container">
           <div className="col-md-2" style={{ paddingLeft: "0px" }}>
             <div className="tombolBacktoDaftarSSPD">
@@ -43,11 +43,10 @@ class KontenDaftarKodeQrOfficer extends React.Component {
                 <form onSubmit={e => e.preventDefault(e)}>
                   <span>Cari berdasarkan ID :</span>
                   <div className="officerCariID">
-                    <input
-                      style={{ width: "170px" }}
+                    <Form.Control
                       type={this.props.statusInputPassword}
                       id="pin"
-                      className="col-md-6 col-sm-6 fadeIn second inputSSPD"
+                      className="fadeIn second inputIdQr"
                       name="pin"
                       placeholder="Masukkan ID"
                       onChange={e => this.props.handleInput(e)}
@@ -89,80 +88,88 @@ class KontenDaftarKodeQrOfficer extends React.Component {
             </div>
           </div>
           <div>
-            <ul class="listSspd">
-              <li class="list-group-item dh">
-                <div class="row">
-                  <div class="col no-sspd">ID</div>
-                  <div class="col nama-wp">Kode Unik</div>
-                  <div class="col nama-reklame">Status Scan</div>
-                  <div class="col jenis-reklame">Cetak Kode QR</div>
-                  <div class="col status">Unduh Kode QR</div>
+            <ul className="listSspd">
+              <li className="list-group-item dh">
+                <div className="row">
+                  <div className="col no-sspd">ID</div>
+                  <div className="col nama-wp">Kode Unik</div>
+                  <div className="col nama-reklame">Status Scan</div>
+                  <div className="col jenis-reklame">Cetak Kode QR</div>
+                  <div className="col status">Unduh Kode QR</div>
                 </div>
               </li>
-              <li class="list-group-item dt">
-                <div class="row">
-                  <div class="col-8 col-sm order-sm-1 no-sspd dt-small">1</div>
-                  <div class="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
+              <li className="list-group-item dt">
+                <div className="row">
+                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
+                    1
+                  </div>
+                  <div className="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
                     <AiFillPrinter />
                   </div>
-                  <div class="col-8 col-sm order-sm-2 nama-wp dt-title">
+                  <div className="col-8 col-sm order-sm-2 nama-wp dt-title">
                     ABC123asdaasd76sad87sat
                   </div>
-                  <div class="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
+                  <div className="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
                     <FaDownload />
                   </div>
-                  <div class="col-auto col-sm order-sm-3 statusSudahScan dt-small">
+                  <div className="col-auto col-sm order-sm-3 statusSudahScan dt-small">
                     <AiFillCheckCircle />
                   </div>
                 </div>
               </li>
-              <li class="list-group-item dt">
-                <div class="row">
-                  <div class="col-8 col-sm order-sm-1 no-sspd dt-small">2</div>
-                  <div class="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
+              <li className="list-group-item dt">
+                <div className="row">
+                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
+                    2
+                  </div>
+                  <div className="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
                     <AiFillPrinter />
                   </div>
-                  <div class="col-8 col-sm order-sm-2 nama-wp dt-title">
+                  <div className="col-8 col-sm order-sm-2 nama-wp dt-title">
                     ABC123asdaasd76sad87sat
                   </div>
-                  <div class="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
+                  <div className="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
                     <FaDownload />
                   </div>
-                  <div class="col-auto col-sm order-sm-3 statusSudahScan dt-small">
+                  <div className="col-auto col-sm order-sm-3 statusSudahScan dt-small">
                     <AiFillCheckCircle />
                   </div>
                 </div>
               </li>
-              <li class="list-group-item dt">
-                <div class="row">
-                  <div class="col-8 col-sm order-sm-1 no-sspd dt-small">3</div>
-                  <div class="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
+              <li className="list-group-item dt">
+                <div className="row">
+                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
+                    3
+                  </div>
+                  <div className="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
                     <AiFillPrinter />
                   </div>
-                  <div class="col-8 col-sm order-sm-2 nama-wp dt-title">
+                  <div className="col-8 col-sm order-sm-2 nama-wp dt-title">
                     ABC123asdaasd76sad87sat
                   </div>
-                  <div class="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
+                  <div className="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
                     <FaDownload />
                   </div>
-                  <div class="col-auto col-sm order-sm-3 statusSudahScan dt-small">
+                  <div className="col-auto col-sm order-sm-3 statusSudahScan dt-small">
                     <AiFillCheckCircle />
                   </div>
                 </div>
               </li>
-              <li class="list-group-item dt">
-                <div class="row">
-                  <div class="col-8 col-sm order-sm-1 no-sspd dt-small">4</div>
-                  <div class="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
+              <li className="list-group-item dt">
+                <div className="row">
+                  <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
+                    4
+                  </div>
+                  <div className="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
                     <AiFillPrinter />
                   </div>
-                  <div class="col-8 col-sm order-sm-2 nama-wp dt-title">
+                  <div className="col-8 col-sm order-sm-2 nama-wp dt-title">
                     ABC123asdaasd76sad87sat
                   </div>
-                  <div class="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
+                  <div className="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
                     <FaDownload />
                   </div>
-                  <div class="col-auto col-sm order-sm-3 statusBelumScan dt-small">
+                  <div className="col-auto col-sm order-sm-3 statusBelumScan dt-small">
                     <AiFillCloseCircle />
                   </div>
                 </div>

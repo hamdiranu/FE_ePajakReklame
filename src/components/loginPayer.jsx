@@ -25,7 +25,7 @@ class LoginPayer extends React.Component {
             name="npwp"
             placeholder="Input NPWP"
             pattern="[0-9A-Z]{1,}"
-            onInvalid={e => this.props.validasiInput(e)}
+            onInvalid={e => this.props.validasiFormLogin(e)}
             onChange={e => this.props.handleInput(e)}
           />
         </div>
@@ -47,7 +47,7 @@ class LoginPayer extends React.Component {
               name="pin"
               placeholder="Input PIN"
               pattern="[0-9]{8}"
-              onInvalid={e => this.props.validasiInput(e)}
+              onInvalid={e => this.props.validasiFormLogin(e)}
               onChange={e => this.props.handleInput(e)}
             />
             {this.props.statusShowPassword ? (

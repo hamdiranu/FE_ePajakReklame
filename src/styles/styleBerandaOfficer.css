@@ -7,6 +7,13 @@
   padding-top: 30px;
 }
 
+.kontenDaftarKodeQrOfficer {
+  margin-top: 81px;
+  background-color: white;
+  padding-bottom: 150px;
+  padding-top: 30px;
+}
+
 .judulHomeOfficer {
   padding: 20px 0px;
   margin-bottom: 30px;
@@ -56,6 +63,12 @@
   border-radius: 5px;
   height: 40px;
   width: 25%;
+}
+
+.inputIdQr {
+  border-radius: 5px;
+  height: 40px;
+  width: 79%;
 }
 
 .tombolTambahSSPD {
@@ -223,6 +236,13 @@
     padding-top: 30px;
   }
 
+  .kontenDaftarKodeQrOfficer {
+    margin-top: 145px;
+    background-color: white;
+    padding-bottom: 150px;
+    padding-top: 30px;
+  }
+
   .judulHomeOfficer {
     margin-bottom: 10px;
   }
@@ -263,7 +283,7 @@
     font-weight: bold;
   }
   .dt-small {
-    font-size: 0.75rem;
+    font-size: 10px;
   }
   .dt-center {
     text-align: center;
@@ -306,5 +326,11 @@
 
   .tombolDownloadKodeQrSatuan {
     padding-right: 20px;
+  }
+
+  .inputIdQr {
+    border-radius: 5px;
+    height: 40px;
+    width: 53%;
   }
 }

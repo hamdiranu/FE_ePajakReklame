@@ -22,7 +22,7 @@ export const actions = store => ({
   },
 
   // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
-  validasiInput: (state, event) => {
+  validasiFormLogin: (state, event) => {
     if (event.target.name === "npwp") {
       event.target.setCustomValidity(
         "NPWP harus terdiri dari 1 huruf dan sejumlah angka"
