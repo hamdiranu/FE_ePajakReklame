@@ -27,7 +27,7 @@ class NavigasiOfficer extends React.Component {
             <h6>E-Pajak</h6>
           </div>
           <div>
-            <h6>{this.props.dataOfficer.daerah_id}</h6>
+            <h6>{this.props.dataOfficer.nama_daerah}</h6>
           </div>
         </Navbar.Brand>
         <Navbar.Brand>

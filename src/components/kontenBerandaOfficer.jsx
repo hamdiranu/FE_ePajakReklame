@@ -56,11 +56,10 @@ class KontenBerandaOfficer extends React.Component {
                             <div class="form-group">
                                 <label for="jumlahReklame" style={{textAlign:"center"}}>Jumlah Reklame:</label>
                                 <input 
-                                  type="text" 
+                                  type="number" 
                                   class="form-control" 
                                   name="jumlahReklame" 
-                                  placeholder="Masukkan jumlah reklame" 
-                                  pattern="[0-9].{1,}"
+                                  placeholder="Masukkan jumlah reklame"
                                   onChange={e => this.props.handleInput(e)} 
                                   id="jumlahReklame" 
                                   required
@@ -133,7 +132,7 @@ class KontenBerandaOfficer extends React.Component {
                   <div className="col no-sspd">Nomor SSPD</div>
                   <div className="col nama-wp">Nama WP</div>
                   <div className="col nama-reklame">Nama Reklame</div>
-                  <div className="col jenis-reklame">Jenis Reklame (Qty)</div>
+                  <div className="col jenis-reklame">Jenis (Qty)</div>
                   <div className="col status">Status</div>
                   <div className="col kodeQr">QR Code</div>
                 </div>
@@ -162,7 +161,7 @@ class KontenBerandaOfficer extends React.Component {
                         {status}
                       </div>
                       <div className="col-7 col-sm order-sm-2 namaWp dt-title">
-                        {payer.nama}
+                        {payer}
                       </div>
                       <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
                         {buktiPembayaran.status_buat_kode_qr
