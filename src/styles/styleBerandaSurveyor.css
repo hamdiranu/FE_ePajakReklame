@@ -1,0 +1,42 @@
+/* Style untuk tampilan home officer  */
+
+.kontenBerandaSurveyor {
+  background-color: white;
+  padding-bottom: 150px;
+  padding-top: 30px;
+}
+
+.judulScanQrSurveyor {
+  font-size: 35px;
+  padding-top: 50px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.containerKotakScannerQr {
+  text-align: center;
+}
+
+.kotakScannerQr {
+  border-radius: 10px;
+  width: 40%;
+  height: 350px;
+  margin: auto;
+}
+
+.kotakScannerQr video {
+  border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+  .judulScanQrSurveyor {
+    font-size: 25px;
+    padding-top: 50px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .kotakScannerQr {
+    width: 85%;
+  }
+}
