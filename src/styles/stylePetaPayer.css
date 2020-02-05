@@ -1,5 +1,16 @@
 /* Style untuk tampilan navbar officer */
 
+body {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .sidebarStyle {
   display: inline-block;
   position: absolute;
@@ -35,5 +46,24 @@
   display: none;
 }
 
+.markerLokasi {
+  position: absolute;
+  z-index: 3;
+  top: 44%;
+  left: 48.5%;
+}
+
+.markerLokasi svg {
+  width: 40px;
+  height: 40px;
+  color: darkolivegreen;
+}
+
 @media (max-width: 767px) {
+  .markerLokasi {
+    position: absolute;
+    z-index: 3;
+    top: 44%;
+    left: 44.5%;
+  }
 }
