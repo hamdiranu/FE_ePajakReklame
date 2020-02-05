@@ -23,6 +23,7 @@ class KontenBerandaOfficer extends React.Component {
     await this.props.history.replace("/home/officer");  
   }
   render() {
+    console.warn("list sspd", this.props.dataBuktiPembayaranOfficer)
     const TambahDataModal = (props) => {
       return (
         <Modal
@@ -32,7 +33,7 @@ class KontenBerandaOfficer extends React.Component {
           centered
         >
           <Modal.Body>
-            <div className="container-fluid" style={{padding:"20px", border:"solid 1px black", minHeight:"400px"}}>
+            <div className="container-fluid" style={{padding:"20px", backgroundColor:"silver", border:"solid 1px silver", minHeight:"400px"}}>
                 <div className="boxLogin"> 
                     <div class="mb-5" style={{textAlign:"center"}}>
                         <h4 style={{fontWeight:"bolder"}}>Tambah Data</h4>
@@ -40,23 +41,23 @@ class KontenBerandaOfficer extends React.Component {
                     </div>
                     <div>
                         <form onSubmit={e => e.preventDefault(e)}>
-                            <div class="form-group">
+                            <div class="form-group" style={{textAlign:"center"}}>
                                 <label for="nomorSSPD">Nomor SSPD :</label>
                                 <input 
                                   type="text" 
-                                  class="form-control" 
                                   name="nomorSSPD" 
+                                  class="form-control" 
                                   placeholder="Masukkan nomor SSPD" 
                                   pattern="[0-9].{4,}" 
-                                  onChange={e => this.props.handleInput(e)} 
+                                  onChange={e => this.props.handleInput(e)}  
                                   id="nomorSSPD" 
                                   required
                                 />
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style={{textAlign:"center"}}>
                                 <label for="jumlahReklame" style={{textAlign:"center"}}>Jumlah Reklame:</label>
                                 <input 
-                                  type="number" 
+                                  type="text" 
                                   class="form-control" 
                                   name="jumlahReklame" 
                                   placeholder="Masukkan jumlah reklame"

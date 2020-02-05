@@ -67,7 +67,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/officers",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA4NzMzMjUsIm5iZiI6MTU4MDg3MzMyNSwianRpIjoiODY3ZjM5Y2YtNWRkNC00ODk4LTgxZDEtZDk0OTMwZjc4NjUyIiwiZXhwIjoxNTgwOTU5NzI1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.EDVauY8HOwKoLYpR_v0iDmmc-IlKiDHUp4cKNjAhuUY"
+        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
       }
     };
 
@@ -88,7 +88,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA4NzMzMjUsIm5iZiI6MTU4MDg3MzMyNSwianRpIjoiODY3ZjM5Y2YtNWRkNC00ODk4LTgxZDEtZDk0OTMwZjc4NjUyIiwiZXhwIjoxNTgwOTU5NzI1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.EDVauY8HOwKoLYpR_v0iDmmc-IlKiDHUp4cKNjAhuUY"
+        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
       }
     };
 
@@ -109,7 +109,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd="+state.kataKunci,
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA4NzMzMjUsIm5iZiI6MTU4MDg3MzMyNSwianRpIjoiODY3ZjM5Y2YtNWRkNC00ODk4LTgxZDEtZDk0OTMwZjc4NjUyIiwiZXhwIjoxNTgwOTU5NzI1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.EDVauY8HOwKoLYpR_v0iDmmc-IlKiDHUp4cKNjAhuUY"
+        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
       }
     };
 
@@ -134,7 +134,7 @@ export const actions = store => ({
       method: "post",    
       url: "https://alterratax.my.id/kode_qr/officer",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA4NzMzMjUsIm5iZiI6MTU4MDg3MzMyNSwianRpIjoiODY3ZjM5Y2YtNWRkNC00ODk4LTgxZDEtZDk0OTMwZjc4NjUyIiwiZXhwIjoxNTgwOTU5NzI1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.EDVauY8HOwKoLYpR_v0iDmmc-IlKiDHUp4cKNjAhuUY"
+        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
       },
       data:mydata
     };
@@ -158,7 +158,7 @@ export const actions = store => ({
       method: "post",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA4NzMzMjUsIm5iZiI6MTU4MDg3MzMyNSwianRpIjoiODY3ZjM5Y2YtNWRkNC00ODk4LTgxZDEtZDk0OTMwZjc4NjUyIiwiZXhwIjoxNTgwOTU5NzI1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.EDVauY8HOwKoLYpR_v0iDmmc-IlKiDHUp4cKNjAhuUY"
+        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
       },
       data:mydata
     };
