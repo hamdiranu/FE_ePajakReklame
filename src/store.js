@@ -2,13 +2,15 @@ import createStore from "unistore";
 import axios from "axios";
 
 const initialState = {
-  npwp: "",
+  npwpd: "",
   nip: "",
   pin: "",
+  roleFormLogin: "officer",
   role: "",
   kataKunci: "",
   nomorSSPD: "",
   jumlahReklame: 0,
+  token: "",
   formOfficer: false,
   statusInputPassword: "password",
   statusShowPassword: false,
@@ -28,14 +30,17 @@ export const actions = store => ({
 
   // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
   validasiFormLogin: (state, event) => {
-    if (event.target.name === "npwp") {
+    if (event.target.name === "npwpd") {
       event.target.setCustomValidity(
-        "NPWP harus terdiri dari 1 huruf dan sejumlah angka"
+        "NPWPD harus terdiri dari 1 huruf dan sejumlah angka"
       );
+      store.setState({ validasiInputNpwp: false });
     } else if (event.target.name === "nip") {
       event.target.setCustomValidity("NIP harus terdiri dari 18 digit angka");
+      store.setState({ validasiInputNip: false });
     } else if (event.target.name === "pin") {
       event.target.setCustomValidity("PIN harus terdiri dari 8 digit angka");
+      store.setState({ validasiInputPin: false });
     }
   },
 
@@ -67,7 +72,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/officers",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
+        Authorization: "Bearer" + state.token
       }
     };
 
@@ -88,7 +93,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
+        Authorization: "Bearer" + state.token
       }
     };
 
@@ -109,7 +114,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd="+state.kataKunci,
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
+        Authorization: "Bearer" + state.token
       }
     };
 
@@ -134,7 +139,7 @@ export const actions = store => ({
       method: "post",    
       url: "https://alterratax.my.id/kode_qr/officer",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
+        Authorization: "Bearer" + state.token
       },
       data:mydata
     };
@@ -158,7 +163,7 @@ export const actions = store => ({
       method: "post",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer",
       headers: {
-        Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5MDYzMTcsIm5iZiI6MTU4MDkwNjMxNywianRpIjoiYmY4YmM1ZDEtOTQ3Zi00NzUzLThjOTktOTY1YzIzZmI0NGMzIiwiZXhwIjoxNTgwOTkyNzE3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.YoiojQJRy-uRNsd7vx-A-YYUejd7Xg2md6zHxuEigag"
+        Authorization: "Bearer" + state.token
       },
       data:mydata
     };
@@ -173,4 +178,10 @@ export const actions = store => ({
           console.log(error)
       })
   },
+    
+  handleLogOut: state => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    store.setState({ npwpd: "", nip: "", pin: "" });
+  }
 });

@@ -108,7 +108,7 @@ class KontenBerandaOfficer extends React.Component {
           <div className="row">
             <div className="col-md-10 col-sm-4 cariSspdMobile">
               <form onSubmit={e => e.preventDefault(e)}>
-                <span>Cari berdasarkan No. SSPD :</span>
+                <span className="keteranganCari">Cari berdasarkan No. SSPD :</span>
                 <div className="officerCariSSPD">
                   <Form.Control
                     type={this.props.statusInputPassword}
@@ -155,10 +155,10 @@ class KontenBerandaOfficer extends React.Component {
                 return (
                   <li className="list-group-item dt">
                     <div className="row">
-                      <div className="col-7 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
+                      <div className="col-6 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
                         {buktiPembayaran.nomor_sspd}
                       </div>
-                      <div className="col-5 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
+                      <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
                         {status}
                       </div>
                       <div className="col-7 col-sm order-sm-2 namaWp dt-title">
