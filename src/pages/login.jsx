@@ -29,7 +29,7 @@ class Login extends Component {
           if (response.data.hasOwnProperty("token")) {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("role", response.data.role);
-            self.props.history.push("/home/payer");
+            self.props.history.push("/payer/home");
             swal("Selamat!", "Login Sukses", "success");
           }
         })
@@ -57,9 +57,9 @@ class Login extends Component {
             swal("Selamat!", "Login Sukses", "success");
           }
           if (localStorage.getItem("role") === "officer") {
-            self.props.history.push("/home/officer");
+            self.props.history.push("/officer/home");
           } else if (localStorage.getItem("role") === "surveyor") {
-            self.props.history.push("/home/surveyor");
+            self.props.history.push("/surveyor/home");
           }
         })
         .catch(function(error) {

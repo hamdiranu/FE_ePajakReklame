@@ -63,6 +63,7 @@ export const actions = store => ({
 
   handleLogOut: state => {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     store.setState({ npwpd: "", nip: "", pin: "" });
   }
 });
