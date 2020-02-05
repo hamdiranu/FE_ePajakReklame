@@ -1,5 +1,5 @@
 import createStore from "unistore";
-import axios from "axios";
+// import axios from "axios";
 
 const initialState = {
   npwpd: "",
@@ -61,49 +61,8 @@ export const actions = store => ({
     }
   },
 
-  handleLoginPayer: state => {
-    const req = {
-      method: "post",
-      url: "https://alterratax.my.id/login/",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: {
-        npwpd: state.npwpd,
-        pin: state.pin
-      }
-    };
-    axios(req)
-      .then(function(response) {
-        if (response.data.hasOwnProperty("token")) {
-          localStorage.setItem("token", response.data.token);
-        }
-      })
-      .catch(function(error) {
-        // alert("invalid username or password");
-      });
-  },
-
-  handleLoginOfficer: state => {
-    const req = {
-      method: "post",
-      url: "https://alterratax.my.id/login/",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: {
-        nip: state.nip,
-        pin: state.pin
-      }
-    };
-    axios(req)
-      .then(function(response) {
-        if (response.data.hasOwnProperty("token")) {
-          localStorage.setItem("token", response.data.token);
-        }
-      })
-      .catch(function(error) {
-        // alert("invalid username or password");
-      });
+  handleLogOut: state => {
+    localStorage.removeItem("token");
+    store.setState({ npwpd: "", nip: "", pin: "" });
   }
 });

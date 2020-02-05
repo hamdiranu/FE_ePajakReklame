@@ -4,6 +4,10 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 
 class NavigasiOfficer extends React.Component {
+  logOutOfficer = async () => {
+    this.props.handleLogOut();
+    this.props.history.replace("/login");
+  };
   render() {
     return (
       <React.Fragment>
@@ -28,9 +32,12 @@ class NavigasiOfficer extends React.Component {
           </a>
           <div class="text-right">
             <div class="navigasiUserName">Halo, Officer</div>
-            <a href="/" class="btn btn-xs btn-outline-secondary tombolKeluar">
+            <span
+              onClick={() => this.logOutOfficer()}
+              class="btn btn-xs btn-outline-secondary tombolKeluar"
+            >
               Logout
-            </a>
+            </span>
           </div>
         </nav>
       </React.Fragment>

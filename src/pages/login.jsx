@@ -11,7 +11,6 @@ import swal from "sweetalert";
 
 class Login extends Component {
   loginUser = async () => {
-    console.log("cek form", this.props.formOfficer);
     if (this.props.formOfficer === false) {
       const self = this;
       const req = {
@@ -29,12 +28,13 @@ class Login extends Component {
         .then(function(response) {
           if (response.data.hasOwnProperty("token")) {
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("role", response.data.role);
             self.props.history.push("/home/payer");
             swal("Selamat!", "Login Sukses", "success");
           }
         })
         .catch(function(error) {
-          // swal("Maaf!", "NPWPD / PIN Tidak Ditemukan", "error");
+          console.log("Maaf, NPWPD/PIN Tidak Ditemukan");
         });
     } else {
       const self = this;
@@ -53,13 +53,17 @@ class Login extends Component {
         .then(function(response) {
           if (response.data.hasOwnProperty("token")) {
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("role", response.data.role);
             swal("Selamat!", "Login Sukses", "success");
           }
-          console.log("cek local", localStorage.getItem("token"));
-          self.props.history.push("/home/officer");
+          if (localStorage.getItem("role") === "officer") {
+            self.props.history.push("/home/officer");
+          } else if (localStorage.getItem("role") === "surveyor") {
+            self.props.history.push("/home/surveyor");
+          }
         })
         .catch(function(error) {
-          // swal("Maaf!", "NIP / PIN Tidak Ditemukan", "error");
+          console.log("Maaf, NIP/PIN Tidak Ditemukan");
         });
     }
   };
