@@ -3,7 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 
-class NavigasiOfficer extends React.Component {
+class NavigasiSurveyor extends React.Component {
   logOutOfficer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
@@ -48,4 +48,4 @@ class NavigasiOfficer extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(NavigasiOfficer));
+export default connect("", actions)(withRouter(NavigasiSurveyor));

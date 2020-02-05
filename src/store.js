@@ -2,10 +2,12 @@ import createStore from "unistore";
 // import axios from "axios";
 
 const initialState = {
-  npwp: "",
+  npwpd: "",
   nip: "",
   pin: "",
+  roleFormLogin: "officer",
   role: "",
+  token: "",
   formOfficer: false,
   statusInputPassword: "password",
   statusShowPassword: false
@@ -23,14 +25,17 @@ export const actions = store => ({
 
   // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
   validasiFormLogin: (state, event) => {
-    if (event.target.name === "npwp") {
+    if (event.target.name === "npwpd") {
       event.target.setCustomValidity(
-        "NPWP harus terdiri dari 1 huruf dan sejumlah angka"
+        "NPWPD harus terdiri dari 1 huruf dan sejumlah angka"
       );
+      store.setState({ validasiInputNpwp: false });
     } else if (event.target.name === "nip") {
       event.target.setCustomValidity("NIP harus terdiri dari 18 digit angka");
+      store.setState({ validasiInputNip: false });
     } else if (event.target.name === "pin") {
       event.target.setCustomValidity("PIN harus terdiri dari 8 digit angka");
+      store.setState({ validasiInputPin: false });
     }
   },
 
@@ -54,5 +59,11 @@ export const actions = store => ({
         statusShowPassword: false
       });
     }
+  },
+
+  handleLogOut: state => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    store.setState({ npwpd: "", nip: "", pin: "" });
   }
 });

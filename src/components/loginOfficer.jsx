@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 class LoginOfficer extends React.Component {
   render() {
     return (
-      <form onSubmit={e => e.preventDefault(e)}>
+      <React.Fragment>
         <div
           className="col-sm-12"
           style={{
@@ -57,20 +57,12 @@ class LoginOfficer extends React.Component {
             )}
           </div>
         </div>
-
-        <input
-          type="submit"
-          className="fadeIn fourth"
-          value="Log In"
-          style={{ marginBottom: "15px", marginTop: "10px" }}
-          //   onClick={this.handleLogin}
-        />
-      </form>
+      </React.Fragment>
     );
   }
 }
 
 export default connect(
-  "statusInputPassword, statusShowPassword",
+  "statusInputPassword, statusShowPassword, token",
   actions
 )(withRouter(LoginOfficer));
