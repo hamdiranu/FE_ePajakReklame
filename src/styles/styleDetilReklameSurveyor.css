@@ -1,0 +1,95 @@
+/* Style untuk tampilan navbar officer */
+
+.judulDetilReklameSurveyor {
+  display: grid;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.judulReklameSurveyor {
+  font-size: 30px;
+}
+
+.nomorSspdDetilReklame {
+  font-size: 20px;
+}
+
+.kotakInfoDetilReklame {
+  padding: 25px;
+}
+
+.rowInfoDetilReklame {
+  padding: 10px 0px;
+}
+
+.catatanPelanggaran {
+  padding-bottom: 15px;
+  padding-top: 5px;
+}
+
+.textAreaPelanggaran {
+  padding: 0px 40px;
+  height: 94px;
+}
+
+.kontenPetaSurveyor {
+  padding-top: 70px;
+  background-color: white;
+  padding-bottom: 68px;
+}
+
+textarea.form-control {
+  height: 94px;
+}
+
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+}
+
+.kotakPeta {
+  border-radius: 10px;
+  z-index: 3;
+}
+
+@media (max-width: 767px) {
+  .judulDetilReklameSurveyor {
+    padding-bottom: 10px;
+  }
+
+  .judulReklameSurveyor {
+    font-size: 25px;
+  }
+
+  .nomorSspdDetilReklame {
+    font-size: 15px;
+  }
+
+  .judulMapsSurveyor {
+    text-align: center;
+    font-size: 31px;
+    padding-bottom: 10px;
+  }
+
+  .kotakInfoDetilReklame {
+    margin-top: 30px;
+  }
+
+  .rowInfoDetilReklame {
+    padding: 8px 0px;
+  }
+
+  .leaflet-container {
+    height: 300px;
+    width: 100%;
+  }
+
+  .kontenPetaSurveyor {
+    padding-top: 70px;
+  }
+
+  .textAreaPelanggaran {
+    padding: 0px 30px;
+    height: 94px;
+  }
+}

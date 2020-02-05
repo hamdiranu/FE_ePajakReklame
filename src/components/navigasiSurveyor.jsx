@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { FaMapMarkedAlt } from "react-icons/fa";
+import { FaMapMarkedAlt, FaQrcode } from "react-icons/fa";
 
 class NavigasiSurveyor extends React.Component {
   logOutOfficer = async () => {
@@ -15,13 +15,19 @@ class NavigasiSurveyor extends React.Component {
       <React.Fragment>
         <nav
           className="navbar navbar-light bg-light "
-          style={{ position: "fixed", zIndex: "2", width: "100%" }}
+          style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div style={{ margin: "auto" }}>
-              <Link to="/officer/home" style={{ textDecoration: "none" }}>
-                <FaMapMarkedAlt className="logoPeta" />
-              </Link>
+              {this.props.statusPageHomeSurveyor ? (
+                <Link to="/officer/home" style={{ textDecoration: "none" }}>
+                  <FaMapMarkedAlt className="logoPeta" />
+                </Link>
+              ) : (
+                <Link to="/officer/home" style={{ textDecoration: "none" }}>
+                  <FaQrcode className="logoScanQR" />
+                </Link>
+              )}
             </div>
           </span>
           <div>
@@ -41,4 +47,7 @@ class NavigasiSurveyor extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(NavigasiSurveyor));
+export default connect(
+  "statusPageHomeSurveyor",
+  actions
+)(withRouter(NavigasiSurveyor));

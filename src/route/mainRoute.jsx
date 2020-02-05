@@ -7,6 +7,7 @@ import BerandaOfficer from "../pages/berandaOfficer";
 import DaftarKodeQrOfficer from "../pages/daftarKodeQrOfficer";
 import BerandaSurveyor from "../pages/berandaSurveyor";
 import PetaSurveyor from "../pages/petaSurveyor";
+import DetilReklameSurveyor from "../pages/detilReklameSurveyor";
 import PetaPayer from "../pages/petaPayer";
 
 const MainRoute = () => {
@@ -24,6 +25,11 @@ const MainRoute = () => {
           />
           <Route exact path="/surveyor/home" component={BerandaSurveyor} />
           <Route exact path="/surveyor/peta" component={PetaSurveyor} />
+          <Route
+            exact
+            path="/surveyor/detil-reklame"
+            component={DetilReklameSurveyor}
+          />
           <Route exact path="/payer/peta" component={PetaPayer} />
           {/* <Route component={NotMatch} /> */}
         </Switch>
