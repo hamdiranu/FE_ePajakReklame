@@ -8,7 +8,12 @@ const initialState = {
   role: "",
   formOfficer: false,
   statusInputPassword: "password",
-  statusShowPassword: false
+  statusShowPassword: false,
+  markers: [
+    { key: "marker1", position: [51.5, -0.1], content: "My first popup" },
+    { key: "marker2", position: [51.51, -0.1], content: "My second popup" },
+    { key: "marker3", position: [51.49, -0.05], content: "My third popup" }
+  ]
 };
 
 export const store = createStore(initialState);

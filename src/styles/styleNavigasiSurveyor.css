@@ -1,0 +1,32 @@
+/* Style untuk tampilan navbar officer */
+
+.logoPeta {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  color: rgb(9, 160, 9);
+}
+
+.judulHeaderSurveyor {
+  font-size: 30px;
+}
+
+.tombolKeluar {
+  color: white;
+  background-color: darkslategrey;
+  font-size: 19px;
+}
+
+.tombolKeluar:hover {
+  background-color: rgb(65, 141, 141);
+}
+
+@media (max-width: 767px) {
+  .judulHeaderSurveyor {
+    font-size: 25px;
+  }
+
+  .tombolKeluar {
+    font-size: 15px;
+  }
+}

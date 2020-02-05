@@ -1,0 +1,23 @@
+/* Style untuk tampilan navbar officer */
+
+.kontenPetaSurveyor {
+  padding-top: 100px;
+  background-color: white;
+  padding-bottom: 68px;
+}
+
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .leaflet-container {
+    height: 300px;
+    width: 100%;
+  }
+
+  .kontenPetaSurveyor {
+    padding-bottom: 200px;
+  }
+}
