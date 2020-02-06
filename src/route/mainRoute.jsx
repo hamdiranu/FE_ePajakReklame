@@ -27,7 +27,7 @@ const MainRoute = () => {
           <Route exact path="/surveyor/peta" component={PetaSurveyor} />
           <Route
             exact
-            path="/surveyor/detil-reklame"
+            path="/surveyor/detil-reklame/:id"
             component={DetilReklameSurveyor}
           />
           <Route exact path="/payer/peta" component={PetaPayer} />

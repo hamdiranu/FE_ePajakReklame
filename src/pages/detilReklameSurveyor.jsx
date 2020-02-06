@@ -4,14 +4,14 @@ import "../styles/styleDetilReklameSurveyor.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import NavigasiSurveyor from "../components/navigasiSurveyor";
+import NavigasiDetilReklameSurveyor from "../components/navigasiDetilReklameSurveyor";
 import KontenDetilReklameSurveyor from "../components/kontenDetilReklameSurveyor";
 
 class PetaSurveyor extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavigasiSurveyor />
+        <NavigasiDetilReklameSurveyor />
         <KontenDetilReklameSurveyor />
       </React.Fragment>
     );

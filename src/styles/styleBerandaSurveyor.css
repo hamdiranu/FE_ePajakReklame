@@ -13,6 +13,16 @@
   padding-bottom: 20px;
 }
 
+.checkSnackBar svg {
+  width: 40px;
+  height: 40px;
+  color: rgb(163, 255, 71);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 5;
+}
+
 .containerKotakScannerQr {
   text-align: center;
 }
@@ -29,6 +39,11 @@
 }
 
 @media (max-width: 767px) {
+  .kontenBerandaSurveyor {
+    background-color: white;
+    padding-bottom: 135px;
+    padding-top: 30px;
+  }
   .judulScanQrSurveyor {
     font-size: 25px;
     padding-top: 50px;

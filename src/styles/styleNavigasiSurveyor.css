@@ -37,11 +37,23 @@
   font-size: 19px;
 }
 
+.areaName {
+  font-size: 16px;
+}
+
 .tombolKeluar:hover {
   background-color: rgb(65, 141, 141);
 }
 
+.infoDaerah {
+  margin-left: 15px;
+}
+
 @media (max-width: 767px) {
+  .areaName {
+    font-size: 13px;
+  }
+
   .judulHeaderSurveyor {
     font-size: 25px;
     margin-left: 0px;

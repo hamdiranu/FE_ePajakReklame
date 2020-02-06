@@ -1,8 +1,7 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { FaMapMarkedAlt, FaQrcode } from "react-icons/fa";
 
 class NavigasiSurveyor extends React.Component {
   logOutOfficer = async () => {
@@ -19,20 +18,19 @@ class NavigasiSurveyor extends React.Component {
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div style={{ margin: "auto" }}>
-              {this.props.statusPageHomeSurveyor ? (
-                <Link to="/surveyor/peta" style={{ textDecoration: "none" }}>
-                  <FaMapMarkedAlt className="logoPeta" />
-                </Link>
-              ) : (
-                <Link to="/surveyor/home" style={{ textDecoration: "none" }}>
-                  <FaQrcode className="logoScanQR" />
-                </Link>
-              )}
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/57/Kab_Bandung_Barat.svg"
+                width="40"
+                height="40"
+                class="d-inline-block align-top"
+                alt=""
+              />
+            </div>
+            <div class="navbar-brand-text d-inline-block infoDaerah">
+              <div class="systemName">ePajak</div>
+              <div class="areaName">Kabupaten Bandung Barat</div>
             </div>
           </span>
-          <div>
-            <span className="judulHeaderSurveyor">ePajak</span>
-          </div>
           <div class="text-right">
             <span
               onClick={() => this.logOutOfficer()}

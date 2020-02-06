@@ -6,6 +6,16 @@
   padding-bottom: 20px;
 }
 
+.checkSnackBar {
+  width: 40px;
+  height: 40px;
+  color: rgb(163, 255, 71);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 10;
+}
+
 .judulReklameSurveyor {
   font-size: 30px;
 }
@@ -19,7 +29,11 @@
 }
 
 .rowInfoDetilReklame {
-  padding: 10px 0px;
+  padding-bottom: 10px;
+}
+
+.spacePelanggaranKosong {
+  padding-bottom: 35px;
 }
 
 .catatanPelanggaran {
@@ -32,14 +46,20 @@
   height: 94px;
 }
 
-.kontenPetaSurveyor {
-  padding-top: 70px;
+.kontenDetilReklameSurveyor {
+  padding-top: 95px;
   background-color: white;
   padding-bottom: 68px;
 }
 
 textarea.form-control {
-  height: 94px;
+  height: 120px;
+}
+
+.tombolReport {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 15px;
 }
 
 .leaflet-container {
@@ -84,12 +104,12 @@ textarea.form-control {
     width: 100%;
   }
 
-  .kontenPetaSurveyor {
-    padding-top: 70px;
+  .kontenDetilReklameSurveyor {
+    padding-top: 85px;
   }
 
   .textAreaPelanggaran {
-    padding: 0px 30px;
+    padding: 0px 0px;
     height: 94px;
   }
 }
