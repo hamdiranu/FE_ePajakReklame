@@ -4,15 +4,16 @@ import "../styles/styleNavigasiOfficer.css";
 import "../styles/styleKodeQR.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
-import { actions } from "../store";
+import { actions, store } from "../store";
 import NavigasiOfficer from "../components/navigasiOfficer";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { FaSearch, FaDownload } from "react-icons/fa";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PdfDocument } from "../components/pdfSemuaKodeQR";
 import {Modal} from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import {
   Page,
   Text,
@@ -27,22 +28,15 @@ class DaftarKodeQrOfficer extends Component {
   getCariKodeQR = async (event) => {
     await this.props.handleInput(event);
     this.props.cariKodeQR();
-    // const req = {
-    //   method : "get",
-    //   url : `https://alterratax.my.id/kode_qr/officer?bukti_pembayaran_id=${this.props.buktiPembayaranID}&kode_QR_id=${this.props.idKodeQR}`,
-    //   headers : {
-    //       Authorization: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5NTUwMzAsIm5iZiI6MTU4MDk1NTAzMCwianRpIjoiMzA1NDFlYTQtOTk0Zi00ZmNkLTk0ZWYtM2U1ZmMyNmU0OTdjIiwiZXhwIjoxNTgxMDQxNDMwLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.T2bXW0e6uxLKJ_ArHxQp4Fiwsr4deHiYJtSkSjEDvJc",
-    //   },
-    // };
-    // await axios(req)
-    //   .then(function(response){
-    //     store.setState({listKodeQR: response.data.list_kode_qr});
-    //   })
-    //   .catch(function(error){
-    //   });
   };
   componentDidMount = async () => {
-    await this.props.getListKodeQR();
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "officer"){
+      await this.props.history.push("/login");
+      console.warn("ini dari didmount", localStorage.getItem("token"))
+    } else {
+      await store.setState({buktiPembayaranID:this.props.match.params.id});
+      await this.props.getListKodeQR();
+    };
   };
   render() {
     const toDataURL = url => fetch(url)
@@ -136,7 +130,11 @@ class DaftarKodeQrOfficer extends Component {
       const [modalShow, setModalShow] = React.useState(false);
       return (
         <div>
-          <button className="btn btn-success" onClick={() => setModalShow(true)}>Lihat Kode QR</button>
+          <Button className="btn-sm modal-kode-qr"
+            style={{backgroundColor:"white", border:"white", color:"blue", fontSize:"15px"}}
+            onClick={() => setModalShow(true)}>
+              <p>Kode QR</p>
+          </Button>
           <KodeQRModal
             gambarKodeQR = {props.gambarKodeQR}
             id = {props.id}
@@ -154,9 +152,11 @@ class DaftarKodeQrOfficer extends Component {
             <div className="col-md-2" style={{ paddingLeft: "0px" }}>
               <div className="tombolBacktoDaftarSSPD">
                 <TiArrowBackOutline />
-                <div style={{ paddingTop: "3px", paddingLeft: "3px" }}>
-                  <span>Kembali</span>
-                </div>
+                <Link to="/officer/home">
+                  <div style={{ paddingTop: "3px", paddingLeft: "3px", color:"white" }}>
+                    <span>Kembali</span>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -249,10 +249,10 @@ class DaftarKodeQrOfficer extends Component {
                         <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
                           {item.id}
                         </div>
-                        <div className="col-8 col-sm order-sm-2 nama-wp dt-title">
+                        <div className="col-7 col-sm order-sm-2 nama-wp dt-title">
                           {item.kode_unik}
                         </div>
-                        <div className="col-4 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
+                        <div className="col-5 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
                           <KodeQR gambarKodeQR={item.link_gambar} id={item.id}/>
                         </div>
                           {item.status_scan===true ?
