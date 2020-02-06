@@ -1,0 +1,13 @@
+.box-pelanggaran{
+    border: 1px solid rgb(218, 117, 109);
+    background-color: #F44336;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: small;
+    vertical-align: middle;
+}
+.text-pelanggaran{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

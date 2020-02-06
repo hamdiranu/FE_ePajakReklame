@@ -13,6 +13,11 @@ const initialState = {
   token: "",
   formOfficer: false,
   statusInputPassword: "password",
+  buktiPembayaranID: 1,
+  daftarKodeQR:{},
+  listKodeQR:[],
+  listKodeQRUntukUnduh: [],
+  idKodeQR : 0,
   catatanPelanggaran: "",
   statusShowPassword: false,
   dataOfficer: {},
@@ -67,6 +72,42 @@ export const actions = store => ({
     }
   },
 
+  // fungsi get list kodeQR berdasarkan buktiPembayaranID
+  getListKodeQR : async (state) => {
+    const req = {
+      method : "get",
+      url : `https://alterratax.my.id/kode_qr/officer?bukti_pembayaran_id=${state.buktiPembayaranID}`,
+      headers : {
+          Authorization: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5NTUwMzAsIm5iZiI6MTU4MDk1NTAzMCwianRpIjoiMzA1NDFlYTQtOTk0Zi00ZmNkLTk0ZWYtM2U1ZmMyNmU0OTdjIiwiZXhwIjoxNTgxMDQxNDMwLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.T2bXW0e6uxLKJ_ArHxQp4Fiwsr4deHiYJtSkSjEDvJc",
+      },
+    };
+    await axios(req)
+      .then(function(response){
+        store.setState({daftarKodeQR: response.data,
+          listKodeQR: response.data.list_kode_qr,
+          listKodeQRUntukUnduh: response.data.list_kode_qr});
+      })
+      .catch(function(error){
+      });
+  },
+
+  // fungsi cari kodeqr berdasarkan id
+  cariKodeQR : async (state) => {
+    const req = {
+      method : "get",
+      url : `https://alterratax.my.id/kode_qr/officer?bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`,
+      headers : {
+          Authorization: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5Njg3ODcsIm5iZiI6MTU4MDk2ODc4NywianRpIjoiMTJlMzNhNzUtMjhmYy00ZDU4LTkyZmItMzc2NGFlNWU1MTQ4IiwiZXhwIjoxNTgxMDU1MTg3LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MSwibmlwIjoiUDIwMDAwMDAwMTEyMjAwMSIsIm5hbWEiOiJPZmZpY2VyMSIsInJvbGUiOiJvZmZpY2VyIiwiZGFlcmFoX2lkIjoxfX0.G4kbBcewTwmdqW-g7KSco9X4NxI41Uf9bJ48gR6MebQ",
+      },
+    };
+    await axios(req)
+      .then(function(response){
+        store.setState({listKodeQR: response.data.list_kode_qr});
+      })
+      .catch(function(error){
+      });
+  },
+    
   //Fungsi untuk mengambil data officers (nama dan daerahnya)
   getDataOfficer: async (state, event) => {
     const req = {
