@@ -13,6 +13,7 @@ const initialState = {
   token: "",
   formOfficer: false,
   statusInputPassword: "password",
+  catatanPelanggaran: "",
   statusShowPassword: false,
   dataOfficer: {},
   dataBuktiPembayaranOfficer: []
@@ -72,7 +73,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/officers",
       headers: {
-        Authorization: "Bearer" + state.token
+        Authorization: "Bearer " + localStorage.getItem("token")
       }
     };
 
@@ -93,7 +94,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer",
       headers: {
-        Authorization: "Bearer" + state.token
+        Authorization: "Bearer " + localStorage.getItem("token")
       }
     };
 
@@ -114,7 +115,7 @@ export const actions = store => ({
       method: "get",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd="+state.kataKunci,
       headers: {
-        Authorization: "Bearer" + state.token
+        Authorization: "Bearer " + localStorage.getItem("token")
       }
     };
 
@@ -139,7 +140,7 @@ export const actions = store => ({
       method: "post",    
       url: "https://alterratax.my.id/kode_qr/officer",
       headers: {
-        Authorization: "Bearer" + state.token
+        Authorization: "Bearer " + localStorage.getItem("token")
       },
       data:mydata
     };
@@ -163,7 +164,7 @@ export const actions = store => ({
       method: "post",    
       url: "https://alterratax.my.id/bukti_pembayaran/officer",
       headers: {
-        Authorization: "Bearer" + state.token
+        Authorization: "Bearer " + localStorage.getItem("token")
       },
       data:mydata
     };

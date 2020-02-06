@@ -10,8 +10,12 @@ import KontenBerandaOfficer from "../components/kontenBerandaOfficer";
 class BerandaOfficer extends Component {
   
   componentDidMount = async () => {
-    await this.props.getDataOfficer();
-    await this.props.getDataBuktiPembayaranOfficer();
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "officer"){
+      await this.props.history.push("/login")
+    } else {
+      await this.props.getDataOfficer();
+      await this.props.getDataBuktiPembayaranOfficer();
+    }
   };
 
   render() {

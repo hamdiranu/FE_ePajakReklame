@@ -14,16 +14,17 @@ class KontenBerandaOfficer extends React.Component {
   
   handleGenerateQR = async (id) => {
     await this.props.postGenerateQR(id);
-    await this.props.history.replace("/home/officer/daftar-kode-QR");
+    await this.props.history.replace("/officer/daftar-kode-QR");
   };
 
   handleTambahData = async () => {
     await this.props.postBuktiPembayaran();
     await this.props.getDataBuktiPembayaranOfficer();
-    await this.props.history.replace("/home/officer");  
+    await this.props.history.replace("/officer/home");  
   }
+
   render() {
-    console.warn("list sspd", this.props.dataBuktiPembayaranOfficer)
+    
     const TambahDataModal = (props) => {
       return (
         <Modal
@@ -99,6 +100,46 @@ class KontenBerandaOfficer extends React.Component {
       );
     }
 
+    const PelanggaranModal = (props) => {
+      return (
+        <Modal
+          {...props}
+          size="md"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Body>
+            <div className="container-fluid" style={{padding:"20px", backgroundColor:"silver", border:"solid 1px silver", minHeight:"400px"}}>
+                <div className="boxLogin"> 
+                    <div class="mb-5" style={{textAlign:"center"}}>
+                      <h4 style={{fontWeight:"bolder"}}>Pelanggaran</h4>
+                    </div>
+                    <div>
+                      <p>{props.catatanPelanggaran}</p>
+                    </div>
+                </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+      );
+    }
+
+    const Pelanggaran = (props) => {
+      const [modalShow, setModalShow] = React.useState(false);
+      return (
+        <div>
+          <Button className="btn-sm pelanggaran" style={{backgroundColor:"white", border:"white", color:"red"}} onClick={() => setModalShow(true)}>
+              <p>Lihat pelanggaran</p>
+          </Button>
+          <PelanggaranModal
+            catatanPelanggaran = {props.catatanPelanggaran}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="kontenBerandaOfficer">
         <div style={{ textAlign: "center" }}>
@@ -142,6 +183,7 @@ class KontenBerandaOfficer extends React.Component {
                 const buktiPembayaran = item.bukti_pembayaran;
                 const objekPajak = item.objek_pajak;
                 const payer = item.payer;
+                const catatanPelanggaran= buktiPembayaran.pelanggaran;
 
                 let status
                 if (item["kode_QR terscan"] === 0){
@@ -160,6 +202,15 @@ class KontenBerandaOfficer extends React.Component {
                       </div>
                       <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
                         {status}
+                        <br/>
+                        {buktiPembayaran.pelanggaran === ''
+                          ?
+                          <div></div>
+                          :
+                            <Pelanggaran
+                              catatanPelanggaran = {catatanPelanggaran}
+                            />    
+                        }
                       </div>
                       <div className="col-7 col-sm order-sm-2 namaWp dt-title">
                         {payer}
@@ -167,7 +218,7 @@ class KontenBerandaOfficer extends React.Component {
                       <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
                         {buktiPembayaran.status_buat_kode_qr
                         ?
-                        <Link to="/home/officer/daftar-kode-QR">
+                        <Link to="/officer/daftar-kode-QR">
                           Lihat Detail
                         </Link>
                         :
