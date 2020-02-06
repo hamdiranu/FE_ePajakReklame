@@ -14,7 +14,7 @@ class KontenBerandaOfficer extends React.Component {
   
   handleGenerateQR = async (id) => {
     await this.props.postGenerateQR(id);
-    await this.props.history.replace("/officer/daftar-kode-QR");
+    await this.props.history.replace("/officer/daftar-kode-QR/"+id);
   };
 
   handleTambahData = async () => {
@@ -218,7 +218,7 @@ class KontenBerandaOfficer extends React.Component {
                       <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
                         {buktiPembayaran.status_buat_kode_qr
                         ?
-                        <Link to="/officer/daftar-kode-QR">
+                        <Link to={`/officer/daftar-kode-QR/${buktiPembayaran.id}`}>
                           Lihat Detail
                         </Link>
                         :
