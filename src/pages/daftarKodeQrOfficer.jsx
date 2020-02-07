@@ -70,6 +70,9 @@ class DaftarKodeQrOfficer extends Component {
         .then(dataUrl => {
           item.link_gambar = dataUrl;
         })
+        return(
+          <div></div>
+        );
       });
     };
     const nama_file_semua_kodeqr = `KodeQR-SSPD-${daftarKodeQR.nomor_sspd}.pdf`;
