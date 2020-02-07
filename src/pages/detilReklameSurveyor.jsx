@@ -4,7 +4,7 @@ import "../styles/styleDetilReklameSurveyor.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import NavigasiDetilReklameSurveyor from "../components/navigasiDetilReklameSurveyor";
+import NavigasiDetilReklameSurveyor from "../components/navigasiSurveyor";
 import KontenDetilReklameSurveyor from "../components/kontenDetilReklameSurveyor";
 
 class PetaSurveyor extends Component {

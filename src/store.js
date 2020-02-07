@@ -18,11 +18,11 @@ const initialState = {
   scannerResult: "No result",
   scannerKodeQr: "",
   statusSuksesScan: false,
+  statusGagalScan: false,
   show: false,
   showing: false,
   textAreaPelanggaran: "",
-  statusPelanggaran: false,
-  editPelanggaran: ""
+  statusPelanggaran: false
 };
 
 export const store = createStore(initialState);
@@ -78,7 +78,7 @@ export const actions = store => ({
 
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5OTc0MDUsIm5iZiI6MTU4MDk5NzQwNSwianRpIjoiNWM4Zjk5YWEtMzM2Mi00MDBjLWJiNTQtNDc0MTc1NjIwY2RiIiwiZXhwIjoxNTgxMDgzODA1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ.cK6u7teAcgBmS25_QLLnMkspnseh9Ozh_kYqXbm-6ts`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
           }
         }
       )
@@ -99,13 +99,14 @@ export const actions = store => ({
 
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5OTc0MDUsIm5iZiI6MTU4MDk5NzQwNSwianRpIjoiNWM4Zjk5YWEtMzM2Mi00MDBjLWJiNTQtNDc0MTc1NjIwY2RiIiwiZXhwIjoxNTgxMDgzODA1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ.cK6u7teAcgBmS25_QLLnMkspnseh9Ozh_kYqXbm-6ts`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
           }
         }
       )
       .then(response => {
         store.setState({
           detilReklameSurveyor: response.data,
+          textAreaPelanggaran: response.data.bukti_pembayaran.pelanggaran,
           statusGetDetilReklame: true
         });
         if (response.data.bukti_pembayaran.pelanggaran !== "") {
@@ -129,17 +130,25 @@ export const actions = store => ({
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5OTc0MDUsIm5iZiI6MTU4MDk5NzQwNSwianRpIjoiNWM4Zjk5YWEtMzM2Mi00MDBjLWJiNTQtNDc0MTc1NjIwY2RiIiwiZXhwIjoxNTgxMDgzODA1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ.cK6u7teAcgBmS25_QLLnMkspnseh9Ozh_kYqXbm-6ts`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
           }
         }
       )
       .then(async response => {
-        console.log("cek state", state.scannerResult);
+        // console.log("cek state", state.scannerResult);
         await store.setState({
-          buktiPembayaranId: response.data.bukti_pembayaran_id,
-          statusSuksesScan: true
+          buktiPembayaranId: response.data.bukti_pembayaran_id
         });
-        console.log("cek response", response.data);
+        if (response.data.message === "Kode QR sudah terscan") {
+          await store.setState({
+            statusGagalScan: true
+          });
+        } else if (response.data.status_scan === true) {
+          await store.setState({
+            statusSuksesScan: true
+          });
+        }
+        console.log("cek response gagal", response.data.message);
       })
       .catch(error => {
         console.log("gagal axios");
@@ -157,7 +166,7 @@ export const actions = store => ({
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODA5OTc0MDUsIm5iZiI6MTU4MDk5NzQwNSwianRpIjoiNWM4Zjk5YWEtMzM2Mi00MDBjLWJiNTQtNDc0MTc1NjIwY2RiIiwiZXhwIjoxNTgxMDgzODA1LCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ.cK6u7teAcgBmS25_QLLnMkspnseh9Ozh_kYqXbm-6ts`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
           }
         }
       )

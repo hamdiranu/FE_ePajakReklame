@@ -6,6 +6,7 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import { Button, FormControl } from "react-bootstrap";
 import { AiFillCheckCircle } from "react-icons/ai";
 import ReactSnackBar from "react-js-snackbar";
+import swal from "sweetalert";
 
 class KontenBerandaOfficer extends React.Component {
   detilKeScan = () => {
@@ -24,14 +25,26 @@ class KontenBerandaOfficer extends React.Component {
     await store.setState({ buktiPembayaranId: this.props.match.params.id });
     await this.props.getDetilReklameSurveyor();
     console.log("cek state params : ", store.getState().buktiPembayaranId);
+    store.setState({ statusPageHomeSurveyor: true });
     console.log(
-      "cek state statusScan getstate : ",
-      store.getState().statusSuksesScan
+      "cek state statusGagalScan getstate : ",
+      store.getState().statusGagalScan
     );
-    console.log("cek state statusScan props: ", this.props.statusSuksesScan);
+    console.log(
+      "cek state statusGagalScan props: ",
+      this.props.statusGagalScan
+    );
     if (this.props.statusSuksesScan === true) {
       this.show();
       store.setState({ statusSuksesScan: false });
+    } else if (this.props.statusGagalScan === true) {
+      swal({
+        title: "Oops!",
+        text: "Kode QR sudah pernah discan!",
+        icon: "warning",
+        button: "Laporkan!"
+      });
+      store.setState({ statusGagalScan: false });
     }
   };
 
@@ -179,6 +192,7 @@ class KontenBerandaOfficer extends React.Component {
                           as="textarea"
                           name="textAreaPelanggaran"
                           aria-label="With textarea"
+                          value={this.props.textAreaPelanggaran}
                           onChange={e => this.props.handleInput(e)}
                         />
                       </div>
@@ -218,6 +232,6 @@ class KontenBerandaOfficer extends React.Component {
 }
 
 export default connect(
-  "buktiPembayaranId, detilReklameSurveyor, statusGetDetilReklame, statusSuksesScan, showing, show, textAreaPelanggaran, statusPelanggaran",
+  "buktiPembayaranId, detilReklameSurveyor, statusGetDetilReklame, statusSuksesScan, showing, show, textAreaPelanggaran, statusPelanggaran, statusGagalScan",
   actions
 )(withRouter(KontenBerandaOfficer));

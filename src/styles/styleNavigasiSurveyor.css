@@ -6,6 +6,7 @@
   height: 30px;
   color: rgb(9, 160, 9);
   transition: 0.4s;
+  z-index: 11;
 }
 
 .logoPeta:hover {
