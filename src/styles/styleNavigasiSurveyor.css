@@ -1,5 +1,14 @@
 /* Style untuk tampilan navbar officer */
 
+/* .navbarSurveyor {
+  background-image: linear-gradient(to left, #ed8535, #ea6d25, #e5430b);
+  background-size: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px #eee;
+  transition: 0.3s;
+} */
+
 .logoPeta {
   margin-left: 5px;
   width: 30px;

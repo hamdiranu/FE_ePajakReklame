@@ -14,7 +14,7 @@ class NavigasiSurveyor extends React.Component {
     return (
       <React.Fragment>
         <nav
-          className="navbar navbar-light bg-light "
+          className="navbar navbar-light bg-light navbarSurveyor "
           style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
           <span class="navbar-brand" style={{ display: "flex" }}>

@@ -24,19 +24,9 @@ class KontenBerandaOfficer extends React.Component {
   componentDidMount = async () => {
     await store.setState({ buktiPembayaranId: this.props.match.params.id });
     await this.props.getDetilReklameSurveyor();
-    console.log("cek state params : ", store.getState().buktiPembayaranId);
     store.setState({ statusPageHomeSurveyor: true });
-    console.log(
-      "cek state statusGagalScan getstate : ",
-      store.getState().statusGagalScan
-    );
-    console.log(
-      "cek state statusGagalScan props: ",
-      this.props.statusGagalScan
-    );
     if (this.props.statusSuksesScan === true) {
       this.show();
-      store.setState({ statusSuksesScan: false });
     } else if (this.props.statusGagalScan === true) {
       swal({
         title: "Oops!",
@@ -44,8 +34,8 @@ class KontenBerandaOfficer extends React.Component {
         icon: "warning",
         button: "Laporkan!"
       });
-      store.setState({ statusGagalScan: false });
     }
+    store.setState({ statusSuksesScan: false, statusGagalScan: false });
   };
 
   show = () => {

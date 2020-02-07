@@ -7,6 +7,7 @@ import QrReader from "react-qr-reader";
 class KontenBerandaOfficer extends React.Component {
   componentDidMount = () => {
     store.setState({ statusPageHomeSurveyor: true });
+    store.setState({ statusSuksesScan: false, statusGagalScan: false });
   };
 
   constructor(props) {
