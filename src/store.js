@@ -22,7 +22,8 @@ const initialState = {
   show: false,
   showing: false,
   textAreaPelanggaran: "",
-  statusPelanggaran: false
+  statusPelanggaran: false,
+  validasiKodeQR: false
 };
 
 export const store = createStore(initialState);
@@ -78,7 +79,7 @@ export const actions = store => ({
 
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
       )
@@ -99,7 +100,7 @@ export const actions = store => ({
 
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
       )
@@ -130,7 +131,7 @@ export const actions = store => ({
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
       )
@@ -146,6 +147,10 @@ export const actions = store => ({
         } else if (response.data.status_scan === true) {
           await store.setState({
             statusSuksesScan: true
+          });
+        } else if (response.data.message === "Kode QR tidak valid") {
+          await store.setState({
+            validasiKodeQR: true
           });
         }
         console.log("cek response gagal", response.data.message);
@@ -166,7 +171,7 @@ export const actions = store => ({
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
       )

@@ -21,12 +21,27 @@
   margin-bottom: 10px;
 }
 
+.legend {
+  margin-top: 20px;
+}
+
+.markerLegend {
+  width: 50px;
+  height: 50px;
+}
+
+.kalimatLegend {
+  margin: auto;
+  text-align: left;
+}
+
 .kotakKontenPetaSurveyor {
   padding: 30px;
   padding-top: 10px;
 
   background-image: linear-gradient(
     to bottom,
+    #8de2ff,
     #469bd2,
     #2a6ab1,
     #1f4a8f,
@@ -62,8 +77,27 @@
     width: 100%;
   }
 
+  .legendBagianMarker {
+    width: 20%;
+    padding-right: 11px;
+  }
+
+  .kalimatLegend {
+    text-align: left;
+    width: 80%;
+    padding-left: 0px;
+  }
+
+  .pembatasMarker {
+    margin-bottom: 15px;
+  }
+
+  .markerLegend {
+    width: 40px;
+    height: 40px;
+  }
+
   .kontenPetaSurveyor {
-    padding-bottom: 138px;
-    padding-top: 125px;
+    padding-top: 68px;
   }
 }

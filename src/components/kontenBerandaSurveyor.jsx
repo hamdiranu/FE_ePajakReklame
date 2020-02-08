@@ -4,6 +4,7 @@ import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import QrReader from "react-qr-reader";
 import gifScanner from "../images/scan_qr_code2.gif";
+import swal from "sweetalert";
 
 class KontenBerandaOfficer extends React.Component {
   componentDidMount = () => {
@@ -26,9 +27,18 @@ class KontenBerandaOfficer extends React.Component {
         "cek state id pembayaran : ",
         store.getState().buktiPembayaranId
       );
-      this.props.history.push(
-        `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
-      );
+      if (this.props.validasiKodeQR === true) {
+        swal({
+          title: "Oops!",
+          text: "Kode QR tidak valid!",
+          icon: "warning",
+          button: "Ok!"
+        });
+      } else {
+        this.props.history.push(
+          `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
+        );
+      }
     }
   };
 
@@ -71,6 +81,6 @@ class KontenBerandaOfficer extends React.Component {
 }
 
 export default connect(
-  "scannerResult, scannerDelay, buktiPembayaranId, statusSuksesScan, showing, show",
+  "scannerResult, scannerDelay, buktiPembayaranId, statusSuksesScan, showing, show, validasiKodeQR",
   actions
 )(withRouter(KontenBerandaOfficer));

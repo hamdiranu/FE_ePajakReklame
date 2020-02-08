@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import markerHijau from "../images/green-pin.png";
+import markerBiru from "../images/blue-pin.png";
+import markerMerah from "../images/red-pin.png";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
@@ -96,7 +99,7 @@ class KontenBerandaOfficer extends React.Component {
                       </div>
                     </Link>
                     <div style={{ fontSize: "9px" }}>
-                      Jumlah Tervalidasi : 0 /{" "}
+                      Jumlah Tervalidasi : {reklame.kodeQR_terscan} /{" "}
                       {reklame["bukti_pembayaran"].jumlah_reklame}
                     </div>
                   </Popup>
@@ -105,7 +108,46 @@ class KontenBerandaOfficer extends React.Component {
             })}
           </LeafletMap>
         </div>
-        <div id="map"></div>
+        <div className="container legend">
+          <div className="row" style={{ textAlign: "center" }}>
+            <div className="col-md-4 col-sm-12">
+              <div className="container-fluid">
+                <div className="row pembatasMarker">
+                  <div className="col-md-3 col-sm-2 legendBagianMarker">
+                    <img className="markerLegend" src={markerHijau} alt="" />
+                  </div>
+                  <div className="col-md-9 col-sm-10 kalimatLegend">
+                    <span>Seluruh QR Telah Tervalidasi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4 col-sm-12">
+              <div className="container-fluid">
+                <div className="row pembatasMarker">
+                  <div className="col-md-3 col-sm-2 legendBagianMarker">
+                    <img className="markerLegend" src={markerBiru} alt="" />
+                  </div>
+                  <div className="col-md-9 col-sm-10 kalimatLegend">
+                    <span>Sebagian QR Telah Tervalidasi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4 col-sm-12">
+              <div className="container-fluid">
+                <div className="row pembatasMarker">
+                  <div className="col-md-3 col-sm-2 legendBagianMarker">
+                    <img className="markerLegend" src={markerMerah} alt="" />
+                  </div>
+                  <div className="col-md-9 col-sm-10 kalimatLegend">
+                    <span>Seluruh QR Belum Tervalidasi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
