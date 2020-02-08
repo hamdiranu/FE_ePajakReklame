@@ -1,52 +1,19 @@
 /* Style untuk tampilan navbar officer */
 
-.logoNavigasi {
-  width: 50px;
-  height: 50px;
-  margin: 0px 25px;
-}
-
-.sambutanHeader {
-  margin: 0px 270px;
+.navigasiUserName {
+  font-size: 20px;
 }
 
 .tombolKeluar {
-  margin-left: 55px;
-  transition: 0.4s;
-}
-
-.tombolKeluar:hover {
-  color: white;
-  transition: 0.4s;
-}
-
-.textTombol {
-  color: black;
-  text-decoration: none;
-}
-
-.textTombol:hover {
-  color: white;
-  text-decoration: none;
+  font-size: 19px;
 }
 
 @media (max-width: 767px) {
-  .logoNavigasi {
-    width: 50px;
-    height: 50px;
-    margin: 0px 15px;
-  }
-
-  .sambutanHeader {
-    margin: 0px 0px;
+  .navigasiUserName {
+    font-size: 15px;
   }
 
   .tombolKeluar {
-    margin-left: 0px;
-  }
-
-  .infoKota {
-    text-align: right;
-    margin-right: 0px;
+    font-size: 13px;
   }
 }
