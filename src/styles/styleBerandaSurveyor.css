@@ -2,7 +2,7 @@
 
 .kontenBerandaSurveyor {
   background-color: white;
-  padding-bottom: 150px;
+  padding-bottom: 75px;
   padding-top: 30px;
 }
 
@@ -11,6 +11,24 @@
   padding-top: 50px;
   text-align: center;
   padding-bottom: 20px;
+}
+
+.kotakPetunjuk {
+  /* background-color: cadetblue; */
+}
+
+.gifScanner {
+  width: 350px;
+  padding-top: 40px;
+}
+
+.kotakKalimatPetunjuk {
+  margin-top: 10px;
+  font-size: 28px;
+}
+
+.kotakPetunjuk {
+  text-align: center;
 }
 
 .checkSnackBar svg {
@@ -29,7 +47,7 @@
 
 .kotakScannerQr {
   border-radius: 10px;
-  width: 40%;
+  width: 85%;
   height: 350px;
   margin: auto;
 }
@@ -39,16 +57,30 @@
 }
 
 @media (max-width: 767px) {
+  .kotakScannerQr {
+    height: 290px;
+  }
+
+  .kotakKalimatPetunjuk {
+    margin-top: 10px;
+    font-size: 17px;
+  }
+
+  .gifScanner {
+    width: 165px;
+    padding-top: 20px;
+  }
+
   .kontenBerandaSurveyor {
     background-color: white;
-    padding-bottom: 135px;
+    padding-bottom: 28px;
     padding-top: 30px;
   }
   .judulScanQrSurveyor {
-    font-size: 25px;
-    padding-top: 50px;
+    font-size: 19px;
+    padding-top: 37px;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 8px;
   }
 
   .kotakScannerQr {

@@ -3,7 +3,8 @@
 .judulDetilReklameSurveyor {
   display: grid;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
+  padding-top: 10px;
 }
 
 .checkSnackBar {
@@ -42,11 +43,11 @@
 }
 
 .judulReklameSurveyor {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .nomorSspdDetilReklame {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .kotakInfoDetilReklame {
@@ -72,9 +73,9 @@
 }
 
 .kontenDetilReklameSurveyor {
-  padding-top: 95px;
+  padding-top: 58px;
   background-color: white;
-  padding-bottom: 68px;
+  padding-bottom: 4px;
 }
 
 textarea.form-control {
@@ -92,14 +93,44 @@ textarea.form-control {
   width: 100%;
 }
 
+.kotakKontenDetailReklame {
+  background-image: linear-gradient(
+    to bottom,
+    #469bd2,
+    #2a6ab1,
+    #1f4a8f,
+    #122756
+  );
+  padding: 15px;
+}
+
+.petaDetikReklame {
+  padding-right: 0px;
+}
+
 .kotakPeta {
   border-radius: 10px;
   z-index: 3;
+  padding-right: 0px;
+}
+
+.gifLoading {
+  text-align: center;
+  background-color: #fafcfb;
+  padding-bottom: 84px;
+}
+
+.gifLoading img {
+  width: 790px;
 }
 
 @media (max-width: 767px) {
+  .petaDetikReklame {
+    padding-right: 15px;
+  }
+
   .judulDetilReklameSurveyor {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
   }
 
   .judulReklameSurveyor {
@@ -117,11 +148,12 @@ textarea.form-control {
   }
 
   .kotakInfoDetilReklame {
-    margin-top: 30px;
+    margin-top: 15px;
   }
 
   .rowInfoDetilReklame {
-    padding: 8px 0px;
+    padding: 0px 0px;
+    padding-bottom: 5px;
   }
 
   .leaflet-container {
@@ -130,11 +162,22 @@ textarea.form-control {
   }
 
   .kontenDetilReklameSurveyor {
-    padding-top: 85px;
+    padding-top: 50px;
   }
 
   .textAreaPelanggaran {
     padding: 0px 0px;
     height: 94px;
+  }
+
+  .gifLoading {
+    text-align: center;
+    background-color: #fafcfb;
+    padding-bottom: 217px;
+    padding-top: 130px;
+  }
+
+  .gifLoading img {
+    width: 360px;
   }
 }

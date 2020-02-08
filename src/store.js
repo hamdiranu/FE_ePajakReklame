@@ -78,7 +78,7 @@ export const actions = store => ({
 
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
           }
         }
       )
@@ -99,7 +99,7 @@ export const actions = store => ({
 
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
           }
         }
       )
@@ -130,7 +130,7 @@ export const actions = store => ({
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
           }
         }
       )
@@ -166,7 +166,7 @@ export const actions = store => ({
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODEwNDI4MjMsIm5iZiI6MTU4MTA0MjgyMywianRpIjoiZDBlNDU1NjUtNzA1Ny00MTlmLThmYzItNmE5OTc0OWI3YWQ0IiwiZXhwIjoxNTgxMTI5MjIzLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJTdXJ2ZXlvcjMiLCJyb2xlIjoic3VydmV5b3IiLCJkYWVyYWhfaWQiOjF9fQ._OplT-mdtDHa1nDFZurAtJh2POlwJNcjhsQ44Eh0AgI`
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODExNTM3NjIsIm5iZiI6MTU4MTE1Mzc2MiwianRpIjoiNmEwZTY2NGYtN2E0Yy00Mjc1LTllOWEtNDZjNDgwMDRlZGFmIiwiZXhwIjoxNTgxMjQwMTYyLCJpZGVudGl0eSI6IlAyMDAwMDAwMDExMjIwMDMiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpZCI6MywibmlwIjoiUDIwMDAwMDAwMTEyMjAwMyIsIm5hbWEiOiJDaG9raSIsInJvbGUiOiJzdXJ2ZXlvciIsImRhZXJhaF9pZCI6MX19.nPRRUXKwKc1a9VIFAEwzvAjbhqhmW7kggWs8s-PMPlA`
           }
         }
       )

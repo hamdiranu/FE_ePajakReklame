@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import QrReader from "react-qr-reader";
+import gifScanner from "../images/scan_qr_code2.gif";
 
 class KontenBerandaOfficer extends React.Component {
   componentDidMount = () => {
@@ -41,13 +42,28 @@ class KontenBerandaOfficer extends React.Component {
           <span>Scan Kode QR</span>
         </div>
         <div className="container containerKotakScannerQr">
-          <QrReader
-            className="kotakScannerQr"
-            delay={this.props.scannerDelay}
-            onError={this.handleError}
-            onScan={e => this.handleScan(e)}
-          />
-          <p>{this.props.scannerResult}</p>
+          <div className="row">
+            <div className="col-md-6 col-sm-12">
+              <QrReader
+                className="kotakScannerQr"
+                delay={this.props.scannerDelay}
+                onError={this.handleError}
+                onScan={e => this.handleScan(e)}
+              />
+            </div>
+            <div className="col-md-6 col-sm-12 kotakPetunjuk">
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-md-12 col-sm-5 kotakKalimatPetunjuk">
+                    <span>Arahkan kamera ke kode QR</span>
+                  </div>
+                  <div className="col-md-12 col-sm-5">
+                    <img className="gifScanner" src={gifScanner} alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

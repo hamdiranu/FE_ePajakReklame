@@ -42,13 +42,12 @@ class KontenBerandaOfficer extends React.Component {
     });
     return (
       <div className="kontenPetaSurveyor">
-        <div className="container judulMapsSurveyor">
-          <span>Lokasi Reklame</span>
-        </div>
-        <div
-          className="container"
-          style={{ backgroundColor: "dimgrey", padding: "30px" }}
-        >
+        <div className="container kotakKontenPetaSurveyor">
+          <div className="rowJudulLokasi">
+            <div className="container judulMapsHomeSurveyor">
+              <span>Lokasi Reklame</span>
+            </div>
+          </div>
           <LeafletMap
             center={[-7.9768, 112.637]}
             zoom={13.5}
@@ -82,20 +81,24 @@ class KontenBerandaOfficer extends React.Component {
                   ]}
                 >
                   <Popup>
+                    <div style={{ fontSize: "10px", color: "grey" }}>
+                      {reklame["objek_pajak"].jenis_reklame}
+                    </div>
+                    <div style={{ fontSize: "13px", color: "black" }}>
+                      {reklame["objek_pajak"].judul_reklame}
+                    </div>
                     <Link
                       to={`/surveyor/detil-reklame/${reklame["bukti_pembayaran"].id}`}
                       style={{ textDecoration: "none" }}
                     >
-                      <div style={{ fontSize: "10px", color: "grey" }}>
-                        {reklame["objek_pajak"].jenis_reklame}
-                      </div>
-                      <div style={{ fontSize: "13px", color: "black" }}>
-                        {reklame["objek_pajak"].judul_reklame}
-                      </div>
                       <div style={{ fontSize: "10px" }}>
                         {reklame["objek_pajak"].lokasi}
                       </div>
                     </Link>
+                    <div style={{ fontSize: "9px" }}>
+                      Jumlah Tervalidasi : 0 /{" "}
+                      {reklame["bukti_pembayaran"].jumlah_reklame}
+                    </div>
                   </Popup>
                 </Marker>
               );

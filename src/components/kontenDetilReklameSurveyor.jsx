@@ -7,6 +7,7 @@ import { Button, FormControl } from "react-bootstrap";
 import { AiFillCheckCircle } from "react-icons/ai";
 import ReactSnackBar from "react-js-snackbar";
 import swal from "sweetalert";
+import gifLoading from "../images/loading11.gif";
 
 class KontenBerandaOfficer extends React.Component {
   detilKeScan = () => {
@@ -61,12 +62,9 @@ class KontenBerandaOfficer extends React.Component {
                 {this.props.detilReklameSurveyor.bukti_pembayaran.nomor_sspd}
               </span>
             </div>
-            <div
-              className="container"
-              style={{ backgroundColor: "dimgrey", padding: "30px" }}
-            >
+            <div className="container kotakKontenDetailReklame">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 petaDetikReklame">
                   <LeafletMap
                     center={[
                       this.props.detilReklameSurveyor.objek_pajak.latitude,
@@ -91,6 +89,12 @@ class KontenBerandaOfficer extends React.Component {
                       ]}
                     >
                       <Popup>
+                        <div style={{ fontSize: "10px", color: "black" }}>
+                          {
+                            this.props.detilReklameSurveyor.objek_pajak
+                              .jenis_reklame
+                          }
+                        </div>
                         <div style={{ fontSize: "13px", color: "black" }}>
                           {
                             this.props.detilReklameSurveyor.objek_pajak
@@ -207,9 +211,9 @@ class KontenBerandaOfficer extends React.Component {
             </div>
           </React.Fragment>
         ) : (
-          <span style={{ textAlign: "center" }}>
-            <h1>wait</h1>
-          </span>
+          <div className="gifLoading">
+            <img src={gifLoading} alt="" />
+          </div>
         )}
         <div className="checkSnackBar">
           <ReactSnackBar Icon={<AiFillCheckCircle />} Show={this.props.show}>

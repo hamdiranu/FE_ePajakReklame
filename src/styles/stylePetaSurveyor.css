@@ -1,15 +1,44 @@
 /* Style untuk tampilan navbar officer */
 
-.judulMapsSurveyor {
+.judulMapsHomeSurveyor {
   text-align: center;
-  font-size: 30px;
-  padding-bottom: 10px;
+  font-size: 24px;
+  color: white;
+  width: fit-content;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    #ffc153,
+    #f99813,
+    #e0770a,
+    #d36808,
+    #c94200
+  );
+  background-size: 100%;
+}
+
+.rowJudulLokasi {
+  margin-bottom: 10px;
+}
+
+.kotakKontenPetaSurveyor {
+  padding: 30px;
+  padding-top: 10px;
+
+  background-image: linear-gradient(
+    to bottom,
+    #469bd2,
+    #2a6ab1,
+    #1f4a8f,
+    #122756
+  );
+  border-radius: 10px;
 }
 
 .kontenPetaSurveyor {
   padding-top: 70px;
   background-color: white;
-  padding-bottom: 68px;
+  padding-bottom: 10px;
 }
 
 .leaflet-container {
@@ -23,10 +52,9 @@
 }
 
 @media (max-width: 767px) {
-  .judulMapsSurveyor {
-    text-align: center;
-    font-size: 27px;
-    padding-bottom: 10px;
+  .judulMapsHomeSurveyor {
+    font-size: 18px;
+    padding-bottom: 0px;
   }
 
   .leaflet-container {
@@ -35,7 +63,7 @@
   }
 
   .kontenPetaSurveyor {
-    padding-bottom: 200px;
-    padding-top: 70px;
+    padding-bottom: 138px;
+    padding-top: 125px;
   }
 }
