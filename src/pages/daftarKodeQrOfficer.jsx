@@ -16,6 +16,7 @@ import {Modal} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import ReactToPrint from 'react-to-print';
 import { AiFillPrinter } from "react-icons/ai";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import {
   Page,
   Text,
@@ -50,7 +51,8 @@ class DaftarKodeQrOfficer extends Component {
       console.warn("ini dari didmount", localStorage.getItem("token"))
     } else {
       await store.setState({buktiPembayaranID:this.props.match.params.id});
-      await this.props.getListKodeQR();
+      await this.props.getListKodeQR(this.props.pageKodeQR);
+      await this.props.getSemuaListKodeQROfficer();
     };
   };
   render() {
@@ -194,35 +196,35 @@ class DaftarKodeQrOfficer extends Component {
               </div>
             </div>
           </div>
-          <div style={{ textAlign: "center" }}>
-            <h2 className="judulHomeOfficer">Daftar Kode QR</h2>
+          <div className="container">
+            <div style={{ textAlign: "center" }}>
+              <h2 className="judulHomeOfficer">Daftar Kode QR</h2>
+            </div>
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-md-8 col-sm-12">
-                <div className="container">
-                  <div style={{ marginBottom: "20px", display: "grid" }}>
-                    <span>No. SSPD : {daftarKodeQR.nomor_sspd}</span>
-                    <span>
-                      Nama Reklame : {daftarKodeQR.nama_reklame} <br />
-                    </span>
-                    {daftarKodeQR.pelanggaran === "" ?
-                      <div></div>
-                    :
-                      <div className="box-pelanggaran">
-                        <div className="text-pelanggaran">{daftarKodeQR.pelanggaran}</div>
-                      </div>
-                    }                    
-                  </div>
+              <div className="col-md-9 col-sm-12">
+                <div style={{ marginBottom: "20px", display: "grid" }}>
+                  <span>No. SSPD : {daftarKodeQR.nomor_sspd}</span>
+                  <span>
+                    Nama Reklame : {daftarKodeQR.nama_reklame} <br />
+                  </span>
+                  {daftarKodeQR.pelanggaran === "" ?
+                    <div></div>
+                  :
+                    <div className="box-pelanggaran">
+                      <div className="text-pelanggaran">{daftarKodeQR.pelanggaran}</div>
+                    </div>
+                  }                    
                 </div>
-                <div className="col-md-4 col-sm-12">
+                <div className="col-md-4 col-sm-12 px-0">
                   <form onSubmit={e => e.preventDefault(e)}>
                     <span>Cari berdasarkan ID :</span>
                     <div className="officerCariID">
                       <Form.Control
                         type={this.props.statusInputPassword}
                         id="idKodeQR"
-                        className="fadeIn second inputIdQr"
+                        className="col-md-11 col-sm-7 fadeIn second inputIdQr"
                         name="idKodeQR"
                         placeholder="Masukkan ID"
                         onChange={e => this.getCariKodeQR(e)}
@@ -232,7 +234,7 @@ class DaftarKodeQrOfficer extends Component {
                   </form>
                 </div>
               </div>
-              <div className="col-md-4" style={{ margin: "auto" }}>
+              <div className="col-md-3" style={{ margin: "auto" }}>
                 <div className="row">
                   <div className="col-md-12 col-sm-4 tombolDownloadSemuaQr">
                     <div style={{ margin: "auto" }}>
@@ -318,6 +320,40 @@ class DaftarKodeQrOfficer extends Component {
                 })
                 }
               </ul>
+              {this.props.idKodeQR==="" ?
+                <div className="clearfix">
+                  <ul className="pagination">
+                    {this.props.pageKodeQR === 1?
+                      <li className="page-item disabled">
+                        <button className="page-link">
+                          <FaAngleLeft/>
+                        </button>
+                      </li>
+                    :
+                      <li className="page-item">
+                        <button className="page-link" onClick={() => this.props.getListKodeQR(this.props.pageKodeQR-1)}>
+                          <FaAngleLeft/>
+                        </button>
+                      </li>
+                    }
+                    {this.props.pageKodeQR === this.props.maksPageKodeQR ?
+                      <li className="page-item disabled">
+                        <button className="page-link">
+                            <FaAngleRight/>
+                        </button>
+                      </li>
+                    :
+                      <li className="page-item">
+                        <button className="page-link" onClick={() => this.props.getListKodeQR(this.props.pageKodeQR+1)} >
+                          <FaAngleRight/>
+                        </button>
+                      </li>
+                    }               
+                  </ul>
+                </div>
+              :
+                <div></div>
+              }
             </div>
           </div>
         </div>
@@ -326,4 +362,5 @@ class DaftarKodeQrOfficer extends Component {
   }
 }
 
-export default connect("daftarKodeQR, listKodeQR, buktiPembayaranID, idKodeQR, listKodeQRUntukUnduh", actions)(withRouter(DaftarKodeQrOfficer));
+export default connect("daftarKodeQR, listKodeQR, buktiPembayaranID, idKodeQR, listKodeQRUntukUnduh, pageKodeQR, maksPageKodeQR",
+  actions)(withRouter(DaftarKodeQrOfficer));
