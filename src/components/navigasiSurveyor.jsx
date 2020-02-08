@@ -3,7 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 
-class NavigasiOfficer extends React.Component {
+class NavigasiSurveyor extends React.Component {
   logOutOfficer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
@@ -30,11 +30,11 @@ class NavigasiOfficer extends React.Component {
             </div>
             <div class="navbar-brand-text d-inline-block ml-1 navigasiKota">
               <div class="system-name">ePajak</div>
-              <div class="area-name">{this.props.dataOfficer.nama_daerah}</div>
+              <div class="area-name">Kabupaten Bandung Barat</div>
             </div>
           </span>
           <div class="text-right">
-            <div class="navigasiUserName">Halo, {this.props.dataOfficer.nama}</div>
+            <div class="navigasiUserName">Halo, Officer</div>
             <span
               onClick={() => this.logOutOfficer()}
               class="btn btn-xs btn-outline-secondary tombolKeluar"
@@ -48,4 +48,4 @@ class NavigasiOfficer extends React.Component {
   }
 }
 
-export default connect("dataOfficer", actions)(withRouter(NavigasiOfficer));
+export default connect("", actions)(withRouter(NavigasiSurveyor));

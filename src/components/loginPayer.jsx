@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 class LoginPayer extends React.Component {
   render() {
     return (
-      <form onSubmit={e => e.preventDefault(e)}>
+      <React.Fragment>
         <div
           className="col-sm-12"
           style={{
@@ -20,9 +20,9 @@ class LoginPayer extends React.Component {
           <span style={{ marginLeft: "5px" }}>NPWP :</span>
           <input
             type="text"
-            id="npwp"
+            id="npwpd"
             className="col-md-12 col-sm-12 fadeIn second"
-            name="npwp"
+            name="npwpd"
             placeholder="Input NPWP"
             pattern="[0-9A-Z]{1,}"
             onInvalid={e => this.props.validasiFormLogin(e)}
@@ -57,20 +57,12 @@ class LoginPayer extends React.Component {
             )}
           </div>
         </div>
-
-        <input
-          type="submit"
-          className="fadeIn fourth"
-          value="Log In"
-          style={{ marginBottom: "15px", marginTop: "10px" }}
-          //   onClick={this.handleLogin}
-        />
-      </form>
+      </React.Fragment>
     );
   }
 }
 
 export default connect(
-  "statusInputPassword, statusShowPassword",
+  "statusInputPassword, statusShowPassword, token",
   actions
 )(withRouter(LoginPayer));

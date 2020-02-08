@@ -5,6 +5,7 @@ import { store } from "../store";
 import Login from "../pages/login";
 import BerandaOfficer from "../pages/berandaOfficer";
 import DaftarKodeQrOfficer from "../pages/daftarKodeQrOfficer";
+import BerandaSurveyor from "../pages/berandaSurveyor";
 
 const MainRoute = () => {
   return (
@@ -13,12 +14,13 @@ const MainRoute = () => {
         <Switch>
           {/* PAGES ROUTING */}
           <Route exact path="/login" component={Login} />
-          <Route exact path="/home/officer" component={BerandaOfficer} />
+          <Route exact path="/officer/home" component={BerandaOfficer} />
           <Route
             exact
-            path="/home/officer/daftar-kode-QR"
+            path="/officer/daftar-kode-QR/:id"
             component={DaftarKodeQrOfficer}
           />
+          <Route exact path="/surveyor/home" component={BerandaSurveyor} />
           {/* <Route component={NotMatch} /> */}
         </Switch>
       </BrowserRouter>
