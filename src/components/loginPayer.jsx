@@ -24,10 +24,11 @@ class LoginPayer extends React.Component {
             className="col-md-12 col-sm-12 fadeIn second"
             name="npwpd"
             placeholder="Input NPWP"
-            pattern="[0-9A-Z]{1,}"
-            onInvalid={e => this.props.validasiFormLogin(e)}
-            onChange={e => this.props.handleInput(e)}
+            onChange={e => this.props.handleInputLogin(e)}
           />
+          {this.props.npwpdValid || this.props.npwpd === ""
+          ? <span></span>
+          : <span className='loginError'>NPWPD tidak sesuai ketentuan</span>}
         </div>
         <div
           className="col-sm-12"
@@ -46,15 +47,17 @@ class LoginPayer extends React.Component {
               className="col-md-11 col-sm-10 fadeIn second"
               name="pin"
               placeholder="Input PIN"
-              pattern="[0-9]{8}"
-              onInvalid={e => this.props.validasiFormLogin(e)}
-              onChange={e => this.props.handleInput(e)}
+              onChange={e => this.props.handleInputLogin(e)}
             />
             {this.props.statusShowPassword ? (
               <FaEye onClick={e => this.props.showPassword(e)} />
             ) : (
               <FaEyeSlash onClick={e => this.props.showPassword(e)} />
             )}
+            <br/>
+            {this.props.pinValid || this.props.pin === ""
+            ? <span></span>
+            : <span className='loginError'>PIN harus berupa angka dan minimal 8 karakter</span>}
           </div>
         </div>
       </React.Fragment>
@@ -63,6 +66,6 @@ class LoginPayer extends React.Component {
 }
 
 export default connect(
-  "statusInputPassword, statusShowPassword, token",
+  "statusInputPassword, statusShowPassword, token, npwpdValid, pinValid, pin, npwpd",
   actions
 )(withRouter(LoginPayer));

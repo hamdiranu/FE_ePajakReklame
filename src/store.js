@@ -21,7 +21,14 @@ const initialState = {
   catatanPelanggaran: "",
   statusShowPassword: false,
   dataOfficer: {},
-  dataBuktiPembayaranOfficer: []
+  dataBuktiPembayaranOfficer: [],
+  formValid: false,
+  pinValid: true,
+  nipValid: true,
+  npwpdValid: true,
+  loginError: false,
+  nomorSSPDValid: true,
+  jumlahReklameValid: true,
 };
 
 export const store = createStore(initialState);
@@ -31,23 +38,6 @@ export const actions = store => ({
   handleInput: (state, event) => {
     store.setState({ [event.target.name]: event.target.value });
     console.log(`${event.target.name} :`, event.target.value);
-    event.target.setCustomValidity("");
-  },
-
-  // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
-  validasiFormLogin: (state, event) => {
-    if (event.target.name === "npwpd") {
-      event.target.setCustomValidity(
-        "NPWPD harus terdiri dari 1 huruf dan sejumlah angka"
-      );
-      store.setState({ validasiInputNpwp: false });
-    } else if (event.target.name === "nip") {
-      event.target.setCustomValidity("NIP harus terdiri dari 18 digit angka");
-      store.setState({ validasiInputNip: false });
-    } else if (event.target.name === "pin") {
-      event.target.setCustomValidity("PIN harus terdiri dari 8 digit angka");
-      store.setState({ validasiInputPin: false });
-    }
   },
 
   // Fungsi untuk mengganti status form login menjadi form login payer/officer
@@ -142,7 +132,7 @@ export const actions = store => ({
   const self = store;
   await axios(req)
       .then(function(response){
-          self.setState({ dataBuktiPembayaranOfficer: response.data});
+          self.setState({ dataBuktiPembayaranOfficer: response.data.list_bukti_pembayaran});
           console.log(response.data);
       })
       .catch(function(error){
@@ -220,10 +210,45 @@ export const actions = store => ({
           console.log(error)
       })
   },
-    
+  
+  //Fungsi untuk menghapus data token dan role di localstorage ketika user logout
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     store.setState({ npwpd: "", nip: "", pin: "" });
-  }
+  },
+
+  // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input ketika login
+  handleInputLogin: (state, event) => {
+    event.preventDefault();
+    store.setState({ [event.target.name]: event.target.value });
+    console.log(`${event.target.name} :`, event.target.value);
+    switch (event.target.name) {
+      case 'nip': 
+        store.setState({nipValid: 
+          RegExp("[0-9A-Z]{16}").test(event.target.value)
+            ? true
+            : false
+        });
+        break;
+      case 'pin': 
+        store.setState({pinValid: 
+          RegExp("[0-9]{8}").test(event.target.value)
+            ? true
+            : false
+        });
+        break;
+      case 'npwpd': 
+        store.setState({npwpdValid: 
+          RegExp("[0-9A-Z]{16}").test(event.target.value)
+            ? true
+            : false
+        });
+        break;
+      default:
+        break;
+    }
+    console.warn("cek valid", store.getState().nipValid, store.getState().pinValid)
+    store.setState({formValid: (store.getState().nipValid || store.getState().npwpdValid) && store.getState().pinValid})
+  },
 });
