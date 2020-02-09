@@ -14,6 +14,22 @@ const initialState = {
   token: "",
   formOfficer: false,
   statusInputPassword: "password",
+  statusShowPassword: false,
+  statusPageHomeSurveyor: false,
+  listLokasiReklame: [],
+  buktiPembayaranId: "",
+  detilReklameSurveyor: "",
+  statusGetDetilReklame: false,
+  scannerDelay: 100,
+  scannerResult: "No result",
+  scannerKodeQr: "",
+  statusSuksesScan: false,
+  statusGagalScan: false,
+  show: false,
+  showing: false,
+  textAreaPelanggaran: "",
+  statusPelanggaran: false,
+  validasiKodeQR: false,
   buktiPembayaranID: 1,
   daftarKodeQR:{},
   listKodeQR:[],
@@ -67,6 +83,123 @@ export const actions = store => ({
         statusShowPassword: false
       });
     }
+  },
+
+  // Axios ntuk mendapatkan list marker(lokasi) peta surveyor
+  getListLokasiReklame: state => {
+    axios
+      .get(
+        "https://alterratax.my.id/bukti_pembayaran/surveyor",
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(response => {
+        store.setState({ listLokasiReklame: response.data });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  // Axios ntuk mendapatkan list marker(lokasi) peta surveyor
+  getDetilReklameSurveyor: state => {
+    axios
+      .get(
+        "https://alterratax.my.id/bukti_pembayaran/surveyor/" +
+          state.buktiPembayaranId,
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(response => {
+        store.setState({
+          detilReklameSurveyor: response.data,
+          textAreaPelanggaran: response.data.bukti_pembayaran.pelanggaran,
+          statusGetDetilReklame: true
+        });
+        if (response.data.bukti_pembayaran.pelanggaran !== "") {
+          store.setState({
+            statusPelanggaran: true
+          });
+        }
+        console.log("cek response", response.data);
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  getIdByKodeQR: async state => {
+    await axios
+      .put(
+        "https://alterratax.my.id/kode_qr/surveyor",
+        {
+          kode_unik: state.scannerResult
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        // console.log("cek state", state.scannerResult);
+        await store.setState({
+          buktiPembayaranId: response.data.bukti_pembayaran_id
+        });
+        if (response.data.message === "Kode QR sudah terscan") {
+          await store.setState({
+            statusGagalScan: true
+          });
+        } else if (response.data.status_scan === true) {
+          await store.setState({
+            statusSuksesScan: true
+          });
+        } else if (response.data.message === "Kode QR tidak valid") {
+          await store.setState({
+            validasiKodeQR: true
+          });
+        }
+        console.log("cek response gagal", response.data.message);
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  putLaporanPelanggaran: async state => {
+    let stateAwal = store.getState().detilReklameSurveyor;
+    await axios
+      .put(
+        "https://alterratax.my.id/bukti_pembayaran/surveyor",
+        {
+          bukti_pembayaran_id: state.buktiPembayaranId,
+          pelanggaran: state.textAreaPelanggaran
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        stateAwal.bukti_pembayaran.pelanggaran = response.data.pelanggaran;
+        store.setState({
+          detilReklameSurveyor: stateAwal,
+          statusPelanggaran: true
+        });
+        console.log("sukses axios");
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
   },
 
   // fungsi get list kodeQR berdasarkan buktiPembayaranID

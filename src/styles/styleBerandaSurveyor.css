@@ -1,0 +1,86 @@
+/* Style untuk tampilan home officer  */
+
+.kontenBerandaSurveyor {
+  background-color: white;
+  padding-bottom: 65px;
+  padding-top: 30px;
+}
+
+.judulScanQrSurveyor {
+  font-size: 32px;
+  padding-top: 50px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.gifScanner {
+  width: 350px;
+  padding-top: 40px;
+}
+
+.kotakKalimatPetunjuk {
+  margin-top: 10px;
+  font-size: 28px;
+  padding-top: 15px;
+}
+
+.kotakPetunjuk {
+  text-align: center;
+}
+
+.checkSnackBar svg {
+  width: 40px;
+  height: 40px;
+  color: rgb(163, 255, 71);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 5;
+}
+
+.containerKotakScannerQr {
+  text-align: center;
+}
+
+.kotakScannerQr {
+  border-radius: 10px;
+  width: 85%;
+  height: 350px;
+  margin: auto;
+}
+
+.kotakScannerQr video {
+  border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+  .kotakScannerQr {
+    height: 290px;
+  }
+
+  .kotakKalimatPetunjuk {
+    margin-top: 10px;
+    font-size: 17px;
+  }
+
+  .gifScanner {
+    width: 165px;
+    padding-top: 20px;
+  }
+
+  .kontenBerandaSurveyor {
+    background-color: white;
+    padding-bottom: 13px;
+    padding-top: 30px;
+  }
+  .judulScanQrSurveyor {
+    font-size: 19px;
+    padding-top: 37px;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  .kotakScannerQr {
+    width: 85%;
+  }
+}
