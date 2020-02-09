@@ -45,7 +45,7 @@
 
 .officerCariID svg {
   position: absolute;
-  left: 134px;
+  left: 183px;
   top: 8px;
   width: 25px;
   height: 25px;
@@ -230,6 +230,14 @@
 
 .pelanggaran p {
   margin-bottom:0 ;
+}
+.pagination{
+  margin-bottom: 0;
+  margin-left: auto;
+  display: table;
+}
+.pagination li{
+  display: inline-block;
 }
 
 @media (max-width: 767px) {
