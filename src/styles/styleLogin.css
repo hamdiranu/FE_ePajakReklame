@@ -190,6 +190,11 @@ input[type="submit"] {
   padding-left: 10px;
 }
 
+.loginError {
+  color: red;
+  font-size: 12px;
+}
+
 @media (max-width: 767px) {
   .navigasiKota {
     font-size: 15px;
@@ -271,4 +276,5 @@ input[type="submit"] {
     height: 25px;
     cursor: pointer;
   }
+
 }

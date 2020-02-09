@@ -1,5 +1,6 @@
 import createStore from "unistore";
 import axios from "axios";
+import swal from "sweetalert";
 
 const initialState = {
   npwpd: "",
@@ -13,15 +14,42 @@ const initialState = {
   token: "",
   formOfficer: false,
   statusInputPassword: "password",
+  statusShowPassword: false,
+  statusPageHomeSurveyor: false,
+  listLokasiReklame: [],
+  buktiPembayaranId: "",
+  detilReklameSurveyor: "",
+  statusGetDetilReklame: false,
+  scannerDelay: 100,
+  scannerResult: "No result",
+  scannerKodeQr: "",
+  statusSuksesScan: false,
+  statusGagalScan: false,
+  show: false,
+  showing: false,
+  textAreaPelanggaran: "",
+  statusPelanggaran: false,
+  validasiKodeQR: false,
   buktiPembayaranID: 1,
   daftarKodeQR:{},
   listKodeQR:[],
   listKodeQRUntukUnduh: [],
-  idKodeQR : 0,
+  idKodeQR : "",
   catatanPelanggaran: "",
-  statusShowPassword: false,
   dataOfficer: {},
-  dataBuktiPembayaranOfficer: []
+  dataBuktiPembayaranOfficer: [],
+  pageBuktiPembayaran : 1,
+  maksPageBuktiPembayaran : 1,
+  pageKodeQR : 1,
+  maksPageKodeQR : 1,
+  formValid: false,
+  pinValid: true,
+  nipValid: true,
+  npwpdValid: true,
+  loginError: false,
+  nomorSSPDValid: true,
+  jumlahReklameValid: true,
+  berhasilTambahData: false
 };
 
 export const store = createStore(initialState);
@@ -32,22 +60,6 @@ export const actions = store => ({
     store.setState({ [event.target.name]: event.target.value });
     console.log(`${event.target.name} :`, event.target.value);
     event.target.setCustomValidity("");
-  },
-
-  // Fungsi untuk menampilkan alert jika input login tidak sesuai dengan ketetapan
-  validasiFormLogin: (state, event) => {
-    if (event.target.name === "npwpd") {
-      event.target.setCustomValidity(
-        "NPWPD harus terdiri dari 1 huruf dan sejumlah angka"
-      );
-      store.setState({ validasiInputNpwp: false });
-    } else if (event.target.name === "nip") {
-      event.target.setCustomValidity("NIP harus terdiri dari 18 digit angka");
-      store.setState({ validasiInputNip: false });
-    } else if (event.target.name === "pin") {
-      event.target.setCustomValidity("PIN harus terdiri dari 8 digit angka");
-      store.setState({ validasiInputPin: false });
-    }
   },
 
   // Fungsi untuk mengganti status form login menjadi form login payer/officer
@@ -72,11 +84,129 @@ export const actions = store => ({
     }
   },
 
+  // Axios ntuk mendapatkan list marker(lokasi) peta surveyor
+  getListLokasiReklame: state => {
+    axios
+      .get(
+        "https://alterratax.my.id/bukti_pembayaran/surveyor",
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(response => {
+        store.setState({ listLokasiReklame: response.data });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  // Axios ntuk mendapatkan list marker(lokasi) peta surveyor
+  getDetilReklameSurveyor: state => {
+    axios
+      .get(
+        "https://alterratax.my.id/bukti_pembayaran/surveyor/" +
+          state.buktiPembayaranId,
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(response => {
+        store.setState({
+          detilReklameSurveyor: response.data,
+          textAreaPelanggaran: response.data.bukti_pembayaran.pelanggaran,
+          statusGetDetilReklame: true
+        });
+        if (response.data.bukti_pembayaran.pelanggaran !== "") {
+          store.setState({
+            statusPelanggaran: true
+          });
+        }
+        console.log("cek response", response.data);
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  getIdByKodeQR: async state => {
+    await axios
+      .put(
+        "https://alterratax.my.id/kode_qr/surveyor",
+        {
+          kode_unik: state.scannerResult
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        // console.log("cek state", state.scannerResult);
+        await store.setState({
+          buktiPembayaranId: response.data.bukti_pembayaran_id
+        });
+        if (response.data.message === "Kode QR sudah terscan") {
+          await store.setState({
+            statusGagalScan: true
+          });
+        } else if (response.data.status_scan === true) {
+          await store.setState({
+            statusSuksesScan: true
+          });
+        } else if (response.data.message === "Kode QR tidak valid") {
+          await store.setState({
+            validasiKodeQR: true
+          });
+        }
+        console.log("cek response gagal", response.data.message);
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  putLaporanPelanggaran: async state => {
+    let stateAwal = store.getState().detilReklameSurveyor;
+    await axios
+      .put(
+        "https://alterratax.my.id/bukti_pembayaran/surveyor",
+        {
+          bukti_pembayaran_id: state.buktiPembayaranId,
+          pelanggaran: state.textAreaPelanggaran
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        stateAwal.bukti_pembayaran.pelanggaran = response.data.pelanggaran;
+        store.setState({
+          detilReklameSurveyor: stateAwal,
+          statusPelanggaran: true
+        });
+        console.log("sukses axios");
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
   // fungsi get list kodeQR berdasarkan buktiPembayaranID
-  getListKodeQR : async (state) => {
+  getListKodeQR : async (state, event) => {
+    const pageKodeQR = event
     const req = {
       method : "get",
-      url : `https://alterratax.my.id/kode_qr/officer?bukti_pembayaran_id=${state.buktiPembayaranID}`,
+      url : `https://alterratax.my.id/kode_qr/officer?rp=2&p=${pageKodeQR}&bukti_pembayaran_id=${state.buktiPembayaranID}`,
       headers : {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -85,17 +215,45 @@ export const actions = store => ({
       .then(function(response){
         store.setState({daftarKodeQR: response.data,
           listKodeQR: response.data.list_kode_qr,
-          listKodeQRUntukUnduh: response.data.list_kode_qr});
+          pageKodeQR : response.data.page,
+          maksPageKodeQR : response.data.maks_page});
       })
       .catch(function(error){
+        console.log(error);
       });
+  },
+
+  //Fungsi untuk mengambil list seluruh kode qr oleh officer
+  getSemuaListKodeQROfficer: async (state) => {
+    const req = {
+      method: "get",    
+      url: `https://alterratax.my.id/kode_qr/officer?rp=500&bukti_pembayaran_id=${state.buktiPembayaranID}`,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+    await axios(req)
+      .then(function(response){
+        store.setState({listKodeQRUntukUnduh: response.data.list_kode_qr});
+        console.log(response.data);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
   },
 
   // fungsi cari kodeqr berdasarkan id
   cariKodeQR : async (state) => {
+    let url = "";
+    if(state.idKodeQR===""){
+      url = `https://alterratax.my.id/kode_qr/officer?rp=2&bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`
+    }
+    else{
+      url = `https://alterratax.my.id/kode_qr/officer?rp=500&bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`
+    }
     const req = {
       method : "get",
-      url : `https://alterratax.my.id/kode_qr/officer?bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`,
+      url : url,
       headers : {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -107,7 +265,17 @@ export const actions = store => ({
       .catch(function(error){
       });
   },
-    
+   
+  // Fungsi untuk set pageKodeQR = 1
+  setPageKodeQR: async (state) => {
+    store.setState({pageKodeQR : 1});
+  },
+
+  // Fungsi untuk set pageBuktiPembayaran = 1
+  setPageBuktiPembayaran: async (state) => {
+    store.setState({pageBuktiPembayaran : 1});
+  },
+
   //Fungsi untuk mengambil data officers (nama dan daerahnya)
   getDataOfficer: async (state, event) => {
     const req = {
@@ -131,30 +299,38 @@ export const actions = store => ({
 
   //Fungsi untuk mengambil data list bukti pembayaran oleh officer
   getDataBuktiPembayaranOfficer: async (state, event) => {
+    const pageBuktiPembayaran = event;
     const req = {
       method: "get",    
-      url: "https://alterratax.my.id/bukti_pembayaran/officer",
+      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${pageBuktiPembayaran}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
     };
-
-  const self = store;
-  await axios(req)
+    const self = store;
+    await axios(req)
       .then(function(response){
-          self.setState({ dataBuktiPembayaranOfficer: response.data});
-          console.log(response.data);
+        self.setState({ dataBuktiPembayaranOfficer: response.data.list_bukti_pembayaran,
+          pageBuktiPembayaran:response.data.page, maksPageBuktiPembayaran:response.data.maks_page});
+        console.log(response.data);
       })
       .catch(function(error){
-          console.log(error)
+        console.log(error)
       })
   },
 
   //Fungsi untuk mengambil data list bukti pembayaran difilter dari nomor sspd (fitur search)
   getCariBuktiPembayaran: async (state, event) => {
+    let url = "";
+    if(state.kataKunci===""){
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${state.pageBuktiPembayaran}`
+    }
+    else{
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=500&nomor_sspd=${state.kataKunci}`
+    }
     const req = {
       method: "get",    
-      url: "https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd="+state.kataKunci,
+      url: url,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
@@ -163,7 +339,7 @@ export const actions = store => ({
   const self = store;
   await axios(req)
       .then(function(response){
-          self.setState({ dataBuktiPembayaranOfficer: response.data});
+          self.setState({ dataBuktiPembayaranOfficer: response.data.list_bukti_pembayaran});
           console.log(response.data);
       })
       .catch(function(error){
@@ -186,44 +362,103 @@ export const actions = store => ({
       data:mydata
     };
 
-  await axios(req)
+    await axios(req)
       .then(function(response){
-          console.log(response.data);
+        store.setState({pageKodeQR:1})
+        console.log(response.data);
       })
       .catch(function(error){
-          console.log(error)
+        console.log(error)
       })
   },
 
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database 
   postBuktiPembayaran: async (state, event) => {
-    const mydata = {
-      nomor_sspd: state.nomorSSPD,
-      jumlah_reklame: state.jumlahReklame
-    };
-    const req = {
-      method: "post",    
-      url: "https://alterratax.my.id/bukti_pembayaran/officer",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
-      },
-      data:mydata
-    };
+    if (!RegExp("[0-9]{5}").test(state.nomorSSPD)){
+      swal({
+        title: "Oops!",
+        text: "Nomor SSPD tidak sesuai ketentuan",
+        icon: "warning",
+      })
+    } else if (!(RegExp("[0-9]{1}").test(state.jumlahReklame) && (Number(state.jumlahReklame) >= 1))){
+      swal({
+        title: "Oops!",
+        text: "Jumlah reklame harus berupa Angka dan minimal 1",
+        icon: "warning",
+      })
+    } else {
+        const mydata = {
+          nomor_sspd: state.nomorSSPD,
+        jumlah_reklame: state.jumlahReklame
+      };
+      const req = {
+        method: "post",    
+        url: "https://alterratax.my.id/bukti_pembayaran/officer",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token")
+        },
+        data:mydata
+      };
 
-  await axios(req)
-      .then(function(response){
-          console.log(response.data);
-          alert("Data sukses ditambahkan")
-      })
-      .catch(function(error){
-          alert("Data input tidak memenuhi syarat, silahkan cek ulang data input anda!")
-          console.log(error)
-      })
-  },
-    
+      await axios(req)
+          .then(function(response){
+            console.log(response.data);
+            swal({
+              title: "Sukses",
+              text: "Data sukses ditambahkan",
+              icon: "success",
+            })
+          })
+          .catch(function(error){
+            swal({
+              title: "Oops!",
+              text: "Nomor SSPD sudah ditambahkan, silahkan cek ulang data input anda!",
+              icon: "warning",
+            })
+            console.log(error)
+          })
+      store.setState({berhasilTambahData: true})
+      }
+    },
+  
+  //Fungsi untuk menghapus data token dan role di localstorage ketika user logout
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     store.setState({ npwpd: "", nip: "", pin: "" });
-  }
+  },
+
+  // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input ketika login
+  handleInputLogin: (state, event) => {
+    event.preventDefault();
+    store.setState({ [event.target.name]: event.target.value });
+    console.log(`${event.target.name} :`, event.target.value);
+    switch (event.target.name) {
+      case 'nip': 
+        store.setState({nipValid: 
+          RegExp("[0-9A-Z]{16}").test(event.target.value)
+            ? true
+            : false
+        });
+        break;
+      case 'pin': 
+        store.setState({pinValid: 
+          RegExp("[0-9]{8}").test(event.target.value)
+            ? true
+            : false
+        });
+        break;
+      case 'npwpd': 
+        store.setState({npwpdValid: 
+          RegExp("[0-9A-Z]{16}").test(event.target.value)
+            ? true
+            : false
+        });
+        break;
+      default:
+        break;
+    }
+    console.warn("cek valid", store.getState().nipValid, store.getState().pinValid)
+    store.setState({formValid: (store.getState().nipValid || store.getState().npwpdValid) && store.getState().pinValid})
+  },
 });

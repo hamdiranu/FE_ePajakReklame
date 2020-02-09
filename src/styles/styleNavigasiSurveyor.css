@@ -1,0 +1,75 @@
+/* Style untuk tampilan navbar officer */
+
+/* .navbarSurveyor {
+  background-image: linear-gradient(to left, #ed8535, #ea6d25, #e5430b);
+  background-size: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px #eee;
+  transition: 0.3s;
+} */
+
+.logoPeta {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  color: rgb(9, 160, 9);
+  transition: 0.4s;
+  z-index: 11;
+}
+
+.logoPeta:hover {
+  transition: 0.4s;
+  color: rgb(15, 200, 15);
+}
+
+.logoScanQR {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  color: #844204;
+  transition: 0.4s;
+}
+
+.logoScanQR:hover {
+  transition: 0.4s;
+  color: #b45b08;
+}
+
+.judulHeaderSurveyor {
+  font-size: 30px;
+  margin-left: 60px;
+}
+
+.tombolKeluar {
+  color: white;
+  background-color: darkslategrey;
+  font-size: 19px;
+}
+
+.areaName {
+  font-size: 16px;
+}
+
+.tombolKeluar:hover {
+  background-color: rgb(65, 141, 141);
+}
+
+.infoDaerah {
+  margin-left: 15px;
+}
+
+@media (max-width: 767px) {
+  .areaName {
+    font-size: 13px;
+  }
+
+  .judulHeaderSurveyor {
+    font-size: 25px;
+    margin-left: 0px;
+  }
+
+  .tombolKeluar {
+    font-size: 15px;
+  }
+}

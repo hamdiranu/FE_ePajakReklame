@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../styles/styleLogin.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
-import { actions } from "../store";
+import { actions, store } from "../store";
 import FormLoginPayer from "../components/loginPayer";
 import FormLoginOfficer from "../components/loginOfficer";
 import { Form } from "react-bootstrap";
@@ -11,6 +11,7 @@ import swal from "sweetalert";
 
 class Login extends Component {
   loginUser = async () => {
+    store.setState({formValid:false})
     if (this.props.formOfficer === false) {
       const self = this;
       const req = {
@@ -34,6 +35,8 @@ class Login extends Component {
           }
         })
         .catch(function(error) {
+          store.setState({loginError: true})
+          self.props.history.push("/login");
           console.log("Maaf, NPWPD/PIN Tidak Ditemukan");
         });
     } else {
@@ -63,11 +66,31 @@ class Login extends Component {
           }
         })
         .catch(function(error) {
+          store.setState({loginError: true})
+          self.props.history.push("/login");
           console.log("Maaf, NIP/PIN Tidak Ditemukan");
         });
     }
   };
+
   render() {
+    if (this.props.loginError === true){
+      if (this.props.formOfficer){
+        swal({
+          title: "Oops!",
+          text: "NIP atau PIN Anda salah, silahkan input ulang!",
+          icon: "warning",
+        })
+      } else {
+        swal({
+          title: "Oops!",
+          text: "NPWPD atau PIN Anda salah, silahkan input ulang!",
+          icon: "warning",
+        })
+      }
+      store.setState({loginError:false})  
+    }
+
     return (
       <div className="loginWrapper fadeInDown">
         <div id="loginFormContent">
@@ -95,12 +118,13 @@ class Login extends Component {
             </Form.Control>
           </div>
           {/* <!-- Login Form --> */}
-          <form onSubmit={e => e.preventDefault(e)}>
+          <form onSubmit={(e) => e.preventDefault(e)}>
             {this.props.formOfficer ? <FormLoginOfficer /> : <FormLoginPayer />}
             <input
               type="submit"
               className="fadeIn fourth"
               value="Log In"
+              disabled={!this.props.formValid}
               style={{ marginBottom: "15px", marginTop: "10px" }}
               onClick={e => this.loginUser(e)}
             />
@@ -112,6 +136,6 @@ class Login extends Component {
 }
 
 export default connect(
-  "formOfficer, npwpd, nip, pin, role, token, formOfficer",
+  "formOfficer, npwpd, nip, pin, role, token, formOfficer, formValid, loginError",
   actions
 )(withRouter(Login));
