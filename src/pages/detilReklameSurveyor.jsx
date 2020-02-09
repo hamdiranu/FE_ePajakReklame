@@ -7,7 +7,7 @@ import { actions } from "../store";
 import NavigasiDetilReklameSurveyor from "../components/navigasiSurveyor";
 import KontenDetilReklameSurveyor from "../components/kontenDetilReklameSurveyor";
 
-class PetaSurveyor extends Component {
+class DetilReklameSurveyor extends Component {
   render() {
     return (
       <React.Fragment>
@@ -18,4 +18,4 @@ class PetaSurveyor extends Component {
   }
 }
 
-export default connect("", actions)(withRouter(PetaSurveyor));
+export default connect("", actions)(withRouter(DetilReklameSurveyor));

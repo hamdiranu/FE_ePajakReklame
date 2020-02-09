@@ -1,0 +1,11 @@
+/* Style untuk tampilan home officer  */
+
+body {
+  background-color: white;
+}
+
+@media (max-width: 767px) {
+}
+
+@media (max-width: 375px) {
+}

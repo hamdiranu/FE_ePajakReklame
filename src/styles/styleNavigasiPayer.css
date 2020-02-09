@@ -1,0 +1,64 @@
+/* Style untuk tampilan navbar officer */
+
+body {
+  background-color: white;
+}
+
+.borderLogoTambahLaporan {
+  margin: auto;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  border: 2px solid white;
+  background-image: linear-gradient(to right, #e0770a, #d36808, #c94200);
+  background-size: 100%;
+}
+
+.borderLogoTambahLaporan:hover {
+  border: 2px solid white;
+  background-size: 200%;
+}
+
+.borderLogoTambahLaporan svg {
+  height: 30px;
+  width: 30px;
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  color: white;
+}
+
+.tombolKeluarPayer {
+  background-image: linear-gradient(to right, #78797e, #919297, #c2c3c5);
+  color: white;
+  background-size: 100%;
+  font-size: 19px;
+}
+
+.tombolKeluarPayer:hover {
+  background-size: 200%;
+}
+
+.judulHeaderPayer {
+  font-size: 30px;
+}
+
+@media (max-width: 767px) {
+  .judulHeaderPayer {
+    font-size: 25px;
+  }
+
+  .tombolKeluarPayer {
+    background-image: linear-gradient(
+      to right,
+      #505153,
+      #78797e,
+      #919297,
+      #c2c3c5
+    );
+    color: white;
+    background-size: 100%;
+    font-size: 15px;
+  }
+}

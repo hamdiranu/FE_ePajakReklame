@@ -9,7 +9,7 @@ import ReactSnackBar from "react-js-snackbar";
 import swal from "sweetalert";
 import gifLoading from "../images/loading11.gif";
 
-class KontenBerandaOfficer extends React.Component {
+class KontenDetilReklameSurveyor extends React.Component {
   detilKeScan = () => {
     store.setState({ statusPageHomeSurveyor: true });
     this.props.history.push("/surveyor/home");
@@ -228,4 +228,4 @@ class KontenBerandaOfficer extends React.Component {
 export default connect(
   "buktiPembayaranId, detilReklameSurveyor, statusGetDetilReklame, statusSuksesScan, showing, show, textAreaPelanggaran, statusPelanggaran, statusGagalScan",
   actions
-)(withRouter(KontenBerandaOfficer));
+)(withRouter(KontenDetilReklameSurveyor));
