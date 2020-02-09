@@ -8,7 +8,7 @@ import { actions, store } from "../store";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
-class KontenBerandaOfficer extends React.Component {
+class KontenPetaSurveyor extends React.Component {
   componentDidMount = () => {
     store.setState({ statusPageHomeSurveyor: false });
     store.setState({ statusSuksesScan: false, statusGagalScan: false });
@@ -156,4 +156,4 @@ class KontenBerandaOfficer extends React.Component {
 export default connect(
   "listLokasiReklame",
   actions
-)(withRouter(KontenBerandaOfficer));
+)(withRouter(KontenPetaSurveyor));

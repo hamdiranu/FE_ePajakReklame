@@ -6,7 +6,7 @@ import QrReader from "react-qr-reader";
 import gifScanner from "../images/scan_qr_code2.gif";
 import swal from "sweetalert";
 
-class KontenBerandaOfficer extends React.Component {
+class KontenBerandaSurveyor extends React.Component {
   componentDidMount = () => {
     store.setState({ statusPageHomeSurveyor: true });
     store.setState({ statusSuksesScan: false, statusGagalScan: false });
@@ -34,7 +34,7 @@ class KontenBerandaOfficer extends React.Component {
           icon: "warning",
           button: "Ok!"
         });
-        store.setState({ validasiKodeQR: false });  
+        store.setState({ validasiKodeQR: false });
       } else {
         this.props.history.push(
           `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
@@ -84,4 +84,4 @@ class KontenBerandaOfficer extends React.Component {
 export default connect(
   "scannerResult, scannerDelay, buktiPembayaranId, statusSuksesScan, showing, show, validasiKodeQR",
   actions
-)(withRouter(KontenBerandaOfficer));
+)(withRouter(KontenBerandaSurveyor));

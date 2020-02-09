@@ -1,20 +1,24 @@
-.box-pelanggaran{
-    border: 1px solid rgb(218, 117, 109);
-    background-color: #F44336;
-    color: white;
-    border-radius: 5px;
-    text-align: center;
-    font-size: small;
-    vertical-align: middle;
+body {
+  background-color: white;
 }
-.text-pelanggaran{
-    padding-top: 10px;
-    padding-bottom: 10px;
+
+.box-pelanggaran {
+  border: 1px solid rgb(218, 117, 109);
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: small;
+  vertical-align: middle;
+}
+.text-pelanggaran {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .modal-kode-qr p {
-    margin-bottom:0 ;
+  margin-bottom: 0;
 }
 .modal-kode-qr p:hover {
-    color: rgb(42, 1, 119);
-    text-decoration: underline;
+  color: rgb(42, 1, 119);
+  text-decoration: underline;
 }
