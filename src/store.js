@@ -1,5 +1,6 @@
 import createStore from "unistore";
 import axios from "axios";
+import swal from "sweetalert";
 
 const initialState = {
   npwpd: "",
@@ -29,6 +30,7 @@ const initialState = {
   loginError: false,
   nomorSSPDValid: true,
   jumlahReklameValid: true,
+  berhasilTambahData: false
 };
 
 export const store = createStore(initialState);
@@ -38,6 +40,7 @@ export const actions = store => ({
   handleInput: (state, event) => {
     store.setState({ [event.target.name]: event.target.value });
     console.log(`${event.target.name} :`, event.target.value);
+    event.target.setCustomValidity("");
   },
 
   // Fungsi untuk mengganti status form login menjadi form login payer/officer
@@ -187,29 +190,52 @@ export const actions = store => ({
 
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database 
   postBuktiPembayaran: async (state, event) => {
-    const mydata = {
-      nomor_sspd: state.nomorSSPD,
-      jumlah_reklame: state.jumlahReklame
-    };
-    const req = {
-      method: "post",    
-      url: "https://alterratax.my.id/bukti_pembayaran/officer",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
-      },
-      data:mydata
-    };
+    if (!RegExp("[0-9]{5}").test(state.nomorSSPD)){
+      swal({
+        title: "Oops!",
+        text: "Nomor SSPD tidak sesuai ketentuan",
+        icon: "warning",
+      })
+    } else if (!(RegExp("[0-9]{1}").test(state.jumlahReklame) && (Number(state.jumlahReklame) >= 1))){
+      swal({
+        title: "Oops!",
+        text: "Jumlah reklame harus berupa Angka dan minimal 1",
+        icon: "warning",
+      })
+    } else {
+        const mydata = {
+          nomor_sspd: state.nomorSSPD,
+        jumlah_reklame: state.jumlahReklame
+      };
+      const req = {
+        method: "post",    
+        url: "https://alterratax.my.id/bukti_pembayaran/officer",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token")
+        },
+        data:mydata
+      };
 
-  await axios(req)
-      .then(function(response){
-          console.log(response.data);
-          alert("Data sukses ditambahkan")
-      })
-      .catch(function(error){
-          alert("Data input tidak memenuhi syarat, silahkan cek ulang data input anda!")
-          console.log(error)
-      })
-  },
+      await axios(req)
+          .then(function(response){
+            console.log(response.data);
+            swal({
+              title: "Sukses",
+              text: "Data sukses ditambahkan",
+              icon: "success",
+            })
+          })
+          .catch(function(error){
+            swal({
+              title: "Oops!",
+              text: "Nomor SSPD sudah ditambahkan, silahkan cek ulang data input anda!",
+              icon: "warning",
+            })
+            console.log(error)
+          })
+      store.setState({berhasilTambahData: true})
+      }
+    },
   
   //Fungsi untuk menghapus data token dan role di localstorage ketika user logout
   handleLogOut: state => {
