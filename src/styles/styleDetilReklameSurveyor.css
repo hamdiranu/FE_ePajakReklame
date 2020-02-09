@@ -1,0 +1,183 @@
+/* Style untuk tampilan navbar officer */
+
+.judulDetilReklameSurveyor {
+  display: grid;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.checkSnackBar {
+  width: 40px;
+  height: 40px;
+  color: rgb(163, 255, 71);
+  position: absolute;
+  top: 5px;
+  left: 75px;
+  z-index: 10;
+}
+
+.swal-button {
+  background-image: linear-gradient(to left, #ed8535, #ea6d25, #e5430b);
+  background-size: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px #eee;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.swal-button:hover {
+  background-position: left;
+  background-size: 200%;
+  /* animation: animate 2s linear infinite; */
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+.judulReklameSurveyor {
+  font-size: 25px;
+}
+
+.nomorSspdDetilReklame {
+  font-size: 17px;
+}
+
+.kotakInfoDetilReklame {
+  padding: 25px;
+}
+
+.rowInfoDetilReklame {
+  padding-bottom: 10px;
+}
+
+.spacePelanggaranKosong {
+  padding-bottom: 35px;
+}
+
+.catatanPelanggaran {
+  padding-bottom: 15px;
+  padding-top: 5px;
+}
+
+.textAreaPelanggaran {
+  padding: 0px 40px;
+  height: 94px;
+}
+
+.kontenDetilReklameSurveyor {
+  padding-top: 58px;
+  background-color: white;
+  padding-bottom: 4px;
+}
+
+textarea.form-control {
+  height: 120px;
+}
+
+.tombolReport {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 15px;
+}
+
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+}
+
+.kotakKontenDetailReklame {
+  background-image: linear-gradient(
+    to bottom,
+    #469bd2,
+    #2a6ab1,
+    #1f4a8f,
+    #122756
+  );
+  padding: 15px;
+}
+
+.petaDetikReklame {
+  padding-right: 0px;
+}
+
+.kotakPeta {
+  border-radius: 10px;
+  z-index: 3;
+  padding-right: 0px;
+}
+
+.gifLoading {
+  text-align: center;
+  background-color: #fafcfb;
+  padding-bottom: 84px;
+}
+
+.gifLoading img {
+  width: 790px;
+}
+
+@media (max-width: 767px) {
+  .petaDetikReklame {
+    padding-right: 15px;
+  }
+
+  .judulDetilReklameSurveyor {
+    padding-bottom: 0px;
+  }
+
+  .judulReklameSurveyor {
+    font-size: 25px;
+  }
+
+  .nomorSspdDetilReklame {
+    font-size: 15px;
+  }
+
+  .judulMapsSurveyor {
+    text-align: center;
+    font-size: 31px;
+    padding-bottom: 10px;
+  }
+
+  .kotakInfoDetilReklame {
+    margin-top: 15px;
+  }
+
+  .rowInfoDetilReklame {
+    padding: 0px 0px;
+    padding-bottom: 5px;
+  }
+
+  .leaflet-container {
+    height: 300px;
+    width: 100%;
+  }
+
+  .kontenDetilReklameSurveyor {
+    padding-top: 50px;
+  }
+
+  .textAreaPelanggaran {
+    padding: 0px 0px;
+    height: 94px;
+  }
+
+  .gifLoading {
+    text-align: center;
+    background-color: #fafcfb;
+    padding-bottom: 217px;
+    padding-top: 130px;
+  }
+
+  .gifLoading img {
+    width: 360px;
+  }
+}

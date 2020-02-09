@@ -14,7 +14,7 @@ class BerandaOfficer extends Component {
       await this.props.history.push("/login")
     } else {
       await this.props.getDataOfficer();
-      await this.props.getDataBuktiPembayaranOfficer();
+      await this.props.getDataBuktiPembayaranOfficer(this.props.pageBuktiPembayaran);
     }
   };
 
@@ -28,4 +28,4 @@ class BerandaOfficer extends Component {
   }
 }
 
-export default connect("", actions)(withRouter(BerandaOfficer));
+export default connect("pageBuktiPembayaran, maksPageBuktiPembayaran", actions)(withRouter(BerandaOfficer));

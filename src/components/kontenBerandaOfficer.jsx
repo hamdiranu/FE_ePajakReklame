@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { store, actions } from "../store";
 import { Button, Form } from "react-bootstrap";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import {Modal, ButtonToolbar} from 'react-bootstrap'
 
 class KontenBerandaOfficer extends React.Component {
@@ -16,11 +16,13 @@ class KontenBerandaOfficer extends React.Component {
     await this.props.postGenerateQR(id);
     await this.props.history.replace("/officer/daftar-kode-QR/"+id);
   };
-
+  
   handleTambahData = async () => {
-    await this.props.postBuktiPembayaran();
-    await this.props.getDataBuktiPembayaranOfficer();
-    await this.props.history.replace("/officer/home");  
+      await this.props.postBuktiPembayaran()
+      if (this.props.berhasilTambahData){
+        await this.props.getDataBuktiPembayaranOfficer();
+        await this.props.history.replace("/officer/home");  
+    }
   }
 
   render() {
@@ -62,7 +64,8 @@ class KontenBerandaOfficer extends React.Component {
                                   class="form-control" 
                                   name="jumlahReklame" 
                                   placeholder="Masukkan jumlah reklame"
-                                  onChange={e => this.props.handleInput(e)} 
+                                  onChange={e => this.props.handleInput(e)}
+                                  pattern="[0-9].{0,}" 
                                   id="jumlahReklame" 
                                   required
                                 />
@@ -72,7 +75,8 @@ class KontenBerandaOfficer extends React.Component {
                                 type="submit" 
                                 style={{width:"50%", marginTop:"20px"}} 
                                 onClick={() => this.handleTambahData()} 
-                                class="btn btn-primary">
+                                class="btn btn-primary"
+                              >
                                 Tambah Data
                               </button>
                             </div>
@@ -89,7 +93,8 @@ class KontenBerandaOfficer extends React.Component {
       const [modalShow, setModalShow] = React.useState(false);
       return (
         <ButtonToolbar>
-          <Button style={{backgroundColor:"#c904a6", border:"#c904a6", color:"white"}} onClick={() => setModalShow(true)}>
+          <Button style={{marginLeft:"auto", display:"table"}}
+            onClick={() => setModalShow(true)}>
             Tambah Data
           </Button>
           <TambahDataModal
@@ -218,7 +223,7 @@ class KontenBerandaOfficer extends React.Component {
                       <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
                         {buktiPembayaran.status_buat_kode_qr
                         ?
-                        <Link to={`/officer/daftar-kode-QR/${buktiPembayaran.id}`}>
+                        <Link to={`/officer/daftar-kode-QR/${buktiPembayaran.id}`} onClick={this.props.setPageKodeQR}>
                           Lihat Detail
                         </Link>
                         :
@@ -238,6 +243,40 @@ class KontenBerandaOfficer extends React.Component {
                 )
               })}
             </ul>
+            {this.props.kataKunci===""?
+              <div className="clearfix">
+                <ul className="pagination">
+                  {this.props.pageBuktiPembayaran === 1?
+                    <li className="page-item disabled">
+                      <button className="page-link">
+                        <FaAngleLeft/>
+                      </button>
+                    </li>
+                  :
+                    <li className="page-item">
+                      <button className="page-link" onClick={() => this.props.getDataBuktiPembayaranOfficer(this.props.pageBuktiPembayaran-1)}>
+                        <FaAngleLeft/>
+                      </button>
+                    </li>
+                  }
+                  {this.props.pageBuktiPembayaran === this.props.maksPageBuktiPembayaran ?
+                    <li className="page-item disabled">
+                      <button className="page-link">
+                          <FaAngleRight/>
+                      </button>
+                    </li>
+                  :
+                    <li className="page-item">
+                      <button className="page-link" onClick={() => this.props.getDataBuktiPembayaranOfficer(this.props.pageBuktiPembayaran+1)} >
+                        <FaAngleRight/>
+                      </button>
+                    </li>
+                  }               
+                </ul>
+              </div>
+            :
+              <div></div>
+            }            
           </div>
         </div>
       </div>
@@ -245,4 +284,5 @@ class KontenBerandaOfficer extends React.Component {
   }
 }
 
-export default connect("dataBuktiPembayaranOfficer", actions)(withRouter(KontenBerandaOfficer));
+export default connect("dataBuktiPembayaranOfficer, pageBuktiPembayaran, maksPageBuktiPembayaran, kataKunci, berhasilTambahData",
+  actions)(withRouter(KontenBerandaOfficer));

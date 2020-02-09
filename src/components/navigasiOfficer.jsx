@@ -18,7 +18,7 @@ class NavigasiOfficer extends React.Component {
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div style={{ margin: "auto" }}>
-              <Link to="/officer/home" style={{ textDecoration: "none" }}>
+              <Link to="/officer/home" style={{ textDecoration: "none" }} onClick={e => this.props.getDataBuktiPembayaranOfficer(1)}>
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/5/57/Kab_Bandung_Barat.svg"
                   width="40"

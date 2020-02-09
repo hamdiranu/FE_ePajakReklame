@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import "../styles/styleBerandaSurveyor.css";
 import "../styles/styleNavigasiSurveyor.css";
+import "../styles/stylePetaSurveyor.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import NavigasiSurveyor from "../components/navigasiSurveyor";
-import KontenBerandaSurveyor from "../components/kontenBerandaSurveyor";
+import KontenPetaSurveyor from "../components/kontenPetaSurveyor";
 
-class BerandaSurveyor extends Component {
+class PetaSurveyor extends Component {
   render() {
     return (
       <React.Fragment>
         <NavigasiSurveyor />
-        <KontenBerandaSurveyor />
+        <KontenPetaSurveyor />
       </React.Fragment>
     );
   }
 }
 
-export default connect("", actions)(withRouter(BerandaSurveyor));
+export default connect("", actions)(withRouter(PetaSurveyor));
