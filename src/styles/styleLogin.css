@@ -3,7 +3,7 @@
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: #d2dbe0;
+  background-color: #5b5f62;
 }
 
 .loginWrapper {
@@ -276,5 +276,16 @@ input[type="submit"] {
     height: 25px;
     cursor: pointer;
   }
+}
 
+@media (max-width: 414px) {
+  #loginFormContent {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 375px) {
+  #loginFormContent {
+    margin-top: 50px;
+  }
 }

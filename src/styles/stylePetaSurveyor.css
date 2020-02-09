@@ -1,5 +1,9 @@
 /* Style untuk tampilan navbar officer */
 
+body {
+  background-color: white;
+}
+
 .judulMapsHomeSurveyor {
   text-align: center;
   font-size: 24px;
@@ -98,6 +102,48 @@
   }
 
   .kontenPetaSurveyor {
-    padding-top: 68px;
+    padding-top: 58px;
+    padding-bottom: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .judulMapsHomeSurveyor {
+    font-size: 18px;
+    padding-bottom: 0px;
+  }
+
+  .leaflet-container {
+    height: 300px;
+    width: 100%;
+  }
+
+  .legendBagianMarker {
+    width: 20%;
+    padding-right: 11px;
+  }
+
+  .kalimatLegend {
+    text-align: left;
+    width: 80%;
+    padding-left: 0px;
+  }
+
+  .pembatasMarker {
+    margin-bottom: 40px;
+  }
+
+  .markerLegend {
+    width: 40px;
+    height: 40px;
+  }
+
+  .kontenPetaSurveyor {
+    padding-top: 58px;
+    padding-bottom: 0px;
+  }
+
+  .legend {
+    margin-top: 40px;
   }
 }

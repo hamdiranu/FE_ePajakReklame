@@ -1,5 +1,9 @@
 /* Style untuk tampilan navbar officer */
 
+body {
+  background-color: white;
+}
+
 .navigasiUserName {
   font-size: 20px;
 }

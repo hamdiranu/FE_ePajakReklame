@@ -1,5 +1,9 @@
 /* Style untuk tampilan home officer  */
 
+body {
+  background-color: white;
+}
+
 .kontenBerandaOfficer {
   margin-top: 0px;
   background-color: white;
@@ -229,14 +233,14 @@
 }
 
 .pelanggaran p {
-  margin-bottom:0 ;
+  margin-bottom: 0;
 }
-.pagination{
+.pagination {
   margin-bottom: 0;
   margin-left: auto;
   display: table;
 }
-.pagination li{
+.pagination li {
   display: inline-block;
 }
 
