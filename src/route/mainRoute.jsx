@@ -20,7 +20,7 @@ const MainRoute = () => {
           <Route exact path="/officer/home" component={BerandaOfficer} />
           <Route
             exact
-            path="/officer/daftar-kode-QR"
+            path="/officer/daftar-kode-QR/:id"
             component={DaftarKodeQrOfficer}
           />
           <Route exact path="/surveyor/home" component={BerandaSurveyor} />
