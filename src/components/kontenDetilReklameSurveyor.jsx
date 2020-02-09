@@ -217,7 +217,7 @@ class KontenBerandaOfficer extends React.Component {
         )}
         <div className="checkSnackBar">
           <ReactSnackBar Icon={<AiFillCheckCircle />} Show={this.props.show}>
-            Sukses scan, status telah berubah!
+            Sukses, status telah berubah!
           </ReactSnackBar>
         </div>
       </div>

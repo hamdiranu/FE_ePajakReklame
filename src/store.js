@@ -36,7 +36,6 @@ const initialState = {
   listKodeQRUntukUnduh: [],
   idKodeQR : "",
   catatanPelanggaran: "",
-  statusShowPassword: false,
   dataOfficer: {},
   dataBuktiPembayaranOfficer: [],
   pageBuktiPembayaran : 1,

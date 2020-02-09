@@ -34,6 +34,7 @@ class KontenBerandaOfficer extends React.Component {
           icon: "warning",
           button: "Ok!"
         });
+        store.setState({ validasiKodeQR: false });  
       } else {
         this.props.history.push(
           `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
