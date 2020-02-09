@@ -16,11 +16,13 @@ class KontenBerandaOfficer extends React.Component {
     await this.props.postGenerateQR(id);
     await this.props.history.replace("/officer/daftar-kode-QR/"+id);
   };
-
+  
   handleTambahData = async () => {
-    await this.props.postBuktiPembayaran();
-    await this.props.getDataBuktiPembayaranOfficer();
-    await this.props.history.replace("/officer/home");  
+      await this.props.postBuktiPembayaran()
+      if (this.props.berhasilTambahData){
+        await this.props.getDataBuktiPembayaranOfficer();
+        await this.props.history.replace("/officer/home");  
+    }
   }
 
   render() {
@@ -62,7 +64,8 @@ class KontenBerandaOfficer extends React.Component {
                                   class="form-control" 
                                   name="jumlahReklame" 
                                   placeholder="Masukkan jumlah reklame"
-                                  onChange={e => this.props.handleInput(e)} 
+                                  onChange={e => this.props.handleInput(e)}
+                                  pattern="[0-9].{0,}" 
                                   id="jumlahReklame" 
                                   required
                                 />
@@ -72,7 +75,8 @@ class KontenBerandaOfficer extends React.Component {
                                 type="submit" 
                                 style={{width:"50%", marginTop:"20px"}} 
                                 onClick={() => this.handleTambahData()} 
-                                class="btn btn-primary">
+                                class="btn btn-primary"
+                              >
                                 Tambah Data
                               </button>
                             </div>
@@ -280,5 +284,5 @@ class KontenBerandaOfficer extends React.Component {
   }
 }
 
-export default connect("dataBuktiPembayaranOfficer, pageBuktiPembayaran, maksPageBuktiPembayaran, kataKunci",
+export default connect("dataBuktiPembayaranOfficer, pageBuktiPembayaran, maksPageBuktiPembayaran, kataKunci, berhasilTambahData",
   actions)(withRouter(KontenBerandaOfficer));
