@@ -107,6 +107,20 @@ body {
   }
 }
 
+@media (max-width: 414px) {
+  .pembatasMarker {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 411px) {
+  .pembatasMarker {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 375px) {
   .judulMapsHomeSurveyor {
     font-size: 18px;
@@ -130,7 +144,8 @@ body {
   }
 
   .pembatasMarker {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    margin-top: 0px;
   }
 
   .markerLegend {
@@ -144,6 +159,37 @@ body {
   }
 
   .legend {
-    margin-top: 40px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .legend {
+    margin-top: 24px;
+  }
+
+  .pembatasMarker {
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 320px) {
+  .legend {
+    margin-top: 15px;
+  }
+
+  .pembatasMarker {
+    margin-bottom: 15px;
+    margin-top: 0px;
+  }
+
+  .kalimatLegend {
+    font-size: 15px;
+  }
+
+  .markerLegend {
+    width: 30px;
+    height: 30px;
   }
 }
