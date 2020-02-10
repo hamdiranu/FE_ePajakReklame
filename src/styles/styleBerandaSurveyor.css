@@ -89,6 +89,13 @@ body {
   }
 }
 
+@media (max-width: 411px) {
+  .gifScanner {
+    width: 230px;
+    padding-top: 20px;
+  }
+}
+
 @media (max-width: 375px) {
   .kotakScannerQr {
     height: 290px;
@@ -96,7 +103,7 @@ body {
 
   .kotakKalimatPetunjuk {
     margin-top: 10px;
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .gifScanner {
@@ -118,5 +125,16 @@ body {
 
   .kotakScannerQr {
     width: 85%;
+  }
+}
+
+@media (max-width: 320px) {
+  .kotakScannerQr {
+    height: 247px;
+  }
+
+  .gifScanner {
+    width: 145px;
+    padding-top: 10px;
   }
 }

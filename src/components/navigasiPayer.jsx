@@ -4,6 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FiFilePlus } from "react-icons/fi";
 
+// Kelas untuk Komponen Navigasi Payer
 class NavigasiPayer extends React.Component {
   logOutPayer = async () => {
     this.props.handleLogOut();
