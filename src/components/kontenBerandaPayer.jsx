@@ -5,6 +5,7 @@ import { actions } from "../store";
 import { Form } from "react-bootstrap";
 import logoPerusahaan from "../images/building.png";
 
+// Kelas untuk Komponen Halaman Beranda Payer
 class KontenBerandaPayer extends React.Component {
   componentDidMount = () => {
     this.props.getDaftarLaporan();
@@ -123,10 +124,7 @@ class KontenBerandaPayer extends React.Component {
                       {laporan.objek_pajak.masa_pajak}
                     </div>
                     <div class="col-4 col-sm order-sm-6 detilLaporan dt-right">
-                      <Link
-                        to={`/payer/detil-laporan/${laporan.laporan.id}`}
-                        onClick={this.props.setPageKodeQR}
-                      >
+                      <Link to={`/payer/detil-laporan/${laporan.laporan.id}`}>
                         Lihat Detail
                       </Link>
                     </div>
