@@ -11,7 +11,7 @@ import swal from "sweetalert";
 
 class Login extends Component {
   loginUser = async () => {
-    store.setState({formValid:false})
+    store.setState({ formValid: false });
     if (this.props.formOfficer === false) {
       const self = this;
       const req = {
@@ -35,7 +35,7 @@ class Login extends Component {
           }
         })
         .catch(function(error) {
-          store.setState({loginError: true})
+          store.setState({ loginError: true });
           self.props.history.push("/login");
           console.log("Maaf, NPWPD/PIN Tidak Ditemukan");
         });
@@ -66,7 +66,7 @@ class Login extends Component {
           }
         })
         .catch(function(error) {
-          store.setState({loginError: true})
+          store.setState({ loginError: true });
           self.props.history.push("/login");
           console.log("Maaf, NIP/PIN Tidak Ditemukan");
         });
@@ -74,21 +74,21 @@ class Login extends Component {
   };
 
   render() {
-    if (this.props.loginError === true){
-      if (this.props.formOfficer){
+    if (this.props.loginError === true) {
+      if (this.props.formOfficer) {
         swal({
           title: "Oops!",
           text: "NIP atau PIN Anda salah, silahkan input ulang!",
-          icon: "warning",
-        })
+          icon: "warning"
+        });
       } else {
         swal({
           title: "Oops!",
           text: "NPWPD atau PIN Anda salah, silahkan input ulang!",
-          icon: "warning",
-        })
+          icon: "warning"
+        });
       }
-      store.setState({loginError:false})  
+      store.setState({ loginError: false });
     }
 
     return (
@@ -114,11 +114,11 @@ class Login extends Component {
               as="select"
             >
               <option value="Payer">Wajib Pajak</option>
-              <option calue="officer">Petugas Pajak</option>
+              <option value="Officer">Petugas Pajak</option>
             </Form.Control>
           </div>
           {/* <!-- Login Form --> */}
-          <form onSubmit={(e) => e.preventDefault(e)}>
+          <form onSubmit={e => e.preventDefault(e)}>
             {this.props.formOfficer ? <FormLoginOfficer /> : <FormLoginPayer />}
             <input
               type="submit"

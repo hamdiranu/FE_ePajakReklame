@@ -9,6 +9,7 @@ import ReactSnackBar from "react-js-snackbar";
 import swal from "sweetalert";
 import gifLoading from "../images/loading11.gif";
 
+// Kelas untuk Komponen Halaman Peta Surveyor
 class KontenDetilReklameSurveyor extends React.Component {
   detilKeScan = () => {
     store.setState({ statusPageHomeSurveyor: true });

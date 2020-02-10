@@ -4,6 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaMapMarkedAlt, FaQrcode } from "react-icons/fa";
 
+// Kelas untuk Komponen Navigasi Surveyor
 class NavigasiSurveyor extends React.Component {
   logOutOfficer = async () => {
     this.props.handleLogOut();
