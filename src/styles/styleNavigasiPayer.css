@@ -12,12 +12,14 @@ body {
   text-align: center;
   border: 2px solid white;
   background-image: linear-gradient(to right, #e0770a, #d36808, #c94200);
+  transition: 0.4s;
   background-size: 100%;
 }
 
 .borderLogoTambahLaporan:hover {
   border: 2px solid white;
-  background-size: 200%;
+  background-size: 400%;
+  transition: 0.4s;
 }
 
 .borderLogoTambahLaporan svg {
@@ -34,10 +36,12 @@ body {
   color: white;
   background-size: 100%;
   font-size: 19px;
+  transition: 0.4s;
 }
 
 .tombolKeluarPayer:hover {
   background-size: 200%;
+  transition: 0.4s;
 }
 
 .judulHeaderPayer {

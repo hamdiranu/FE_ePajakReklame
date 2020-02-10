@@ -6,6 +6,7 @@ import QrReader from "react-qr-reader";
 import gifScanner from "../images/scan_qr_code2.gif";
 import swal from "sweetalert";
 
+// Kelas untuk Komponen Halaman Beranda Surveyor
 class KontenBerandaSurveyor extends React.Component {
   componentDidMount = () => {
     store.setState({ statusPageHomeSurveyor: true });
