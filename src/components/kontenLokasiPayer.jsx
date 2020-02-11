@@ -38,7 +38,7 @@ class KontenInputLokasiPayer extends React.Component {
   }
 
   goToObjekPajak = () => {
-    this.props.history.push("/payer/input-detil-objek-pajak");
+    this.props.history.push("/payer/input-detail-objek-pajak");
   };
 
   goToInputGambarPajak = () => {

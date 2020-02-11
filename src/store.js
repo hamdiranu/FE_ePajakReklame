@@ -71,7 +71,9 @@ const initialState = {
   ketinggianObjekPajak: "0",
   jumlahReklameObjekPajak: "0",
   letakPemasanganObjekPajak: "",
-  klasifikasiJalanObjekPajak: ""
+  klasifikasiJalanObjekPajak: "",
+  masaPajakBulan: "",
+  masaPajakTahun: ""
 };
 
 export const store = createStore(initialState);

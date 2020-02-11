@@ -29,9 +29,9 @@ class KontenInputGambarPayer extends React.Component {
                     onClick={e => this.props.handleInput(e)}
                     type="radio"
                     name="tipeReklame"
-                    value="insidentil"
+                    value="Non-Permanen"
                   />
-                  <label className="form-check-label">Insidentil</label>
+                  <label className="form-check-label">Non-Permanen</label>
                 </div>
                 <div className="form-check form-check-inline jarakRadioButton">
                   <input

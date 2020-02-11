@@ -1,0 +1,105 @@
+/* Style untuk tampilan navbar officer */
+
+html,
+body {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.borderLogoTambahLaporan {
+  margin: auto;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  border: 2px solid white;
+  background-image: linear-gradient(to right, #e0770a, #d36808, #c94200);
+  transition: 0.4s;
+  background-size: 100%;
+}
+
+.borderLogoTambahLaporan:hover {
+  border: 2px solid white;
+  background-size: 400%;
+  transition: 0.4s;
+}
+
+.borderLogoTambahLaporan svg {
+  height: 30px;
+  width: 30px;
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  color: white;
+}
+
+.tombolKeluarPayer {
+  background-image: linear-gradient(to right, #78797e, #919297, #c2c3c5);
+  color: white;
+  background-size: 100%;
+  font-size: 19px;
+  transition: 0.4s;
+}
+
+.tombolKeluarPayer:hover {
+  background-size: 200%;
+  transition: 0.4s;
+}
+
+.judulHeaderObjekPajakPayer {
+  text-align: center;
+  font-size: 28px;
+}
+
+@media (max-width: 767px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 25px;
+    width: 60%;
+  }
+
+  .tombolKeluarPayer {
+    background-image: linear-gradient(
+      to right,
+      #505153,
+      #78797e,
+      #919297,
+      #c2c3c5
+    );
+    color: white;
+    background-size: 100%;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 414px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 21px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 411px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 360px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 320px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

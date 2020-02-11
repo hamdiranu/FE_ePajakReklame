@@ -11,7 +11,7 @@ class KontenInputGambarPayer extends React.Component {
   };
 
   goToInfoPajak = () => {
-    this.props.history.push("/payer/input-info-objek-pajak");
+    this.props.history.push("/payer/input-informasi-pajak");
   };
   render() {
     return (
