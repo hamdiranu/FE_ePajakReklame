@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi Payer
 class NavigasiPayer extends React.Component {
@@ -33,7 +33,7 @@ class NavigasiPayer extends React.Component {
               onClick={() => this.logOutPayer()}
               class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
             >
-              Log Out
+              <FaSignOutAlt />
             </span>
           </div>
         </nav>

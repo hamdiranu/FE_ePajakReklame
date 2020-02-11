@@ -1,14 +1,19 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi Payer
 class NavigasiPayer extends React.Component {
   logOutPayer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
+  };
+
+  goHomePayer = async () => {
+    this.props.handleLogOut();
+    this.props.history.replace("/payer/home");
   };
 
   render() {
@@ -18,22 +23,24 @@ class NavigasiPayer extends React.Component {
           className="navbar navbar-light bg-light navbarPayer "
           style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
-          <span class="navbar-brand" style={{ display: "flex" }}>
-            <div className="borderLogoTambahLaporan">
-              <Link to="/surveyor/peta" style={{ textDecoration: "none" }}>
-                <FaPlusCircle className="logoTambahLaporan" />
-              </Link>
-            </div>
-          </span>
-          <div>
-            <span className="judulHeaderPayer">Ambil Foto Reklame</span>
+          <div className="col-md-3 col-sm-3 kotakTombolHome">
+            <span
+              onClick={() => this.goHomePayer()}
+              class="btn btn-xs btn-outline-secondary tombolKeHomePayer"
+            >
+              <FaHome />
+            </span>
           </div>
-          <div class="text-right">
+
+          <div className="col-md-6 col-sm-11 judulHeaderObjekPajakPayer">
+            <span>Detail Objek Pajak</span>
+          </div>
+          <div class="col-md-3 col-sm-1 text-right kotakTombolLogOut">
             <span
               onClick={() => this.logOutPayer()}
               class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
             >
-              Log Out
+              <FaSignOutAlt />
             </span>
           </div>
         </nav>

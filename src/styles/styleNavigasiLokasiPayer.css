@@ -68,6 +68,8 @@ body {
 
 .tombolKeHomePayer:hover {
   border: 2px solid #00a608;
+  background-size: 200%;
+  transition: 0.4s;
 }
 
 .tombolKeHomePayer svg {
@@ -89,7 +91,7 @@ body {
   border: 1px solid white;
 }
 
-.judulHeaderPayer {
+.judulHeaderLokasiPayer {
   font-size: 28px;
   text-align: center;
 }
@@ -97,9 +99,10 @@ body {
 @media (max-width: 767px) {
   .kotakTombolHome {
     width: 20%;
+    padding-left: 0px;
   }
 
-  .judulHeaderPayer {
+  .judulHeaderLokasiPayer {
     font-size: 25px;
     width: 60%;
     text-align: center;
@@ -135,21 +138,29 @@ body {
 }
 
 @media (max-width: 414px) {
-  .judulHeaderPayer {
+  .judulHeaderLokasiPayer {
     font-size: 18px;
     font-weight: 600;
   }
 }
 
 @media (max-width: 411px) {
-  .judulHeaderPayer {
+  .judulHeaderLokasiPayer {
     font-size: 16px;
     font-weight: 600;
   }
 }
 
+@media (max-width: 375px) {
+  .judulHeaderLokasiPayer {
+    font-size: 17px;
+    font-weight: 600;
+    padding-right: 0px;
+  }
+}
+
 @media (max-width: 360px) {
-  .judulHeaderPayer {
+  .judulHeaderLokasiPayer {
     font-size: 16px;
     font-weight: 600;
     padding-right: 0px;
@@ -157,7 +168,7 @@ body {
 }
 
 @media (max-width: 320px) {
-  .judulHeaderPayer {
+  .judulHeaderLokasiPayer {
     font-size: 14px;
     font-weight: 600;
   }

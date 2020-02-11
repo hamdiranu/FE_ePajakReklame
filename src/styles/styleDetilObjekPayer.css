@@ -11,17 +11,170 @@ body {
   background-color: white;
 }
 
-@media (max-width: 767px) {
+.kontenInputDetailObjek {
+  padding-top: 100px;
+}
+
+.juduKontenDetailObjekPajak {
+  border-bottom: 2px solid grey;
+  width: fit-content;
+  margin-bottom: 40px;
+  padding-bottom: 5px;
+}
+
+.inputDetailObjekPajak {
+  margin-bottom: 35px;
+}
+
+.kotakInputLokasi {
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.input-group-text {
+  padding: 3px 3px;
+}
+
+.jarakButton {
+  margin-right: 30px;
+}
+
+.rowButtonDetail {
+  display: flex;
+  margin-left: 471px;
+  margin-top: 15px;
+}
+
+.kotakLuas {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  height: 38px;
+  padding: 6px 10px;
+}
+
+@media (max-width: 1024px) {
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 380px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .juduKontenDetailObjekPajak {
+    border-bottom: 2px solid grey;
+    width: fit-content;
+    margin-bottom: 35px;
+    padding-bottom: 5px;
+  }
+
+  .colKotakFormInput {
+    height: 445px;
+  }
+
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 88%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 80%;
+  }
+
+  .inputDetailObjekPajak {
+    margin-bottom: 35px;
+  }
+
+  .kotakInputLokasi {
+    display: flex;
+    margin-bottom: 35px;
+  }
+
+  .kotakMaps {
+    margin-top: 5px;
+  }
+
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 260px;
+    margin-bottom: 40px;
+    margin-top: 0px;
+  }
 }
 
 @media (max-width: 414px) {
+  .judulHeaderPayer {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 0px;
+  }
+
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 89%;
+  }
+
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 110px;
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 411px) {
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 89%;
+  }
+
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 110px;
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 375px) {
+  .judulHeaderPayer {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 0px;
+  }
+
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 93px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 85px;
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 320px) {
+  .kontenInputDetailObjek {
+    padding-top: 85px;
+  }
+
+  .rowButtonDetail {
+    display: flex;
+    margin-left: 60px;
+    margin-bottom: 40px;
+  }
 }

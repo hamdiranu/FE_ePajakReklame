@@ -54,7 +54,24 @@ const initialState = {
   daftarLaporanPayer: [],
   payerInfo: "",
   filterByDaftarLaporan: "semua",
-  tipeReklame: ""
+  tipeReklame: "",
+  namaObjekPajak: "",
+  showInputLocation: "flex",
+  latitudeInputDefault: -7.9744,
+  longitudeInputDefault: 112.6328,
+  zoomPetaDefault: 11,
+  judulObjekPajak: "",
+  jenisObjekPajak: "",
+  tarifTambahan: "",
+  sudutPandang: "",
+  panjangObjekPajak: "0",
+  lebarObjekPajak: "0",
+  luasObjekPajak: "0",
+  mukaObjekPajak: "0",
+  ketinggianObjekPajak: "0",
+  jumlahReklameObjekPajak: "0",
+  letakPemasanganObjekPajak: "",
+  klasifikasiJalanObjekPajak: ""
 };
 
 export const store = createStore(initialState);

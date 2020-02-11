@@ -11,17 +11,254 @@ body {
   background-color: white;
 }
 
-@media (max-width: 767px) {
+.kontenInputLokasiPayer {
+  padding-top: 100px;
+}
+
+.judulKonetenLokasiPayer {
+  border-bottom: 2px solid grey;
+  width: fit-content;
+  margin-bottom: 50px;
+  padding-bottom: 5px;
+}
+
+.inputNamaObjekPajak {
+  margin-bottom: 50px;
+}
+
+.kotakInputLokasi {
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.input-group-text {
+  padding: 3px 3px;
+}
+
+.logoPeta {
+  width: 35px;
+  height: 31px;
+  margin-left: 0px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.sidebarStyle {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  background-color: #404040;
+  color: #ffffff;
+  z-index: 1 !important;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.mapContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.coordinates {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  display: none;
+}
+
+.markerLokasi {
+  position: absolute;
+  z-index: 3;
+  top: 41.5%;
+  left: 46.5%;
+}
+
+.markerLokasi svg {
+  width: 40px;
+  height: 40px;
+  color: #2565af;
+}
+
+.kotakMaps {
+  margin-top: 10px;
+}
+
+.colKotakInputLokasi {
+  height: 500px;
+}
+
+.colKotakFormInput {
+  height: 500px;
+}
+
+.mapboxgl-canvas-container canvas {
+  width: 570px;
+  height: 500px;
+}
+
+.barInputLokasi {
+  margin-top: 10px;
+  width: 88%;
+}
+
+.barInputNamaObjek {
+  margin-top: 10px;
+  width: 80%;
+}
+
+.keterananTambahanLokasi {
+  display: grid;
+  margin-bottom: 35px;
+}
+
+.jarakButton {
+  margin-right: 30px;
+}
+
+.rowButton {
+  display: flex;
+  padding-left: 145px;
+}
+
+@media (max-width: 768px) {
+  .markerLokasi {
+    position: absolute;
+    z-index: 3;
+    top: 44%;
+    left: 44.5%;
+  }
+
+  .judulKonetenLokasiPayer {
+    border-bottom: 2px solid grey;
+    width: fit-content;
+    margin-bottom: 35px;
+    padding-bottom: 5px;
+  }
+
+  .colKotakFormInput {
+    height: 445px;
+  }
+
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 88%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 80%;
+  }
+
+  .inputNamaObjekPajak {
+    margin-bottom: 35px;
+  }
+
+  .kotakInputLokasi {
+    display: flex;
+    margin-bottom: 35px;
+  }
+
+  .kotakMaps {
+    margin-top: 5px;
+  }
+
+  .rowButton {
+    display: flex;
+    padding-left: 60px;
+  }
 }
 
 @media (max-width: 414px) {
+  .judulHeaderPayer {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 0px;
+  }
+
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 89%;
+  }
+
+  .rowButton {
+    display: flex;
+    padding-left: 100px;
+  }
 }
 
 @media (max-width: 411px) {
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 89%;
+  }
+
+  .rowButton {
+    display: flex;
+    padding-left: 100px;
+  }
 }
 
 @media (max-width: 375px) {
+  .judulHeaderPayer {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 0px;
+  }
+
+  .rowButton {
+    display: flex;
+    padding-left: 80px;
+  }
+}
+
+@media (max-width: 360px) {
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 87%;
+  }
 }
 
 @media (max-width: 320px) {
+  .kontenInputLokasiPayer {
+    padding-top: 85px;
+  }
+
+  .rowButton {
+    display: flex;
+    padding-left: 50px;
+  }
 }
