@@ -2,8 +2,7 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
-import { FiFilePlus } from "react-icons/fi";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi Payer
 class NavigasiPayer extends React.Component {
@@ -21,20 +20,20 @@ class NavigasiPayer extends React.Component {
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div className="borderLogoTambahLaporan">
-              <Link to="/payer/input-gambar" style={{ textDecoration: "none" }}>
-                <FiFilePlus className="logoTambahLaporan" />
+              <Link to="/surveyor/peta" style={{ textDecoration: "none" }}>
+                <FaPlusCircle className="logoTambahLaporan" />
               </Link>
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer">ePajak</span>
+            <span className="judulHeaderPayer">Ambil Foto Reklame</span>
           </div>
           <div class="text-right">
             <span
               onClick={() => this.logOutPayer()}
               class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
             >
-              <FaSignOutAlt />
+              Log Out
             </span>
           </div>
         </nav>

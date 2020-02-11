@@ -53,7 +53,8 @@ const initialState = {
   listLaporanPajakPayer: [],
   daftarLaporanPayer: [],
   payerInfo: "",
-  filterByDaftarLaporan: "semua"
+  filterByDaftarLaporan: "semua",
+  tipeReklame: ""
 };
 
 export const store = createStore(initialState);
