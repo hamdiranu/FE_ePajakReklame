@@ -1,6 +1,13 @@
 /* Style untuk tampilan home officer  */
 
+html,
 body {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
   background-color: white;
 }
 
@@ -85,14 +92,14 @@ body {
   }
 
   .borderLogoPerusahaan {
-    text-align: center;
+    text-align: end;
   }
 
   .infoPerusahaan {
     text-align: left;
     width: 65%;
     margin: auto;
-    padding-left: 0px;
+    padding-left: 10px;
   }
 
   .logoPerusahaan {
@@ -148,6 +155,10 @@ body {
 }
 
 @media (max-width: 360px) {
+  .borderLogoPerusahaan {
+    text-align: end;
+  }
+
   .statusLaporan {
     text-align: right;
     font-size: 11px;
@@ -174,7 +185,7 @@ body {
     text-align: left;
     width: 65%;
     margin: auto;
-    padding-left: 0px;
+    padding-left: 10px;
     padding-right: 0px;
   }
 }
@@ -206,7 +217,11 @@ body {
     text-align: left;
     width: 65%;
     margin: auto;
-    padding-left: 0px;
+    padding-left: 10px;
     padding-right: 0px;
+  }
+
+  .borderLogoPerusahaan {
+    text-align: end;
   }
 }

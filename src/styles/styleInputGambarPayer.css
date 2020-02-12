@@ -1,0 +1,220 @@
+/* Style untuk page input gambar reklame payer */
+
+html,
+body {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.kontenInputGambarPayer {
+  padding-top: 71px;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.kotakPreviewGambar {
+  text-align: center;
+}
+
+.isiKotakPreviewGambar {
+  border: 1px solid grey;
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  margin: auto;
+}
+
+.keteranganFoto {
+  padding-top: 160px;
+  font-size: 21px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.radioButtonJenisReklame {
+  margin: auto;
+  margin-top: 20px;
+}
+
+.jarakRadioButton {
+  padding-left: 60px;
+}
+
+.form-check-label {
+  padding-left: 10px;
+}
+
+.tombolLanjutkan {
+  margin: auto;
+  margin-top: 20px;
+  display: table;
+}
+
+@media (max-width: 767px) {
+  .infoInput {
+    border-top: 1px solid grey;
+    margin-top: 20px;
+    border-radius: 50px;
+  }
+
+  .bulletRadio {
+    width: 20px;
+    height: 20px;
+  }
+
+  .isiKotakPreviewGambar {
+    border: 1px solid grey;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 414px) {
+  .isiKotakPreviewGambar {
+    border: 1px solid grey;
+    text-align: center;
+    width: 335px;
+    height: 435px;
+    margin: auto;
+  }
+
+  .radioButtonJenisReklame {
+    margin: auto;
+    margin-top: 30px;
+  }
+
+  .tombolLanjutkan {
+    margin: auto;
+    margin-top: 30px;
+    display: table;
+  }
+
+  .form-check-label {
+    padding-left: 10px;
+    font-size: 20px;
+  }
+
+  .jarakRadioButton {
+    padding-left: 50px;
+  }
+
+  .keteranganFoto {
+    padding-top: 180px;
+  }
+}
+
+@media (max-width: 411px) {
+  .isiKotakPreviewGambar {
+    border: 1px solid grey;
+    text-align: center;
+    width: 350px;
+    height: 500px;
+    margin: auto;
+  }
+
+  .keteranganFoto {
+    padding-top: 210px;
+    font-size: 21px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .radioButtonJenisReklame {
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .tombolLanjutkan {
+    margin: auto;
+    margin-top: 15px;
+    display: table;
+  }
+
+  .form-check-label {
+    padding-left: 10px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .isiKotakPreviewGambar {
+    border: 1px solid grey;
+    text-align: center;
+    width: 325px;
+    height: 425px;
+    margin: auto;
+  }
+
+  .radioButtonJenisReklame {
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .keteranganFoto {
+    padding-top: 175px;
+  }
+
+  .tombolLanjutkan {
+    margin: auto;
+    margin-top: 20px;
+    display: table;
+  }
+
+  .form-check-label {
+    padding-left: 10px;
+    font-size: 16px;
+  }
+
+  .jarakRadioButton {
+    padding-left: 35px;
+  }
+}
+
+@media (max-width: 320px) {
+  .isiKotakPreviewGambar {
+    border: 1px solid grey;
+    text-align: center;
+    width: 280px;
+    height: 380px;
+    margin: auto;
+  }
+
+  .radioButtonJenisReklame {
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .tombolLanjutkan {
+    margin: auto;
+    margin-top: 10px;
+    display: table;
+  }
+
+  .form-check-label {
+    padding-left: 10px;
+    font-size: 16px;
+  }
+
+  .jarakRadioButton {
+    padding-left: 35px;
+  }
+
+  .infoInput {
+    margin-top: 10px;
+  }
+
+  .keteranganFoto {
+    padding-top: 160px;
+    font-size: 18px;
+  }
+}

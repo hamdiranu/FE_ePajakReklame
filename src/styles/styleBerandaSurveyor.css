@@ -1,6 +1,13 @@
 /* Style untuk tampilan home officer  */
 
+html,
 body {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
   background-color: white;
 }
 
@@ -89,9 +96,19 @@ body {
   }
 }
 
+@media (max-width: 414px) {
+  .kotakKalimatPetunjuk {
+    margin-top: 40px;
+  }
+}
+
 @media (max-width: 411px) {
+  .kotakKalimatPetunjuk {
+    margin-top: 30px;
+  }
+
   .gifScanner {
-    width: 230px;
+    width: 200px;
     padding-top: 20px;
   }
 }
@@ -108,7 +125,7 @@ body {
 
   .gifScanner {
     width: 165px;
-    padding-top: 20px;
+    padding-top: 15px;
   }
 
   .kontenBerandaSurveyor {
@@ -128,6 +145,21 @@ body {
   }
 }
 
+@media (max-width: 360px) {
+  .kotakScannerQr {
+    height: 247px;
+  }
+
+  .gifScanner {
+    width: 145px;
+    padding-top: 10px;
+  }
+
+  .kotakKalimatPetunjuk {
+    margin-top: 35px;
+  }
+}
+
 @media (max-width: 320px) {
   .kotakScannerQr {
     height: 247px;
@@ -136,5 +168,9 @@ body {
   .gifScanner {
     width: 145px;
     padding-top: 10px;
+  }
+
+  .kotakKalimatPetunjuk {
+    margin-top: 0px;
   }
 }
