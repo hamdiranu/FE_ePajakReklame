@@ -1,0 +1,17 @@
+.report-payer-gambar{
+    width:100%
+}
+@media (max-width: 767px) {
+    .button-detail-report{
+        font-size: 3vw;
+    }
+    .judul-detail-laporan{
+        font-size: 4vw;
+    }
+    .table-non-pdf{
+        font-size: 3vw;
+    }
+    .btn-primary{
+        font-size: 3vw;
+    }
+}

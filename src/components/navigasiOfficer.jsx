@@ -14,7 +14,7 @@ class NavigasiOfficer extends React.Component {
     return (
       <React.Fragment>
         <nav
-          className="navbar navbar-light bg-light "
+          className="navbar navbar-light bg-light px-5"
           style={{ position: "fixed", zIndex: "2", width: "100%" }}
         >
           <span class="navbar-brand" style={{ display: "flex" }}>

@@ -1,4 +1,11 @@
+html,
 body {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
   background-color: white;
 }
 
@@ -21,4 +28,15 @@ body {
 .modal-kode-qr p:hover {
   color: rgb(42, 1, 119);
   text-decoration: underline;
+}
+.nama-wp{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.no-sspd{
+  font-size: 12px;
+}
+.buttonUnduhSemuaQR{
+  text-align: left !important;
+  vertical-align: center;
 }

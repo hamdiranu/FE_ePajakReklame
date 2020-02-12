@@ -48,7 +48,6 @@ class DaftarKodeQrOfficer extends Component {
   componentDidMount = async () => {
     if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "officer"){
       await this.props.history.push("/login");
-      console.warn("ini dari didmount", localStorage.getItem("token"))
     } else {
       await store.setState({buktiPembayaranID:this.props.match.params.id});
       await this.props.getListKodeQR(this.props.pageKodeQR);
@@ -77,7 +76,7 @@ class DaftarKodeQrOfficer extends Component {
         );
       });
     };
-    const nama_file_semua_kodeqr = `KodeQR-SSPD-${daftarKodeQR.nomor_sspd}.pdf`;
+    const namaFileSemuaKodeQR = `KodeQR-SSPD-${daftarKodeQR.nomor_sspd}.pdf`;
     const styles = StyleSheet.create({
       page: {
           backgroundColor: "#ffffff"
@@ -237,23 +236,23 @@ class DaftarKodeQrOfficer extends Component {
               <div className="col-md-3" style={{ margin: "auto" }}>
                 <div className="row">
                   <div className="col-md-12 col-sm-4 tombolDownloadSemuaQr">
-                    <div style={{ margin: "auto" }}>
-                      <span>Unduh semua kode QR : </span>
+                    <div style={{textAlign:"left", fontSize:"16px"}} className="mr-2">
+                      <span>Unduh semua QR</span>
                     </div>
-                    <div>
+                    <div className="buttonUnduhSemuaQR">
                       {listKodeQRUntukUnduh ?
                         <PDFDownloadLink
-                          document={<PdfDocument data={listKodeQRUntukUnduh} />}
-                          fileName={nama_file_semua_kodeqr}
+                          document={<PdfDocument data={listKodeQRUntukUnduh} nomor_sspd={daftarKodeQR.nomor_sspd} />}
+                          fileName={namaFileSemuaKodeQR}
                           style={{
                             textDecoration: "none",
-                            padding: "10px",
+                            padding: "8px",
                             color: "#ffffff",
                             backgroundColor: "#007BFF",
                             border: "1px solid #007BFF",
                             borderRadius: "5px",
                             width: "fit-content",
-                            textAlign: "center",                            
+                            textAlign: "center",                        
                           }}
                         >
                           {({ blob, url, loading, error }) =>
@@ -286,7 +285,7 @@ class DaftarKodeQrOfficer extends Component {
                         <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
                           {item.id}
                         </div>
-                        <div className="col-7 col-sm order-sm-2 nama-wp dt-title">
+                        <div className="col-10 col-sm order-sm-2 nama-wp dt-title">
                           {item.kode_unik}
                         </div>
                         {item.status_scan===true ?
@@ -336,6 +335,11 @@ class DaftarKodeQrOfficer extends Component {
                         </button>
                       </li>
                     }
+                    <li className="page-item disabled">
+                      <button className="page-link" style={{color:"#232423"}}>
+                          Halaman {this.props.pageKodeQR}
+                      </button>
+                    </li>
                     {this.props.pageKodeQR === this.props.maksPageKodeQR ?
                       <li className="page-item disabled">
                         <button className="page-link">
