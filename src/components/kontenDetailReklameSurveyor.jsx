@@ -9,8 +9,8 @@ import ReactSnackBar from "react-js-snackbar";
 import swal from "sweetalert";
 import gifLoading from "../images/loading11.gif";
 
-// Kelas untuk Komponen Halaman Peta Surveyor
-class KontenDetilReklameSurveyor extends React.Component {
+// Kelas untuk Komponen Halaman Detail Reklame Surveyor
+class KontenDetailReklameSurveyor extends React.Component {
   detilKeScan = () => {
     store.setState({ statusPageHomeSurveyor: true });
     this.props.history.push("/surveyor/home");
@@ -229,4 +229,4 @@ class KontenDetilReklameSurveyor extends React.Component {
 export default connect(
   "buktiPembayaranId, detilReklameSurveyor, statusGetDetilReklame, statusSuksesScan, showing, show, textAreaPelanggaran, statusPelanggaran, statusGagalScan",
   actions
-)(withRouter(KontenDetilReklameSurveyor));
+)(withRouter(KontenDetailReklameSurveyor));

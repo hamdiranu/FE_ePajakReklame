@@ -3,10 +3,8 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FiFilePlus } from "react-icons/fi";
-import { FaSignOutAlt } from "react-icons/fa";
 
-// Kelas untuk Komponen Navigasi Payer
-class NavigasiPayer extends React.Component {
+class NavigasiDetilLaporanPayer extends React.Component {
   logOutPayer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
@@ -21,7 +19,7 @@ class NavigasiPayer extends React.Component {
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div className="borderLogoTambahLaporan">
-              <Link to="/payer/input-gambar" style={{ textDecoration: "none" }}>
+              <Link to="/surveyor/peta" style={{ textDecoration: "none" }}>
                 <FiFilePlus className="logoTambahLaporan" />
               </Link>
             </div>
@@ -34,7 +32,7 @@ class NavigasiPayer extends React.Component {
               onClick={() => this.logOutPayer()}
               class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
             >
-              <FaSignOutAlt />
+              Log Out
             </span>
           </div>
         </nav>
@@ -46,4 +44,4 @@ class NavigasiPayer extends React.Component {
 export default connect(
   "statusPageHomeSurveyor",
   actions
-)(withRouter(NavigasiPayer));
+)(withRouter(NavigasiDetilLaporanPayer));
