@@ -10,7 +10,6 @@ import PetaSurveyor from "../pages/petaSurveyor";
 import DetailReklameSurveyor from "../pages/detailReklameSurveyor";
 import BerandaPayer from "../pages/berandaPayer";
 import DetilLaporanPayer from "../pages/detilLaporanPayer";
-import PelaporanPajak from "../pages/pelaporanPajak";
 import inputGambarPayer from "../pages/inputGambarPayer";
 import inputLokasiPayer from "../pages/inputLokasiPayer";
 import inputDetailObjekPayer from "../pages/inputDetailObjekPayer";
@@ -40,7 +39,6 @@ const MainRoute = () => {
           <Route exact path="/payer/home" component={BerandaPayer} />
           <Route exact path="/payer/peta" component={PetaPayer} />
           <Route exact path="/payer/detil-laporan/:id" component={DetilLaporanPayer} />
-          <Route exact path="/payer/pelaporan-pajak" component={PelaporanPajak} />
           <Route
             exact
             path="/payer/input-gambar"
