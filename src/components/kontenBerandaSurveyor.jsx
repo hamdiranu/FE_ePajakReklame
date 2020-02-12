@@ -38,7 +38,7 @@ class KontenBerandaSurveyor extends React.Component {
         store.setState({ validasiKodeQR: false });
       } else {
         this.props.history.push(
-          `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
+          `/surveyor/detail-reklame/${store.getState().buktiPembayaranId}`
         );
       }
     }
