@@ -50,7 +50,7 @@ const initialState = {
   nomorSSPDValid: true,
   jumlahReklameValid: true,
   berhasilTambahData: false,
-  laporanID: 1,
+  laporanID: 0,
   detilLaporan: {},
   detilObjekPajak : {},
   buktiPembayaranPayer : {},
