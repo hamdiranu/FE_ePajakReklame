@@ -73,7 +73,8 @@ const initialState = {
   loadingDetailObjek: true,
   jangkaWaktuPajak: "sesuatu",
   periodePemasangan: "",
-  periodePembongkaran: ""
+  periodePembongkaran: "",
+  listDataNota: ""
 };
 
 export const store = createStore(initialState);
@@ -491,6 +492,11 @@ export const actions = store => ({
     localStorage.removeItem("jangkaWaktuObjekPajak");
     localStorage.removeItem("tanggalPembongkaran");
     localStorage.removeItem("tanggalPemasangan");
+    localStorage.removeItem("fotoReklamePayer");
+    localStorage.removeItem("namaReklamePayer");
+    localStorage.removeItem("latitudeReklamePayer");
+    localStorage.removeItem("longitudeReklamePayer");
+    localStorage.removeItem("alamatReklamePayer");
     store.setState({ npwpd: "", nip: "", pin: "" });
   },
 
@@ -649,6 +655,50 @@ export const actions = store => ({
           loadingDetailObjek: false
         });
         console.log("cek response", response.data);
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  postInputPayer: state => {
+    axios
+      .post(
+        "https://alterratax.my.id/objek_pajak/payer",
+        {
+          foto: localStorage.getItem("fotoReklamePayer"),
+          tipe_reklame: localStorage.getItem("tipeReklamePayer"),
+          nama_reklame: localStorage.getItem("namaReklamePayer"),
+          latitude: localStorage.getItem("latitudeReklamePayer"),
+          longitude: localStorage.getItem("longitudeReklamePayer"),
+          lokasi: localStorage.getItem("alamatReklamePayer"),
+          judul_reklame: localStorage.getItem("judulObjekPajak"),
+          jenis_reklame: localStorage.getItem("jenisObjekPajak"),
+          tarif_tambahan: localStorage.getItem("tarifTambahan"),
+          sudut_pandang: localStorage.getItem("sudutPandang"),
+          panjang: localStorage.getItem("panjangObjekPajak"),
+          luas: localStorage.getItem("luasObjekPajak"),
+          lebar: localStorage.getItem("lebarObjekPajak"),
+          muka: localStorage.getItem("mukaObjekPajak"),
+          tinggi: localStorage.getItem("ketinggianObjekPajak"),
+          jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
+          letak_pemasangan: localStorage.getItem("letakPemasangan"),
+          klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
+          masa_pajak: `${localStorage.getItem("masaPajakBulan") +
+            localStorage.getItem("masaPajakTahun")}`,
+          tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
+          tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(response => {
+        store.setState({ listDataNota: response.data });
+        console.log("cek isi response nota", response.data);
       })
       .catch(error => {
         console.log("gagal axios");
