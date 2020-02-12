@@ -22,3 +22,14 @@ body {
   color: rgb(42, 1, 119);
   text-decoration: underline;
 }
+.nama-wp{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.no-sspd{
+  font-size: 12px;
+}
+.buttonUnduhSemuaQR{
+  text-align: left !important;
+  vertical-align: center;
+}

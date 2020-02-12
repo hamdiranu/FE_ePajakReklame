@@ -49,7 +49,11 @@ const initialState = {
   loginError: false,
   nomorSSPDValid: true,
   jumlahReklameValid: true,
-  berhasilTambahData: false
+  berhasilTambahData: false,
+  laporanID: 1,
+  detilLaporan: {},
+  detilObjekPajak : {},
+  buktiPembayaranPayer : {},
 };
 
 export const store = createStore(initialState);
@@ -461,4 +465,65 @@ export const actions = store => ({
     console.warn("cek valid", store.getState().nipValid, store.getState().pinValid)
     store.setState({formValid: (store.getState().nipValid || store.getState().npwpdValid) && store.getState().pinValid})
   },
+
+  // fungsi get detil laporan payer berdasarkan laporanID
+  getDetilLaporanPayer : async (state) => {
+    const req = {
+      method : "get",
+      url : `https://alterratax.my.id/laporan/payer/${state.laporanID}`,
+      headers : {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+    await axios(req)
+      .then(function(response){
+        store.setState({detilLaporan: response.data[0].laporan,
+          detilObjekPajak: response.data[0].objek_pajak,});
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+  },
+
+  //Fungsi untuk mengambil data bukti pembayaran oleh payer berdasarkan laporan_id
+  getBuktiPembayaranPayer: async (state, event) => {
+    const laporan_id = event;
+    const req = {
+      method: "get",    
+      url: `https://alterratax.my.id/bukti_pembayaran/payer/${laporan_id}`,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    };
+    const self = store;
+    await axios(req)
+      .then(function(response){
+        self.setState({ buktiPembayaranPayer: response.data.bukti_pembayaran,
+          buktiPembayaranID: response.data.bukti_pembayaran.id});
+        console.log(response.data);
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+  },
+
+  //Fungsi untuk mengambil list seluruh kode qr oleh payer
+  getSemuaListKodeQRPayer: async (state) => {
+    const req = {
+      method: "get",    
+      url: `https://alterratax.my.id/kode_qr/payer?rp=500&bukti_pembayaran_id=${state.buktiPembayaranID}`,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+    await axios(req)
+      .then(function(response){
+        store.setState({listKodeQRUntukUnduh: response.data.list_kode_qr});
+        console.log(response.data);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+  },
+
 });

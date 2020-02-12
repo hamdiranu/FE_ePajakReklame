@@ -259,6 +259,11 @@ class KontenBerandaOfficer extends React.Component {
                       </button>
                     </li>
                   }
+                  <li className="page-item disabled">
+                    <button className="page-link" style={{color:"#232423"}}>
+                        Halaman {this.props.pageBuktiPembayaran}
+                    </button>
+                  </li>
                   {this.props.pageBuktiPembayaran === this.props.maksPageBuktiPembayaran ?
                     <li className="page-item disabled">
                       <button className="page-link">

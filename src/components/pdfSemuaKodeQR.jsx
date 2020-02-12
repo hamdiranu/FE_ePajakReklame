@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
     image: {
         height: 250,
         width: 250,
+        alignItems: "center",
+        textAlign: "center",
         marginVertical: 70,
-        marginHorizontal: 100,
-        alignContent:"center"
+        marginHorizontal: 80,
     },
     movieTitle:{
         top: 20,
         fontSize: 14,
-        margin: 10,
         textAlign: "center"
     }
 });
@@ -40,7 +40,7 @@ export function PdfDocument(props) {
                     props.data.map((a, index) => {
                         return (
                             <View key={index} style={styles.movieContainer}>
-                                <Text style={styles.movieTitle}>E-Pajak{"\n"}ID : {a.id}</Text>
+                                <Text style={styles.movieTitle}>SIP-Rek!{"\n"}SSPD: {props.nomor_sspd}{"\n"}ID : {a.id}</Text>
                                 <Image
                                     style={styles.image}
                                     source={`${a.link_gambar}`}
