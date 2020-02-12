@@ -4,7 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaSignOutAlt, FaHome } from "react-icons/fa";
 
-// Kelas untuk Komponen Navigasi pada halaman input lokasi Payer
+// Kelas untuk Komponen Navigasi pada Halaman Input Lokasi Payer
 class NavigasiLokasiPayer extends React.Component {
   logOutPayer = async () => {
     this.props.handleLogOut();

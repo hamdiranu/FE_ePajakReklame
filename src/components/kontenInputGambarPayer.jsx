@@ -4,7 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Button } from "react-bootstrap";
 
-// Kelas untuk Komponen Halaman Beranda Payer
+// Kelas untuk Komponen Halaman Input Gambar Reklame Payer
 class KontenInputGambarPayer extends React.Component {
   gambarToMaps = () => {
     this.props.history.push("/payer/input-lokasi");

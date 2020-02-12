@@ -6,8 +6,8 @@ import { Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-// Kelas untuk Komponen Halaman Beranda Payer
-class KontenInputGambarPayer extends React.Component {
+// Kelas untuk Komponen Halaman Input Informasi Payer
+class KontenInformasiPajakPayer extends React.Component {
   goToDetailObjekPajak = () => {
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
@@ -140,4 +140,4 @@ class KontenInputGambarPayer extends React.Component {
 export default connect(
   "PeriodeAwal, PeriodeAkhir",
   actions
-)(withRouter(KontenInputGambarPayer));
+)(withRouter(KontenInformasiPajakPayer));

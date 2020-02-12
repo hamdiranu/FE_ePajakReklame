@@ -4,7 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
 
-// Kelas untuk Komponen Navigasi Payer
+// Kelas untuk Komponen Navigasi pada Page Input Gambar Payer
 class NavigasiPayer extends React.Component {
   logOutPayer = async () => {
     this.props.handleLogOut();

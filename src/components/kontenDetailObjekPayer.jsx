@@ -4,8 +4,8 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Button, FormControl } from "react-bootstrap";
 
-// Kelas untuk Komponen Halaman Beranda Payer
-class KontenInputGambarPayer extends React.Component {
+// Kelas untuk Komponen Halaman Input Detail Objek Pajak Payer
+class KontenDetailPajakPayer extends React.Component {
   goToLokasiPajak = () => {
     this.props.history.push("/payer/input-lokasi");
   };
@@ -199,4 +199,4 @@ class KontenInputGambarPayer extends React.Component {
 export default connect(
   "luasObjekPajak",
   actions
-)(withRouter(KontenInputGambarPayer));
+)(withRouter(KontenDetailPajakPayer));
