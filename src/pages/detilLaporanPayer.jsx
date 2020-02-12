@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/styleNavigasiSurveyor.css";
-import "../styles/styleDetilReklameSurveyor.css";
+// import "../styles/styleDetilReklameSurveyor.css";
 import "../styles/styleDetilLaporanPayer.css"
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";

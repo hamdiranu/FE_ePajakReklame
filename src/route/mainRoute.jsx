@@ -37,7 +37,6 @@ const MainRoute = () => {
             component={DetailReklameSurveyor}
           />
           <Route exact path="/payer/home" component={BerandaPayer} />
-          <Route exact path="/payer/peta" component={PetaPayer} />
           <Route exact path="/payer/detil-laporan/:id" component={DetilLaporanPayer} />
           <Route
             exact
