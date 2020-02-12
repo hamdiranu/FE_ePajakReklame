@@ -73,7 +73,9 @@ const initialState = {
   letakPemasanganObjekPajak: "",
   klasifikasiJalanObjekPajak: "",
   masaPajakBulan: "",
-  masaPajakTahun: ""
+  masaPajakTahun: "",
+  PeriodeAwal: "",
+  PeriodeAkhir: ""
 };
 
 export const store = createStore(initialState);

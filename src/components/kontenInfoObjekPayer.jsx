@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
-import { actions } from "../store";
+import { actions, store } from "../store";
 import { Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -16,14 +16,18 @@ class KontenInputGambarPayer extends React.Component {
     this.props.history.push("/payer/nota-pajak");
   };
 
-  state = {
-    startDate: new Date()
+  handleChangeAwal = date => {
+    store.setState({
+      PeriodeAwal: date
+    });
+    console.log("cek periode awal", date);
   };
 
-  handleChange = date => {
-    this.setState({
-      startDate: date
+  handleChangeAkhir = date => {
+    store.setState({
+      PeriodeAkhir: date
     });
+    console.log("cek periode akhir", date);
   };
 
   render() {
@@ -96,8 +100,8 @@ class KontenInputGambarPayer extends React.Component {
               <div className="container-fluid" style={{ display: "flex" }}>
                 <div className="col-5 mulaiPeriode">
                   <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.handleChange}
+                    selected={this.props.PeriodeAwal}
+                    onChange={this.handleChangeAwal}
                   />
                 </div>
                 <div className="col-2 hingga">
@@ -105,8 +109,8 @@ class KontenInputGambarPayer extends React.Component {
                 </div>
                 <div className="col-5 akhirPeriode">
                   <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.handleChange}
+                    selected={this.props.PeriodeAkhir}
+                    onChange={this.handleChangeAkhir}
                   />
                 </div>
               </div>
@@ -133,4 +137,7 @@ class KontenInputGambarPayer extends React.Component {
   }
 }
 
-export default connect("", actions)(withRouter(KontenInputGambarPayer));
+export default connect(
+  "PeriodeAwal, PeriodeAkhir",
+  actions
+)(withRouter(KontenInputGambarPayer));
