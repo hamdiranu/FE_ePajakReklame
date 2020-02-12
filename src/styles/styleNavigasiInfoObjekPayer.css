@@ -51,13 +51,15 @@ body {
   transition: 0.4s;
 }
 
-.judulHeaderPayer {
-  font-size: 30px;
+.judulHeaderObjekPajakPayer {
+  text-align: center;
+  font-size: 28px;
 }
 
 @media (max-width: 767px) {
-  .judulHeaderPayer {
+  .judulHeaderObjekPajakPayer {
     font-size: 25px;
+    width: 60%;
   }
 
   .tombolKeluarPayer {
@@ -71,5 +73,33 @@ body {
     color: white;
     background-size: 100%;
     font-size: 15px;
+  }
+}
+
+@media (max-width: 414px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 21px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 411px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 360px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 320px) {
+  .judulHeaderObjekPajakPayer {
+    font-size: 14px;
+    font-weight: 600;
   }
 }

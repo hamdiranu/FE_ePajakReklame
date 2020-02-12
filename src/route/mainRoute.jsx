@@ -7,11 +7,14 @@ import BerandaOfficer from "../pages/berandaOfficer";
 import DaftarKodeQrOfficer from "../pages/daftarKodeQrOfficer";
 import BerandaSurveyor from "../pages/berandaSurveyor";
 import PetaSurveyor from "../pages/petaSurveyor";
-import DetilReklameSurveyor from "../pages/detilReklameSurveyor";
+import DetailReklameSurveyor from "../pages/detailReklameSurveyor";
 import BerandaPayer from "../pages/berandaPayer";
-import PetaPayer from "../pages/petaPayer";
 import DetilLaporanPayer from "../pages/detilLaporanPayer";
 import PelaporanPajak from "../pages/pelaporanPajak";
+import inputGambarPayer from "../pages/inputGambarPayer";
+import inputLokasiPayer from "../pages/inputLokasiPayer";
+import inputDetailObjekPayer from "../pages/inputDetailObjekPayer";
+import inputInfoObjekPayer from "../pages/inputInfoObjekPayer";
 
 const MainRoute = () => {
   return (
@@ -31,14 +34,33 @@ const MainRoute = () => {
           <Route exact path="/surveyor/peta" component={PetaSurveyor} />
           <Route
             exact
-            path="/surveyor/detil-reklame/:id"
-            component={DetilReklameSurveyor}
+            path="/surveyor/detail-reklame/:id"
+            component={DetailReklameSurveyor}
           />
           <Route exact path="/payer/home" component={BerandaPayer} />
           <Route exact path="/payer/peta" component={PetaPayer} />
           <Route exact path="/payer/detil-laporan/:id" component={DetilLaporanPayer} />
-          <Route exact path="/payer/peta" component={PetaPayer} />
           <Route exact path="/payer/pelaporan-pajak" component={PelaporanPajak} />
+          <Route
+            exact
+            path="/payer/input-gambar"
+            component={inputGambarPayer}
+          />
+          <Route
+            exact
+            path="/payer/input-lokasi"
+            component={inputLokasiPayer}
+          />
+          <Route
+            exact
+            path="/payer/input-detail-objek-pajak"
+            component={inputDetailObjekPayer}
+          />
+          <Route
+            exact
+            path="/payer/input-informasi-pajak"
+            component={inputInfoObjekPayer}
+          />
           {/* <Route component={NotMatch} /> */}
         </Switch>
       </BrowserRouter>

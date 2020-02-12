@@ -8,6 +8,7 @@ import { actions, store } from "../store";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
+// Kelas untuk Komponen Halaman Peta Surveyor
 class KontenPetaSurveyor extends React.Component {
   componentDidMount = () => {
     store.setState({ statusPageHomeSurveyor: false });

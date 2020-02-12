@@ -4,6 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+// Kelas untuk Komponen Halaman Login Payer
 class LoginPayer extends React.Component {
   render() {
     return (
@@ -26,9 +27,11 @@ class LoginPayer extends React.Component {
             placeholder="Input NPWP"
             onChange={e => this.props.handleInputLogin(e)}
           />
-          {this.props.npwpdValid || this.props.npwpd === ""
-          ? <span></span>
-          : <span className='loginError'>NPWPD tidak sesuai ketentuan</span>}
+          {this.props.npwpdValid || this.props.npwpd === "" ? (
+            <span></span>
+          ) : (
+            <span className="loginError">NPWPD tidak sesuai ketentuan</span>
+          )}
         </div>
         <div
           className="col-sm-12"
@@ -54,10 +57,14 @@ class LoginPayer extends React.Component {
             ) : (
               <FaEyeSlash onClick={e => this.props.showPassword(e)} />
             )}
-            <br/>
-            {this.props.pinValid || this.props.pin === ""
-            ? <span></span>
-            : <span className='loginError'>PIN harus berupa angka dan minimal 8 karakter</span>}
+            <br />
+            {this.props.pinValid || this.props.pin === "" ? (
+              <span></span>
+            ) : (
+              <span className="loginError">
+                PIN harus berupa angka dan minimal 8 karakter
+              </span>
+            )}
           </div>
         </div>
       </React.Fragment>

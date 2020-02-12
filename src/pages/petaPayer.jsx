@@ -14,8 +14,8 @@ class PetaPayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lng: 112.62163667136366,
-      lat: -7.960512177966962,
+      lng: 112.621644,
+      lat: -7.960511,
       zoom: 18
     };
   }

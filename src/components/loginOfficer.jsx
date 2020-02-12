@@ -4,6 +4,7 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+// Kelas untuk Komponen Halaman Login Officer & Surveyor
 class LoginOfficer extends React.Component {
   render() {
     return (
@@ -26,9 +27,11 @@ class LoginOfficer extends React.Component {
             placeholder="Input NIP"
             onChange={e => this.props.handleInputLogin(e)}
           />
-          {this.props.nipValid || this.props.nip === ""
-          ? <span></span>
-          : <span className='loginError'>NIP tidak sesuai ketentuan</span>}
+          {this.props.nipValid || this.props.nip === "" ? (
+            <span></span>
+          ) : (
+            <span className="loginError">NIP tidak sesuai ketentuan</span>
+          )}
         </div>
         <div
           className="col-sm-12"
@@ -54,10 +57,14 @@ class LoginOfficer extends React.Component {
             ) : (
               <FaEyeSlash onClick={e => this.props.showPassword(e)} />
             )}
-            <br/>
-            {this.props.pinValid || this.props.pin === ""
-            ? <span></span>
-            : <span className='loginError'>PIN harus berupa angka dan minimal 8 karakter</span>}
+            <br />
+            {this.props.pinValid || this.props.pin === "" ? (
+              <span></span>
+            ) : (
+              <span className="loginError">
+                PIN harus berupa angka dan minimal 8 karakter
+              </span>
+            )}
           </div>
         </div>
       </React.Fragment>

@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    Page,
-    Text,
-    View,
-    Document,
-    StyleSheet,
-    Image
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  Image
 } from "@react-pdf/renderer";
 const styles = StyleSheet.create({
     page: {
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     }
 });
 
+// Fungsi untuk membuat halaman pdf (semua kode QR) pada page Officer
 export function PdfDocument(props) {
     return (
         <Document>

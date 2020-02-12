@@ -3,6 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 
+// Kelas untuk Komponen Navigasi Officer
 class NavigasiOfficer extends React.Component {
   logOutOfficer = async () => {
     this.props.handleLogOut();
@@ -18,7 +19,11 @@ class NavigasiOfficer extends React.Component {
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div style={{ margin: "auto" }}>
-              <Link to="/officer/home" style={{ textDecoration: "none" }} onClick={e => this.props.getDataBuktiPembayaranOfficer(1)}>
+              <Link
+                to="/officer/home"
+                style={{ textDecoration: "none" }}
+                onClick={e => this.props.getDataBuktiPembayaranOfficer(1)}
+              >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/5/57/Kab_Bandung_Barat.svg"
                   width="40"
@@ -34,7 +39,9 @@ class NavigasiOfficer extends React.Component {
             </div>
           </span>
           <div class="text-right">
-            <div class="navigasiUserName">Halo, {this.props.dataOfficer.nama}</div>
+            <div class="navigasiUserName">
+              Halo, {this.props.dataOfficer.nama}
+            </div>
             <span
               onClick={() => this.logOutOfficer()}
               class="btn btn-xs btn-outline-secondary tombolKeluar"
