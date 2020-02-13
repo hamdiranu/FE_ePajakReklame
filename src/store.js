@@ -740,7 +740,7 @@ export const actions = store => ({
       .catch(error => {
         console.log("gagal axios");
       });
-  }
+  },
 
   //Fungsi untuk convert fileGambar ke url base64
   setFotoKeURL: async (state) => {

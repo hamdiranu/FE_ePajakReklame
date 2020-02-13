@@ -9,7 +9,6 @@ import gifLoading from "../images/loading11.gif";
 class KontenDetailPajakPayer extends React.Component {
   componentDidMount = async () => {
     await this.props.getListDropDownInput();
-    localStorage.setItem("tipeReklamePayer", "Permanen");
     if (localStorage.getItem("tipeReklamePayer") === "Reklame Non Permanen") {
       store.setState({
         listJenisReklame: [

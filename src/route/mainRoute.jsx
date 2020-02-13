@@ -10,11 +10,11 @@ import PetaSurveyor from "../pages/petaSurveyor";
 import DetailReklameSurveyor from "../pages/detailReklameSurveyor";
 import BerandaPayer from "../pages/berandaPayer";
 import DetilLaporanPayer from "../pages/detilLaporanPayer";
-import inputGambarPayer from "../pages/inputGambarPayer";
-import inputLokasiPayer from "../pages/inputLokasiPayer";
+import InputGambarPayer from "../pages/inputGambarPayer";
+import InputLokasiPayer from "../pages/inputLokasiPayer";
 import inputLokasiPetaPayer from "../pages/inputLokasiPetaPayer";
-import inputDetailObjekPayer from "../pages/inputDetailObjekPayer";
-import inputInfoObjekPayer from "../pages/inputInfoObjekPayer";
+import InputDetailObjekPayer from "../pages/inputDetailObjekPayer";
+import InputInfoObjekPayer from "../pages/inputInfoObjekPayer";
 import NotaPajakPayer from "../pages/notaPajakPayer";
 
 const MainRoute = () => {
