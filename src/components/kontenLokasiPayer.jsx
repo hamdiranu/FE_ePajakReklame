@@ -5,39 +5,29 @@ import { actions, store } from "../store";
 import { FormControl, InputGroup, Button } from "react-bootstrap";
 import mapsLogo from "../images/mapsLogo.png";
 import mapboxgl from "mapbox-gl";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaSearch} from "react-icons/fa";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA";
 
 // Kelas untuk Komponen Halaman Input Lokasi Payer
 class KontenInputLokasiPayer extends React.Component {
-  componentDidMount() {
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [
-        this.props.longitudeInputDefault,
-        this.props.latitudeInputDefault
-      ],
-      zoom: this.props.zoomPetaDefault
-    });
 
-    map.on("move", () => {
-      store.setState({
-        longitudeInputDefault: map.getCenter().lng.toFixed(4),
-        latitudeInputDefault: map.getCenter().lat.toFixed(4),
-        zoomPetaDefault: map.getZoom().toFixed(2)
-      });
-      console.log(
-        "lat , long : ",
-        this.props.latitudeInputDefault,
-        this.props.longitudeInputDefault
-      );
-    });
+  showMaps = () => {
+    this.props.history.push("/payer/input-lokasi/peta")
+  }
+
+  handleSearchLokasi = async () => {
+    await this.props.searchLokasi();
+  };
+
+  handlePilihLokasi = async (koordinat) => {
+    this.props.history.push("/payer/input-lokasi/peta")
+
   }
 
   goToObjekPajak = () => {
+    localStorage.setItem("objekReklamePayer",this.props.namaObjekPajak)
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
 
@@ -45,35 +35,34 @@ class KontenInputLokasiPayer extends React.Component {
     this.props.history.push("/payer/input-gambar");
   };
 
-  showMaps = () => {
-    if (this.props.showInputLocation === "none") {
-      store.setState({ showInputLocation: "flex" });
-    } else {
-      store.setState({ showInputLocation: "none" });
-    }
-  };
   render() {
     return (
       <div className="container kontenInputLokasiPayer">
         <div className="row">
+          <div className="col-md-3 col-sm-12">
+          </div> 
           <div className="col-md-6 col-sm-12 colKotakFormInput">
-            <div className="judulKonetenLokasiPayer">
-              <span>LOKASI OBJEK PAJAK</span>
-            </div>
-            <div className="inputNamaObjekPajak">
+            <div className="row justify-content-center">
               <span>Nama Objek Pajak :</span>
+            </div>
+            <div className="row inputNamaObjekPajak justify-content-center">
               <FormControl
-                className="barInputLokasi"
+                className="barInputNamaObjek"
                 placeholder="Papan Nama Toko"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
                 name="namaObjekPajak"
+                value={this.props.namaObjekPajak}
                 onChange={e => this.props.handleInput(e)}
               />
             </div>
-            <div className="inputLokasiObjekPajak">
+            <div className="row justify-content-center">
               <span>Lokasi Objek Pajak :</span>
-              <div className="kotakInputLokasi">
+            </div>
+            <div className="row justify-content-center">
+              {localStorage.getItem("alamatReklamePayer") === null
+              ? <div></div>
+              : <span>{localStorage.getItem("alamatReklamePayer")}</span>
+              }
+              <div className="row kotakSearchLokasi">
                 <InputGroup.Prepend className="kotakMaps">
                   <InputGroup.Text id="basic-addon1 kotakLogoPeta">
                     <img
@@ -85,49 +74,52 @@ class KontenInputLokasiPayer extends React.Component {
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
-                  className="barInputNamaObjek"
+                  className="barInputLokasi"
                   placeholder="Input Lokasi Reklame"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  name="namaObjekPajak"
+                  name="kataKunciLokasi"
                   onChange={e => this.props.handleInput(e)}
                 />
+                <div className="iconSearchLokasi">
+                  <FaSearch onClick={() => this.handleSearchLokasi()}/>
+                </div>
               </div>
             </div>
-            <div className="keterananTambahanLokasi">
-              <span>Catatan :</span>
-              <span>
-                Pastikan titik pada peta sesuai dengan lokasi reklame yang
-                dilaporkan
-              </span>
+            {this.props.listRekomendasiLokasi.length === 0
+            ? <div></div>
+            : 
+            <div>
+              <div className="row justify-content-center">
+                <span>Hasil Pencarian</span>
+              </div>
+              <div className="row justify-content-center">
+                {this.props.listRekomendasiLokasi.map((item, index) => {
+                  return (
+                    <div className="barRekomendasiLokasi" 
+                    onClick={() => (
+                      store.setState({longitudeInputDefault:item.center[0], latitudeInputDefault:item.center[1]}),
+                      this.props.history.push("/payer/input-lokasi/peta"))
+                    }>
+                      <span>{item.place_name}</span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
-            <div className="rowButton">
-              <div className="jarakButton">
-                <Button
-                  style={{ backgroundColor: "red" }}
-                  onClick={() => this.goToInputGambarPajak()}
-                >
-                  Kembali
-                </Button>
-              </div>
-              <div>
-                <Button onClick={() => this.goToObjekPajak()}>Lanjutkan</Button>
-              </div>
+            }
+            <div className="row rowButton justify-content-center">
+              <Button
+                className="buttonKembali"
+                style={{ backgroundColor: "red" }}
+                onClick={() => this.goToInputGambarPajak()}
+              >
+                Kembali
+              </Button>
+              <Button onClick={() => this.goToObjekPajak()}>
+                Lanjutkan
+              </Button>
             </div>
           </div>
-          <div className="col-md-6 col-sm-12 colKotakInputLokasi">
-            <div
-              className="kotakInputLokasi"
-              style={{ display: this.props.showInputLocation }}
-            >
-              <div className="markerLokasi">
-                <FaMapMarkerAlt />
-              </div>
-              <div
-                ref={el => (this.mapContainer = el)}
-                className="mapContainer"
-              />
-            </div>
+          <div className="col-md-3 col-sm-12">
           </div>
         </div>
       </div>
@@ -136,6 +128,6 @@ class KontenInputLokasiPayer extends React.Component {
 }
 
 export default connect(
-  "showInputLocation, zoomPetaDefault, longitudeInputDefault, latitudeInputDefault",
+  "listRekomendasiLokasi, lokasiReklame, namaObjekPajak",
   actions
 )(withRouter(KontenInputLokasiPayer));

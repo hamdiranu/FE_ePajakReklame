@@ -11,6 +11,37 @@ body {
   background-color: white;
 }
 
+.judulPeriodeBerlaku {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.dropDownPeriodeAwal button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.dropDownPeriodeAkhir button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.dropDownPeriodeAkhir button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid #3079c3;
+  border-radius: 5px;
+}
+
+.rowInputTanggal {
+  display: contents;
+  margin: auto;
+}
+
 .kontenInputDetailObjek {
   padding-top: 100px;
 }
@@ -23,7 +54,7 @@ body {
 }
 
 .inputDetailObjekPajak {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .kotakInputLokasi {
@@ -47,6 +78,7 @@ body {
 
 .inputPeriodeObjekPajak {
   display: grid;
+  text-align: center;
 }
 
 .mulaiPeriode {
@@ -79,7 +111,7 @@ body {
 
 .hingga {
   margin: auto;
-  padding-left: 70px;
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
@@ -88,18 +120,39 @@ body {
     margin-left: 380px;
     margin-top: 35px;
   }
-
-  .hingga {
-    padding-left: 50px;
-  }
 }
 
 @media (max-width: 768px) {
+  .judulPeriodeBerlaku {
+    text-align: center;
+  }
+
   .juduKontenDetailObjekPajak {
     border-bottom: 2px solid grey;
     width: fit-content;
     margin-bottom: 35px;
     padding-bottom: 5px;
+  }
+
+  .rowInputTanggal {
+    display: contents;
+    margin: auto;
+  }
+
+  .dropDownPeriodeAwal .dropdown-menu {
+    left: -25px;
+  }
+
+  .dropDownPeriodeAkhir .dropdown-menu {
+    left: -200px;
+  }
+
+  .dropDownPeriodeAwal {
+    padding: 10px 0px;
+  }
+
+  .dropDownPeriodeAkhir {
+    padding: 10px 0px;
   }
 
   .colKotakFormInput {
@@ -134,10 +187,6 @@ body {
     margin-left: 260px;
     margin-top: 35px;
   }
-
-  .hingga {
-    padding-left: 35px;
-  }
 }
 
 @media (max-width: 414px) {
@@ -162,10 +211,6 @@ body {
     margin-left: 113px;
     margin-top: 35px;
   }
-
-  .hingga {
-    padding-left: 10px;
-  }
 }
 
 @media (max-width: 411px) {
@@ -181,12 +226,8 @@ body {
 
   .rowButtonInfo {
     display: flex;
-    margin-left: 112px;
+    margin-left: 115px;
     margin-top: 35px;
-  }
-
-  .hingga {
-    padding-left: 10px;
   }
 }
 
@@ -202,21 +243,13 @@ body {
     margin-left: 95px;
     margin-top: 35px;
   }
-
-  .hingga {
-    padding-left: 5px;
-  }
 }
 
 @media (max-width: 360px) {
   .rowButtonInfo {
     display: flex;
-    margin-left: 87px;
+    margin-left: 100px;
     margin-top: 35px;
-  }
-
-  .hingga {
-    padding-left: 5px;
   }
 }
 
@@ -227,12 +260,7 @@ body {
 
   .rowButtonInfo {
     display: flex;
-    margin-left: 66px;
+    margin-left: 85px;
     margin-top: 35px;
-  }
-
-  .hingga {
-    padding-left: 3px;
-    font-size: 14px;
   }
 }

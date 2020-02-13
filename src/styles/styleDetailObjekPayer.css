@@ -11,6 +11,24 @@ body {
   background-color: white;
 }
 
+.gifLoading {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.colKiri {
+  padding-left: 0px;
+}
+
+.colKanan {
+  padding-right: 0px;
+}
+
+.kotakMeter {
+  width: 38px;
+  padding: 3px 11px;
+}
+
 .kontenInputDetailObjek {
   padding-top: 100px;
 }
@@ -31,10 +49,6 @@ body {
   margin-bottom: 35px;
 }
 
-.input-group-text {
-  padding: 3px 3px;
-}
-
 .jarakButton {
   margin-right: 30px;
 }
@@ -52,11 +66,23 @@ body {
   padding: 6px 10px;
 }
 
+.gifLoading img {
+  width: 750px;
+}
+
 @media (max-width: 1024px) {
   .rowButtonDetail {
     display: flex;
     margin-left: 380px;
     margin-top: 20px;
+  }
+
+  .gifLoading img {
+    width: 925px;
+  }
+
+  .gifLoading {
+    padding-top: 240px;
   }
 }
 
@@ -66,6 +92,14 @@ body {
     width: fit-content;
     margin-bottom: 35px;
     padding-bottom: 5px;
+  }
+
+  .gifLoading {
+    padding-top: 130px;
+  }
+
+  .gifLoading img {
+    width: 700px;
   }
 
   .colKotakFormInput {
@@ -125,6 +159,14 @@ body {
     margin-left: 110px;
     margin-bottom: 40px;
   }
+
+  .gifLoading {
+    padding-top: 140px;
+  }
+
+  .gifLoading img {
+    width: 360px;
+  }
 }
 
 @media (max-width: 411px) {
@@ -157,6 +199,11 @@ body {
     margin-left: 93px;
     margin-bottom: 40px;
   }
+
+  .gifLoading {
+    padding-top: 110px;
+    padding-bottom: 100px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -164,6 +211,10 @@ body {
     display: flex;
     margin-left: 85px;
     margin-bottom: 40px;
+  }
+
+  .gifLoading {
+    padding-top: 80px;
   }
 }
 
@@ -176,5 +227,13 @@ body {
     display: flex;
     margin-left: 60px;
     margin-bottom: 40px;
+  }
+
+  .gifLoading {
+    padding-top: 90px;
+  }
+
+  .gifLoading img {
+    width: 285px;
   }
 }
