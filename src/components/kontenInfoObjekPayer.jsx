@@ -2,9 +2,16 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
-import { Button } from "react-bootstrap";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { Button, DropdownButton, Dropdown } from "react-bootstrap";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
+
+function convert(str) {
+  var date = new Date(str),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [day, mnth, date.getFullYear()].join("/");
+}
 
 // Kelas untuk Komponen Halaman Input Informasi Payer
 class KontenInformasiPajakPayer extends React.Component {
@@ -16,21 +23,38 @@ class KontenInformasiPajakPayer extends React.Component {
     this.props.history.push("/payer/nota-pajak");
   };
 
-  handleChangeAwal = date => {
-    store.setState({
-      PeriodeAwal: date
-    });
-    console.log("cek periode awal", date);
-  };
+  constructor(props) {
+    super(props);
+    this.handleDayClickAwal = this.handleDayClickAwal.bind(this);
+    this.handleDayClickAkhir = this.handleDayClickAkhir.bind(this);
+    this.state = {
+      selectedDayAwal: null,
+      selectedDayAkhir: null
+    };
+  }
 
-  handleChangeAkhir = date => {
+  handleDayClickAwal(day, { selected }) {
     store.setState({
-      PeriodeAkhir: date
+      periodePemasangan: selected ? undefined : day
     });
-    console.log("cek periode akhir", date);
-  };
+    localStorage.setItem(
+      "tanggalPemasangan",
+      convert(store.getState().periodePemasangan)
+    );
+  }
+
+  handleDayClickAkhir(day, { selected }) {
+    store.setState({
+      periodePembongkaran: selected ? undefined : day
+    });
+    localStorage.setItem(
+      "tanggalPembongkaran",
+      convert(store.getState().periodePembongkaran)
+    );
+  }
 
   render() {
+    // const FORMAT = 'dd/MM/yyyy';
     return (
       <div className="container kontenInputDetailObjek">
         <div className="juduKontenDetailObjekPajak">
@@ -43,7 +67,7 @@ class KontenInformasiPajakPayer extends React.Component {
               <div style={{ display: "flex" }}>
                 <div className="col-6" style={{ paddingLeft: "0px" }}>
                   <select
-                    onChange={e => this.props.handleInput(e)}
+                    onChange={e => this.props.handleInputPost(e)}
                     name="masaPajakBulan"
                     class="custom-select"
                   >
@@ -60,13 +84,13 @@ class KontenInformasiPajakPayer extends React.Component {
                     <option value="Agustus">Agustus</option>
                     <option value="September">September</option>
                     <option value="Oktober">Oktober</option>
-                    <option value="Novermber">Novermber</option>
+                    <option value="November">November</option>
                     <option value="Desember">Desember</option>
                   </select>
                 </div>
                 <div className="col-6" style={{ paddingRight: "0px" }}>
                   <select
-                    onChange={e => this.props.handleInput(e)}
+                    onChange={e => this.props.handleInputPost(e)}
                     name="masaPajakTahun"
                     class="custom-select"
                   >
@@ -84,34 +108,84 @@ class KontenInformasiPajakPayer extends React.Component {
               <span>Jangka Waktu Pajak</span>
               <div className="kotakInputLokasi">
                 <select
-                  onChange={e => this.props.handleInput(e)}
-                  name="jenisObjekPajak"
+                  onChange={e => this.props.handleInputPost(e)}
+                  name="jangkaWaktuObjekPajak"
                   class="custom-select"
                 >
                   <option value="" selected disabled>
                     pilih
                   </option>
-                  <option value="bilboard">Bilboard / Bando</option>
+                  <option
+                    value={
+                      localStorage.getItem("tipeReklamePayer") ===
+                      "Reklame Non Permanen"
+                        ? "Mingguan"
+                        : "Tahunan"
+                    }
+                  >
+                    {localStorage.getItem("tipeReklamePayer") ===
+                    "Reklame Non Permanen"
+                      ? "Mingguan"
+                      : "Tahunan"}
+                  </option>
                 </select>
               </div>
             </div>
             <div className="inputPeriodeObjekPajak">
-              <span>Periode Berlaku Pajak </span>
-              <div className="container-fluid" style={{ display: "flex" }}>
-                <div className="col-5 mulaiPeriode">
-                  <DatePicker
-                    selected={this.props.PeriodeAwal}
-                    onChange={this.handleChangeAwal}
-                  />
-                </div>
-                <div className="col-2 hingga">
-                  <span>Hingga</span>
-                </div>
-                <div className="col-5 akhirPeriode">
-                  <DatePicker
-                    selected={this.props.PeriodeAkhir}
-                    onChange={this.handleChangeAkhir}
-                  />
+              <span className="judulPeriodeBerlaku">
+                Periode Berlaku Pajak{" "}
+              </span>
+              <div className="container" style={{ display: "flex" }}>
+                <div className="row rowInputTanggal">
+                  <div
+                    className="col-md-5 col-sm-5 mulaiPeriode"
+                    style={{ textAlign: "center" }}
+                  >
+                    <DropdownButton
+                      className="dropDownPeriodeAwal"
+                      title={
+                        store.getState().periodePemasangan !== ""
+                          ? convert(store.getState().periodePemasangan)
+                          : "Awal"
+                      }
+                    >
+                      <Dropdown.Item eventKey="1">
+                        <DayPicker
+                          className="kalenderAwal"
+                          selectedDays={convert(
+                            store.getState().periodePemasangan
+                          )}
+                          onDayClick={this.handleDayClickAwal}
+                        />
+                      </Dropdown.Item>
+                    </DropdownButton>
+                  </div>
+                  <div className="col-md-2 col-sm-2 hingga">
+                    <span>Hingga</span>
+                  </div>
+                  <div
+                    className="col-md-5 col-sm-5 mulaiPeriode"
+                    style={{ textAlign: "center" }}
+                  >
+                    <DropdownButton
+                      className="dropDownPeriodeAkhir"
+                      title={
+                        store.getState().periodePembongkaran !== ""
+                          ? convert(store.getState().periodePembongkaran)
+                          : "Akhir"
+                      }
+                    >
+                      <Dropdown.Item eventKey="1">
+                        <DayPicker
+                          className="kalenderAkhir"
+                          selectedDays={convert(
+                            store.getState().periodePembongkaran
+                          )}
+                          onDayClick={this.handleDayClickAkhir}
+                        />
+                      </Dropdown.Item>
+                    </DropdownButton>
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,6 +212,6 @@ class KontenInformasiPajakPayer extends React.Component {
 }
 
 export default connect(
-  "PeriodeAwal, PeriodeAkhir",
+  "PeriodeAwal, PeriodeAkhir, jangkaWaktuPajak, periodePemasangan, periodePembongkaran",
   actions
 )(withRouter(KontenInformasiPajakPayer));

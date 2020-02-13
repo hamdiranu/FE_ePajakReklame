@@ -10,10 +10,11 @@ import PetaSurveyor from "../pages/petaSurveyor";
 import DetailReklameSurveyor from "../pages/detailReklameSurveyor";
 import BerandaPayer from "../pages/berandaPayer";
 import DetilLaporanPayer from "../pages/detilLaporanPayer";
-import inputGambarPayer from "../pages/inputGambarPayer";
-import inputLokasiPayer from "../pages/inputLokasiPayer";
-import inputDetailObjekPayer from "../pages/inputDetailObjekPayer";
-import inputInfoObjekPayer from "../pages/inputInfoObjekPayer";
+import InputGambarPayer from "../pages/inputGambarPayer";
+import InputLokasiPayer from "../pages/inputLokasiPayer";
+import InputDetailObjekPayer from "../pages/inputDetailObjekPayer";
+import InputInfoObjekPayer from "../pages/inputInfoObjekPayer";
+import NotaPajakPayer from "../pages/notaPajakPayer";
 
 const MainRoute = () => {
   return (
@@ -41,23 +42,24 @@ const MainRoute = () => {
           <Route
             exact
             path="/payer/input-gambar"
-            component={inputGambarPayer}
+            component={InputGambarPayer}
           />
           <Route
             exact
             path="/payer/input-lokasi"
-            component={inputLokasiPayer}
+            component={InputLokasiPayer}
           />
           <Route
             exact
             path="/payer/input-detail-objek-pajak"
-            component={inputDetailObjekPayer}
+            component={InputDetailObjekPayer}
           />
           <Route
             exact
             path="/payer/input-informasi-pajak"
-            component={inputInfoObjekPayer}
+            component={InputInfoObjekPayer}
           />
+          <Route exact path="/payer/nota-pajak" component={NotaPajakPayer} />
           {/* <Route component={NotMatch} /> */}
         </Switch>
       </BrowserRouter>

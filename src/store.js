@@ -52,8 +52,8 @@ const initialState = {
   berhasilTambahData: false,
   laporanID: 0,
   detilLaporan: {},
-  detilObjekPajak : {},
-  buktiPembayaranPayer : {},
+  detilObjekPajak: {},
+  buktiPembayaranPayer: {},
   listLaporanPajakPayer: [],
   daftarLaporanPayer: [],
   payerInfo: "",
@@ -64,22 +64,17 @@ const initialState = {
   latitudeInputDefault: -7.9744,
   longitudeInputDefault: 112.6328,
   zoomPetaDefault: 11,
-  judulObjekPajak: "",
-  jenisObjekPajak: "",
-  tarifTambahan: "",
-  sudutPandang: "",
-  panjangObjekPajak: "0",
-  lebarObjekPajak: "0",
-  luasObjekPajak: "0",
-  mukaObjekPajak: "0",
-  ketinggianObjekPajak: "0",
-  jumlahReklameObjekPajak: "0",
-  letakPemasanganObjekPajak: "",
-  klasifikasiJalanObjekPajak: "",
-  masaPajakBulan: "",
-  masaPajakTahun: "",
+  panjangObjekPajak: 0,
+  lebarObjekPajak: 0,
   PeriodeAwal: "",
   PeriodeAkhir: "",
+  listDropDown: {},
+  listJenisReklame: [],
+  loadingDetailObjek: true,
+  jangkaWaktuPajak: "sesuatu",
+  periodePemasangan: "",
+  periodePembongkaran: "",
+  listDataNota: "",
   blobGambar: null,
   objekGambar: null,
 };
@@ -95,6 +90,20 @@ export const actions = store => ({
     if (event.target.name === "tipeReklame") {
       localStorage.setItem(`tipeReklamePayer`, `${event.target.value}`);
     }
+  },
+
+  // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input
+  handleInputPost: (state, event) => {
+    localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
+  },
+
+  handleInputPostLuas: (state, event) => {
+    localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
+    store.setState({ [event.target.name]: event.target.value });
+    localStorage.setItem(
+      "luasObjekPajak",
+      `${store.getState().panjangObjekPajak * store.getState().lebarObjekPajak}`
+    );
   },
 
   // Fungsi untuk mengganti status form login menjadi form login payer/officer
@@ -163,7 +172,6 @@ export const actions = store => ({
             statusPelanggaran: true
           });
         }
-        console.log("cek response", response.data);
       })
       .catch(error => {
         console.log("gagal axios");
@@ -184,7 +192,6 @@ export const actions = store => ({
         }
       )
       .then(async response => {
-        // console.log("cek state", state.scannerResult);
         await store.setState({
           buktiPembayaranId: response.data.bukti_pembayaran_id
         });
@@ -201,7 +208,6 @@ export const actions = store => ({
             validasiKodeQR: true
           });
         }
-        console.log("cek response gagal", response.data.message);
       })
       .catch(error => {
         console.log("gagal axios");
@@ -272,7 +278,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         store.setState({ listKodeQRUntukUnduh: response.data.list_kode_qr });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -325,7 +330,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         self.setState({ dataOfficer: response.data[0] });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -350,7 +354,6 @@ export const actions = store => ({
           pageBuktiPembayaran: response.data.page,
           maksPageBuktiPembayaran: response.data.maks_page
         });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -379,7 +382,6 @@ export const actions = store => ({
         self.setState({
           dataBuktiPembayaranOfficer: response.data.list_bukti_pembayaran
         });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -404,7 +406,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         store.setState({ pageKodeQR: 1 });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -446,7 +447,6 @@ export const actions = store => ({
 
       await axios(req)
         .then(function(response) {
-          console.log(response.data);
           swal({
             title: "Sukses",
             text: "Data sukses ditambahkan",
@@ -466,10 +466,33 @@ export const actions = store => ({
     }
   },
 
-  //Fungsi untuk menghapus data token dan role di localstorage ketika user logout
+  //Fungsi untuk menghapus data di localstorage ketika user logout
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("tipeReklamePayer");
+    localStorage.removeItem("jenisObjekPajak");
+    localStorage.removeItem("luasObjekPajak");
+    localStorage.removeItem("tarifTambahan");
+    localStorage.removeItem("sudutPandang");
+    localStorage.removeItem("letakPemasangan");
+    localStorage.removeItem("klasifikasiJalan");
+    localStorage.removeItem("judulObjekPajak");
+    localStorage.removeItem("panjangObjekPajak");
+    localStorage.removeItem("lebarObjekPajak");
+    localStorage.removeItem("mukaObjekPajak");
+    localStorage.removeItem("ketinggianObjekPajak");
+    localStorage.removeItem("jumlahReklameObjekPajak");
+    localStorage.removeItem("masaPajakTahun");
+    localStorage.removeItem("masaPajakBulan");
+    localStorage.removeItem("jangkaWaktuObjekPajak");
+    localStorage.removeItem("tanggalPembongkaran");
+    localStorage.removeItem("tanggalPemasangan");
+    localStorage.removeItem("fotoReklamePayer");
+    localStorage.removeItem("namaReklamePayer");
+    localStorage.removeItem("latitudeReklamePayer");
+    localStorage.removeItem("longitudeReklamePayer");
+    localStorage.removeItem("alamatReklamePayer");
     store.setState({ npwpd: "", nip: "", pin: "" });
   },
 
@@ -525,20 +548,22 @@ export const actions = store => ({
   },
 
   // fungsi get detil laporan payer berdasarkan laporanID
-  getDetilLaporanPayer : async (state) => {
+  getDetilLaporanPayer: async state => {
     const req = {
-      method : "get",
-      url : `https://alterratax.my.id/laporan/payer/${state.laporanID}`,
-      headers : {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
+      method: "get",
+      url: `https://alterratax.my.id/laporan/payer/${state.laporanID}`,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
     };
     await axios(req)
-      .then(function(response){
-        store.setState({detilLaporan: response.data[0].laporan,
-          detilObjekPajak: response.data[0].objek_pajak,});
+      .then(function(response) {
+        store.setState({
+          detilLaporan: response.data[0].laporan,
+          detilObjekPajak: response.data[0].objek_pajak
+        });
       })
-      .catch(function(error){
+      .catch(function(error) {
         console.log(error);
       });
   },
@@ -547,7 +572,7 @@ export const actions = store => ({
   getBuktiPembayaranPayer: async (state, event) => {
     const laporan_id = event;
     const req = {
-      method: "get",    
+      method: "get",
       url: `https://alterratax.my.id/bukti_pembayaran/payer/${laporan_id}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
@@ -555,35 +580,35 @@ export const actions = store => ({
     };
     const self = store;
     await axios(req)
-      .then(function(response){
-        self.setState({ buktiPembayaranPayer: response.data.bukti_pembayaran,
-          buktiPembayaranID: response.data.bukti_pembayaran.id});
-        console.log(response.data);
+      .then(function(response) {
+        self.setState({
+          buktiPembayaranPayer: response.data.bukti_pembayaran,
+          buktiPembayaranID: response.data.bukti_pembayaran.id
+        });
       })
-      .catch(function(error){
-        console.log(error)
-      })
+      .catch(function(error) {
+        console.log(error);
+      });
   },
 
   //Fungsi untuk mengambil list seluruh kode qr oleh payer
-  getSemuaListKodeQRPayer: async (state) => {
+  getSemuaListKodeQRPayer: async state => {
     const req = {
-      method: "get",    
+      method: "get",
       url: `https://alterratax.my.id/kode_qr/payer?rp=500&bukti_pembayaran_id=${state.buktiPembayaranID}`,
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
     };
     await axios(req)
-      .then(function(response){
-        store.setState({listKodeQRUntukUnduh: response.data.list_kode_qr});
-        console.log(response.data);
+      .then(function(response) {
+        store.setState({ listKodeQRUntukUnduh: response.data.list_kode_qr });
       })
-      .catch(function(error){
+      .catch(function(error) {
         console.log(error);
-      })
+      });
   },
-    
+
   //Fungsi untuk mengambil list seluruh laporan payer
   getDaftarLaporan: async (state) => {
     const req = {
@@ -599,12 +624,78 @@ export const actions = store => ({
           daftarLaporanPayer: response.data.list_laporan,
           payerInfo: response.data.payer
         });
-        console.log(response.data.payer);
       })
       .catch(function(error) {
         console.log(error);
       });
   },
+
+  // Axios ntuk mendapatkan list dropdown menu pada input payer
+  getListDropDownInput: async state => {
+    await axios
+      .get(
+        "https://alterratax.my.id/variabel_hitung/payer",
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        await store.setState({
+          listDropDown: response.data,
+          loadingDetailObjek: false
+        });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+
+  postInputPayer: state => {
+    axios
+      .post(
+        "https://alterratax.my.id/objek_pajak/payer",
+        {
+          foto: localStorage.getItem("fotoReklamePayer"),
+          tipe_reklame: localStorage.getItem("tipeReklamePayer"),
+          nama_reklame: localStorage.getItem("namaReklamePayer"),
+          latitude: localStorage.getItem("latitudeReklamePayer"),
+          longitude: localStorage.getItem("longitudeReklamePayer"),
+          lokasi: localStorage.getItem("alamatReklamePayer"),
+          judul_reklame: localStorage.getItem("judulObjekPajak"),
+          jenis_reklame: localStorage.getItem("jenisObjekPajak"),
+          tarif_tambahan: localStorage.getItem("tarifTambahan"),
+          sudut_pandang: localStorage.getItem("sudutPandang"),
+          panjang: localStorage.getItem("panjangObjekPajak"),
+          luas: localStorage.getItem("luasObjekPajak"),
+          lebar: localStorage.getItem("lebarObjekPajak"),
+          muka: localStorage.getItem("mukaObjekPajak"),
+          tinggi: localStorage.getItem("ketinggianObjekPajak"),
+          jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
+          letak_pemasangan: localStorage.getItem("letakPemasangan"),
+          klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
+          masa_pajak: `${localStorage.getItem("masaPajakBulan") +
+            localStorage.getItem("masaPajakTahun")}`,
+          jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
+          tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
+          tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(response => {
+        store.setState({ listDataNota: response.data });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  }
 
   //Fungsi untuk convert fileGambar ke url base64
   setFotoKeURL: async (state) => {
@@ -621,4 +712,5 @@ export const actions = store => ({
     }    
     Main();
   },
+
 });

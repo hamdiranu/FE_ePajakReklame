@@ -92,7 +92,7 @@ class KontenPetaSurveyor extends React.Component {
                       {reklame["objek_pajak"].judul_reklame}
                     </div>
                     <Link
-                      to={`/surveyor/detil-reklame/${reklame["bukti_pembayaran"].id}`}
+                      to={`/surveyor/detail-reklame/${reklame["bukti_pembayaran"].id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <div style={{ fontSize: "10px" }}>

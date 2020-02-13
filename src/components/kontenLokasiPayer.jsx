@@ -29,11 +29,6 @@ class KontenInputLokasiPayer extends React.Component {
         latitudeInputDefault: map.getCenter().lat.toFixed(4),
         zoomPetaDefault: map.getZoom().toFixed(2)
       });
-      console.log(
-        "lat , long : ",
-        this.props.latitudeInputDefault,
-        this.props.longitudeInputDefault
-      );
     });
   }
 
