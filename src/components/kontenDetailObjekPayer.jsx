@@ -23,10 +23,6 @@ class KontenDetailPajakPayer extends React.Component {
     } else if (localStorage.getItem("tipeReklamePayer") === "Permanen") {
       store.setState({ listJenisReklame: ["Billboard/Bando", "LED"] });
     }
-    console.log(
-      "cek list dropDown",
-      store.getState().listDropDown["list_tarif_tambahan"]
-    );
   };
 
   goToLokasiPajak = () => {
@@ -37,7 +33,6 @@ class KontenDetailPajakPayer extends React.Component {
     this.props.history.push("/payer/input-informasi-pajak");
   };
   render() {
-    console.log("cek luas", this.props.luasObjekPajak);
     return (
       <div className="container kontenInputDetailObjek">
         {this.props.loadingDetailObjek ? (

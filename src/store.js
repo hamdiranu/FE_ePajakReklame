@@ -167,7 +167,6 @@ export const actions = store => ({
             statusPelanggaran: true
           });
         }
-        console.log("cek response", response.data);
       })
       .catch(error => {
         console.log("gagal axios");
@@ -188,7 +187,6 @@ export const actions = store => ({
         }
       )
       .then(async response => {
-        // console.log("cek state", state.scannerResult);
         await store.setState({
           buktiPembayaranId: response.data.bukti_pembayaran_id
         });
@@ -205,7 +203,6 @@ export const actions = store => ({
             validasiKodeQR: true
           });
         }
-        console.log("cek response gagal", response.data.message);
       })
       .catch(error => {
         console.log("gagal axios");
@@ -276,7 +273,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         store.setState({ listKodeQRUntukUnduh: response.data.list_kode_qr });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -329,7 +325,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         self.setState({ dataOfficer: response.data[0] });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -354,7 +349,6 @@ export const actions = store => ({
           pageBuktiPembayaran: response.data.page,
           maksPageBuktiPembayaran: response.data.maks_page
         });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -383,7 +377,6 @@ export const actions = store => ({
         self.setState({
           dataBuktiPembayaranOfficer: response.data.list_bukti_pembayaran
         });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -408,7 +401,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         store.setState({ pageKodeQR: 1 });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -450,7 +442,6 @@ export const actions = store => ({
 
       await axios(req)
         .then(function(response) {
-          console.log(response.data);
           swal({
             title: "Sukses",
             text: "Data sukses ditambahkan",
@@ -589,7 +580,6 @@ export const actions = store => ({
           buktiPembayaranPayer: response.data.bukti_pembayaran,
           buktiPembayaranID: response.data.bukti_pembayaran.id
         });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -608,7 +598,6 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         store.setState({ listKodeQRUntukUnduh: response.data.list_kode_qr });
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -630,7 +619,6 @@ export const actions = store => ({
           daftarLaporanPayer: response.data.list_laporan,
           payerInfo: response.data.payer
         });
-        console.log(response.data.payer);
       })
       .catch(function(error) {
         console.log(error);
@@ -654,7 +642,6 @@ export const actions = store => ({
           listDropDown: response.data,
           loadingDetailObjek: false
         });
-        console.log("cek response", response.data);
       })
       .catch(error => {
         console.log("gagal axios");
@@ -699,7 +686,6 @@ export const actions = store => ({
       )
       .then(response => {
         store.setState({ listDataNota: response.data });
-        console.log("cek isi response nota", response.data);
       })
       .catch(error => {
         console.log("gagal axios");

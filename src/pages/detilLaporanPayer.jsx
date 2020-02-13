@@ -583,7 +583,6 @@ class DetilLaporanPayer extends Component {
     await axios(req)
       .then(function(response){
         swal("Selamat!", "Berhasil Membatalkan Laporan", "success");
-        console.log(response.data);
       })
       .catch(function(error){
         alert("Gagal Membatalkan Laporan");
@@ -603,7 +602,6 @@ class DetilLaporanPayer extends Component {
     let namaFileSemuaKodeQR = ""
     if(this.props.buktiPembayaranPayer.nomor_sspd !== undefined){
       namaFileSemuaKodeQR = `KodeQR-SSPD-${this.props.buktiPembayaranPayer.nomor_sspd}.pdf`;
-      console.warn("ini namafile", namaFileSemuaKodeQR);
     }
     return (
       <React.Fragment>
