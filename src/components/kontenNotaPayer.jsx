@@ -7,7 +7,7 @@ import { Button, FormControl, InputGroup } from "react-bootstrap";
 // Kelas untuk Komponen Halaman Nota Pajak Payer
 class KontenNotaPayer extends React.Component {
   goToDetailLaporan = () => {
-    this.props.history.push(`/payer/detail-laporan/${this.props.laporanID}`);
+    this.props.history.push(`/payer/detail-laporan/${this.props.detailLaporanPost.id}`);
   };
   render() {
     var currencyFormatter = require("currency-formatter");
@@ -29,7 +29,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(2529600, {
+                    placeholder={currencyFormatter.format(this.props.detailLaporanPost.nfr, {
                       code: "IDR",
                       symbol: ""
                     })}
@@ -50,7 +50,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(711450, {
+                    placeholder={currencyFormatter.format(this.props.detailLaporanPost.nfj, {
                       code: "IDR",
                       symbol: ""
                     })}
@@ -73,7 +73,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(922250, {
+                    placeholder={currencyFormatter.format(this.props.detailLaporanPost.nsp, {
                       code: "IDR",
                       symbol: ""
                     })}
@@ -95,7 +95,7 @@ class KontenNotaPayer extends React.Component {
                 </InputGroup.Prepend>
                 <FormControl
                   className="barInfoTotalTarif"
-                  placeholder={currencyFormatter.format(4163300, {
+                  placeholder={currencyFormatter.format(this.props.detailLaporanPost.nspr, {
                     code: "IDR",
                     symbol: ""
                   })}
@@ -119,7 +119,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(8928000, {
+                    placeholder={currencyFormatter.format(this.props.detailLaporanPost.nlr, {
                       code: "IDR",
                       symbol: ""
                     })}
@@ -140,7 +140,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(315000, {
+                    placeholder={currencyFormatter.format(this.props.detailLaporanPost.nkr, {
                       code: "IDR",
                       symbol: ""
                     })}
@@ -162,7 +162,7 @@ class KontenNotaPayer extends React.Component {
                 </InputGroup.Prepend>
                 <FormControl
                   className="barInfoTotalTarif"
-                  placeholder={currencyFormatter.format(9243000, {
+                  placeholder={currencyFormatter.format(this.props.detailLaporanPost.njopr, {
                     code: "IDR",
                     symbol: ""
                   })}
@@ -186,7 +186,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder="25"
+                    placeholder={this.props.detailLaporanPost.tarif_pajak}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiLuasReklame"
@@ -223,7 +223,7 @@ class KontenNotaPayer extends React.Component {
                 </InputGroup.Prepend>
                 <FormControl
                   className="barInfoTotalTarif"
-                  placeholder={currencyFormatter.format(3351575, {
+                  placeholder={currencyFormatter.format(this.props.detailLaporanPost.total_pajak, {
                     code: "IDR",
                     symbol: ""
                   })}
@@ -259,4 +259,4 @@ class KontenNotaPayer extends React.Component {
   }
 }
 
-export default connect("laporanID", actions)(withRouter(KontenNotaPayer));
+export default connect("laporanID, detailObjekPajakPost, detailLaporanPost", actions)(withRouter(KontenNotaPayer));

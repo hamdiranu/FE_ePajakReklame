@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "../styles/styleNavigasiSurveyor.css";
-// import "../styles/styleDetilReklameSurveyor.css";
 import "../styles/styleDetilLaporanPayer.css"
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import NavigasiDetilLaporanPayer from "../components/navigasiDetilLaporanPayer";
@@ -790,13 +789,6 @@ class DetilLaporanPayer extends Component {
                   </tr>
                 </tbody>
               </table>
-            </div>
-          </div>
-          <div className="row mb-5">
-            <div className="col-md-12 text-center">
-              <Link to="/payer/home" className="btn btn-primary">
-                Beranda
-              </Link>
             </div>
           </div>
         </div>
