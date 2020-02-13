@@ -3,6 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FiFilePlus } from "react-icons/fi";
+import { FaSignOutAlt } from "react-icons/fa";
 
 class NavigasiDetilLaporanPayer extends React.Component {
   logOutPayer = async () => {
@@ -25,14 +26,14 @@ class NavigasiDetilLaporanPayer extends React.Component {
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer">ePajak</span>
+            <span className="judulHeaderPayer">SIP-Rek</span>
           </div>
           <div class="text-right">
             <span
               onClick={() => this.logOutPayer()}
               class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
             >
-              Log Out
+              <FaSignOutAlt />
             </span>
           </div>
         </nav>
