@@ -79,7 +79,9 @@ const initialState = {
   masaPajakBulan: "",
   masaPajakTahun: "",
   PeriodeAwal: "",
-  PeriodeAkhir: ""
+  PeriodeAkhir: "",
+  blobGambar: null,
+  objekGambar: null,
 };
 
 export const store = createStore(initialState);
@@ -90,6 +92,9 @@ export const actions = store => ({
     store.setState({ [event.target.name]: event.target.value });
     console.log(`${event.target.name} :`, event.target.value);
     event.target.setCustomValidity("");
+    if (event.target.name === "tipeReklame") {
+      localStorage.setItem(`tipeReklamePayer`, `${event.target.value}`);
+    }
   },
 
   // Fungsi untuk mengganti status form login menjadi form login payer/officer
@@ -580,7 +585,7 @@ export const actions = store => ({
   },
     
   //Fungsi untuk mengambil list seluruh laporan payer
-  getDaftarLaporan: async state => {
+  getDaftarLaporan: async (state) => {
     const req = {
       method: "get",
       url: `https://alterratax.my.id/laporan/payer`,
@@ -599,5 +604,21 @@ export const actions = store => ({
       .catch(function(error) {
         console.log(error);
       });
-  }
+  },
+
+  //Fungsi untuk convert fileGambar ke url base64
+  setFotoKeURL: async (state) => {
+    const toBase64 = file => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+    
+    async function Main() {
+      const file = state.objekGambar;
+      console.log(await toBase64(file));
+    }    
+    Main();
+  },
 });
