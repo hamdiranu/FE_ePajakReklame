@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import NavigasiDetilLaporanPayer from "../components/navigasiDetilLaporanPayer";
-import { FaWindowClose, FaCcAmazonPay } from "react-icons/fa";
+import { FaWindowClose, FaCcAmazonPay, FaDownload } from "react-icons/fa";
 import ReactToPrint from 'react-to-print';
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PdfDocument } from "../components/pdfSemuaKodeQR";
@@ -14,6 +14,35 @@ import swal from "sweetalert";
 
 class BuktiBayarPDF extends React.Component {
   render() {
+    const waktu_sspd = new Date(this.props.buktiPembayaranPayer.created_at);
+    const tanggal_sspd = waktu_sspd.getDate();
+    const bulan_sspd = waktu_sspd.getMonth()+1;
+    const tahun_sspd = waktu_sspd.getFullYear();
+
+    const pemasangan = new Date(this.props.detilObjekPajak.tanggal_pemasangan);
+    const tanggal_pasang = pemasangan.getDate();
+    const bulan_pasang = pemasangan.getMonth()+1;
+    const tahun_pasang = pemasangan.getFullYear();
+
+    const pembongkaran = new Date(this.props.detilObjekPajak.tanggal_pembongkaran);
+    const tanggal_bongkar = pembongkaran.getDate();
+    const bulan_bongkar = pembongkaran.getMonth()+1;
+    const tahun_bongkar = pembongkaran.getFullYear();
+    const nama_bulan = {
+      "1" : "Januari",
+      "2" : "Februari",
+      "3" : "Maret",
+      "4" : "April",
+      "5" : "Mei",
+      "6" : "Juni",
+      "7" : "Juli",
+      "8" : "Agustus",
+      "9" : "September",
+      "10" : "Oktober",
+      "11" : "November",
+      "12" : "Desember"
+    };
+    const currencyFormatter = require("currency-formatter");
     return(
       <React.Fragment>
         <div style={{border:"2px solid black"}} className="m-4">
@@ -52,17 +81,17 @@ class BuktiBayarPDF extends React.Component {
               <tr>
                 <td width="25%">Nama</td>
                 <td width="5%">:</td>
-                <td colSpan="2"><b>KOPERASI SIMPAN PINJAM MAKMUR MANDIRI</b></td>
+                <td colSpan="2"><b>{this.props.payerInfo.nama}</b></td>
               </tr>
               <tr>
                 <td width="25%">Alamat</td>
                 <td width="5%">:</td>
-                <td colSpan="2"><b>JL. RAYA BATUJAJAR NO. 72 DESA CIMAREME KEC. PADALARANG</b></td>
+                <td colSpan="2"><b>{this.props.payerInfo.alamat_usaha}</b></td>
               </tr>
               <tr>
                 <td width="25%">NPWPD</td>
                 <td width="5%">:</td>
-                <td colSpan="2"><b>P220160001273217008003</b></td>
+                <td colSpan="2"><b>{this.props.payerInfo.npwpd}</b></td>
               </tr>
               <tr>
                 <td width="25%">Menyetor Berdasarkan</td>
@@ -72,8 +101,8 @@ class BuktiBayarPDF extends React.Component {
               <tr>
                 <td width="25%">Periode Pajak</td>
                 <td width="5%">:</td>
-                <td><b>Januari 2020</b></td>
-                <td width="18%">No. Urut : 4558768724</td>
+                <td><b>{this.props.detilObjekPajak.masa_pajak}</b></td>
+                <td width="18%">No. SSPD : {this.props.buktiPembayaranPayer.nomor_sspd}</td>
               </tr>
             </tbody>
           </table>
@@ -91,18 +120,29 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}} className="pt-2">1.</td>
                 <td style={{borderLeft:"1px solid"}} className="pt-2">4110401</td>
                 <td colspan="3" style={{borderLeft:"1px solid"}} className="text-left px-2 pt-2">
-                  BILLBOARD / BANDO
+                  {this.props.detilObjekPajak.jenis_reklame}
                 </td>
-                <td style={{borderLeft:"1px solid"}} className="pt-2">Rp.854.450,00</td>
+                <td style={{borderLeft:"1px solid"}} className="pt-2">
+                  Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+                      code: "IDR",
+                      symbol: ""
+                    })}
+                </td>
                 <td style={{borderLeft:"1px solid"}}>Rp.0,00</td>
-                <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}>Rp.854.450,00</td>
+                <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}>
+                  Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+                      code: "IDR",
+                      symbol: ""
+                    })}
+                </td>
               </tr>
               <tr>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td width="180px" className="text-left px-2" style={{borderLeft:"1px solid"}}>Periode</td>
                 <td width="10px">:</td>
-                <td width="360px" className="text-left px-2">25 Januari 2020 s/d 24 Januari 2021</td>
+                <td width="360px" className="text-left px-2">
+                  {tanggal_pasang} {bulan_pasang} {tahun_pasang} s/d {tanggal_bongkar} {bulan_bongkar} {tahun_bongkar}</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -112,7 +152,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Naskah</td>
                 <td>:</td>
-                <td className="text-left px-2">DEMIR TURKISH RESTAURANT</td>
+                <td className="text-left px-2">{this.props.payerInfo.nama}</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -122,7 +162,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Lokasi</td>
                 <td>:</td>
-                <td className="text-left px-2">JL. RAYA LEMBANG 188 A DS. LEMBANG KEC LEMBANG</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.lokasi}</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -132,7 +172,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Panjang</td>
                 <td>:</td>
-                <td className="text-left px-2">0.98 M</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.panjang} meter</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -142,7 +182,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Tinggi</td>
                 <td>:</td>
-                <td className="text-left px-2">5.20 M</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.tinggi} meter</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -152,7 +192,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Lebar</td>
                 <td>:</td>
-                <td className="text-left px-2">1.20 M</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.lebar} meter</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -162,7 +202,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Muka</td>
                 <td>:</td>
-                <td className="text-left px-2">2 muka</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.muka} muka</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -172,7 +212,7 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Jumlah Reklame</td>
                 <td>:</td>
-                <td className="text-left px-2">1 buah</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.jumlah} buah</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
@@ -188,19 +228,31 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
-                <td style={{borderLeft:"1px solid"}}></td>
-                <td style={{borderLeft:"1px solid"}}></td>
-                <td colSpan="3" style={{borderTop:"1px solid", borderLeft:"1px solid"}} className="text-left px-2 py-2">
+                <td style={{borderLeft:"1px solid", borderBottom:"1px solid"}}></td>
+                <td style={{borderLeft:"1px solid", borderBottom:"1px solid"}}></td>
+                <td colSpan="3" style={{borderTop:"1px solid",
+                  borderLeft:"1px solid",
+                  borderBottom:"1px solid"}}
+                  className="text-left px-2 py-2">
                   <b>Jumlah Total Setoran</b>
                 </td>
-                <td colSpan="3" style={{borderTop:"1px solid", borderLeft:"1px solid", borderRight:"1px solid"}} className="py-2">
-                  <b>Rp.854.450,00</b>
+                <td colSpan="3"
+                  style={{borderTop:"1px solid",
+                  borderLeft:"1px solid",
+                  borderRight:"1px solid",
+                  borderBottom:"1px solid"}}
+                  className="py-2">
+                  <b>Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+                      code: "IDR",
+                      symbol: ""
+                    })}
+                  </b>
                 </td>
               </tr>
-              <tr style={{borderTop:"1px solid", borderBottom:"1px solid"}}>
+              {/* <tr style={{borderTop:"1px solid", borderBottom:"1px solid"}}>
                 <td className="py-2" colSpan="2" style={{borderLeft:"1px solid"}}>Terbilang</td>
                 <td className="py-2" colSpan="6" style={{borderRight:"1px solid"}}>: <i>DELAPAN RATUS LIMA PULUH EMPAT RIBU EMPAT RATUS LIMA PULUH RUPIAH</i></td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
           <table className="m-5" width="973px">
@@ -208,7 +260,7 @@ class BuktiBayarPDF extends React.Component {
               <tr>
                 <td className="pt-4" style={{borderRight:"1px solid"}}>Bendahara Penerima,</td>
                 <td className="pt-4" colSpan="3" style={{borderRight:"1px solid"}}>Diterima oleh :</td>
-                <td className="pt-4">21 Januari 2020</td>
+                <td className="pt-4">{tanggal_sspd} {nama_bulan[`${bulan_sspd}`]} {tahun_sspd}</td>
               </tr>
               <tr>
                 <td className="pb-3" style={{borderRight:"1px solid"}}></td>
@@ -219,7 +271,9 @@ class BuktiBayarPDF extends React.Component {
                 <td style={{borderRight:"1px solid"}}></td>
                 <td className="text-left px-2" width="13%">Tanggal</td>
                 <td className="text-left" width="3%">:</td>
-                <td className="text-left" style={{borderRight:"1px solid"}}>21 Januari 2020</td>
+                <td className="text-left"
+                  style={{borderRight:"1px solid"}}>{tanggal_sspd} {nama_bulan[`${bulan_sspd}`]} {tahun_sspd}
+                </td>
                 <td></td>
               </tr>
               <tr>
@@ -250,6 +304,40 @@ class BuktiBayarPDF extends React.Component {
 }
 class LaporanPDF extends React.Component {
   render() {
+    const waktu_laporan = new Date(this.props.detilObjekPajak.created_at);
+    const tanggal_laporan = waktu_laporan.getDate();
+    const bulan_laporan = waktu_laporan.getMonth()+1;
+    const tahun_laporan = waktu_laporan.getFullYear();
+
+    const jatuh_tempo = new Date(waktu_laporan.getTime() + 15 * 86400000);
+    const tanggal_jatuh_tempo = jatuh_tempo.getDate();
+    const bulan_jatuh_tempo = jatuh_tempo.getMonth()+1;
+    const tahun_jatuh_tempo = jatuh_tempo.getFullYear();
+
+    const pemasangan = new Date(this.props.detilObjekPajak.tanggal_pemasangan);
+    const tanggal_pasang = pemasangan.getDate();
+    const bulan_pasang = pemasangan.getMonth()+1;
+    const tahun_pasang = pemasangan.getFullYear();
+
+    const pembongkaran = new Date(this.props.detilObjekPajak.tanggal_pembongkaran);
+    const tanggal_bongkar = pembongkaran.getDate();
+    const bulan_bongkar = pembongkaran.getMonth()+1;
+    const tahun_bongkar = pembongkaran.getFullYear();
+    const nama_bulan = {
+      "1" : "Januari",
+      "2" : "Februari",
+      "3" : "Maret",
+      "4" : "April",
+      "5" : "Mei",
+      "6" : "Juni",
+      "7" : "Juli",
+      "8" : "Agustus",
+      "9" : "September",
+      "10" : "Oktober",
+      "11" : "November",
+      "12" : "Desember"
+    };
+    const currencyFormatter = require("currency-formatter");
     return (
       <React.Fragment>
         <div style={{border:"2px solid black"}} className="m-4">
@@ -279,7 +367,7 @@ class LaporanPDF extends React.Component {
                 PAJAK Pajak Reklame
               </h5>
               <h5 style={{fontWeight:"bold"}}>
-                TAHUN 2020
+                TAHUN {tahun_laporan}
               </h5>
             </div>
           </div>
@@ -288,31 +376,31 @@ class LaporanPDF extends React.Component {
               <tr>
                 <td width="150px">NAMA PEMILIK</td>
                 <td width="50px">:</td>
-                <td width="420px">PT SURYA RASA ABADVERNA INDRIAWATI</td>
-                <td width="140px">NO. TAGIHAN</td>
+                <td width="420px">{this.props.payerInfo.nama}</td>
+                <td width="140px">NO. SKPD</td>
                 <td width="50px">:</td>
-                <td>0000091012020-001</td>
+                <td>{this.props.detilLaporan.nomor_skpd}</td>
               </tr>
               <tr>
                 <td>NAMA USAHA</td>
                 <td>:</td>
-                <td>DEMIR TURKISH RESTAURANT</td>
-                <td>NO. SKPD</td>
-                <td>:</td>
-                <td>0000091/01/2020-001</td>
+                <td>{this.props.payerInfo.nama_usaha}</td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
               <tr>
                 <td>ALAMAT USAHA</td>
                 <td>:</td>
-                <td>JL. RAYA LEMBANG NO. 188 A</td>
-                <td>NO. NHR</td>
-                <td>:</td>
-                <td>0000116/01/2020-001</td>
+                <td>{this.props.payerInfo.alamat_usaha}</td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
               <tr>
                 <td>NPWPD</td>
                 <td>:</td>
-                <td>P120180001033217001003</td>
+                <td>{this.props.payerInfo.npwpd}</td>
               </tr>
             </tbody>
           </table>
@@ -328,16 +416,23 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}} className="pt-2">1.</td>
                 <td style={{borderLeft:"1px solid"}} className="pt-2">4110401</td>
                 <td colspan="3" style={{borderLeft:"1px solid"}} className="text-left px-2 pt-2">
-                  BILLBOARD / BANDO
+                  {this.props.detilObjekPajak.jenis_reklame}
                 </td>
-                <td style={{borderLeft:"1px solid", borderRight:"1px solid"}} className="pt-2">Rp.854.450,00</td>
+                <td style={{borderLeft:"1px solid", borderRight:"1px solid"}} className="pt-2">
+                  Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+                      code: "IDR",
+                      symbol: ""
+                    })}
+                </td>
               </tr>
               <tr>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td width="180px" className="text-left px-2" style={{borderLeft:"1px solid"}}>Periode</td>
                 <td width="10px">:</td>
-                <td width="360px" className="text-left px-2">25 Januari 2020 s/d 24 Januari 2021</td>
+                <td width="360px" className="text-left px-2">
+                  {tanggal_pasang}-{bulan_pasang}-{tahun_pasang} s/d {tanggal_bongkar}-{bulan_bongkar}-{tahun_bongkar}
+                </td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -345,7 +440,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Naskah</td>
                 <td>:</td>
-                <td className="text-left px-2">DEMIR TURKISH RESTAURANT</td>
+                <td className="text-left px-2">{this.props.payerInfo.nama}</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -353,7 +448,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Lokasi</td>
                 <td>:</td>
-                <td className="text-left px-2">JL. RAYA LEMBANG 188 A DS. LEMBANG KEC LEMBANG</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.lokasi}</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -361,7 +456,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Panjang</td>
                 <td>:</td>
-                <td className="text-left px-2">0.98 M</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.panjang} meter</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -369,7 +464,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Tinggi</td>
                 <td>:</td>
-                <td className="text-left px-2">5.20 M</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.tinggi} meter</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -377,7 +472,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Lebar</td>
                 <td>:</td>
-                <td className="text-left px-2">1.20 M</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.lebar} meter</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -385,7 +480,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Muka</td>
                 <td>:</td>
-                <td className="text-left px-2">2 muka</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.muka} muka</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -393,7 +488,7 @@ class LaporanPDF extends React.Component {
                 <td style={{borderLeft:"1px solid"}}></td>
                 <td className="text-left px-2" style={{borderLeft:"1px solid"}}>Jumlah Reklame</td>
                 <td>:</td>
-                <td className="text-left px-2">1 buah</td>
+                <td className="text-left px-2">{this.props.detilObjekPajak.jumlah} buah</td>
                 <td style={{borderLeft:"1px solid", borderRight:"1px solid"}}></td>
               </tr>
               <tr>
@@ -411,13 +506,17 @@ class LaporanPDF extends React.Component {
                   <b>Jumlah Ketetapan Pajak</b>
                 </td>
                 <td style={{borderTop:"1px solid", borderLeft:"1px solid", borderRight:"1px solid"}} className="py-2">
-                  <b>Rp.854.450,00</b>
+                  <b>Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+                      code: "IDR",
+                      symbol: ""
+                    })}
+                  </b>
                 </td>
               </tr>
-              <tr style={{borderTop:"1px solid"}}>
+              {/* <tr style={{borderTop:"1px solid"}}>
                 <td className="py-2" colSpan="2" style={{borderLeft:"1px solid"}}>Terbilang</td>
                 <td className="py-2" colSpan="4" style={{borderLeft:"1px solid", borderRight:"1px solid"}}>: <i>DELAPAN RATUS LIMA PULUH EMPAT RIBU EMPAT RATUS LIMA PULUH RUPIAH</i></td>
-              </tr>
+              </tr> */}
               <tr style={{borderTop:"1px solid"}}>
                 <td colSpan="6" className="text-left p-2" style={{borderLeft:"1px solid", borderRight:"1px solid"}}>
                   <u>PERHATIAN</u> :
@@ -445,8 +544,8 @@ class LaporanPDF extends React.Component {
             <tbody className="text-center mx-5">
               <tr>
                 <td width="531px"></td>
-                <td width="531px">
-                  Bandung Barat, 15 Januari 2020
+                <td width="531px" className="pb-2">
+                  Bandung Barat, {tanggal_laporan} {nama_bulan[`${bulan_laporan}`]} {tahun_laporan}
                 </td>
               </tr>
               <tr>
@@ -477,11 +576,13 @@ class LaporanPDF extends React.Component {
               <tr></tr>
               <tr>
                 <td>
-                  30 Januari 2020
+                  {tanggal_jatuh_tempo} {nama_bulan[`${bulan_jatuh_tempo}`]} {tahun_jatuh_tempo}
                 </td>
-                <td>
-                  <u><b>Drs. HASANUDIN, M.Si</b></u>
-                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td className="pt-4"></td>
+                <td className="pt-4"><u><b>Drs. HASANUDIN, M.Si</b></u></td>
               </tr>
               <tr>
                 <td></td>
@@ -498,7 +599,7 @@ class LaporanPDF extends React.Component {
                   *SKPD ini bukan merupakan Legalitas Perizinan
                 </td>
               </tr>
-              <tr style={{borderTop:"1px solid"}}>
+              <tr style={{borderTopStyle:"dotted"}}>
                 <td className="pt-4 pb-2" colSpan="2">
                   <b>TANDA TERIMA</b>
                 </td>
@@ -510,20 +611,20 @@ class LaporanPDF extends React.Component {
               <tr>
                 <td width="17%"><b>NAMA USAHA</b></td>
                 <td width="3%">:</td>
-                <td width="42%">DEMIR TURKISH RESTAURANT</td>
-                <td width="10%">NO. SKPD</td>
+                <td width="42%">{this.props.payerInfo.nama_usaha}</td>
+                <td width="10%"><b>NO. SKPD</b></td>
                 <td width="3%">:</td>
-                <td width="25%">0000091/01/2020-001</td>
+                <td width="25%">{this.props.detilLaporan.nomor_skpd}</td>
               </tr>
               <tr>
                 <td><b>ALAMAT USAHA</b></td>
                 <td>:</td>
-                <td>JL. RAYA LEMBANG NO. 188 A</td>
+                <td>{this.props.payerInfo.alamat_usaha}</td>
               </tr>
               <tr>
                 <td><b>NPWPD</b></td>
                 <td>:</td>
-                <td>P120180001033217001003</td>
+                <td>{this.props.payerInfo.npwpd}</td>
               </tr>
               <tr>
                 <td></td>
@@ -542,7 +643,7 @@ class LaporanPDF extends React.Component {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td className="text-center pb-5" colSpan="3">(.....................................)</td>
+                <td className="text-center pb-5" colSpan="3">(........................................)</td>
               </tr>
             </tbody>
           </table>
@@ -558,6 +659,7 @@ class DetilLaporanPayer extends Component {
     } else {
       await store.setState({laporanID:this.props.match.params.id});
       await this.props.getDetilLaporanPayer();
+      await this.props.getDaftarLaporan();
       if(this.props.detilLaporan.status_pembayaran === true){
         await this.props.getBuktiPembayaranPayer(this.props.match.params.id);
         await this.props.getSemuaListKodeQRPayer();
@@ -676,7 +778,11 @@ class DetilLaporanPayer extends Component {
                       />                      
                     </div>
                     <div style={{display:"none"}} className="col-md-12">
-                      <LaporanPDF ref={el => (this.kontenLaporan = el)}/>
+                      <LaporanPDF
+                        ref={el => (this.kontenLaporan = el)}
+                        detilLaporan={this.props.detilLaporan}
+                        detilObjekPajak={this.props.detilObjekPajak}
+                        payerInfo={this.props.payerInfo}/>
                     </div>
                   </div>
                   {this.props.detilLaporan.status_pembayaran === true ?
@@ -693,27 +799,39 @@ class DetilLaporanPayer extends Component {
                       </div>
                       <div className="row my-3">
                         <div className="col-md-12 text-center">
-                          {this.props.buktiPembayaranPayer.nomor_sspd !== undefined ?
+                          {this.props.buktiPembayaranPayer.status_buat_kode_qr === true ?
                             <React.Fragment>
-                              {this.props.listKodeQRUntukUnduh?
-                                <PDFDownloadLink
-                                  document={<PdfDocument data={this.props.listKodeQRUntukUnduh}
-                                    nomor_sspd={this.props.buktiPembayaranPayer.nomor_sspd}/>}
-                                  fileName={namaFileSemuaKodeQR}
-                                  className="btn btn-dark button-detail-report"
-                                >
-                                  {({ blob, url, loading, error }) =>
-                                    loading ? "Loading document..." : "Kode QR"
+                              {this.props.buktiPembayaranPayer.nomor_sspd !== undefined ?
+                                <React.Fragment>
+                                  {this.props.listKodeQRUntukUnduh?
+                                    <PDFDownloadLink
+                                      document={<PdfDocument data={this.props.listKodeQRUntukUnduh}
+                                        nomor_sspd={this.props.buktiPembayaranPayer.nomor_sspd}/>}
+                                      fileName={namaFileSemuaKodeQR}
+                                      className="btn btn-dark button-detail-report"
+                                    >
+                                      {({ blob, url, loading, error }) =>
+                                        loading ? "Loading..." :
+                                        <React.Fragment>
+                                          <FaDownload/>&nbsp;
+                                          Kode QR
+                                        </React.Fragment>
+                                      }
+                                    </PDFDownloadLink>
+                                  :
+                                    <div></div>
                                   }
-                                </PDFDownloadLink>
+                                </React.Fragment>
                               :
                                 <div></div>
                               }
                             </React.Fragment>
                           :
-                            <div></div>
+                            <button onClick={(e) => this.props.postGenerateQRPayer(this.props.buktiPembayaranPayer.id)}
+                              className="btn btn-dark button-detail-report">
+                              Generate KodeQR
+                            </button>
                           }
-                          
                         </div>
                       </div>
                     </React.Fragment>                  
@@ -742,7 +860,12 @@ class DetilLaporanPayer extends Component {
           <div className="row" style={{display:"none"}}>
             <div className="col-md-12">
               <div className="col-md-12">
-                <BuktiBayarPDF ref={el => (this.kontenBuktiBayar = el)}/>
+                <BuktiBayarPDF
+                  ref={el => (this.kontenBuktiBayar = el)}
+                  buktiPembayaranPayer={this.props.buktiPembayaranPayer}
+                  detilLaporan={this.props.detilLaporan}
+                  detilObjekPajak={this.props.detilObjekPajak}
+                  payerInfo={this.props.payerInfo}/>
               </div>
             </div>
           </div>
@@ -823,5 +946,5 @@ class DetilLaporanPayer extends Component {
   }
 }
 
-export default connect("laporanID, detilLaporan, detilObjekPajak, listKodeQRUntukUnduh, buktiPembayaranPayer",
+export default connect("laporanID, detilLaporan, detilObjekPajak, listKodeQRUntukUnduh, buktiPembayaranPayer, payerInfo",
   actions)(withRouter(DetilLaporanPayer));
