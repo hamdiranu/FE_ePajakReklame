@@ -16,7 +16,52 @@ body {
   padding: 30px;
 }
 
-#loginFormContent {
+.logoStatusSuksesPembayaran {
+  margin: 40px 50px;
+}
+
+.logoStatusSuksesPembayaran svg {
+  width: 150px;
+  height: 150px;
+  color: chartreuse;
+}
+
+.logoStatusGagalPembayaran {
+  margin: 40px 50px;
+}
+
+.logoStatusGagalPembayaran svg {
+  width: 150px;
+  height: 150px;
+  color: rgb(246, 33, 33);
+}
+
+.tulisanGagalFontBesar {
+  font-size: 16px;
+}
+
+.tulisanGagalFontKecil {
+  font-size: 13px;
+}
+
+.rowinfoBayar {
+  display: grid;
+  margin-bottom: 30px;
+}
+
+.tulisanFontKecil {
+  font-size: 13px;
+}
+
+.tulisanFontBesar {
+  font-size: 16px;
+}
+
+.buttonBackToDetail {
+  margin-bottom: 30px;
+}
+
+#statusPembayaranSuksesContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
@@ -30,6 +75,22 @@ body {
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
 }
+
+#statusPembayaranGagalContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  margin-top: 50px;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -145,11 +206,18 @@ input[type="submit"] {
   transition: all 0.3s ease-in-out;
 }
 
-.loginJudul {
-  border: 1px solid grey;
-  box-shadow: 0 5px 5px 0 rgba(95, 186, 233, 0.4);
-  border-radius: 5px;
-  padding: 5px;
+.statusGagalPembayaranJudul {
+  border-bottom: 2px solid rgb(229, 229, 229);
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.statusSuksesPembayaranJudul {
+  border: 1px solid rgb(229, 229, 229);
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .loginLogo {
@@ -195,7 +263,17 @@ input[type="submit"] {
   font-size: 12px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
+  #statusPembayaranGagalContent {
+    margin-top: 350px;
+  }
+
+  #statusPembayaranSuksesContent {
+    margin-top: 305px;
+  }
+}
+
+@media (max-width: 768px) {
   .navigasiKota {
     font-size: 15px;
     padding-left: 0px;
@@ -256,8 +334,12 @@ input[type="submit"] {
     padding: 0;
   }
 
-  #loginFormContent {
-    margin-top: 10px;
+  #statusPembayaranSuksesContent {
+    margin-top: 145px;
+  }
+
+  #statusPembayaranGagalContent {
+    margin-top: 200px;
   }
 
   .loginPilihRole {
@@ -279,8 +361,12 @@ input[type="submit"] {
 }
 
 @media (max-width: 414px) {
-  #loginFormContent {
+  #statusPembayaranSuksesContent {
     margin-top: 70px;
+  }
+
+  #statusPembayaranGagalContent {
+    margin-top: 110px;
   }
 
   .loginInputPassword svg {
@@ -289,14 +375,21 @@ input[type="submit"] {
 }
 
 @media (max-width: 411px) {
-  #loginFormContent {
-    margin-top: 50px;
+  #statusPembayaranSuksesContent {
+    margin-top: 70px;
+  }
+  #statusPembayaranGagalContent {
+    margin-top: 120px;
   }
 }
 
 @media (max-width: 375px) {
-  #loginFormContent {
+  #statusPembayaranSuksesContent {
     margin-top: 35px;
+  }
+
+  #statusPembayaranGagalContent {
+    margin-top: 80px;
   }
 
   .loginInputPassword svg {
@@ -305,8 +398,12 @@ input[type="submit"] {
 }
 
 @media (max-width: 360px) {
-  #loginFormContent {
+  #statusPembayaranSuksesContent {
     margin-top: 30px;
+  }
+
+  #statusPembayaranGagalContent {
+    margin-top: 70px;
   }
 
   .loginInputPassword svg {
@@ -315,11 +412,53 @@ input[type="submit"] {
 }
 
 @media (max-width: 320px) {
-  #loginFormContent {
-    margin-top: 9px;
+  #statusPembayaranSuksesContent {
+    margin-top: 10px;
+  }
+
+  #statusPembayaranGagalContent {
+    margin-top: 60px;
   }
 
   .loginInputPassword svg {
     left: 185px;
+  }
+
+  .statusGagalPembayaranJudul {
+    font-size: 17px;
+  }
+
+  .rowInfoGagalBayar {
+    margin-bottom: 10px;
+  }
+
+  .logoStatusGagalPembayaran {
+    margin: 30px 50px;
+  }
+
+  .logoStatusSuksesPembayaran svg {
+    width: 135px;
+    height: 135px;
+  }
+
+  .logoStatusGagalPembayaran svg {
+    width: 140px;
+    height: 140px;
+  }
+
+  .tulisanGagalFontKecil {
+    font-size: 11px;
+  }
+
+  .tulisanGagalFontBesar {
+    font-size: 13px;
+  }
+
+  .tulisanSuksesFontKecil {
+    font-size: 11px;
+  }
+
+  .tulisanSuksesFontBesar {
+    font-size: 14px;
   }
 }

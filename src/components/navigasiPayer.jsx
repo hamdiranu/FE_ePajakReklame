@@ -27,7 +27,7 @@ class NavigasiPayer extends React.Component {
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer">ePajak</span>
+            <span className="judulHeaderPayer">SIP-Rek</span>
           </div>
           <div class="text-right">
             <span

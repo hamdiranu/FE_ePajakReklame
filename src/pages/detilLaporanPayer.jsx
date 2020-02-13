@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/styleNavigasiSurveyor.css";
 import "../styles/styleDetilLaporanPayer.css"
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import NavigasiDetilLaporanPayer from "../components/navigasiDetilLaporanPayer";
@@ -691,6 +691,32 @@ class DetilLaporanPayer extends Component {
       })
     this.props.history.replace("/payer/home");
   };
+
+  tombolBayar = async () => {
+    const data = {
+      "laporan_id": this.props.detilLaporan.id,
+      "status_pembayaran": true,
+    };
+    const req = {
+      method: "put",    
+      url: `https://alterratax.my.id/laporan/payer`,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      data : data
+    };
+    await axios(req)
+      .then(function(response){
+        console.log("isi response", response.data)
+        store.setState({ dataStatusSuksesBayar : response.data });
+      })
+      .catch(function(error){
+        alert("Gagal Membatalkan Laporan");
+        console.log(error);
+      })
+    this.props.history.push("/payer/status-pembayaran");
+    store.setState({ statusSuksesbayar : true });
+  }
   render() {
     const pemasangan = new Date(this.props.detilObjekPajak.tanggal_pemasangan);
     const tanggal_pasang = pemasangan.getDate();
@@ -813,7 +839,7 @@ class DetilLaporanPayer extends Component {
                     <React.Fragment>
                       <div className="row my-3">
                         <div className="col-md-12 text-center">
-                          <button className="btn btn-success button-detail-report">
+                          <button onClick={() => this.tombolBayar()} className="btn btn-success button-detail-report">
                             <FaCcAmazonPay/> Bayar Sekarang
                           </button>
                         </div>
@@ -912,13 +938,6 @@ class DetilLaporanPayer extends Component {
                   </tr>
                 </tbody>
               </table>
-            </div>
-          </div>
-          <div className="row mb-5">
-            <div className="col-md-12 text-center">
-              <Link to="/payer/home" className="btn btn-primary">
-                Beranda
-              </Link>
             </div>
           </div>
         </div>

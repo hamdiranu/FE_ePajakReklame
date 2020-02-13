@@ -77,9 +77,12 @@ const initialState = {
   jangkaWaktuPajak: "sesuatu",
   periodePemasangan: "",
   periodePembongkaran: "",
-  listDataNota: "",
   blobGambar: null,
   objekGambar: null,
+  statusSuksesbayar: true,
+  dataStatusSuksesBayar: "",
+  detailObjekPajakPost: {},
+  detailLaporanPost: {}
 };
 
 export const store = createStore(initialState);
@@ -613,7 +616,7 @@ export const actions = store => ({
   },
 
   //Fungsi untuk mengambil list seluruh laporan payer
-  getDaftarLaporan: async (state) => {
+  getDaftarLaporan: async state => {
     const req = {
       method: "get",
       url: `https://alterratax.my.id/laporan/payer`,
@@ -635,19 +638,20 @@ export const actions = store => ({
 
   // Fungsi untuk mengambil data rekomendasi lokasi hasil pencarian dengan mengugunakan third party Mapbox Search API
   searchLokasi: async (state, event) => {
-
     const req = {
       method: "get",
       // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+state.kataKunciLokasi+"&inputtype="+inputtype+"&fields="+fields+"&key="+key,
       // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyA_Td2kGqTcpU5wZ7t2iOcYdLrWNhrcCvI&input=jalan tidar",
-      url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+state.kataKunciLokasi+".json?country=ID&access_token=pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA",
-      headers: {
-      },
+      url:
+        "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+        state.kataKunciLokasi +
+        ".json?country=ID&access_token=pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA",
+      headers: {}
     };
 
     await axios(req)
       .then(function(response) {
-        store.setState({ listRekomendasiLokasi: response.data.features});
+        store.setState({ listRekomendasiLokasi: response.data.features });
         console.log(response.data);
       })
       .catch(function(error) {
@@ -657,24 +661,27 @@ export const actions = store => ({
 
   // Fungsi untuk mengambil data alamat lokasi dari hasil geocoding longitude,latitude dengan mengugunakan third party Mapbox Geocoding API
   getAlamatLokasi: async (state, event) => {
-
     const req = {
       method: "get",
-      url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+state.longitudeInputDefault+","+state.latitudeInputDefault+".json?country=ID&access_token=pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA",
-      headers: {
-      },
+      url:
+        "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+        state.longitudeInputDefault +
+        "," +
+        state.latitudeInputDefault +
+        ".json?country=ID&access_token=pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA",
+      headers: {}
     };
 
     await axios(req)
       .then(function(response) {
-        store.setState({ lokasiReklame: response.data.features});
+        store.setState({ lokasiReklame: response.data.features });
         console.log(response.data);
       })
       .catch(function(error) {
         console.log(error);
       });
   },
-    
+
   // Axios ntuk mendapatkan list dropdown menu pada input payer
   getListDropDownInput: async state => {
     await axios
@@ -698,6 +705,7 @@ export const actions = store => ({
       });
   },
 
+  // fungsi untuk post objekpajak oleh payer
   postInputPayer: state => {
     axios
       .post(
@@ -721,8 +729,7 @@ export const actions = store => ({
           jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
           letak_pemasangan: localStorage.getItem("letakPemasangan"),
           klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
-          masa_pajak: `${localStorage.getItem("masaPajakBulan") +
-            localStorage.getItem("masaPajakTahun")}`,
+          masa_pajak: `${localStorage.getItem("masaPajakBulan")} ${localStorage.getItem("masaPajakTahun")}`,
           jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
           tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
           tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
@@ -735,26 +742,40 @@ export const actions = store => ({
         }
       )
       .then(response => {
-        store.setState({ listDataNota: response.data });
+        store.setState({ detailObjekPajakPost: response.data.objek_pajak,
+          detailLaporanPost: response.data.laporan});
+        swal({
+          title: "Sukses",
+          text: "Data sukses ditambahkan",
+          icon: "success"
+        });
       })
       .catch(error => {
+        swal({
+          title: "Oops!",
+          text:
+            "Gagal menambahkan data, silahkan cek ulang data input anda!",
+          icon: "warning"
+        });
         console.log("gagal axios");
+        console.log(error);
       });
   },
 
   //Fungsi untuk convert fileGambar ke url base64
-  setFotoKeURL: async (state) => {
-    const toBase64 = file => new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-    
+  setFotoKeURL: async state => {
+    const toBase64 = file =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+
     async function Main() {
       const file = state.objekGambar;
       console.log(await toBase64(file));
-    }    
+    }
     Main();
   },
 
