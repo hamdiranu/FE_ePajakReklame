@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import { Button, DropdownButton, Dropdown } from "react-bootstrap";
@@ -10,7 +10,7 @@ function convert(str) {
   var date = new Date(str),
     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
     day = ("0" + date.getDate()).slice(-2);
-  return [day, mnth, date.getFullYear()].join("/");
+  return [date.getFullYear(), mnth, day].join("/");
 }
 
 // Kelas untuk Komponen Halaman Input Informasi Payer
@@ -201,7 +201,7 @@ class KontenInformasiPajakPayer extends React.Component {
                 </Button>
               </div>
               <div>
-                <Button onClick={() => this.goToNotaPajak()}>Lanjutkan</Button>
+                <Link to="/payer/nota-pajak" onClick={() => this.props.postInputPayer()}>Lanjutkan</Link>
               </div>
             </div>
           </div>
