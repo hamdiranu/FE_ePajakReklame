@@ -38,11 +38,7 @@ const MainRoute = () => {
             component={DetailReklameSurveyor}
           />
           <Route exact path="/payer/home" component={BerandaPayer} />
-          <Route
-            exact
-            path="/payer/detil-laporan/:id"
-            component={DetilLaporanPayer}
-          />
+          <Route exact path="/payer/detail-laporan/:id" component={DetilLaporanPayer} />
           <Route
             exact
             path="/payer/input-gambar"

@@ -27,8 +27,6 @@ body {
 .isiKotakPreviewGambar {
   border: 1px solid grey;
   text-align: center;
-  width: 300px;
-  height: 400px;
   margin: auto;
 }
 
@@ -57,6 +55,16 @@ body {
   margin-top: 20px;
   display: table;
 }
+.upload-gambar{
+  z-index: 1;
+}
+/* .custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+} */
+/* .custom-file-input::before {
+  content: 'Select';
+  display: inline-block;
+} */
 
 @media (max-width: 767px) {
   .infoInput {
@@ -73,8 +81,6 @@ body {
   .isiKotakPreviewGambar {
     border: 1px solid grey;
     text-align: center;
-    width: 300px;
-    height: 400px;
     margin: auto;
   }
 }
@@ -83,8 +89,6 @@ body {
   .isiKotakPreviewGambar {
     border: 1px solid grey;
     text-align: center;
-    width: 335px;
-    height: 435px;
     margin: auto;
   }
 
@@ -117,8 +121,6 @@ body {
   .isiKotakPreviewGambar {
     border: 1px solid grey;
     text-align: center;
-    width: 350px;
-    height: 500px;
     margin: auto;
   }
 
@@ -150,8 +152,6 @@ body {
   .isiKotakPreviewGambar {
     border: 1px solid grey;
     text-align: center;
-    width: 325px;
-    height: 425px;
     margin: auto;
   }
 
@@ -184,8 +184,6 @@ body {
   .isiKotakPreviewGambar {
     border: 1px solid grey;
     text-align: center;
-    width: 280px;
-    height: 380px;
     margin: auto;
   }
 
