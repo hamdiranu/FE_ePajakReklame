@@ -34,7 +34,7 @@ class NavigasiOfficer extends React.Component {
               </Link>
             </div>
             <div class="navbar-brand-text d-inline-block ml-1 navigasiKota">
-              <div class="system-name">ePajak</div>
+              <div class="system-name">SIP-Rek</div>
               <div class="area-name">{this.props.dataOfficer.nama_daerah}</div>
             </div>
           </span>

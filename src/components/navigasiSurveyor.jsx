@@ -32,7 +32,7 @@ class NavigasiSurveyor extends React.Component {
             </div>
           </span>
           <div>
-            <span className="judulHeaderSurveyor">ePajak</span>
+            <span className="judulHeaderSurveyor">SIP-Rek</span>
           </div>
           <div class="text-right">
             <span

@@ -15,7 +15,14 @@ body {
   padding-top: 90px;
   padding-bottom: 20px;
   display: flex;
-  background-color: #acacac;
+  background-image: linear-gradient(
+    to left,
+    #c09340,
+    #ddb84d,
+    #fbefb3,
+    #ddb84d,
+    #c09340
+  );
 }
 
 .rowInfoPerusahaan {
@@ -147,10 +154,17 @@ body {
 
   .totalPajak {
     font-size: 17px;
+    padding-left: 0px;
   }
 
   .namaReklame {
     font-size: 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .totalPajak {
+    font-size: 16px;
   }
 }
 
@@ -175,6 +189,7 @@ body {
 
   .totalPajak {
     font-size: 13px;
+    padding-left: 0px;
   }
 
   .namaReklame {
@@ -207,6 +222,7 @@ body {
 
   .totalPajak {
     font-size: 13px;
+    padding-left: 0px;
   }
 
   .namaReklame {

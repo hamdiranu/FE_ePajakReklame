@@ -28,7 +28,7 @@ class NavigasiSurveyor extends React.Component {
               />
             </div>
             <div class="navbar-brand-text d-inline-block infoDaerah">
-              <div class="systemName">ePajak</div>
+              <div class="systemName">SIP-Rek</div>
               <div class="areaName">Kabupaten Bandung Barat</div>
             </div>
           </span>
