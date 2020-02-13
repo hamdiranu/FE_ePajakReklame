@@ -77,9 +77,10 @@ const initialState = {
   jangkaWaktuPajak: "sesuatu",
   periodePemasangan: "",
   periodePembongkaran: "",
-  listDataNota: "",
   blobGambar: null,
   objekGambar: null,
+  detailObjekPajakPost: {},
+  detailLaporanPost: {},
 };
 
 export const store = createStore(initialState);
@@ -698,6 +699,7 @@ export const actions = store => ({
       });
   },
 
+  // fungsi untuk post objekpajak oleh payer
   postInputPayer: state => {
     axios
       .post(
@@ -721,8 +723,7 @@ export const actions = store => ({
           jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
           letak_pemasangan: localStorage.getItem("letakPemasangan"),
           klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
-          masa_pajak: `${localStorage.getItem("masaPajakBulan") +
-            localStorage.getItem("masaPajakTahun")}`,
+          masa_pajak: `${localStorage.getItem("masaPajakBulan")} ${localStorage.getItem("masaPajakTahun")}`,
           jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
           tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
           tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
@@ -735,10 +736,23 @@ export const actions = store => ({
         }
       )
       .then(response => {
-        store.setState({ listDataNota: response.data });
+        store.setState({ detailObjekPajakPost: response.data.objek_pajak,
+          detailLaporanPost: response.data.laporan});
+        swal({
+          title: "Sukses",
+          text: "Data sukses ditambahkan",
+          icon: "success"
+        });
       })
       .catch(error => {
+        swal({
+          title: "Oops!",
+          text:
+            "Gagal menambahkan data, silahkan cek ulang data input anda!",
+          icon: "warning"
+        });
         console.log("gagal axios");
+        console.log(error);
       });
   },
 
