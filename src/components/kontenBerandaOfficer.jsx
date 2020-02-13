@@ -304,7 +304,7 @@ class KontenBerandaOfficer extends React.Component {
                         <FaAngleLeft />
                       </button>
                     </li>
-                  }
+                  )}
                   <li className="page-item disabled">
                     <button className="page-link" style={{color:"#232423"}}>
                         Halaman {this.props.pageBuktiPembayaran}
@@ -316,7 +316,7 @@ class KontenBerandaOfficer extends React.Component {
                         <FaAngleRight />
                       </button>
                     </li>
-                  ) : (
+                   : (
                     <li className="page-item">
                       <button
                         className="page-link"

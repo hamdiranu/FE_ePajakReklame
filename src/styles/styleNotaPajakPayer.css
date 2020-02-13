@@ -1,0 +1,200 @@
+/* Style untuk page input detil objek reklame payer */
+
+html,
+body {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.barInfoTarif {
+  margin-top: 10px;
+}
+
+.barInfoTotalTarif {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.kotakRp {
+  width: 38px;
+  height: 38px;
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+.kotakPersen {
+  width: 38px;
+  height: 38px;
+  margin-top: 10px;
+  padding-left: 11px;
+}
+
+.fontTulisan {
+  font-size: 18px;
+}
+
+.informasiTarifPajak {
+  margin-bottom: 35px;
+  padding: 0px 15px;
+}
+
+.informasiTotalTarifPajak {
+  padding: 0px 15px;
+}
+
+@media (max-width: 1024px) {
+  .kotakRp {
+    margin-top: 5px;
+  }
+
+  .kotakPersen {
+    margin-top: 5px;
+  }
+
+  .barInfoTarif {
+    margin-top: 5px;
+  }
+
+  .barInfoTotalTarif {
+    margin-top: 5px;
+  }
+
+  .fontTulisan {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .juduKontenDetailObjekPajak {
+    border-bottom: 2px solid grey;
+    width: fit-content;
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+  }
+
+  .informasiTarifPajak {
+    margin-bottom: 35px;
+    padding: 0px 15px;
+  }
+
+  .informasiTotalTarifPajak {
+    padding: 0px 15px;
+  }
+
+  .kotakRp {
+    margin-top: 5px;
+  }
+
+  .kotakPersen {
+    margin-top: 5px;
+  }
+
+  .barInfoTarif {
+    margin-top: 5px;
+  }
+
+  .barInfoTotalTarif {
+    margin-top: 5px;
+  }
+
+  .fontTulisan {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 414px) {
+  .judulHeaderPayer {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 0px;
+  }
+
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 89%;
+  }
+
+  .hingga {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 411px) {
+  .barInputLokasi {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .barInputNamaObjek {
+    margin-top: 5px;
+    width: 89%;
+  }
+
+  .hingga {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .judulHeaderPayer {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 0px;
+  }
+
+  .hingga {
+    padding-left: 5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hingga {
+    padding-left: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .kontenInputDetailObjek {
+    padding-top: 85px;
+  }
+
+  .kotakRp {
+    margin-top: 5px;
+    width: 30.5px;
+    height: 30.5px;
+    padding-left: 7px;
+    font-size: 11px;
+  }
+
+  .kotakPersen {
+    margin-top: 5px;
+    width: 30.5px;
+    height: 30.5px;
+    padding-left: 9px;
+    font-size: 11px;
+  }
+
+  .barInfoTarif {
+    margin-top: 5px;
+    font-size: 11px;
+  }
+
+  .barInfoTotalTarif {
+    margin-top: 5px;
+    font-size: 11px;
+  }
+
+  .fontTulisan {
+    font-size: 10px;
+  }
+}

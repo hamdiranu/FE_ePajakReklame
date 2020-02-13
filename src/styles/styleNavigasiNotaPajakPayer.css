@@ -11,33 +11,6 @@ body {
   background-color: white;
 }
 
-.borderLogoTambahLaporan {
-  margin: auto;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  text-align: center;
-  border: 2px solid white;
-  background-image: linear-gradient(to right, #e0770a, #d36808, #c94200);
-  transition: 0.4s;
-  background-size: 100%;
-}
-
-.borderLogoTambahLaporan:hover {
-  border: 2px solid white;
-  background-size: 400%;
-  transition: 0.4s;
-}
-
-.borderLogoTambahLaporan svg {
-  height: 30px;
-  width: 30px;
-  top: 20px;
-  left: 24px;
-  color: white;
-  z-index: 5;
-}
-
 .tombolKeluarPayer {
   background-image: linear-gradient(to right, #78797e, #919297, #c2c3c5);
   color: white;
@@ -51,13 +24,15 @@ body {
   transition: 0.4s;
 }
 
-.judulHeaderPayer {
+.judulHeaderObjekPajakPayer {
+  text-align: center;
   font-size: 28px;
 }
 
 @media (max-width: 767px) {
-  .judulHeaderPayer {
+  .judulHeaderObjekPajakPayer {
     font-size: 25px;
+    width: 60%;
   }
 
   .tombolKeluarPayer {
@@ -75,28 +50,28 @@ body {
 }
 
 @media (max-width: 414px) {
-  .judulHeaderPayer {
+  .judulHeaderObjekPajakPayer {
     font-size: 21px;
     font-weight: 600;
   }
 }
 
 @media (max-width: 411px) {
-  .judulHeaderPayer {
+  .judulHeaderObjekPajakPayer {
     font-size: 20px;
     font-weight: 600;
   }
 }
 
 @media (max-width: 360px) {
-  .judulHeaderPayer {
+  .judulHeaderObjekPajakPayer {
     font-size: 16px;
     font-weight: 600;
   }
 }
 
 @media (max-width: 320px) {
-  .judulHeaderPayer {
+  .judulHeaderObjekPajakPayer {
     font-size: 14px;
     font-weight: 600;
   }
