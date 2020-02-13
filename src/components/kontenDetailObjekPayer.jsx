@@ -12,14 +12,11 @@ class KontenDetailPajakPayer extends React.Component {
     if (localStorage.getItem("tipeReklamePayer") === "Reklame Non Permanen") {
       store.setState({
         listJenisReklame: [
-          "Spanduk",
-          "Umbul-umbul",
-          "Banner",
-          "Layar Toko",
+          "Spanduk, Umbul-umbul, Banner, Layar Toko",
           "Baligo"
         ]
       });
-    } else if (localStorage.getItem("tipeReklamePayer") === "Permanen") {
+    } else if (localStorage.getItem("tipeReklamePayer") === "Reklame Permanen") {
       store.setState({ listJenisReklame: ["Billboard/Bando", "LED"] });
     }
   };
