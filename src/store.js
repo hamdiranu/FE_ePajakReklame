@@ -103,6 +103,12 @@ export const actions = store => ({
     localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
   },
 
+  // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input
+  handleInputPostNama: (state, event) => {
+    store.setState({ [event.target.name]: event.target.value });
+    localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
+  },
+
   handleInputPostLuas: (state, event) => {
     localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
     store.setState({ [event.target.name]: event.target.value });
@@ -476,6 +482,11 @@ export const actions = store => ({
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    store.setState({ npwpd: "", nip: "", pin: "" });
+  },
+
+  //Fungsi untuk menghapus data di localstorage ketika user logout
+  handleHapusLocal: state => {
     localStorage.removeItem("tipeReklamePayer");
     localStorage.removeItem("jenisObjekPajak");
     localStorage.removeItem("luasObjekPajak");
@@ -495,11 +506,10 @@ export const actions = store => ({
     localStorage.removeItem("tanggalPembongkaran");
     localStorage.removeItem("tanggalPemasangan");
     localStorage.removeItem("fotoReklamePayer");
-    localStorage.removeItem("namaReklamePayer");
+    localStorage.removeItem("namaObjekPajak");
     localStorage.removeItem("latitudeReklamePayer");
     localStorage.removeItem("longitudeReklamePayer");
     localStorage.removeItem("alamatReklamePayer");
-    store.setState({ npwpd: "", nip: "", pin: "" });
   },
 
   // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input ketika login
@@ -713,7 +723,7 @@ export const actions = store => ({
         {
           foto: localStorage.getItem("fotoReklamePayer"),
           tipe_reklame: localStorage.getItem("tipeReklamePayer"),
-          nama_reklame: localStorage.getItem("namaReklamePayer"),
+          nama_reklame: localStorage.getItem("namaObjekPajak"),
           latitude: localStorage.getItem("latitudeReklamePayer"),
           longitude: localStorage.getItem("longitudeReklamePayer"),
           lokasi: localStorage.getItem("alamatReklamePayer"),
@@ -729,7 +739,9 @@ export const actions = store => ({
           jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
           letak_pemasangan: localStorage.getItem("letakPemasangan"),
           klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
-          masa_pajak: `${localStorage.getItem("masaPajakBulan")} ${localStorage.getItem("masaPajakTahun")}`,
+          masa_pajak: `${localStorage.getItem(
+            "masaPajakBulan"
+          )} ${localStorage.getItem("masaPajakTahun")}`,
           jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
           tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
           tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
@@ -742,8 +754,10 @@ export const actions = store => ({
         }
       )
       .then(response => {
-        store.setState({ detailObjekPajakPost: response.data.objek_pajak,
-          detailLaporanPost: response.data.laporan});
+        store.setState({
+          detailObjekPajakPost: response.data.objek_pajak,
+          detailLaporanPost: response.data.laporan
+        });
         swal({
           title: "Sukses",
           text: "Data sukses ditambahkan",
@@ -753,8 +767,7 @@ export const actions = store => ({
       .catch(error => {
         swal({
           title: "Oops!",
-          text:
-            "Gagal menambahkan data, silahkan cek ulang data input anda!",
+          text: "Gagal menambahkan data, silahkan cek ulang data input anda!",
           icon: "warning"
         });
         console.log("gagal axios");

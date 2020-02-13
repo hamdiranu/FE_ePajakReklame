@@ -12,9 +12,9 @@ import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PdfDocument } from "../components/pdfSemuaKodeQR";
-import {Modal} from 'react-bootstrap';
+import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ReactToPrint from 'react-to-print';
+import ReactToPrint from "react-to-print";
 import { AiFillPrinter } from "react-icons/ai";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import {
@@ -26,7 +26,6 @@ import {
   Image
 } from "@react-pdf/renderer";
 
-
 class ComponentToPrint extends React.Component {
   render() {
     return (
@@ -34,74 +33,82 @@ class ComponentToPrint extends React.Component {
         <h2 className="mt-5">E-Pajak</h2>
         <h2>SSPD : {this.props.sspdKodeQR}</h2>
         <h2 className="mb-5">ID : {this.props.id}</h2>
-        <img src={this.props.gambarKodeQR} alt="" style={{width:"700px", height:"700px"}}/>
+        <img
+          src={this.props.gambarKodeQR}
+          alt=""
+          style={{ width: "700px", height: "700px" }}
+        />
       </div>
     );
   }
 }
 class DaftarKodeQrOfficer extends Component {
   // fungsi get cari kodeQR berdasarkan idKodeQR
-  getCariKodeQR = async (event) => {
+  getCariKodeQR = async event => {
     await this.props.handleInput(event);
     this.props.cariKodeQR();
   };
   componentDidMount = async () => {
-    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "officer"){
+    if (
+      localStorage.getItem("token") === null ||
+      localStorage.getItem("role") !== "officer"
+    ) {
       await this.props.history.push("/login");
     } else {
-      await store.setState({buktiPembayaranID:this.props.match.params.id});
+      await store.setState({ buktiPembayaranID: this.props.match.params.id });
       await this.props.getListKodeQR(this.props.pageKodeQR);
       await this.props.getSemuaListKodeQROfficer();
-    };
+    }
   };
   render() {
-    const toDataURL = url => fetch(url)
-      .then(response => response.blob())
-      .then(blob => new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.onloadend = () => resolve(reader.result)
-        reader.onerror = reject
-        reader.readAsDataURL(blob)
-    }))
+    const toDataURL = url =>
+      fetch(url)
+        .then(response => response.blob())
+        .then(
+          blob =>
+            new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onloadend = () => resolve(reader.result);
+              reader.onerror = reject;
+              reader.readAsDataURL(blob);
+            })
+        );
     const daftarKodeQR = this.props.daftarKodeQR;
     let listKodeQRUntukUnduh = this.props.listKodeQRUntukUnduh;
-    if(listKodeQRUntukUnduh.length !== 0){
+    if (listKodeQRUntukUnduh.length !== 0) {
       listKodeQRUntukUnduh.map((item, key) => {
-        toDataURL(`${item.link_gambar}`)
-        .then(dataUrl => {
+        toDataURL(`${item.link_gambar}`).then(dataUrl => {
           item.link_gambar = dataUrl;
-        })
-        return(
-          <div></div>
-        );
+        });
+        return <div></div>;
       });
-    };
+    }
     const namaFileSemuaKodeQR = `KodeQR-SSPD-${daftarKodeQR.nomor_sspd}.pdf`;
     const styles = StyleSheet.create({
       page: {
-          backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff"
       },
       kodeQRContainer: {
-          backgroundColor: "#f6f6f5",
-          display: "flex",
-          flexDirection: "row",
-          padding:10
+        backgroundColor: "#f6f6f5",
+        display: "flex",
+        flexDirection: "row",
+        padding: 10
       },
       image: {
-          height: 250,
-          width: 250,
-          marginVertical: 90,
-          marginHorizontal: 63,
-          alignContent:"center"
+        height: 250,
+        width: 250,
+        marginVertical: 90,
+        marginHorizontal: 63,
+        alignContent: "center"
       },
-      kodeQRTitle:{
-          top: 20,
-          fontSize: 14,
-          margin: 10,
-          textAlign: "center"
+      kodeQRTitle: {
+        top: 20,
+        fontSize: 14,
+        margin: 10,
+        textAlign: "center"
       }
     });
-    const KodeQRModal = (props) => {
+    const KodeQRModal = props => {
       return (
         <Modal
           {...props}
@@ -110,75 +117,111 @@ class DaftarKodeQrOfficer extends Component {
           centered
         >
           <Modal.Body>
-            <div className="container-fluid" style={{padding:"20px", backgroundColor:"silver", border:"solid 1px silver", minHeight:"400px"}}>
-                <div className="boxLogin"> 
-                    <div className="mb-3" style={{textAlign:"center"}}>
-                      <h4 style={{fontWeight:"bolder"}}>KodeQR</h4>
-                      <h4>ID : {props.id}</h4>
-                    </div>
-                    <div className="mb-4" style={{textAlign:"center"}}>
-                      <img src={props.gambarKodeQR} alt="" style={{width:"60%", height:"60%"}}/>
-                    </div>
-                    <div style={{textAlign:"center"}}>
-                    <ReactToPrint
-                      trigger={() => <button className="btn mx-1"
-                        style={{backgroundColor:"silver", color:"blue"}}>
-                          <AiFillPrinter size={40}/>
-                      </button> }
-                      content={() => this.componentRef}
-                    />
-                    <div style={{display:"none"}}>
-                      <ComponentToPrint ref={el => (this.componentRef = el)}
-                        gambarKodeQR={props.gambarKodeQR}
-                        id={props.id}
-                        sspdKodeQR={props.sspdKodeQR}
-                      />
-                    </div>
-                        <PDFDownloadLink
-                          document={
-                            <Document>
-                              <Page style={styles.page}>
-                                <View style={styles.kodeQRContainer}>
-                                    <Text style={styles.kodeQRTitle}>E-Pajak{"\n"}SSPD : {props.sspdKodeQR}{"\n"}ID : {props.id}</Text>
-                                    <Image
-                                        style={styles.image}
-                                        source={`${props.gambarKodeQR}`}
-                                    />
-                                </View>
-                              </Page>
-                            </Document>}
-                          fileName={`KodeQR-SSPD-${daftarKodeQR.nomor_sspd}-ID-${props.id}.pdf`}
-                        >
-                          {({ blob, url, loading, error }) =>
-                            loading ? "Loading..." : <FaDownload size={30} className="mx-1" style={{color:"blue"}}/>
-                          }
-                        </PDFDownloadLink>
-                    </div>
+            <div
+              className="container-fluid"
+              style={{
+                padding: "20px",
+                backgroundColor: "silver",
+                border: "solid 1px silver",
+                minHeight: "400px"
+              }}
+            >
+              <div className="boxLogin">
+                <div className="mb-3" style={{ textAlign: "center" }}>
+                  <h4 style={{ fontWeight: "bolder" }}>KodeQR</h4>
+                  <h4>ID : {props.id}</h4>
                 </div>
+                <div className="mb-4" style={{ textAlign: "center" }}>
+                  <img
+                    src={props.gambarKodeQR}
+                    alt=""
+                    style={{ width: "60%", height: "60%" }}
+                  />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <ReactToPrint
+                    trigger={() => (
+                      <button
+                        className="btn mx-1"
+                        style={{ backgroundColor: "silver", color: "blue" }}
+                      >
+                        <AiFillPrinter size={40} />
+                      </button>
+                    )}
+                    content={() => this.componentRef}
+                  />
+                  <div style={{ display: "none" }}>
+                    <ComponentToPrint
+                      ref={el => (this.componentRef = el)}
+                      gambarKodeQR={props.gambarKodeQR}
+                      id={props.id}
+                      sspdKodeQR={props.sspdKodeQR}
+                    />
+                  </div>
+                  <PDFDownloadLink
+                    document={
+                      <Document>
+                        <Page style={styles.page}>
+                          <View style={styles.kodeQRContainer}>
+                            <Text style={styles.kodeQRTitle}>
+                              E-Pajak{"\n"}SSPD : {props.sspdKodeQR}
+                              {"\n"}ID : {props.id}
+                            </Text>
+                            <Image
+                              style={styles.image}
+                              source={`${props.gambarKodeQR}`}
+                            />
+                          </View>
+                        </Page>
+                      </Document>
+                    }
+                    fileName={`KodeQR-SSPD-${daftarKodeQR.nomor_sspd}-ID-${props.id}.pdf`}
+                  >
+                    {({ blob, url, loading, error }) =>
+                      loading ? (
+                        "Loading..."
+                      ) : (
+                        <FaDownload
+                          size={30}
+                          className="mx-1"
+                          style={{ color: "blue" }}
+                        />
+                      )
+                    }
+                  </PDFDownloadLink>
+                </div>
+              </div>
             </div>
           </Modal.Body>
         </Modal>
       );
-    }
-    const KodeQR = (props) => {
+    };
+    const KodeQR = props => {
       const [modalShow, setModalShow] = React.useState(false);
       return (
-        <div>
-          <Button className="btn-sm modal-kode-qr"
-            style={{backgroundColor:"white", border:"white", color:"blue", fontSize:"15px"}}
-            onClick={() => setModalShow(true)}>
-              <p>Kode QR</p>
+        <div className="tombolDownloadKodeSatuan">
+          <Button
+            className="btn-sm modal-kode-qr"
+            style={{
+              backgroundColor: "white",
+              border: "white",
+              color: "blue",
+              fontSize: "15px"
+            }}
+            onClick={() => setModalShow(true)}
+          >
+            <p>Kode QR</p>
           </Button>
           <KodeQRModal
-            gambarKodeQR = {props.gambarKodeQR}
-            id = {props.id}
-            sspdKodeQR = {props.sspdKodeQR}
+            gambarKodeQR={props.gambarKodeQR}
+            id={props.id}
+            sspdKodeQR={props.sspdKodeQR}
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
         </div>
       );
-    }
+    };
     return (
       <React.Fragment>
         <NavigasiOfficer />
@@ -188,7 +231,13 @@ class DaftarKodeQrOfficer extends Component {
               <div className="tombolBacktoDaftarSSPD">
                 <TiArrowBackOutline />
                 <Link to="/officer/home">
-                  <div style={{ paddingTop: "3px", paddingLeft: "3px", color:"white" }}>
+                  <div
+                    style={{
+                      paddingTop: "3px",
+                      paddingLeft: "3px",
+                      color: "white"
+                    }}
+                  >
                     <span>Kembali</span>
                   </div>
                 </Link>
@@ -208,13 +257,15 @@ class DaftarKodeQrOfficer extends Component {
                   <span>
                     Nama Reklame : {daftarKodeQR.nama_reklame} <br />
                   </span>
-                  {daftarKodeQR.pelanggaran === "" ?
+                  {daftarKodeQR.pelanggaran === "" ? (
                     <div></div>
-                  :
+                  ) : (
                     <div className="box-pelanggaran">
-                      <div className="text-pelanggaran">{daftarKodeQR.pelanggaran}</div>
+                      <div className="text-pelanggaran">
+                        {daftarKodeQR.pelanggaran}
+                      </div>
                     </div>
-                  }                    
+                  )}
                 </div>
                 <div className="col-md-4 col-sm-12 px-0">
                   <form onSubmit={e => e.preventDefault(e)}>
@@ -228,7 +279,7 @@ class DaftarKodeQrOfficer extends Component {
                         placeholder="Masukkan ID"
                         onChange={e => this.getCariKodeQR(e)}
                       />
-                      <FaSearch/>
+                      <FaSearch />
                     </div>
                   </form>
                 </div>
@@ -236,13 +287,21 @@ class DaftarKodeQrOfficer extends Component {
               <div className="col-md-3" style={{ margin: "auto" }}>
                 <div className="row">
                   <div className="col-md-12 col-sm-4 tombolDownloadSemuaQr">
-                    <div style={{textAlign:"left", fontSize:"16px"}} className="mr-2">
+                    <div
+                      style={{ textAlign: "left", fontSize: "16px" }}
+                      className="mr-2"
+                    >
                       <span>Unduh semua QR</span>
                     </div>
                     <div className="buttonUnduhSemuaQR">
-                      {listKodeQRUntukUnduh ?
+                      {listKodeQRUntukUnduh ? (
                         <PDFDownloadLink
-                          document={<PdfDocument data={listKodeQRUntukUnduh} nomor_sspd={daftarKodeQR.nomor_sspd} />}
+                          document={
+                            <PdfDocument
+                              data={listKodeQRUntukUnduh}
+                              nomor_sspd={daftarKodeQR.nomor_sspd}
+                            />
+                          }
                           fileName={namaFileSemuaKodeQR}
                           style={{
                             textDecoration: "none",
@@ -252,16 +311,16 @@ class DaftarKodeQrOfficer extends Component {
                             border: "1px solid #007BFF",
                             borderRadius: "5px",
                             width: "fit-content",
-                            textAlign: "center",                        
+                            textAlign: "center"
                           }}
                         >
                           {({ blob, url, loading, error }) =>
-                            loading ? "Loading document..." : "Unduh"
+                            loading ? "Loading document..." : <FaDownload />
                           }
                         </PDFDownloadLink>
-                      :
+                      ) : (
                         <div></div>
-                      }
+                      )}
                     </div>
                   </div>
                 </div>
@@ -288,15 +347,15 @@ class DaftarKodeQrOfficer extends Component {
                         <div className="col-10 col-sm order-sm-2 nama-wp dt-title">
                           {item.kode_unik}
                         </div>
-                        {item.status_scan===true ?
+                        {item.status_scan === true ? (
                           <div className="col-auto col-sm order-sm-3 statusSudahScan dt-small">
                             <AiFillCheckCircle />
-                          </div>                  
-                        :
+                          </div>
+                        ) : (
                           <div className="col-auto col-sm order-sm-3 statusBelumScan dt-small">
                             <AiFillCloseCircle />
                           </div>
-                        }
+                        )}
                         {/* <div className="col-4 col-sm order-sm-5 tombolCetakKodeQrSatuan dt-small dt-right dt-bold">
                           <ReactToPrint
                             trigger={() => <AiFillPrinter />}
@@ -311,53 +370,69 @@ class DaftarKodeQrOfficer extends Component {
                           </div>
                         </div> */}
                         <div className="col-5 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
-                          <KodeQR gambarKodeQR={item.link_gambar} id={item.id} sspdKodeQR={daftarKodeQR.nomor_sspd}/>
+                          <KodeQR
+                            gambarKodeQR={item.link_gambar}
+                            id={item.id}
+                            sspdKodeQR={daftarKodeQR.nomor_sspd}
+                          />
                         </div>
                       </div>
                     </li>
                   );
-                })
-                }
+                })}
               </ul>
-              {this.props.idKodeQR==="" ?
+              {this.props.idKodeQR === "" ? (
                 <div className="clearfix">
                   <ul className="pagination">
-                    {this.props.pageKodeQR === 1?
+                    {this.props.pageKodeQR === 1 ? (
                       <li className="page-item disabled">
                         <button className="page-link">
-                          <FaAngleLeft/>
+                          <FaAngleLeft />
                         </button>
                       </li>
-                    :
+                    ) : (
                       <li className="page-item">
-                        <button className="page-link" onClick={() => this.props.getListKodeQR(this.props.pageKodeQR-1)}>
-                          <FaAngleLeft/>
+                        <button
+                          className="page-link"
+                          onClick={() =>
+                            this.props.getListKodeQR(this.props.pageKodeQR - 1)
+                          }
+                        >
+                          <FaAngleLeft />
                         </button>
                       </li>
-                    }
+                    )}
                     <li className="page-item disabled">
-                      <button className="page-link" style={{color:"#232423"}}>
-                          Halaman {this.props.pageKodeQR}
+                      <button
+                        className="page-link"
+                        style={{ color: "#232423" }}
+                      >
+                        Halaman {this.props.pageKodeQR}
                       </button>
                     </li>
-                    {this.props.pageKodeQR === this.props.maksPageKodeQR ?
+                    {this.props.pageKodeQR === this.props.maksPageKodeQR ? (
                       <li className="page-item disabled">
                         <button className="page-link">
-                            <FaAngleRight/>
+                          <FaAngleRight />
                         </button>
                       </li>
-                    :
+                    ) : (
                       <li className="page-item">
-                        <button className="page-link" onClick={() => this.props.getListKodeQR(this.props.pageKodeQR+1)} >
-                          <FaAngleRight/>
+                        <button
+                          className="page-link"
+                          onClick={() =>
+                            this.props.getListKodeQR(this.props.pageKodeQR + 1)
+                          }
+                        >
+                          <FaAngleRight />
                         </button>
                       </li>
-                    }               
+                    )}
                   </ul>
                 </div>
-              :
+              ) : (
                 <div></div>
-              }
+              )}
             </div>
           </div>
         </div>
@@ -366,5 +441,7 @@ class DaftarKodeQrOfficer extends Component {
   }
 }
 
-export default connect("daftarKodeQR, listKodeQR, buktiPembayaranID, idKodeQR, listKodeQRUntukUnduh, pageKodeQR, maksPageKodeQR",
-  actions)(withRouter(DaftarKodeQrOfficer));
+export default connect(
+  "daftarKodeQR, listKodeQR, buktiPembayaranID, idKodeQR, listKodeQRUntukUnduh, pageKodeQR, maksPageKodeQR",
+  actions
+)(withRouter(DaftarKodeQrOfficer));

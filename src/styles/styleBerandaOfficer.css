@@ -50,6 +50,10 @@ body {
   transition: 0.4s;
 }
 
+.dt-right {
+  text-align: center;
+}
+
 .officerCariID {
   position: relative;
 }
@@ -197,6 +201,7 @@ body {
 
 .kodeQr {
   margin: auto;
+  text-align: center;
 }
 
 .tombolPrintSemuaQr {
@@ -216,6 +221,7 @@ body {
 
 .statusValidasi {
   margin: auto;
+  text-align: center;
 }
 
 .namaReklame {
@@ -251,7 +257,24 @@ body {
   display: inline-block;
 }
 
+.tombolDownloadKodeSatuan {
+  text-align: center;
+}
+
 @media (max-width: 767px) {
+  .tombolDownloadKodeSatuan {
+    text-align: left;
+  }
+
+  .statusValidasi {
+    margin: auto;
+    text-align: right;
+  }
+  .kodeQr {
+    margin: auto;
+    text-align: right;
+  }
+
   .cariSspdMobile {
     width: 56%;
   }
@@ -342,7 +365,7 @@ body {
     font-size: 15px;
   }
 
-  .tombolDownloadSemuaQr div{
+  .tombolDownloadSemuaQr div {
     font-size: 16px;
     display: inline-block;
     text-align: center;

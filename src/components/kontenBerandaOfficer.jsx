@@ -236,7 +236,7 @@ class KontenBerandaOfficer extends React.Component {
                       <div className="col-6 col-sm order-sm-1 no-sspd dt-small barisNomorSspd">
                         {buktiPembayaran.nomor_sspd}
                       </div>
-                      <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-right dt-bold">
+                      <div className="col-6 col-sm order-sm-5 statusValidasi dt-small dt-bold">
                         {status}
                         <br />
                         {buktiPembayaran.pelanggaran === "" ? (
@@ -250,7 +250,7 @@ class KontenBerandaOfficer extends React.Component {
                       <div className="col-7 col-sm order-sm-2 namaWp dt-title">
                         {payer}
                       </div>
-                      <div className="col-5 col-sm order-sm-6 kodeQr dt-right">
+                      <div className="col-5 col-sm order-sm-6 kodeQr">
                         {buktiPembayaran.status_buat_kode_qr ? (
                           <Link
                             to={`/officer/daftar-kode-QR/${buktiPembayaran.id}`}
@@ -306,17 +306,18 @@ class KontenBerandaOfficer extends React.Component {
                     </li>
                   )}
                   <li className="page-item disabled">
-                    <button className="page-link" style={{color:"#232423"}}>
-                        Halaman {this.props.pageBuktiPembayaran}
+                    <button className="page-link" style={{ color: "#232423" }}>
+                      Halaman {this.props.pageBuktiPembayaran}
                     </button>
                   </li>
-                  {this.props.pageBuktiPembayaran === this.props.maksPageBuktiPembayaran ?
+                  {this.props.pageBuktiPembayaran ===
+                  this.props.maksPageBuktiPembayaran ? (
                     <li className="page-item disabled">
                       <button className="page-link">
                         <FaAngleRight />
                       </button>
                     </li>
-                   : (
+                  ) : (
                     <li className="page-item">
                       <button
                         className="page-link"
