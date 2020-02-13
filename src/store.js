@@ -63,7 +63,7 @@ const initialState = {
   showInputLocation: "flex",
   latitudeInputDefault: -7.9744,
   longitudeInputDefault: 112.6328,
-  zoomPetaDefault: 11,
+  zoomPetaDefault: 15,
   judulObjekPajak: "",
   jenisObjekPajak: "",
   tarifTambahan: "",
@@ -79,7 +79,10 @@ const initialState = {
   masaPajakBulan: "",
   masaPajakTahun: "",
   PeriodeAwal: "",
-  PeriodeAkhir: ""
+  PeriodeAkhir: "",
+  kataKunciLokasi: "",
+  listRekomendasiLokasi: [],
+  lokasiReklame: [],
 };
 
 export const store = createStore(initialState);
@@ -599,5 +602,47 @@ export const actions = store => ({
       .catch(function(error) {
         console.log(error);
       });
-  }
+  },
+
+  // Fungsi untuk mengambil data rekomendasi lokasi hasil pencarian dengan mengugunakan third party Mapbox Search API
+  searchLokasi: async (state, event) => {
+
+    const req = {
+      method: "get",
+      // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+state.kataKunciLokasi+"&inputtype="+inputtype+"&fields="+fields+"&key="+key,
+      // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyA_Td2kGqTcpU5wZ7t2iOcYdLrWNhrcCvI&input=jalan tidar",
+      url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+state.kataKunciLokasi+".json?country=ID&access_token=pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA",
+      headers: {
+      },
+    };
+
+    await axios(req)
+      .then(function(response) {
+        store.setState({ listRekomendasiLokasi: response.data.features});
+        console.log(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
+
+  // Fungsi untuk mengambil data alamat lokasi dari hasil geocoding longitude,latitude dengan mengugunakan third party Mapbox Geocoding API
+  getAlamatLokasi: async (state, event) => {
+
+    const req = {
+      method: "get",
+      url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+state.longitudeInputDefault+","+state.latitudeInputDefault+".json?country=ID&access_token=pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA",
+      headers: {
+      },
+    };
+
+    await axios(req)
+      .then(function(response) {
+        store.setState({ lokasiReklame: response.data.features});
+        console.log(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
 });

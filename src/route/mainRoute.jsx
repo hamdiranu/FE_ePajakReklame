@@ -12,6 +12,7 @@ import BerandaPayer from "../pages/berandaPayer";
 import DetilLaporanPayer from "../pages/detilLaporanPayer";
 import inputGambarPayer from "../pages/inputGambarPayer";
 import inputLokasiPayer from "../pages/inputLokasiPayer";
+import inputLokasiPetaPayer from "../pages/inputLokasiPetaPayer";
 import inputDetailObjekPayer from "../pages/inputDetailObjekPayer";
 import inputInfoObjekPayer from "../pages/inputInfoObjekPayer";
 
@@ -57,6 +58,11 @@ const MainRoute = () => {
             exact
             path="/payer/input-informasi-pajak"
             component={inputInfoObjekPayer}
+          />
+          <Route
+            exact
+            path="/payer/input-lokasi/peta"
+            component={inputLokasiPetaPayer}
           />
           {/* <Route component={NotMatch} /> */}
         </Switch>
