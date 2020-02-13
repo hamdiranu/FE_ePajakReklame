@@ -84,7 +84,7 @@ class KontenInformasiPajakPayer extends React.Component {
                     <option value="Agustus">Agustus</option>
                     <option value="September">September</option>
                     <option value="Oktober">Oktober</option>
-                    <option value="Novermber">November</option>
+                    <option value="November">November</option>
                     <option value="Desember">Desember</option>
                   </select>
                 </div>
