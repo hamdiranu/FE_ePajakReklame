@@ -686,6 +686,7 @@ export const actions = store => ({
           klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
           masa_pajak: `${localStorage.getItem("masaPajakBulan") +
             localStorage.getItem("masaPajakTahun")}`,
+          jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
           tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
           tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
         },
