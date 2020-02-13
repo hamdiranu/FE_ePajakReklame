@@ -4,8 +4,8 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaSignOutAlt, FaHome } from "react-icons/fa";
 
-// Kelas untuk Komponen Navigasi pada Halaman Input Lokasi Payer
-class NavigasiLokasiPayer extends React.Component {
+// Kelas untuk Komponen Navigasi pada Halaman Nota Payer
+class NavigasiNotaPayer extends React.Component {
   logOutPayer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
@@ -32,7 +32,7 @@ class NavigasiLokasiPayer extends React.Component {
           </div>
 
           <div className="col-md-6 col-sm-11 judulHeaderLokasiPayer">
-            <span>Detail Lokasi Reklame</span>
+            <span>Nota Pajak</span>
           </div>
           <div class="col-md-3 col-sm-1 text-right kotakTombolLogOut">
             <span
@@ -48,7 +48,4 @@ class NavigasiLokasiPayer extends React.Component {
   }
 }
 
-export default connect(
-  "statusPageHomeSurveyor",
-  actions
-)(withRouter(NavigasiLokasiPayer));
+export default connect("", actions)(withRouter(NavigasiNotaPayer));

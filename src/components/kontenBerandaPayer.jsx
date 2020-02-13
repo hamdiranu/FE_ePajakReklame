@@ -11,6 +11,7 @@ class KontenBerandaPayer extends React.Component {
     this.props.getDaftarLaporan();
   };
   render() {
+    var currencyFormatter = require("currency-formatter");
     var filterDaftarLaporan = this.props.daftarLaporanPayer;
     if (this.props.filterByDaftarLaporan === "batal") {
       filterDaftarLaporan = filterDaftarLaporan.filter(
@@ -118,13 +119,17 @@ class KontenBerandaPayer extends React.Component {
                       {laporan.objek_pajak.nama_reklame}
                     </div>
                     <div class="col-4 col-sm order-sm-5 totalPajak dt-small dt-right dt-bold">
-                      Rp {laporan.laporan.total_pajak}
+                      Rp{" "}
+                      {currencyFormatter.format(laporan.laporan.total_pajak, {
+                        code: "IDR",
+                        symbol: ""
+                      })}
                     </div>
                     <div class="col-8 col-sm order-sm-3 masaPajak dt-small">
                       {laporan.objek_pajak.masa_pajak}
                     </div>
                     <div class="col-4 col-sm order-sm-6 detilLaporan dt-right">
-                      <Link to={`/payer/detil-laporan/${laporan.laporan.id}`}>
+                      <Link to={`/payer/detail-laporan/${laporan.laporan.id}`}>
                         Lihat Detail
                       </Link>
                     </div>

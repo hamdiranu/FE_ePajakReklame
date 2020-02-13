@@ -15,6 +15,7 @@ import inputLokasiPayer from "../pages/inputLokasiPayer";
 import inputLokasiPetaPayer from "../pages/inputLokasiPetaPayer";
 import inputDetailObjekPayer from "../pages/inputDetailObjekPayer";
 import inputInfoObjekPayer from "../pages/inputInfoObjekPayer";
+import NotaPajakPayer from "../pages/notaPajakPayer";
 
 const MainRoute = () => {
   return (
@@ -38,32 +39,33 @@ const MainRoute = () => {
             component={DetailReklameSurveyor}
           />
           <Route exact path="/payer/home" component={BerandaPayer} />
-          <Route exact path="/payer/detil-laporan/:id" component={DetilLaporanPayer} />
+          <Route exact path="/payer/detail-laporan/:id" component={DetilLaporanPayer} />
           <Route
             exact
             path="/payer/input-gambar"
-            component={inputGambarPayer}
+            component={InputGambarPayer}
           />
           <Route
             exact
             path="/payer/input-lokasi"
-            component={inputLokasiPayer}
+            component={InputLokasiPayer}
           />
           <Route
             exact
             path="/payer/input-detail-objek-pajak"
-            component={inputDetailObjekPayer}
+            component={InputDetailObjekPayer}
           />
           <Route
             exact
             path="/payer/input-informasi-pajak"
-            component={inputInfoObjekPayer}
+            component={InputInfoObjekPayer}
           />
           <Route
             exact
             path="/payer/input-lokasi/peta"
             component={inputLokasiPetaPayer}
           />
+          <Route exact path="/payer/nota-pajak" component={NotaPajakPayer} />
           {/* <Route component={NotMatch} /> */}
         </Switch>
       </BrowserRouter>

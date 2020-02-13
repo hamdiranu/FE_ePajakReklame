@@ -22,12 +22,8 @@ class KontenBerandaSurveyor extends React.Component {
       scannerResult: data
     });
     if (this.props.scannerResult !== null) {
-      console.log("cek QR : ", this.props.scannerResult);
       await this.props.getIdByKodeQR();
-      console.log(
-        "cek state id pembayaran : ",
-        store.getState().buktiPembayaranId
-      );
+
       if (this.props.validasiKodeQR === true) {
         swal({
           title: "Oops!",
@@ -38,7 +34,7 @@ class KontenBerandaSurveyor extends React.Component {
         store.setState({ validasiKodeQR: false });
       } else {
         this.props.history.push(
-          `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
+          `/surveyor/detail-reklame/${store.getState().buktiPembayaranId}`
         );
       }
     }

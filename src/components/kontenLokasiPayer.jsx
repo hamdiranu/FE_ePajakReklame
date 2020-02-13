@@ -23,6 +23,7 @@ class KontenInputLokasiPayer extends React.Component {
 
   handlePilihLokasi = async (koordinat) => {
     this.props.history.push("/payer/input-lokasi/peta")
+
   }
 
   goToObjekPajak = () => {

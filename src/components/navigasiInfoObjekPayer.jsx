@@ -12,7 +12,6 @@ class NavigasiPayer extends React.Component {
   };
 
   goHomePayer = async () => {
-    this.props.handleLogOut();
     this.props.history.replace("/payer/home");
   };
 
