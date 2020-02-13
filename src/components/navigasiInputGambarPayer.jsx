@@ -1,16 +1,30 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
-import { actions } from "../store";
+import { actions, store } from "../store";
 import { FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi pada Page Input Gambar Payer
 class NavigasiPayer extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      file: null
+    }
+    this.handleChange = this.handleChange.bind(this)
+  };
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    });
+    store.setState({blobGambar: URL.createObjectURL(event.target.files[0]),
+      objekGambar:event.target.files[0]});
+    localStorage.setItem(`fotoReklamePayer`, `${URL.createObjectURL(event.target.files[0])}`);
+  };
   logOutPayer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
   };
-
   render() {
     return (
       <React.Fragment>
@@ -18,15 +32,19 @@ class NavigasiPayer extends React.Component {
           className="navbar navbar-light bg-light navbarPayer "
           style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
-          <span class="navbar-brand" style={{ display: "flex" }}>
+          <span className="navbar-brand" style={{ display: "flex" }}>
             <div className="borderLogoTambahLaporan">
-              <Link to="/surveyor/peta" style={{ textDecoration: "none" }}>
-                <FaPlusCircle className="logoTambahLaporan" />
-              </Link>
+              <FaPlusCircle/>
+              <input type="file"
+                className="upload-gambar custom-file-input"
+                id="fileItem"
+                onChange={this.handleChange}
+                style={{width:"45px", height:"45px", zIndex:"10"}}>
+              </input>
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer">Ambil Foto Reklame</span>
+            <span className="judulHeaderPayer">Unggah Foto Reklame</span>
           </div>
           <div class="text-right">
             <span
@@ -43,6 +61,6 @@ class NavigasiPayer extends React.Component {
 }
 
 export default connect(
-  "statusPageHomeSurveyor",
+  "statusPageHomeSurveyor, blobGambar, objekGambar",
   actions
 )(withRouter(NavigasiPayer));
