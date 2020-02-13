@@ -1,4 +1,4 @@
-/* Style untuk page input lokasi reklame payer */
+Style untuk page input lokasi reklame payer
 
 html,
 body {
@@ -15,20 +15,17 @@ body {
   padding-top: 100px;
 }
 
-.judulKonetenLokasiPayer {
-  border-bottom: 2px solid grey;
-  width: fit-content;
-  margin-bottom: 50px;
-  padding-bottom: 5px;
+.judulKontenLokasiPayer {
+  margin-bottom: 20px;
 }
 
 .inputNamaObjekPajak {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
-.kotakInputLokasi {
+.kotakSearchLokasi {
   display: flex;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 }
 
 .input-group-text {
@@ -117,12 +114,15 @@ body {
 
 .barInputLokasi {
   margin-top: 10px;
-  width: 88%;
+  width: 76%;
+}
+.buttonKembali {
+  margin-right: 20px;
 }
 
 .barInputNamaObjek {
   margin-top: 10px;
-  width: 80%;
+  width: 60%;
 }
 
 .keterananTambahanLokasi {
@@ -130,135 +130,23 @@ body {
   margin-bottom: 35px;
 }
 
-.jarakButton {
-  margin-right: 30px;
-}
-
 .rowButton {
   display: flex;
-  padding-left: 145px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-@media (max-width: 768px) {
-  .markerLokasi {
-    position: absolute;
-    z-index: 3;
-    top: 44%;
-    left: 44.5%;
-  }
-
-  .judulKonetenLokasiPayer {
-    border-bottom: 2px solid grey;
-    width: fit-content;
-    margin-bottom: 35px;
-    padding-bottom: 5px;
-  }
-
-  .colKotakFormInput {
-    height: 445px;
-  }
-
-  .barInputLokasi {
-    margin-top: 5px;
-    width: 88%;
-  }
-
-  .barInputNamaObjek {
-    margin-top: 5px;
-    width: 80%;
-  }
-
-  .inputNamaObjekPajak {
-    margin-bottom: 35px;
-  }
-
-  .kotakInputLokasi {
-    display: flex;
-    margin-bottom: 35px;
-  }
-
-  .kotakMaps {
-    margin-top: 5px;
-  }
-
-  .rowButton {
-    display: flex;
-    padding-left: 60px;
-  }
+.iconSearchLokasi {
+  margin-top: 10px;
+  font-size: 24px;
+  border: solid 1px silver;
+  border-radius: 10%;
+  padding: 0 5px;
 }
 
-@media (max-width: 414px) {
-  .judulHeaderPayer {
-    font-size: 18px;
-    font-weight: 600;
-    padding-left: 0px;
-  }
-
-  .barInputLokasi {
-    margin-top: 5px;
-    width: 100%;
-  }
-
-  .barInputNamaObjek {
-    margin-top: 5px;
-    width: 89%;
-  }
-
-  .rowButton {
-    display: flex;
-    padding-left: 100px;
-  }
-}
-
-@media (max-width: 411px) {
-  .barInputLokasi {
-    margin-top: 5px;
-    width: 100%;
-  }
-
-  .barInputNamaObjek {
-    margin-top: 5px;
-    width: 89%;
-  }
-
-  .rowButton {
-    display: flex;
-    padding-left: 100px;
-  }
-}
-
-@media (max-width: 375px) {
-  .judulHeaderPayer {
-    font-size: 18px;
-    font-weight: 600;
-    padding-left: 0px;
-  }
-
-  .rowButton {
-    display: flex;
-    padding-left: 80px;
-  }
-}
-
-@media (max-width: 360px) {
-  .barInputLokasi {
-    margin-top: 5px;
-    width: 100%;
-  }
-
-  .barInputNamaObjek {
-    margin-top: 5px;
-    width: 87%;
-  }
-}
-
-@media (max-width: 320px) {
-  .kontenInputLokasiPayer {
-    padding-top: 85px;
-  }
-
-  .rowButton {
-    display: flex;
-    padding-left: 50px;
-  }
+.barRekomendasiLokasi {
+  width: 89%;
+  border: 1px solid silver;
+  border-radius: 5%;
+  padding: 10px;
 }
