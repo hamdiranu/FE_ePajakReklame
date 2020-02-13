@@ -9,7 +9,6 @@ class KontenInputGambarPayer extends React.Component {
     this.props.history.push("/payer/input-lokasi");
   };
   render() {
-    console.warn("ini lokal storec", localStorage.getItem("fotoReklamePayer"))
     return (
       <div className="kontenInputGambarPayer">
         <div className="container-fluid">
