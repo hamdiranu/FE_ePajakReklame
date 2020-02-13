@@ -391,7 +391,7 @@ export const actions = store => ({
       });
   },
 
-  // Fungsi untuk generate QR code dan menyimpannya di database
+  // Fungsi untuk generate QR code dan menyimpannya di database oleh officer
   postGenerateQR: async (state, event) => {
     const id = event;
     const mydata = {
@@ -756,5 +756,27 @@ export const actions = store => ({
       console.log(await toBase64(file));
     }    
     Main();
+  },
+
+  // Fungsi untuk generate QR code dan menyimpannya di database oleh payer
+  postGenerateQRPayer: async (state, event) => {
+    const mydata = {
+      bukti_pembayaran_id: event
+    };
+    const req = {
+      method: "post",
+      url: "https://alterratax.my.id/kode_qr/payer",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      },
+      data: mydata
+    };
+    await axios(req)
+      .then(function(response) {
+        store.setState({ pageKodeQR: 1 });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   },
 });
