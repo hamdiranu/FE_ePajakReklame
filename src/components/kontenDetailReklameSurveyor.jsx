@@ -7,7 +7,7 @@ import { Button, FormControl } from "react-bootstrap";
 import { AiFillCheckCircle } from "react-icons/ai";
 import ReactSnackBar from "react-js-snackbar";
 import swal from "sweetalert";
-import gifLoading from "../images/loading11.gif";
+import gifLoading from "../images/loading15.gif";
 
 // Kelas untuk Komponen Halaman Detail Reklame Surveyor
 class KontenDetailReklameSurveyor extends React.Component {
