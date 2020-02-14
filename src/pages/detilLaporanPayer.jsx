@@ -693,29 +693,45 @@ class DetilLaporanPayer extends Component {
   };
 
   tombolBayar = async () => {
-    const data = {
-      "laporan_id": this.props.detilLaporan.id,
-      "status_pembayaran": true,
-    };
-    const req = {
-      method: "put",    
-      url: `https://alterratax.my.id/laporan/payer`,
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
+    await this.props.getTokenSnap();
+    if (this.props.tokenSnap === ""){
+      swal({
+        title: "Oops!",
+        text: "Pembayaran sedang diproses (pending), mohon bersabar",
+        icon: "warning"
+      });
+    } else {
+    window.snap.pay(this.props.tokenSnap, {
+      onSuccess: function(result){
+        console.log('success');console.log(result);
+            const data = {
+              "laporan_id": this.props.detilLaporan.id,
+              "status_pembayaran": true,
+            };
+            const req = {
+              method: "put",    
+              url: `https://alterratax.my.id/laporan/payer`,
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+              data : data
+            };
+              axios(req)
+              .then(function(response){
+                console.log("isi response", response.data)
+                store.setState({ dataStatusSuksesBayar : response.data });
+              })
+              .catch(function(error){
+                alert("Gagal Membatalkan Laporan");
+                console.log(error);
+              })
+            store.setState({ statusSuksesbayar : true });
       },
-      data : data
-    };
-    await axios(req)
-      .then(function(response){
-        console.log("isi response", response.data)
-        store.setState({ dataStatusSuksesBayar : response.data });
-      })
-      .catch(function(error){
-        alert("Gagal Membatalkan Laporan");
-        console.log(error);
-      })
-    this.props.history.push("/payer/status-pembayaran");
-    store.setState({ statusSuksesbayar : true });
+      onPending: function(result){console.log('pending');console.log(result);},
+      onError: function(result){console.log('error');console.log(result);},
+      onClose: function(){console.log('customer closed the popup without finishing the payment');}
+    })}
+    
   }
   render() {
     const pemasangan = new Date(this.props.detilObjekPajak.tanggal_pemasangan);

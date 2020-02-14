@@ -83,6 +83,7 @@ const initialState = {
   dataStatusSuksesBayar: "",
   detailObjekPajakPost: {},
   detailLaporanPost: {},
+  tokenSnap: "",
   detailLaporanPut: {},
   laporanIDPost: "",
 };
@@ -836,6 +837,27 @@ export const actions = store => ({
     Main();
   },
 
+  // Axios ntuk mendapatkan token snap midtrans
+  getTokenSnap: async state => {
+    await axios
+      .get(
+        "https://alterratax.my.id/laporan/payer/bayar?laporan_id="+state.detilLaporan.id+"&total_pajak="+state.detilLaporan.total_pajak,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        await store.setState({
+          tokenSnap: response.data.token,
+        });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+  
   // Fungsi untuk generate QR code dan menyimpannya di database oleh payer
   postGenerateQRPayer: async (state, event) => {
     const mydata = {
