@@ -30,7 +30,6 @@ class NavigasiNotaPayer extends React.Component {
               <FaHome />
             </span>
           </div>
-
           <div className="col-md-6 col-sm-11 judulHeaderLokasiPayer">
             <span>Nota Pajak</span>
           </div>

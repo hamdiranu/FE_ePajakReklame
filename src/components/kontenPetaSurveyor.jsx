@@ -46,12 +46,12 @@ class KontenPetaSurveyor extends React.Component {
     });
     return (
       <div className="kontenPetaSurveyor">
-        <div className="container kotakKontenPetaSurveyor">
-          <div className="rowJudulLokasi">
+        <div className="container-fluid">
+          {/* <div className="rowJudulLokasi">
             <div className="container judulMapsHomeSurveyor">
               <span>Lokasi Reklame</span>
             </div>
-          </div>
+          </div> */}
           <LeafletMap
             center={[-7.9768, 112.637]}
             zoom={13.5}
@@ -63,7 +63,7 @@ class KontenPetaSurveyor extends React.Component {
             dragging={true}
             animate={true}
             easeLinearity={0.35}
-            className="kotakPeta"
+            className="my-5"
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -113,11 +113,11 @@ class KontenPetaSurveyor extends React.Component {
           <div className="row" style={{ textAlign: "center" }}>
             <div className="col-md-4 col-sm-12">
               <div className="container-fluid">
-                <div className="row pembatasMarker">
-                  <div className="col-md-3 col-sm-2 legendBagianMarker">
+                <div className="row my-1">
+                  <div className="text-right col-md-3 col-sm-3 legendBagianMarker">
                     <img className="markerLegend" src={markerHijau} alt="" />
                   </div>
-                  <div className="col-md-9 col-sm-10 kalimatLegend">
+                  <div className="col-md-9 text-center col-sm-9 kalimatLegend">
                     <span>Seluruh QR Telah Tervalidasi</span>
                   </div>
                 </div>
@@ -125,11 +125,11 @@ class KontenPetaSurveyor extends React.Component {
             </div>
             <div className="col-md-4 col-sm-12">
               <div className="container-fluid">
-                <div className="row pembatasMarker">
-                  <div className="col-md-3 col-sm-2 legendBagianMarker">
+                <div className="row my-1">
+                  <div className="text-right col-md-3 col-sm-3 legendBagianMarker">
                     <img className="markerLegend" src={markerBiru} alt="" />
                   </div>
-                  <div className="col-md-9 col-sm-10 kalimatLegend">
+                  <div className="col-md-9 text-center col-sm-9 kalimatLegend">
                     <span>Sebagian QR Telah Tervalidasi</span>
                   </div>
                 </div>
@@ -137,11 +137,11 @@ class KontenPetaSurveyor extends React.Component {
             </div>
             <div className="col-md-4 col-sm-12">
               <div className="container-fluid">
-                <div className="row pembatasMarker">
-                  <div className="col-md-3 col-sm-2 legendBagianMarker">
+                <div className="row my-1">
+                  <div className="text-right col-md-3 col-sm-3 legendBagianMarker">
                     <img className="markerLegend" src={markerMerah} alt="" />
                   </div>
-                  <div className="col-md-9 col-sm-10 kalimatLegend">
+                  <div className="col-md-9 text-center col-sm-9 kalimatLegend">
                     <span>Seluruh QR Belum Tervalidasi</span>
                   </div>
                 </div>
