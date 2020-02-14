@@ -82,7 +82,8 @@ const initialState = {
   statusSuksesbayar: true,
   dataStatusSuksesBayar: "",
   detailObjekPajakPost: {},
-  detailLaporanPost: {}
+  detailLaporanPost: {},
+  tokenSnap: ""
 };
 
 export const store = createStore(initialState);
@@ -777,5 +778,27 @@ export const actions = store => ({
       console.log(await toBase64(file));
     }
     Main();
-  }
+  },
+
+  // Axios ntuk mendapatkan token snap midtrans
+  getTokenSnap: async state => {
+    await axios
+      .get(
+        "https://alterratax.my.id/laporan/payer/bayar?laporan_id="+state.detilLaporan.id+"&total_pajak="+state.detilLaporan.total_pajak,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        await store.setState({
+          tokenSnap: response.data.token,
+        });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+  
 });
