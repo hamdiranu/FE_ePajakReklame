@@ -353,7 +353,7 @@ export const actions = store => ({
     const pageBuktiPembayaran = event;
     const req = {
       method: "get",
-      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${pageBuktiPembayaran}`,
+      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=10&p=${pageBuktiPembayaran}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
@@ -376,9 +376,9 @@ export const actions = store => ({
   getCariBuktiPembayaran: async (state, event) => {
     let url = "";
     if (state.kataKunci === "") {
-      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${state.pageBuktiPembayaran}`;
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?p=${state.pageBuktiPembayaran}`;
     } else {
-      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=500&nomor_sspd=${state.kataKunci}`;
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd=${state.kataKunci}`;
     }
     const req = {
       method: "get",
@@ -427,22 +427,7 @@ export const actions = store => ({
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database
   postBuktiPembayaran: async (state, event) => {
     if (!RegExp("[0-9]{5}").test(state.nomorSSPD)) {
-      swal({
-        title: "Oops!",
-        text: "Nomor SSPD tidak sesuai ketentuan",
-        icon: "warning"
-      });
-    } else if (
-      !(
-        RegExp("[0-9]{1}").test(state.jumlahReklame) &&
-        Number(state.jumlahReklame) >= 1
-      )
-    ) {
-      swal({
-        title: "Oops!",
-        text: "Jumlah reklame harus berupa Angka dan minimal 1",
-        icon: "warning"
-      });
+    } else if (!RegExp("[0-9]{1}").test(state.jumlahReklame)) {
     } else {
       const mydata = {
         nomor_sspd: state.nomorSSPD,

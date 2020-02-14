@@ -10,7 +10,12 @@ import { Modal, ButtonToolbar } from "react-bootstrap";
 class KontenBerandaOfficer extends React.Component {
   handleCari = async event => {
     store.setState({ [event.target.name]: event.target.value });
-    await this.props.getCariBuktiPembayaran();
+    if (
+      store.getState().kataKunci.length >= 4 ||
+      store.getState().kataKunci === ""
+    ) {
+      await this.props.getCariBuktiPembayaran();
+    }
   };
 
   handleGenerateQR = async id => {
@@ -35,20 +40,22 @@ class KontenBerandaOfficer extends React.Component {
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Body>
+          <Modal.Body style={{ backgroundColor: "#F47523" }}>
             <div
-              className="container-fluid"
-              style={{
-                padding: "20px",
-                backgroundColor: "silver",
-                border: "solid 1px silver",
-                minHeight: "400px"
-              }}
+              className="container-fluid bodyModal"
+              style={{ backgroundColor: "white" }}
             >
               <div className="boxLogin">
-                <div class="mb-5" style={{ textAlign: "center" }}>
-                  <h4 style={{ fontWeight: "bolder" }}>Tambah Data</h4>
-                  <h4 style={{ fontWeight: "bolder" }}>Bukti Pembayaran</h4>
+                <div
+                  class="mb-5"
+                  style={{ textAlign: "center", marginTop: "20px" }}
+                >
+                  <h4 style={{ fontWeight: "bolder", color: "#17345F" }}>
+                    Tambah Data
+                  </h4>
+                  <h4 style={{ fontWeight: "bolder", color: "#17345F" }}>
+                    Bukti Pembayaran
+                  </h4>
                 </div>
                 <div>
                   <form onSubmit={e => e.preventDefault(e)}>
@@ -58,11 +65,21 @@ class KontenBerandaOfficer extends React.Component {
                         type="text"
                         name="nomorSSPD"
                         class="form-control"
+                        onInvalid={event =>
+                          event.target.setCustomValidity(
+                            "Nomor SSPD Harus Sesuai Dengan Ketentuan"
+                          )
+                        }
                         placeholder="Masukkan nomor SSPD"
                         pattern="[0-9].{4,}"
                         onChange={e => this.props.handleInput(e)}
                         id="nomorSSPD"
                         required
+                        style={{
+                          backgroundColor: "white",
+                          border: "1px solid #CED4DA",
+                          borderRadius: "7px"
+                        }}
                       />
                     </div>
                     <div class="form-group" style={{ textAlign: "center" }}>
@@ -76,7 +93,17 @@ class KontenBerandaOfficer extends React.Component {
                         type="text"
                         class="form-control"
                         name="jumlahReklame"
+                        onInvalid={event =>
+                          event.target.setCustomValidity(
+                            "Jumlah Reklame Harus Berupa Angka & Minimal Berjumlah 1"
+                          )
+                        }
                         placeholder="Masukkan jumlah reklame"
+                        style={{
+                          backgroundColor: "white",
+                          border: "1px solid #CED4DA",
+                          borderRadius: "7px"
+                        }}
                         onChange={e => this.props.handleInput(e)}
                         pattern="[0-9].{0,}"
                         id="jumlahReklame"
@@ -86,9 +113,15 @@ class KontenBerandaOfficer extends React.Component {
                     <div className="row justify-content-center">
                       <button
                         type="submit"
-                        style={{ width: "50%", marginTop: "20px" }}
+                        style={{
+                          width: "50%",
+                          marginTop: "20px",
+                          backgroundColor: "#62E7C8",
+                          fontWeight: "700",
+                          color: "#17345F"
+                        }}
                         onClick={() => this.handleTambahData()}
-                        class="btn btn-primary"
+                        class="btn buttonTambahData"
                       >
                         Tambah Data
                       </button>
@@ -128,17 +161,17 @@ class KontenBerandaOfficer extends React.Component {
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Body>
+          <Modal.Body style={{ backgroundColor: "red" }}>
             <div
               className="container-fluid"
               style={{
                 padding: "20px",
-                backgroundColor: "silver",
+                backgroundColor: "white",
                 border: "solid 1px silver",
                 minHeight: "400px"
               }}
             >
-              <div className="boxLogin">
+              <div className="boxPelanggaran">
                 <div class="mb-5" style={{ textAlign: "center" }}>
                   <h4 style={{ fontWeight: "bolder" }}>Pelanggaran</h4>
                 </div>
@@ -181,7 +214,7 @@ class KontenBerandaOfficer extends React.Component {
           <div className="row">
             <div className="col-md-10 col-sm-4 cariSspdMobile">
               <form onSubmit={e => e.preventDefault(e)}>
-                <span className="keteranganCari">
+                <span className="keteranganCari" style={{ fontWeight: "700" }}>
                   Cari berdasarkan No. SSPD :
                 </span>
                 <div className="officerCariSSPD">
@@ -243,6 +276,7 @@ class KontenBerandaOfficer extends React.Component {
                           <div></div>
                         ) : (
                           <Pelanggaran
+                            className="linkPelanggaran"
                             catatanPelanggaran={catatanPelanggaran}
                           />
                         )}
@@ -270,7 +304,7 @@ class KontenBerandaOfficer extends React.Component {
                           </Button>
                         )}
                       </div>
-                      <div className="col-auto col-sm order-sm-3 namaReklame dt-small">
+                      <div className="col-8 col-sm order-sm-3 namaReklame dt-small">
                         {objekPajak.nama_reklame}
                       </div>
                       <div className="col-auto col-sm order-sm-4 jenisReklame dt-small">

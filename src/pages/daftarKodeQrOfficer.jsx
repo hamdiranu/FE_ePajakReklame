@@ -25,6 +25,7 @@ import {
   StyleSheet,
   Image
 } from "@react-pdf/renderer";
+import logoLoading from "../images/loading12.gif";
 
 class ComponentToPrint extends React.Component {
   render() {
@@ -137,6 +138,9 @@ class DaftarKodeQrOfficer extends Component {
                     alt=""
                     style={{ width: "60%", height: "60%" }}
                   />
+                  {/* ) : (
+                    <img className="logoLoading" src={logoLoading} alt="" />
+                  )} */}
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <ReactToPrint
@@ -199,7 +203,7 @@ class DaftarKodeQrOfficer extends Component {
     const KodeQR = props => {
       const [modalShow, setModalShow] = React.useState(false);
       return (
-        <div className="tombolDownloadKodeSatuan">
+        <div className="tombolDownloadSatuanKode">
           <Button
             className="btn-sm modal-kode-qr"
             style={{
@@ -231,14 +235,8 @@ class DaftarKodeQrOfficer extends Component {
               <div className="tombolBacktoDaftarSSPD">
                 <TiArrowBackOutline />
                 <Link to="/officer/home">
-                  <div
-                    style={{
-                      paddingTop: "3px",
-                      paddingLeft: "3px",
-                      color: "white"
-                    }}
-                  >
-                    <span>Kembali</span>
+                  <div className="kotakButtonKembali" style={{}}>
+                    <span className="tombolKembali">Kembali</span>
                   </div>
                 </Link>
               </div>
@@ -330,11 +328,11 @@ class DaftarKodeQrOfficer extends Component {
               <ul className="listSspd">
                 <li className="list-group-item dh">
                   <div className="row">
-                    <div className="col no-sspd">ID</div>
-                    <div className="col nama-wp">Kode Unik</div>
-                    <div className="col nama-reklame">Status Scan</div>
+                    <div className="col-3 idKodeUnik">ID</div>
+                    <div className="col-3 kodeUnik">Kode Unik</div>
+                    <div className="col-3 statusScan">Status Scan</div>
                     {/* <div className="col jenis-reklame">Cetak Kode QR</div> */}
-                    <div className="col status">Kode QR</div>
+                    <div className="col-3 downloadQr">Kode QR</div>
                   </div>
                 </li>
                 {this.props.listKodeQR.map((item, key) => {
@@ -344,15 +342,15 @@ class DaftarKodeQrOfficer extends Component {
                         <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
                           {item.id}
                         </div>
-                        <div className="col-10 col-sm order-sm-2 nama-wp dt-title">
+                        <div className="col-12 col-sm order-sm-2 nama-wp dt-title">
                           {item.kode_unik}
                         </div>
                         {item.status_scan === true ? (
-                          <div className="col-auto col-sm order-sm-3 statusSudahScan dt-small">
+                          <div className="col-2 col-sm order-sm-3 statusSudahScan dt-small">
                             <AiFillCheckCircle />
                           </div>
                         ) : (
-                          <div className="col-auto col-sm order-sm-3 statusBelumScan dt-small">
+                          <div className="col-2 col-sm order-sm-3 statusBelumScan dt-small">
                             <AiFillCloseCircle />
                           </div>
                         )}
@@ -369,7 +367,7 @@ class DaftarKodeQrOfficer extends Component {
                             />
                           </div>
                         </div> */}
-                        <div className="col-5 col-sm order-sm-6 tombolDownloadKodeQrSatuan dt-right">
+                        <div className="col-9 col-sm order-sm-6 tombolDownloadSatuanKode dt-right">
                           <KodeQR
                             gambarKodeQR={item.link_gambar}
                             id={item.id}

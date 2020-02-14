@@ -14,8 +14,13 @@ class NavigasiOfficer extends React.Component {
     return (
       <React.Fragment>
         <nav
-          className="navbar navbar-light bg-light px-5"
-          style={{ position: "fixed", zIndex: "2", width: "100%" }}
+          className="navbar navbar-light "
+          style={{
+            position: "fixed",
+            zIndex: "2",
+            width: "100%",
+            backgroundColor: "#17345F"
+          }}
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div style={{ margin: "auto" }}>
@@ -34,17 +39,30 @@ class NavigasiOfficer extends React.Component {
               </Link>
             </div>
             <div class="navbar-brand-text d-inline-block ml-1 navigasiKota">
-              <div class="system-name">SIP-Rek</div>
-              <div class="area-name">{this.props.dataOfficer.nama_daerah}</div>
+              <div
+                style={{ color: "#F47523", fontWeight: "900" }}
+                class="system-name"
+              >
+                SIP-Rek!
+              </div>
+              <div
+                style={{ color: "#F47523", fontWeight: "700" }}
+                class="area-name"
+              >
+                {this.props.dataOfficer.nama_daerah}
+              </div>
             </div>
           </span>
           <div class="text-right">
             <div class="navigasiUserName">
-              Halo, {this.props.dataOfficer.nama}
+              <span style={{ color: "white" }}> Halo </span>
+              <span style={{ color: "#F47523", fontWeight: "900" }}>
+                {this.props.dataOfficer.nama}
+              </span>
             </div>
             <span
               onClick={() => this.logOutOfficer()}
-              class="btn btn-xs btn-outline-secondary tombolKeluar"
+              class="btn btn-xs btn-outline-secondary tombolLogout"
             >
               Logout
             </span>

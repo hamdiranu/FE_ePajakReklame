@@ -6,16 +6,14 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 .box-pelanggaran {
-  border: 1px solid rgb(218, 117, 109);
-  background-color: #f44336;
-  color: white;
+  color: red;
   border-radius: 5px;
-  text-align: center;
-  font-size: small;
+  text-align: left;
+  font-weight: 700;
   vertical-align: middle;
 }
 .text-pelanggaran {
@@ -29,14 +27,14 @@ body {
   color: rgb(42, 1, 119);
   text-decoration: underline;
 }
-.nama-wp{
+.nama-wp {
   margin-bottom: 5px;
   margin-top: 5px;
 }
 /* .no-sspd{
   font-size: 12px;
 } */
-.buttonUnduhSemuaQR{
+.buttonUnduhSemuaQR {
   text-align: left !important;
   vertical-align: center;
 }

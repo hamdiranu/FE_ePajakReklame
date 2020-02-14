@@ -4,6 +4,7 @@ body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
   background-color: white;
+  background-image: url("../images/pattern_triangles.png");
 }
 
 .loginWrapper {
@@ -114,10 +115,9 @@ body {
 
 input[type="text"],
 input[type="password"] {
-  background-color: #f6f6f6;
-  border: none;
+  background-color: white;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -133,7 +133,7 @@ input[type="submit"] {
   background-color: #56baed;
   border: none;
   color: white;
-  padding: 15px 35px;
+  padding: 10px 35px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -151,10 +151,17 @@ input[type="submit"] {
   padding: 5px;
 }
 
+.inputLogin {
+  padding: 10px 32px;
+  background-color: white;
+  border: 1px solid #f6f6f6;
+  border-radius: 5px;
+}
+
 .loginLogo {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 35%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%;
 }
 
 .loginPilihRole {
@@ -175,14 +182,14 @@ input[type="submit"] {
 .loginInputPassword svg {
   position: absolute;
   left: 333px;
-  top: 19px;
+  top: 14px;
   width: 25px;
   height: 25px;
   cursor: pointer;
 }
 
 .pilihRole {
-  width: 33%;
+  width: 34%;
 }
 
 .navigasiKota {
@@ -202,7 +209,7 @@ input[type="submit"] {
 
   .pilihRole {
     width: 39%;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .loginLogo {
@@ -270,7 +277,7 @@ input[type="submit"] {
   .loginInputPassword svg {
     position: absolute;
     left: 225px;
-    top: 19px;
+    top: 14px;
     width: 25px;
     height: 25px;
     cursor: pointer;
@@ -290,6 +297,31 @@ input[type="submit"] {
 @media (max-width: 411px) {
   #loginFormContent {
     margin-top: 50px;
+  }
+
+  .pilihRole {
+    width: 40%;
+    font-size: 15px;
+  }
+
+  .pinPetugas {
+    font-size: 16px;
+  }
+
+  .nipPetugas {
+    font-size: 16px;
+  }
+
+  .loginPilihRole {
+    font-size: 17px;
+  }
+
+  .npwpPayer {
+    font-size: 16px;
+  }
+
+  .pinPayer {
+    font-size: 16px;
   }
 }
 
@@ -311,6 +343,30 @@ input[type="submit"] {
   .loginInputPassword svg {
     left: 215px;
   }
+
+  .loginPilihRole {
+    font-size: 15px;
+  }
+
+  .pilihRole {
+    font-size: 12px;
+  }
+
+  .pinPetugas {
+    font-size: 14px;
+  }
+
+  .nipPetugas {
+    font-size: 14px;
+  }
+
+  .npwpPayer {
+    font-size: 14px;
+  }
+
+  .pinPayer {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 320px) {
@@ -320,5 +376,29 @@ input[type="submit"] {
 
   .loginInputPassword svg {
     left: 185px;
+  }
+
+  .loginPilihRole {
+    font-size: 13px;
+  }
+
+  .pilihRole {
+    font-size: 10px;
+  }
+
+  .pinPetugas {
+    font-size: 14px;
+  }
+
+  .nipPetugas {
+    font-size: 14px;
+  }
+
+  .npwpPayer {
+    font-size: 14px;
+  }
+
+  .pinPayer {
+    font-size: 14px;
   }
 }
