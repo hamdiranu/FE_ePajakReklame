@@ -27,7 +27,7 @@ class KontenInputLokasiPayer extends React.Component {
   }
 
   goToObjekPajak = () => {
-    localStorage.setItem("namaReklamePayer",this.props.namaObjekPajak)
+    localStorage.setItem("namaObjekPajak",this.props.namaObjekPajak)
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
 

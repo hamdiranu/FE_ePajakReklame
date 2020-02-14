@@ -10,7 +10,7 @@ function convert(str) {
   var date = new Date(str),
     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
     day = ("0" + date.getDate()).slice(-2);
-  return [date.getFullYear(), mnth, day].join("/");
+  return [date.getFullYear(), mnth, day].join("-");
 }
 
 // Kelas untuk Komponen Halaman Input Informasi Payer
@@ -201,7 +201,7 @@ class KontenInformasiPajakPayer extends React.Component {
                 </Button>
               </div>
               <div>
-                <Link to="/payer/nota-pajak" onClick={() => this.props.postInputPayer()}>Lanjutkan</Link>
+                <Link to="/payer/nota-pajak" onClick={() => this.props.putInputPayer()}>Lanjutkan</Link>
               </div>
             </div>
           </div>

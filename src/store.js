@@ -82,7 +82,9 @@ const initialState = {
   statusSuksesbayar: true,
   dataStatusSuksesBayar: "",
   detailObjekPajakPost: {},
-  detailLaporanPost: {}
+  detailLaporanPost: {},
+  detailLaporanPut: {},
+  laporanIDPost: "",
 };
 
 export const store = createStore(initialState);
@@ -705,15 +707,15 @@ export const actions = store => ({
       });
   },
 
-  // fungsi untuk post objekpajak oleh payer
-  postInputPayer: state => {
+  // fungsi untuk put objekpajak oleh payer
+  putInputPayer: state => {
     axios
-      .post(
+      .put(
         "https://alterratax.my.id/objek_pajak/payer",
         {
           foto: localStorage.getItem("fotoReklamePayer"),
           tipe_reklame: localStorage.getItem("tipeReklamePayer"),
-          nama_reklame: localStorage.getItem("namaReklamePayer"),
+          nama_reklame: localStorage.getItem("namaObjekPajak"),
           latitude: localStorage.getItem("latitudeReklamePayer"),
           longitude: localStorage.getItem("longitudeReklamePayer"),
           lokasi: localStorage.getItem("alamatReklamePayer"),
@@ -742,8 +744,63 @@ export const actions = store => ({
         }
       )
       .then(response => {
-        store.setState({ detailObjekPajakPost: response.data.objek_pajak,
-          detailLaporanPost: response.data.laporan});
+        store.setState({ detailLaporanPut: response.data.laporan});
+        swal({
+          title: "Sukses",
+          text: "Data Sudah Lengkap",
+          icon: "success"
+        });
+      })
+      .catch(error => {
+        swal({
+          title: "Oops!",
+          text:
+            "Data Tidak Lengkap",
+          icon: "warning"
+        });
+        console.log(error);
+      });
+  },
+
+  // fungsi untuk post objekpajak oleh payer
+  postInputPayer: async state => {
+    await axios
+      .post(
+        "https://alterratax.my.id/objek_pajak/payer",
+        {
+          foto: localStorage.getItem("fotoReklamePayer"),
+          tipe_reklame: localStorage.getItem("tipeReklamePayer"),
+          nama_reklame: localStorage.getItem("namaObjekPajak"),
+          latitude: localStorage.getItem("latitudeReklamePayer"),
+          longitude: localStorage.getItem("longitudeReklamePayer"),
+          lokasi: localStorage.getItem("alamatReklamePayer"),
+          judul_reklame: localStorage.getItem("judulObjekPajak"),
+          jenis_reklame: localStorage.getItem("jenisObjekPajak"),
+          tarif_tambahan: localStorage.getItem("tarifTambahan"),
+          sudut_pandang: localStorage.getItem("sudutPandang"),
+          panjang: localStorage.getItem("panjangObjekPajak"),
+          luas: localStorage.getItem("luasObjekPajak"),
+          lebar: localStorage.getItem("lebarObjekPajak"),
+          muka: localStorage.getItem("mukaObjekPajak"),
+          tinggi: localStorage.getItem("ketinggianObjekPajak"),
+          jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
+          letak_pemasangan: localStorage.getItem("letakPemasangan"),
+          klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
+          masa_pajak: `${localStorage.getItem("masaPajakBulan")} ${localStorage.getItem("masaPajakTahun")}`,
+          jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
+          tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
+          tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then( async response => {
+        await store.setState({ detailObjekPajakPost: response.data.objek_pajak,
+          detailLaporanPost: response.data.laporan, laporanIDPost: response.data.laporan.id});
         swal({
           title: "Sukses",
           text: "Data sukses ditambahkan",
