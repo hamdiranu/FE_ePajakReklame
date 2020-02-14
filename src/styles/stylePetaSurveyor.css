@@ -16,7 +16,7 @@ body {
   font-size: 24px;
   color: white;
   width: fit-content;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background-image: linear-gradient(
     to bottom,
     #ffc153,
@@ -44,6 +44,7 @@ body {
 .kalimatLegend {
   margin: auto;
   text-align: left;
+  color: #122756;
 }
 
 .kotakKontenPetaSurveyor {
@@ -58,13 +59,14 @@ body {
     #1f4a8f,
     #122756
   );
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .kontenPetaSurveyor {
   padding-top: 70px;
-  background-color: white;
+  background-color: #F7F7F7;
   padding-bottom: 10px;
+  min-height: 100vh;
 }
 
 .leaflet-container {
@@ -73,7 +75,7 @@ body {
 }
 
 .kotakPeta {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   z-index: 3;
 }
 
@@ -97,6 +99,7 @@ body {
     text-align: left;
     width: 80%;
     padding-left: 0px;
+    font-size: 2.3vh;
   }
 
   .pembatasMarker {
@@ -104,13 +107,14 @@ body {
   }
 
   .markerLegend {
-    width: 40px;
-    height: 40px;
+    width: 7vw;
+    height: 7vw;
   }
 
   .kontenPetaSurveyor {
     padding-top: 58px;
     padding-bottom: 0px;
+    min-height: 100vh;
   }
 }
 
@@ -148,6 +152,7 @@ body {
     text-align: left;
     width: 80%;
     padding-left: 0px;
+    font-size: 2.3vh;
   }
 
   .pembatasMarker {
@@ -156,13 +161,14 @@ body {
   }
 
   .markerLegend {
-    width: 40px;
-    height: 40px;
+    width: 7vw;
+    height: 7vw;
   }
 
   .kontenPetaSurveyor {
     padding-top: 58px;
     padding-bottom: 0px;
+    min-height: 100vh;
   }
 
   .legend {
@@ -193,6 +199,7 @@ body {
 
   .kalimatLegend {
     font-size: 15px;
+    font-size: 2.3vh;
   }
 
   .markerLegend {

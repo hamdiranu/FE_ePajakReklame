@@ -19,7 +19,7 @@ class KontenDetailReklameSurveyor extends React.Component {
   laporPelanggaran = async () => {
     await this.props.putLaporanPelanggaran();
     await this.props.history.push(
-      `/surveyor/detil-reklame/${store.getState().buktiPembayaranId}`
+      `/surveyor/detail-reklame/${store.getState().buktiPembayaranId}`
     );
   };
 
@@ -54,18 +54,9 @@ class KontenDetailReklameSurveyor extends React.Component {
       <div className="kontenDetilReklameSurveyor">
         {this.props.statusGetDetilReklame ? (
           <React.Fragment>
-            <div className="container judulDetilReklameSurveyor">
-              <span className="judulReklameSurveyor">
-                {this.props.detilReklameSurveyor.objek_pajak.nama_reklame}
-              </span>
-              <span className="nomorSspdDetilReklame">
-                No SSPD{" "}
-                {this.props.detilReklameSurveyor.bukti_pembayaran.nomor_sspd}
-              </span>
-            </div>
-            <div className="container kotakKontenDetailReklame">
+            <div className="container-fluid">
               <div className="row">
-                <div className="col-md-6 petaDetikReklame">
+                <div className="col-md-6 petaDetikReklame my-5">
                   <LeafletMap
                     center={[
                       this.props.detilReklameSurveyor.objek_pajak.latitude,
@@ -81,6 +72,7 @@ class KontenDetailReklameSurveyor extends React.Component {
                     animate={true}
                     easeLinearity={0.35}
                     className="kotakPeta"
+                    
                   >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                     <Marker
@@ -109,68 +101,89 @@ class KontenDetailReklameSurveyor extends React.Component {
                     </Marker>
                   </LeafletMap>
                 </div>
-                <div className="col-md-6">
-                  <div
-                    style={{ backgroundColor: "white", borderRadius: "10px" }}
-                  >
-                    <div className="kotakInfoDetilReklame">
-                      <div className="rowInfoDetilReklame">
-                        <span>Judul : </span>
-                        <span>
-                          {
-                            this.props.detilReklameSurveyor.objek_pajak
-                              .judul_reklame
-                          }
-                        </span>
+                <div className="col-md-6 md-info-reklame">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-12" style={{color:"#1a3454", fontSize:"2.3vh"}}>
+                        NO SSPD {this.props.detilReklameSurveyor.bukti_pembayaran.nomor_sspd}
                       </div>
-                      <div className="rowInfoDetilReklame">
-                        <span>Jenis Reklame : </span>
-                        <span>
-                          {
-                            this.props.detilReklameSurveyor.objek_pajak
-                              .jenis_reklame
-                          }
-                        </span>
+                      <div className="col-md-12" style={{color:"#f47522", fontSize:"2.3vh"}}>
+                        <b>{this.props.detilReklameSurveyor.objek_pajak.nama_reklame.toUpperCase()}</b>
+                      </div>                      
+                    </div>
+                  </div>                  
+                  <div className="container my-3">
+                    <div className="row align-items-center">
+                      <div className="col-md-12 info-reklame">
+                        <div className="row">
+                          <div className="col-md-3" style={{width:"25%"}}>Judul</div>
+                          <div className="col-md-1" style={{width:"8%"}}>:</div>
+                          <div className="col-md-8" style={{width:"66%"}}>
+                            {
+                              this.props.detilReklameSurveyor.objek_pajak
+                                .judul_reklame
+                            }
+                          </div>
+                        </div>                        
                       </div>
-                      <div className="rowInfoDetilReklame">
-                        <span>Jumlah Reklame : </span>
-                        <span>
-                          {
-                            this.props.detilReklameSurveyor.bukti_pembayaran
-                              .jumlah_reklame
-                          }
-                        </span>
+                      <div className="col-md-12 info-reklame">
+                        <div className="row">
+                          <div className="col-md-3" style={{width:"25%"}}>Jenis</div>
+                          <div className="col-md-1" style={{width:"8%"}}>:</div>
+                          <div className="col-md-8" style={{width:"66%"}}>
+                            {
+                              this.props.detilReklameSurveyor.objek_pajak
+                                .jenis_reklame
+                            }
+                          </div>
+                        </div>
                       </div>
-                      <div className="rowInfoDetilReklame">
-                        <span>Jumlah Kode QR Valid : </span>
-                        <span>
-                          {this.props.detilReklameSurveyor.kode_QR_terscan} /{" "}
-                          {
-                            this.props.detilReklameSurveyor.bukti_pembayaran
-                              .jumlah_reklame
-                          }
-                        </span>
-                      </div>
-                      {this.props.statusPelanggaran ? (
-                        <div className="rowInfoDetilReklame">
-                          <span>Pelangaran : </span>
-                          <span>
+                      <div className="col-md-12 info-reklame">
+                        <div className="row">
+                          <div className="col-md-3" style={{width:"25%"}}>Jumlah</div>
+                          <div className="col-md-1" style={{width:"8%"}}>:</div>
+                          <div className="col-md-8" style={{width:"66%"}}>
                             {
                               this.props.detilReklameSurveyor.bukti_pembayaran
-                                .pelanggaran
+                                .jumlah_reklame
                             }
-                          </span>
+                          </div>
                         </div>
-                      ) : (
+                      </div>
+                      <div className="col-md-12 info-reklame">
+                        <div className="row">
+                          <div className="col-md-3" style={{width:"25%"}}>QR Valid</div>
+                          <div className="col-md-1" style={{width:"8%"}}>:</div>
+                          <div className="col-md-8" style={{width:"66%"}}>
+                            {this.props.detilReklameSurveyor.kode_QR_terscan} /{" "}
+                            {
+                              this.props.detilReklameSurveyor.bukti_pembayaran
+                                .jumlah_reklame
+                            }
+                          </div>
+                        </div>
+                      </div>
+                      {this.props.statusPelanggaran ?
+                        <div className="col-md-12 info-reklame">
+                          <div className="row">
+                            <div className="col-md-3" style={{width:"25%", color:"#e43c25"}}>Pelanggaran</div>
+                            <div className="col-md-1" style={{width:"8%", color:"#e43c25"}}>:</div>
+                            <div className="col-md-8" style={{width:"66%", color:"#e43c25"}}>
+                              {
+                                this.props.detilReklameSurveyor.bukti_pembayaran
+                                  .pelanggaran
+                              }
+                            </div>
+                          </div>
+                        </div>
+                      : 
                         <div className="spacePelanggaranKosong"></div>
-                      )}
-                      <div
-                        style={{
-                          textAlign: "center",
-                          paddingTop: "10px",
-                          paddingBottom: "10px"
-                        }}
-                      >
+                      }                      
+                    </div>
+                  </div>
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-12 text-center mb-3">
                         <Button
                           onClick={() => this.detilKeScan()}
                           variant="primary"
@@ -178,32 +191,31 @@ class KontenDetailReklameSurveyor extends React.Component {
                           Scan Kode QR
                         </Button>
                       </div>
-                      <div className="catatanPelanggaran">
-                        <span>Catatan Pelanggaran :</span>
+                      <div className="col-md-12" style={{color:"#1a3454"}}>
+                        Laporkan Pelanggaran :
                       </div>
-                      <div className="textAreaPelanggaran">
-                        <FormControl
-                          className="isiTextAreaPelanggaran"
-                          as="textarea"
-                          name="textAreaPelanggaran"
-                          aria-label="With textarea"
-                          value={this.props.textAreaPelanggaran}
-                          onChange={e => this.props.handleInput(e)}
-                        />
+                      <div className="col-md-12">
+                        <div className="textAreaPelanggaran">
+                          <FormControl
+                            className="isiTextAreaPelanggaran"
+                            as="textarea"
+                            name="textAreaPelanggaran"
+                            aria-label="With textarea"
+                            value={this.props.textAreaPelanggaran}
+                            onChange={e => this.props.handleInput(e)}
+                          />
+                        </div>
                       </div>
-                      <div
-                        className="tombolReport"
-                        style={{
-                          textAlign: "center",
-                          paddingTop: "30px"
-                        }}
-                      >
-                        <Button
-                          onClick={() => this.laporPelanggaran()}
-                          variant="danger"
-                        >
-                          Report
-                        </Button>
+                      <div className="col-md-12">
+                        <div className="tombolReport my-3">
+                          <Button
+                            onClick={() => this.laporPelanggaran()}
+                            variant="danger"
+                            style={{backgroundColor:"#e43c25"}}
+                          >
+                            Laporkan
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
