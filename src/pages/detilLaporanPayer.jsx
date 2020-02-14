@@ -730,6 +730,7 @@ class DetilLaporanPayer extends Component {
     if(this.props.buktiPembayaranPayer.nomor_sspd !== undefined){
       namaFileSemuaKodeQR = `KodeQR-SSPD-${this.props.buktiPembayaranPayer.nomor_sspd}.pdf`;
     }
+    const currencyFormatter = require("currency-formatter");
     return (
       <React.Fragment>
         <NavigasiDetilLaporanPayer />
@@ -755,6 +756,14 @@ class DetilLaporanPayer extends Component {
             :
               <div></div>
             }
+            <div className="col-md-6" style={{width:"50%"}}></div>
+            <div className="col-md-6 text-center total-pajak"
+              style={{width:"50%"}}>
+              Total Pajak : Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+                code: "IDR",
+                symbol: ""
+              })}
+            </div>
           </div>
           <div className="row mx-0 align-items-center my-2">
             <div className="col-md-6" style={{width:"50%"}}>
@@ -873,7 +882,8 @@ class DetilLaporanPayer extends Component {
             <div className="col-md-12 px-0">
               <table id="dtBasicExample"
                 className="table table-striped table-responsive table-sm table-non-pdf"
-                cellspacing="0" width="100%">
+                cellspacing="0" width="100%"
+                style={{marginLeft:"auto", marginRight:"auto", display:"table"}}>
                 <tbody style={{verticalAlign:"center"}}>
                   <tr width="384px">
                     <th width="154px">NOPD</th>
@@ -897,7 +907,7 @@ class DetilLaporanPayer extends Component {
                   </tr>
                   <tr>
                     <th>Ukuran (Luas)</th>
-                      <td>{this.props.detilObjekPajak.panjang}m x {this.props.detilObjekPajak.lebar}m ( {this.props.detilObjekPajak.luas} m<sup>2</sup> )</td>
+                      <td>{this.props.detilObjekPajak.panjang}m x {this.props.detilObjekPajak.lebar}m ( {this.props.detilObjekPajak.luas}m<sup>2</sup> )</td>
                   </tr>
                   <tr>
                     <th>Ketinggian Dari Tanah</th>
