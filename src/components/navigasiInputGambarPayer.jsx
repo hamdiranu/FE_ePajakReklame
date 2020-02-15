@@ -25,33 +25,40 @@ class NavigasiPayer extends React.Component {
     this.props.handleLogOut();
     this.props.history.replace("/login");
   };
+  myFunction = async () => {
+    document.getElementById('fileItem').click();
+  }
   render() {
     return (
       <React.Fragment>
         <nav
-          className="navbar navbar-light bg-light navbarPayer "
+          className="navbar navbarPayer navbar-shadow"
           style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
-          <span className="navbar-brand" style={{ display: "flex" }}>
-            <div className="borderLogoTambahLaporan">
-              <FaPlusCircle/>
-              <input type="file"
-                className="upload-gambar custom-file-input"
-                id="fileItem"
-                onChange={this.handleChange}
-                style={{width:"45px", height:"45px", zIndex:"10"}}>
-              </input>
+          <span class="navbar-brand" style={{ display: "flex" }}>
+            <div className="btn" onClick={() => this.myFunction()} style={{padding:"0px"}}>
+              <div style={{ textDecoration: "none" }}>
+                <FaPlusCircle id="buttonUnggah" size={30} style={{color:"white"}}/>
+                <input type="file"
+                  style={{width:"50%", display:"none"}}
+                  id="fileItem"
+                  onChange={this.handleChange}>
+                </input>
+              </div>
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer">Unggah Foto Reklame</span>
+            <b style={{color:"#F47523", fontSize:"28px"}}>
+              Unggah Foto
+            </b>
           </div>
           <div class="text-right">
             <span
               onClick={() => this.logOutPayer()}
-              class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
+              className="btn"
+              style={{color:"white", padding:"0px"}}
             >
-              <FaSignOutAlt />
+              <FaSignOutAlt size={30}/>
             </span>
           </div>
         </nav>

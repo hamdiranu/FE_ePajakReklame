@@ -19,9 +19,9 @@ class KontenInformasiPajakPayer extends React.Component {
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
 
-  goToNotaPajak = () => {
-    this.props.putInputPayer();
-    this.props.history.push("/payer/nota-pajak");
+  goToNotaPajak = async() => {
+    await this.props.putInputPayer();
+    await this.props.history.push("/payer/nota-pajak");
   };
 
   constructor(props) {

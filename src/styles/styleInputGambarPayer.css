@@ -55,9 +55,6 @@ body {
   margin-top: 20px;
   display: table;
 }
-.upload-gambar{
-  z-index: 1;
-}
 /* .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 } */

@@ -745,8 +745,8 @@ export const actions = store => ({
           }
         }
       )
-      .then(response => {
-        store.setState({ detailLaporanPut: response.data.laporan});
+      .then(async response => {
+        await store.setState({ detailLaporanPut: response.data.laporan});
         swal({
           title: "Sukses",
           text: "Data Sudah Lengkap",

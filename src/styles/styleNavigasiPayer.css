@@ -55,6 +55,14 @@ body {
   font-size: 30px;
 }
 
+.navbarPayer{
+  background-color: #1a3454;
+}
+
+.navbar-brand{
+  margin: 0px
+}
+
 @media (max-width: 767px) {
   .judulHeaderPayer {
     font-size: 25px;

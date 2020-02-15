@@ -1,12 +1,27 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "unistore/react";
-import { actions } from "../store";
+import { actions, store } from "../store";
 
 // Kelas untuk Komponen Halaman Input Gambar Reklame Payer
 class KontenInputGambarPayer extends React.Component {
   gambarToMaps = () => {
     this.props.history.push("/payer/input-lokasi");
+  };
+  constructor(props){
+    super(props)
+    this.state = {
+      file: null
+    }
+    this.handleChange = this.handleChange.bind(this)
+  };
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    });
+    store.setState({blobGambar: URL.createObjectURL(event.target.files[0]),
+      objekGambar:event.target.files[0]});
+    localStorage.setItem(`fotoReklamePayer`, `${URL.createObjectURL(event.target.files[0])}`);
   };
   render() {
     return (
@@ -23,6 +38,12 @@ class KontenInputGambarPayer extends React.Component {
                   <h5 className="mb-0 mx-3">
                     Mohon upload foto reklame yang akan dilaporkan
                   </h5>
+                  {/* <input type="file"
+                    // className="upload-gambar custom-file-input
+                    style={{width:"50%"}}
+                    id="fileItem"
+                    onChange={this.handleChange}>
+                  </input> */}
                 </div>
               :
                 <div>
