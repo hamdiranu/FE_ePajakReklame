@@ -47,7 +47,7 @@ class KontenBerandaSurveyor extends React.Component {
     return (
       <div className="kontenBerandaSurveyor">
         <div className="container judulScanQrSurveyor">
-          <span>Scan Kode QR</span>
+          <span style={{color:"#1a3454"}}>Scan Kode QR</span>
         </div>
         <div className="container containerKotakScannerQr">
           <div className="row">
@@ -63,7 +63,7 @@ class KontenBerandaSurveyor extends React.Component {
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-md-12 col-sm-5 kotakKalimatPetunjuk">
-                    <span>Arahkan kamera ke kode QR</span>
+                    <span style={{color:"#1a3454"}}>Arahkan kamera ke kode QR</span>
                   </div>
                   <div className="col-md-12 col-sm-5">
                     <img className="gifScanner" src={gifScanner} alt="" />
