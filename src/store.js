@@ -262,7 +262,7 @@ export const actions = store => ({
     const pageKodeQR = event;
     const req = {
       method: "get",
-      url: `https://alterratax.my.id/kode_qr/officer?rp=2&p=${pageKodeQR}&bukti_pembayaran_id=${state.buktiPembayaranID}`,
+      url: `https://alterratax.my.id/kode_qr/officer?rp=10&p=${pageKodeQR}&bukti_pembayaran_id=${state.buktiPembayaranID}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
@@ -303,7 +303,7 @@ export const actions = store => ({
   cariKodeQR: async state => {
     let url = "";
     if (state.idKodeQR === "") {
-      url = `https://alterratax.my.id/kode_qr/officer?rp=2&bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`;
+      url = `https://alterratax.my.id/kode_qr/officer?rp=10&bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`;
     } else {
       url = `https://alterratax.my.id/kode_qr/officer?rp=500&bukti_pembayaran_id=${state.buktiPembayaranID}&kode_QR_id=${state.idKodeQR}`;
     }

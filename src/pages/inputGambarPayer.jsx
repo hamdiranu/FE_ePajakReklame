@@ -8,6 +8,11 @@ import NavigasiInputGambarPayer from "../components/navigasiInputGambarPayer";
 import KontenInputGambarPayer from "../components/kontenInputGambarPayer";
 
 class InputGambarPayer extends Component {
+  componentDidMount = async () => {
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
+      await this.props.history.push("/login")
+    }
+  };
   render() {
     return (
       <React.Fragment>

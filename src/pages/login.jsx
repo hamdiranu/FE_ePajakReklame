@@ -11,6 +11,19 @@ import swal from "sweetalert";
 import logoSipRek from "../images/logo.png";
 
 class Login extends Component {
+  componentDidMount = async () => {
+    if (localStorage.getItem("token") !== null) {
+      if (localStorage.getItem("role") === "officer"){
+        await this.props.history.push("/officer/home");
+      }
+      else if (localStorage.getItem("role") === "surveyor"){
+        await this.props.history.push("/surveyor/home");
+      }
+      else if (localStorage.getItem("role") === "payer"){
+        await this.props.history.push("/payer/home");
+      }
+    }
+  };
   loginUser = async () => {
     store.setState({ formValid: false });
     if (this.props.formOfficer === false) {

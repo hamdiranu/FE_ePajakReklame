@@ -5,7 +5,12 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import KontenStatusPembayaran from "../components/kontenStatusPembayaran";
 
-class Login extends Component {
+class StatusPembayaran extends Component {
+  componentDidMount = async () => {
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
+      await this.props.history.push("/login")
+    }
+  };
   render() {
     return (
       <div className="loginWrapper fadeInDown">
@@ -15,4 +20,4 @@ class Login extends Component {
   }
 }
 
-export default connect("", actions)(withRouter(Login));
+export default connect("", actions)(withRouter(StatusPembayaran));
