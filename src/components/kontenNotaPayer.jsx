@@ -6,9 +6,11 @@ import { Button, FormControl, InputGroup } from "react-bootstrap";
 
 // Kelas untuk Komponen Halaman Nota Pajak Payer
 class KontenNotaPayer extends React.Component {
-  goToDetailLaporan = async() => {
+  goToDetailLaporan = async () => {
     await this.props.postInputPayer();
-    await this.props.history.push(`/payer/detail-laporan/${this.props.laporanIDPost}`);
+    await this.props.history.push(
+      `/payer/detail-laporan/${this.props.laporanIDPost}`
+    );
   };
   render() {
     var currencyFormatter = require("currency-formatter");
@@ -30,10 +32,13 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(this.props.detailLaporanPut.nfr, {
-                      code: "IDR",
-                      symbol: ""
-                    })}
+                    placeholder={currencyFormatter.format(
+                      this.props.detailLaporanPut.nfr,
+                      {
+                        code: "IDR",
+                        symbol: ""
+                      }
+                    )}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiLuasReklame"
@@ -51,10 +56,13 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(this.props.detailLaporanPut.nfj, {
-                      code: "IDR",
-                      symbol: ""
-                    })}
+                    placeholder={currencyFormatter.format(
+                      this.props.detailLaporanPut.nfj,
+                      {
+                        code: "IDR",
+                        symbol: ""
+                      }
+                    )}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiTinggiReklame"
@@ -74,10 +82,13 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(this.props.detailLaporanPut.nsp, {
-                      code: "IDR",
-                      symbol: ""
-                    })}
+                    placeholder={currencyFormatter.format(
+                      this.props.detailLaporanPut.nsp,
+                      {
+                        code: "IDR",
+                        symbol: ""
+                      }
+                    )}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiSudutPandangReklame"
@@ -96,10 +107,13 @@ class KontenNotaPayer extends React.Component {
                 </InputGroup.Prepend>
                 <FormControl
                   className="barInfoTotalTarif"
-                  placeholder={currencyFormatter.format(this.props.detailLaporanPut.nspr, {
-                    code: "IDR",
-                    symbol: ""
-                  })}
+                  placeholder={currencyFormatter.format(
+                    this.props.detailLaporanPut.nspr,
+                    {
+                      code: "IDR",
+                      symbol: ""
+                    }
+                  )}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                   name="nilaiStrategisReklame"
@@ -120,10 +134,13 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(this.props.detailLaporanPut.nlr, {
-                      code: "IDR",
-                      symbol: ""
-                    })}
+                    placeholder={currencyFormatter.format(
+                      this.props.detailLaporanPut.nlr,
+                      {
+                        code: "IDR",
+                        symbol: ""
+                      }
+                    )}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiLuasReklame"
@@ -141,10 +158,13 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={currencyFormatter.format(this.props.detailLaporanPut.nkr, {
-                      code: "IDR",
-                      symbol: ""
-                    })}
+                    placeholder={currencyFormatter.format(
+                      this.props.detailLaporanPut.nkr,
+                      {
+                        code: "IDR",
+                        symbol: ""
+                      }
+                    )}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiTinggiReklame"
@@ -163,10 +183,13 @@ class KontenNotaPayer extends React.Component {
                 </InputGroup.Prepend>
                 <FormControl
                   className="barInfoTotalTarif"
-                  placeholder={currencyFormatter.format(this.props.detailLaporanPut.njopr, {
-                    code: "IDR",
-                    symbol: ""
-                  })}
+                  placeholder={currencyFormatter.format(
+                    this.props.detailLaporanPut.njopr,
+                    {
+                      code: "IDR",
+                      symbol: ""
+                    }
+                  )}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                   name="nilaiTinggiReklame"
@@ -203,7 +226,7 @@ class KontenNotaPayer extends React.Component {
                       %
                     </InputGroup.Text>
                   </InputGroup.Prepend>
-                  {localStorage.getItem("tarifTambahan")==="Rokok/Miras" ?
+                  {localStorage.getItem("tarifTambahan") === "Rokok/Miras" ? (
                     <FormControl
                       className="barInfoTarif"
                       placeholder="25"
@@ -212,7 +235,7 @@ class KontenNotaPayer extends React.Component {
                       name="tarifTambahan"
                       disabled
                     />
-                  :
+                  ) : (
                     <FormControl
                       className="barInfoTarif"
                       placeholder="0"
@@ -221,7 +244,7 @@ class KontenNotaPayer extends React.Component {
                       name="tarifTambahan"
                       disabled
                     />
-                  }                  
+                  )}
                 </div>
               </div>
             </div>
@@ -235,10 +258,13 @@ class KontenNotaPayer extends React.Component {
                 </InputGroup.Prepend>
                 <FormControl
                   className="barInfoTotalTarif"
-                  placeholder={currencyFormatter.format(this.props.detailLaporanPut.total_pajak, {
-                    code: "IDR",
-                    symbol: ""
-                  })}
+                  placeholder={currencyFormatter.format(
+                    this.props.detailLaporanPut.total_pajak,
+                    {
+                      code: "IDR",
+                      symbol: ""
+                    }
+                  )}
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                   name="totalTarifPajak"
@@ -257,7 +283,14 @@ class KontenNotaPayer extends React.Component {
                 }}
               >
                 <Button
-                  variant="success"
+                  style={{
+                    backgroundColor: "#62E7C8",
+                    border: "2px solid #486FB6",
+                    borderRadius: "5px",
+                    color: "#17345F",
+                    fontSize: "17px",
+                    fontWeight: "800"
+                  }}
                   onClick={() => this.goToDetailLaporan()}
                 >
                   Simpan
@@ -271,5 +304,7 @@ class KontenNotaPayer extends React.Component {
   }
 }
 
-export default connect("laporanID, detailLaporanPut, detailLaporanPost, laporanIDPost", actions)(withRouter(KontenNotaPayer));
-
+export default connect(
+  "laporanID, detailLaporanPut, detailLaporanPost, laporanIDPost",
+  actions
+)(withRouter(KontenNotaPayer));

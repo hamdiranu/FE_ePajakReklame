@@ -85,7 +85,7 @@ const initialState = {
   detailLaporanPost: {},
   tokenSnap: "",
   detailLaporanPut: {},
-  laporanIDPost: "",
+  laporanIDPost: ""
 };
 
 export const store = createStore(initialState);
@@ -430,8 +430,13 @@ export const actions = store => ({
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database
   postBuktiPembayaran: async (state, event) => {
     if (!RegExp("[0-9]{5}").test(state.nomorSSPD)) {
-      console.log("input nomor sspd error")
-    } else if (!(RegExp("[0-9]{1}").test(state.jumlahReklame) && (Number(state.jumlahReklame) >= 1))) {
+      console.log("input nomor sspd error");
+    } else if (
+      !(
+        RegExp("[0-9]{1}").test(state.jumlahReklame) &&
+        Number(state.jumlahReklame) >= 1
+      )
+    ) {
       swal({
         title: "Oops!",
         text: "Jumlah reklame harus berupa angka dan minimal berjumlah 1",
@@ -476,7 +481,30 @@ export const actions = store => ({
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
-    store.setState({ npwpd: "", nip: "", pin: "" });
+    localStorage.removeItem("tipeReklamePayer");
+    localStorage.removeItem("jenisObjekPajak");
+    localStorage.removeItem("luasObjekPajak");
+    localStorage.removeItem("tarifTambahan");
+    localStorage.removeItem("sudutPandang");
+    localStorage.removeItem("letakPemasangan");
+    localStorage.removeItem("klasifikasiJalan");
+    localStorage.removeItem("judulObjekPajak");
+    localStorage.removeItem("panjangObjekPajak");
+    localStorage.removeItem("lebarObjekPajak");
+    localStorage.removeItem("mukaObjekPajak");
+    localStorage.removeItem("ketinggianObjekPajak");
+    localStorage.removeItem("jumlahReklameObjekPajak");
+    localStorage.removeItem("masaPajakTahun");
+    localStorage.removeItem("masaPajakBulan");
+    localStorage.removeItem("jangkaWaktuObjekPajak");
+    localStorage.removeItem("tanggalPembongkaran");
+    localStorage.removeItem("tanggalPemasangan");
+    localStorage.removeItem("fotoReklamePayer");
+    localStorage.removeItem("namaObjekPajak");
+    localStorage.removeItem("latitudeReklamePayer");
+    localStorage.removeItem("longitudeReklamePayer");
+    localStorage.removeItem("alamatReklamePayer");
+    store.setState({ formOfficer: false, npwpd: "", nip: "", pin: "" });
   },
 
   //Fungsi untuk menghapus data di localstorage ketika user logout
@@ -746,7 +774,7 @@ export const actions = store => ({
         }
       )
       .then(response => {
-        store.setState({ detailLaporanPut: response.data.laporan});
+        store.setState({ detailLaporanPut: response.data.laporan });
         swal({
           title: "Sukses",
           text: "Data Sudah Lengkap",
@@ -756,8 +784,7 @@ export const actions = store => ({
       .catch(error => {
         swal({
           title: "Oops!",
-          text:
-            "Data Tidak Lengkap",
+          text: "Data Tidak Lengkap",
           icon: "warning"
         });
         console.log(error);
@@ -788,7 +815,9 @@ export const actions = store => ({
           jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
           letak_pemasangan: localStorage.getItem("letakPemasangan"),
           klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
-          masa_pajak: `${localStorage.getItem("masaPajakBulan")} ${localStorage.getItem("masaPajakTahun")}`,
+          masa_pajak: `${localStorage.getItem(
+            "masaPajakBulan"
+          )} ${localStorage.getItem("masaPajakTahun")}`,
           jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
           tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
           tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
@@ -800,9 +829,12 @@ export const actions = store => ({
           }
         }
       )
-      .then( async response => {
-        await store.setState({ detailObjekPajakPost: response.data.objek_pajak,
-          detailLaporanPost: response.data.laporan, laporanIDPost: response.data.laporan.id});
+      .then(async response => {
+        await store.setState({
+          detailObjekPajakPost: response.data.objek_pajak,
+          detailLaporanPost: response.data.laporan,
+          laporanIDPost: response.data.laporan.id
+        });
         swal({
           title: "Sukses",
           text: "Data sukses ditambahkan",
@@ -841,7 +873,10 @@ export const actions = store => ({
   getTokenSnap: async state => {
     await axios
       .get(
-        "https://alterratax.my.id/laporan/payer/bayar?laporan_id="+state.detilLaporan.id+"&total_pajak="+state.detilLaporan.total_pajak,
+        "https://alterratax.my.id/laporan/payer/bayar?laporan_id=" +
+          state.detilLaporan.id +
+          "&total_pajak=" +
+          state.detilLaporan.total_pajak,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -850,14 +885,14 @@ export const actions = store => ({
       )
       .then(async response => {
         await store.setState({
-          tokenSnap: response.data.token,
+          tokenSnap: response.data.token
         });
       })
       .catch(error => {
         console.log("gagal axios");
       });
   },
-  
+
   // Fungsi untuk generate QR code dan menyimpannya di database oleh payer
   postGenerateQRPayer: async (state, event) => {
     const mydata = {
@@ -878,5 +913,5 @@ export const actions = store => ({
       .catch(function(error) {
         console.log(error);
       });
-  },
+  }
 });

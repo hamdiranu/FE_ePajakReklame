@@ -8,11 +8,11 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 .kontenBerandaSurveyor {
-  background-color: #F7F7F7;
+  background-color: white;
   padding-bottom: 65px;
   padding-top: 30px;
   min-height: 100vh;
@@ -27,7 +27,7 @@ body {
 
 .gifScanner {
   width: 350px;
-  padding-top: 40px;
+  padding-top: 30px;
 }
 
 .kotakKalimatPetunjuk {
@@ -81,7 +81,7 @@ body {
   }
 
   .kontenBerandaSurveyor {
-    background-color: #F7F7F7;
+    background-color: white;
     padding-bottom: 13px;
     padding-top: 30px;
   }
@@ -99,18 +99,26 @@ body {
 
 @media (max-width: 414px) {
   .kotakKalimatPetunjuk {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 }
 
 @media (max-width: 411px) {
-  .kotakKalimatPetunjuk {
-    margin-top: 30px;
-  }
-
   .gifScanner {
     width: 200px;
     padding-top: 20px;
+  }
+
+  @media (max-height: 731px) {
+    .kotakKalimatPetunjuk {
+      margin-top: 45px;
+    }
+  }
+
+  @media (max-height: 823px) {
+    .kotakKalimatPetunjuk {
+      margin-top: 80px;
+    }
   }
 }
 
@@ -119,9 +127,18 @@ body {
     height: 290px;
   }
 
-  .kotakKalimatPetunjuk {
-    margin-top: 10px;
-    font-size: 15px;
+  @media (max-height: 812px) {
+    .kotakKalimatPetunjuk {
+      margin-top: 75px;
+      font-size: 15px;
+    }
+  }
+
+  @media (max-height: 667px) {
+    .kotakKalimatPetunjuk {
+      margin-top: 10px;
+      font-size: 15px;
+    }
   }
 
   .gifScanner {
@@ -130,7 +147,7 @@ body {
   }
 
   .kontenBerandaSurveyor {
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     padding-bottom: 13px;
     padding-top: 30px;
   }
@@ -157,7 +174,7 @@ body {
   }
 
   .kotakKalimatPetunjuk {
-    margin-top: 35px;
+    margin-top: 50px;
   }
 }
 

@@ -195,20 +195,32 @@ class KontenInformasiPajakPayer extends React.Component {
             <div className="rowButtonInfo">
               <div className="jarakButton">
                 <Button
-                  variant="danger"
+                  style={{
+                    backgroundColor: "#E43C25",
+                    border: "1px solid #E43C25",
+                    borderRadius: "5px"
+                  }}
                   onClick={() => this.goToDetailObjekPajak()}
                 >
                   Kembali
                 </Button>
               </div>
               <div>
-                <Button
-                  variant="primary"
-                  style={{ fontSize: "16px" }}
-                  onClick={() => this.goToNotaPajak()}
-                >
-                  Lanjutkan
-                </Button>
+                {localStorage.getItem("masaPajakBulan") &&
+                localStorage.getItem("masaPajakTahun") &&
+                localStorage.getItem("jangkaWaktuObjekPajak") &&
+                localStorage.getItem("tanggalPemasangan") &&
+                localStorage.getItem("tanggalPembongkaran") ? (
+                  <Button
+                    variant="primary"
+                    style={{ fontSize: "16px" }}
+                    onClick={() => this.goToNotaPajak()}
+                  >
+                    Cek Tarif
+                  </Button>
+                ) : (
+                  <Button disabled={true}>Cek Tarif</Button>
+                )}
               </div>
             </div>
           </div>

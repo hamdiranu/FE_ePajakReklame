@@ -106,51 +106,61 @@ class Login extends Component {
     }
 
     return (
-      <div className="loginWrapper fadeInDown">
-        <div id="loginFormContent">
-          <div className="fadeIn first">
-            <div className="container-fuild loginJudul">
-              <span
-                style={{
-                  fontWeight: "800",
-                  fontSize: "larger",
-                  color: "#17345F"
-                }}
-              >
-                Masuk ke SIP-Rek!
-              </span>
+      <div className="pageLogin">
+        <div className="loginWrapper fadeInDown">
+          <div id="loginFormContent">
+            <div className="fadeIn first">
+              <div className="container-fuild loginJudul">
+                <span
+                  style={{
+                    fontWeight: "800",
+                    fontSize: "larger",
+                    color: "#17345F"
+                  }}
+                >
+                  Masuk ke SIP-Rek!
+                </span>
+              </div>
+              <img
+                className="loginLogo"
+                src={logoSipRek}
+                id="icon"
+                alt="User Icon"
+              />
             </div>
-            <img
-              className="loginLogo"
-              src={logoSipRek}
-              id="icon"
-              alt="User Icon"
-            />
+            <div style={{ display: "flex", marginBottom: "10px" }}>
+              <span className="loginPilihRole">Masuk Sebagai : </span>
+              <Form.Control
+                onChange={e => this.props.handleGantiRole(e)}
+                name="roleFormLogin"
+                className="pilihRole"
+                as="select"
+              >
+                <option value="Payer">Wajib Pajak</option>
+                <option value="Officer">Petugas Pajak</option>
+              </Form.Control>
+            </div>
+            {/* <!-- Login Form --> */}
+            <form onSubmit={e => e.preventDefault(e)}>
+              {this.props.formOfficer ? (
+                <FormLoginOfficer />
+              ) : (
+                <FormLoginPayer />
+              )}
+              <input
+                type="submit"
+                className="fadeIn fourth"
+                value="Log In"
+                disabled={!this.props.formValid}
+                style={{
+                  marginBottom: "15px",
+                  marginTop: "10px",
+                  cursor: "pointer"
+                }}
+                onClick={e => this.loginUser(e)}
+              />
+            </form>
           </div>
-          <div style={{ display: "flex", marginBottom: "10px" }}>
-            <span className="loginPilihRole">Masuk Sebagai : </span>
-            <Form.Control
-              onChange={e => this.props.handleGantiRole(e)}
-              name="roleFormLogin"
-              className="pilihRole"
-              as="select"
-            >
-              <option value="Payer">Wajib Pajak</option>
-              <option value="Officer">Petugas Pajak</option>
-            </Form.Control>
-          </div>
-          {/* <!-- Login Form --> */}
-          <form onSubmit={e => e.preventDefault(e)}>
-            {this.props.formOfficer ? <FormLoginOfficer /> : <FormLoginPayer />}
-            <input
-              type="submit"
-              className="fadeIn fourth"
-              value="Log In"
-              disabled={!this.props.formValid}
-              style={{ marginBottom: "15px", marginTop: "10px" }}
-              onClick={e => this.loginUser(e)}
-            />
-          </form>
         </div>
       </div>
     );

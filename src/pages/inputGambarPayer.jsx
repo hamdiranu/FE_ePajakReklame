@@ -16,7 +16,7 @@ class InputGambarPayer extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavigasiInputGambarPayer/>
+        <NavigasiInputGambarPayer />
         <KontenInputGambarPayer />
       </React.Fragment>
     );
