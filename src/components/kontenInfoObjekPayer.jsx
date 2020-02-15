@@ -215,6 +215,7 @@ class KontenInformasiPajakPayer extends React.Component {
                     variant="primary"
                     style={{ fontSize: "16px" }}
                     onClick={() => this.goToNotaPajak()}
+                    className="button3vw"
                   >
                     Cek Tarif
                   </Button>

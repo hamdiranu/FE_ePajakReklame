@@ -25,7 +25,6 @@ import {
   StyleSheet,
   Image
 } from "@react-pdf/renderer";
-import gifloading from "../images/loading15.gif";
 
 class ComponentToPrint extends React.Component {
   render() {

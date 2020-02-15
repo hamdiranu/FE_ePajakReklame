@@ -240,7 +240,7 @@ body {
   text-align: center;
 }
 
-.namaReklame {
+.namaReklameOfficer {
   margin: auto;
 }
 
@@ -444,7 +444,7 @@ body {
     font-size: 12px;
   }
 
-  .namaReklame {
+  .namaReklameOfficer {
     margin: initial;
     font-size: 17px;
   }

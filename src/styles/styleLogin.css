@@ -8,6 +8,7 @@ body {
 
 .pageLogin {
   background-image: url("../images/pattern_triangles.png");
+  min-height: 100vh;
 }
 
 .loginWrapper {

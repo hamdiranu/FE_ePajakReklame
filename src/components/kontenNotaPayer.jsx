@@ -8,6 +8,7 @@ import { Button, FormControl, InputGroup } from "react-bootstrap";
 class KontenNotaPayer extends React.Component {
   goToDetailLaporan = async () => {
     await this.props.postInputPayer();
+    await this.props.handleHapusLocal();
     await this.props.history.push(
       `/payer/detail-laporan/${this.props.laporanIDPost}`
     );

@@ -653,6 +653,10 @@ class LaporanPDF extends React.Component {
   }
 }
 class DetilLaporanPayer extends Component {
+  generateQR = async (event) => {
+    this.props.postGenerateQRPayer(event);
+    this.props.history.push(`/payer/detail-laporan/${this.props.laporanID}`)
+  }
   componentDidMount = async () => {
     if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
       await this.props.history.push("/login");
@@ -789,7 +793,7 @@ class DetilLaporanPayer extends Component {
           <div className="row mx-0 align-items-center my-2">
             <div className="col-md-6" style={{width:"50%"}}>
               <div className="row">
-                <img className="report-paye r-gambar"
+                <img className="report-payer-gambar"
                   src={this.props.detilObjekPajak.foto} alt=""/>
               </div>
             </div>
@@ -860,7 +864,7 @@ class DetilLaporanPayer extends Component {
                               }
                             </React.Fragment>
                           :
-                            <button onClick={(e) => this.props.postGenerateQRPayer(this.props.buktiPembayaranPayer.id)}
+                            <button onClick={(e) => this.generateQR(this.props.buktiPembayaranPayer.id)}
                               className="btn button-detail-report" style={{backgroundColor:"#F47522", fontWeight:"700"}}>
                               Generate KodeQR
                             </button>

@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Form } from "react-bootstrap";
-import logoPerusahaan from "../images/building.png";
 
 // Kelas untuk Komponen Halaman Beranda Payer
 class KontenBerandaPayer extends React.Component {

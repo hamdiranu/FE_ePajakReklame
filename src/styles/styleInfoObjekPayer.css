@@ -122,6 +122,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .button3vw{
+    font-size: 3vw !important;
+  }
+
   .judulPeriodeBerlaku {
     text-align: center;
   }

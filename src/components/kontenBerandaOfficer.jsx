@@ -337,7 +337,7 @@ class KontenBerandaOfficer extends React.Component {
                           </Button>
                         )}
                       </div>
-                      <div className="col-8 col-sm order-sm-3 namaReklame dt-small">
+                      <div className="col-8 col-sm order-sm-3 namaReklameOfficer dt-small">
                         {objekPajak.nama_reklame}
                       </div>
                       <div className="col-auto col-sm order-sm-4 jenisReklame dt-small">
