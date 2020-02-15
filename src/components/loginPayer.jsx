@@ -18,7 +18,9 @@ class LoginPayer extends React.Component {
             marginBottom: "10px"
           }}
         >
-          <span style={{ marginLeft: "5px" }}>NPWP :</span>
+          <span className="npwpPayer" style={{ marginLeft: "5px" }}>
+            NPWP :
+          </span>
           <input
             type="text"
             id="npwpd"
@@ -42,12 +44,14 @@ class LoginPayer extends React.Component {
             marginBottom: "10px"
           }}
         >
-          <span style={{ marginLeft: "5px" }}>PIN :</span>
+          <span className="pinPayer" style={{ marginLeft: "5px" }}>
+            PIN :
+          </span>
           <div className="loginInputPassword">
             <input
               type={this.props.statusInputPassword}
               id="pin"
-              className="col-md-11 col-sm-10 fadeIn second"
+              className="col-md-11 col-sm-10 fadeIn second inputLogin"
               name="pin"
               placeholder="Input PIN"
               onChange={e => this.props.handleInputLogin(e)}

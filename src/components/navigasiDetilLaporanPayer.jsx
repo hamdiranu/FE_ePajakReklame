@@ -10,6 +10,10 @@ class NavigasiDetilLaporanPayer extends React.Component {
     this.props.history.replace("/login");
   };
 
+  goHomePayer = async () => {
+    this.props.history.replace("/payer/home");
+  };
+
   render() {
     return (
       <React.Fragment>

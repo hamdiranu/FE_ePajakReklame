@@ -8,6 +8,7 @@ import FormLoginOfficer from "../components/loginOfficer";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import swal from "sweetalert";
+import logoSipRek from "../images/logo.png";
 
 class Login extends Component {
   loginUser = async () => {
@@ -96,11 +97,19 @@ class Login extends Component {
         <div id="loginFormContent">
           <div className="fadeIn first">
             <div className="container-fuild loginJudul">
-              <span>Masuk ke ePajak</span>
+              <span
+                style={{
+                  fontWeight: "800",
+                  fontSize: "larger",
+                  color: "#17345F"
+                }}
+              >
+                Masuk ke SIP-Rek!
+              </span>
             </div>
             <img
               className="loginLogo"
-              src="https://image.flaticon.com/icons/png/128/2168/2168759.png"
+              src={logoSipRek}
               id="icon"
               alt="User Icon"
             />

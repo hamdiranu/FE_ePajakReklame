@@ -187,7 +187,7 @@ class KontenNotaPayer extends React.Component {
                   </InputGroup.Prepend>
                   <FormControl
                     className="barInfoTarif"
-                    placeholder={this.props.detailLaporanPut.tarif_pajak}
+                    placeholder={this.props.detailLaporanPut.tarif_pajak * 100}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     name="nilaiLuasReklame"
@@ -272,3 +272,4 @@ class KontenNotaPayer extends React.Component {
 }
 
 export default connect("laporanID, detailLaporanPut, detailLaporanPost, laporanIDPost", actions)(withRouter(KontenNotaPayer));
+

@@ -15,11 +15,28 @@ body {
   font-size: 20px;
 }
 
-.tombolKeluar {
+.tombolLogout {
   font-size: 19px;
+  background-color: #62e7c8;
+  color: #17345f;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: 0.4s;
+  border: 2px solid #17345f;
+}
+
+.tombolLogout:hover {
+  transition: 0.4s;
+  color: #62e7c8;
+  background-color: #17345f;
+  border: 2px solid white;
 }
 
 @media (max-width: 767px) {
+  .tombolLogout {
+    font-size: 15px;
+  }
+
   .navigasiUserName {
     font-size: 15px;
   }

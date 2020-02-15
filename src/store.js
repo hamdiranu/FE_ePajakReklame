@@ -106,6 +106,12 @@ export const actions = store => ({
     localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
   },
 
+  // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input
+  handleInputPostNama: (state, event) => {
+    store.setState({ [event.target.name]: event.target.value });
+    localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
+  },
+
   handleInputPostLuas: (state, event) => {
     localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
     store.setState({ [event.target.name]: event.target.value });
@@ -350,7 +356,7 @@ export const actions = store => ({
     const pageBuktiPembayaran = event;
     const req = {
       method: "get",
-      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${pageBuktiPembayaran}`,
+      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=10&p=${pageBuktiPembayaran}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
@@ -373,9 +379,9 @@ export const actions = store => ({
   getCariBuktiPembayaran: async (state, event) => {
     let url = "";
     if (state.kataKunci === "") {
-      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${state.pageBuktiPembayaran}`;
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?p=${state.pageBuktiPembayaran}`;
     } else {
-      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=500&nomor_sspd=${state.kataKunci}`;
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd=${state.kataKunci}`;
     }
     const req = {
       method: "get",
@@ -424,22 +430,7 @@ export const actions = store => ({
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database
   postBuktiPembayaran: async (state, event) => {
     if (!RegExp("[0-9]{5}").test(state.nomorSSPD)) {
-      swal({
-        title: "Oops!",
-        text: "Nomor SSPD tidak sesuai ketentuan",
-        icon: "warning"
-      });
-    } else if (
-      !(
-        RegExp("[0-9]{1}").test(state.jumlahReklame) &&
-        Number(state.jumlahReklame) >= 1
-      )
-    ) {
-      swal({
-        title: "Oops!",
-        text: "Jumlah reklame harus berupa Angka dan minimal 1",
-        icon: "warning"
-      });
+    } else if (!RegExp("[0-9]{1}").test(state.jumlahReklame)) {
     } else {
       const mydata = {
         nomor_sspd: state.nomorSSPD,
@@ -479,6 +470,11 @@ export const actions = store => ({
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    store.setState({ npwpd: "", nip: "", pin: "" });
+  },
+
+  //Fungsi untuk menghapus data di localstorage ketika user logout
+  handleHapusLocal: state => {
     localStorage.removeItem("tipeReklamePayer");
     localStorage.removeItem("jenisObjekPajak");
     localStorage.removeItem("luasObjekPajak");
@@ -498,11 +494,10 @@ export const actions = store => ({
     localStorage.removeItem("tanggalPembongkaran");
     localStorage.removeItem("tanggalPemasangan");
     localStorage.removeItem("fotoReklamePayer");
-    localStorage.removeItem("namaReklamePayer");
+    localStorage.removeItem("namaObjekPajak");
     localStorage.removeItem("latitudeReklamePayer");
     localStorage.removeItem("longitudeReklamePayer");
     localStorage.removeItem("alamatReklamePayer");
-    store.setState({ npwpd: "", nip: "", pin: "" });
   },
 
   // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input ketika login
@@ -732,7 +727,9 @@ export const actions = store => ({
           jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
           letak_pemasangan: localStorage.getItem("letakPemasangan"),
           klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
-          masa_pajak: `${localStorage.getItem("masaPajakBulan")} ${localStorage.getItem("masaPajakTahun")}`,
+          masa_pajak: `${localStorage.getItem(
+            "masaPajakBulan"
+          )} ${localStorage.getItem("masaPajakTahun")}`,
           jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
           tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
           tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
@@ -811,8 +808,7 @@ export const actions = store => ({
       .catch(error => {
         swal({
           title: "Oops!",
-          text:
-            "Gagal menambahkan data, silahkan cek ulang data input anda!",
+          text: "Gagal menambahkan data, silahkan cek ulang data input anda!",
           icon: "warning"
         });
         console.log("gagal axios");
