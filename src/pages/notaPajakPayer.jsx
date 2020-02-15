@@ -8,6 +8,11 @@ import NavigasiNotaPayer from "../components/navigasiNotaPayer";
 import KontenNotaPayer from "../components/kontenNotaPayer";
 
 class NotaPajakPayer extends Component {
+  componentDidMount = async () => {
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
+      await this.props.history.push("/login")
+    }
+  };
   render() {
     return (
       <React.Fragment>

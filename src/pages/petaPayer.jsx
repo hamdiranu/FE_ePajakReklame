@@ -19,8 +19,11 @@ class PetaPayer extends Component {
       zoom: 18
     };
   }
-
+  
   componentDidMount() {
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
+      await this.props.history.push("/login")
+    }
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/streets-v11",
