@@ -16,25 +16,29 @@ class NavigasiPayer extends React.Component {
     return (
       <React.Fragment>
         <nav
-          className="navbar navbar-light bg-light navbarPayer "
+          className="navbar navbarPayer navbar-shadow"
           style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
-          <span class="navbar-brand" style={{ display: "flex" }}>
-            <div className="borderLogoTambahLaporan">
+          <span className="navbar-brand" style={{ display: "flex" }}>
+            <div className="">
               <Link to="/payer/input-gambar" style={{ textDecoration: "none" }}>
-                <FiFilePlus className="logoTambahLaporan" />
+                <FiFilePlus className="" size={30} style={{color:"white"}}/>
               </Link>
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer">SIP-Rek</span>
+            <span className="judulHeaderPayer"
+              style={{color:"#F47523", fontSize:"28px", fontWeight:"500"}}>
+              SIP-Rek!
+            </span>
           </div>
           <div class="text-right">
             <span
               onClick={() => this.logOutPayer()}
-              class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
+              className="btn"
+              style={{color:"white", padding:"0px"}}
             >
-              <FaSignOutAlt />
+              <FaSignOutAlt size={30}/>
             </span>
           </div>
         </nav>

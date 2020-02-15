@@ -236,13 +236,46 @@ class KontenBerandaOfficer extends React.Component {
           </div>
           <div>
             <ul className="listSspd">
-              <li className="list-group-item dh">
+              <li
+                className="list-group-item dh"
+                style={{
+                  color: "white",
+                  fontWeight: "900",
+                  fontSize: "17px",
+                  backgroundColor: "#455C7F"
+                }}
+              >
                 <div className="row">
-                  <div className="col no-sspd">Nomor SSPD</div>
-                  <div className="col nama-wp">Nama WP</div>
-                  <div className="col nama-reklame">Nama Reklame</div>
-                  <div className="col jenis-reklame">Jenis (Qty)</div>
-                  <div className="col status">Status</div>
+                  <div
+                    className="col no-sspd"
+                    style={{ borderRight: "1px solid" }}
+                  >
+                    Nomor SSPD
+                  </div>
+                  <div
+                    className="col nama-wp"
+                    style={{ borderRight: "1px solid" }}
+                  >
+                    Nama WP
+                  </div>
+                  <div
+                    className="col nama-reklame"
+                    style={{ borderRight: "1px solid" }}
+                  >
+                    Nama Reklame
+                  </div>
+                  <div
+                    className="col jenis-reklame"
+                    style={{ borderRight: "1px solid" }}
+                  >
+                    Jenis (Qty)
+                  </div>
+                  <div
+                    className="col status"
+                    style={{ borderRight: "1px solid" }}
+                  >
+                    Status
+                  </div>
                   <div className="col kodeQr">QR Code</div>
                 </div>
               </li>
@@ -304,7 +337,7 @@ class KontenBerandaOfficer extends React.Component {
                           </Button>
                         )}
                       </div>
-                      <div className="col-8 col-sm order-sm-3 namaReklame dt-small">
+                      <div className="col-8 col-sm order-sm-3 namaReklameOfficer dt-small">
                         {objekPajak.nama_reklame}
                       </div>
                       <div className="col-auto col-sm order-sm-4 jenisReklame dt-small">

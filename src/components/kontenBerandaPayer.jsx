@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Form } from "react-bootstrap";
-import logoPerusahaan from "../images/building.png";
 
 // Kelas untuk Komponen Halaman Beranda Payer
 class KontenBerandaPayer extends React.Component {
@@ -34,19 +33,19 @@ class KontenBerandaPayer extends React.Component {
           <div className="row rowInfoPerusahaan">
             <div className="col-md-12 col-sm-4 kotakBorderLogo">
               <div className="borderLogoPerusahaan">
-                <img className="logoPerusahaan" src={logoPerusahaan} alt="" />
+                <img className="logoPerusahaan" src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png" alt="" />
               </div>
             </div>
             <div className="col-md-12 col-sm-8 infoPerusahaan">
-              <span>{this.props.payerInfo.nama}</span>
-              <span>{this.props.payerInfo.npwpd}</span>
+              <span className="namaPayer" style={{color:"white", fontWeight:"700"}}>{this.props.payerInfo.nama}</span>
+              <span className="npwpPayer" style={{color:"white", fontWeight:"700"}}>{this.props.payerInfo.npwpd}</span>
             </div>
           </div>
         </div>
         <div className="container-fluid rowGantiListStatus">
           <div className="row rowStatusLaporan">
             <div className="col-md-6 col-sm-6 kalimatStatusLaporan">
-              <span>STATUS LAPORAN : </span>
+              <span style={{fontWeight:"bold"}}>STATUS LAPORAN : </span>
             </div>
             <div className="col-md-6 col-sm-6 statusLaporan">
               <Form.Control
@@ -109,26 +108,26 @@ class KontenBerandaPayer extends React.Component {
                 }
               }
               return (
-                <li class="list-group-item dt">
+                <li class="list-group-item">
                   <div class="row">
-                    <div class="col-8 col-sm order-sm-1 nomorSkpd dt-small">
+                    <div class="col-8 col-sm order-sm-1 nomorSkpd">
                       {laporan.laporan.nomor_skpd}
                     </div>
                     {infoStatusLaporan}
-                    <div class="col-8 col-sm order-sm-2 namaReklame dt-title">
+                    <div class="col-8 col-sm order-sm-2 namaReklamePayer">
                       {laporan.objek_pajak.nama_reklame}
                     </div>
-                    <div class="col-4 col-sm order-sm-5 totalPajak dt-small dt-right dt-bold">
+                    <div class="col-4 col-sm order-sm-5 totalPajakPayer">
                       Rp{" "}
                       {currencyFormatter.format(laporan.laporan.total_pajak, {
                         code: "IDR",
                         symbol: ""
                       })}
                     </div>
-                    <div class="col-8 col-sm order-sm-3 masaPajak dt-small">
+                    <div class="col-8 col-sm order-sm-3 masaPajak">
                       {laporan.objek_pajak.masa_pajak}
                     </div>
-                    <div class="col-4 col-sm order-sm-6 detilLaporan dt-right">
+                    <div class="col-4 col-sm order-sm-6 detilLaporan">
                       <Link to={`/payer/detail-laporan/${laporan.laporan.id}`}>
                         Lihat Detail
                       </Link>

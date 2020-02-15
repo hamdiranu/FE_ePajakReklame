@@ -16,36 +16,35 @@ class NavigasiSurveyor extends React.Component {
       <React.Fragment>
         <nav
           className="navbar navbar-shadow"
-          style={{ position: "fixed",
+          style={{
+            position: "fixed",
             zIndex: "4",
             width: "100%",
-            backgroundColor:"#1a3454"}}
+            backgroundColor: "#1a3454"
+          }}
         >
           <span class="navbar-brand" style={{ display: "flex" }}>
-            <div style={{ margin: "auto" }}>
+            <div className="tombolMapsLokasi" style={{ margin: "auto" }}>
               {this.props.statusPageHomeSurveyor ? (
                 <Link to="/surveyor/peta" style={{ textDecoration: "none" }}>
                   <FaMapMarkedAlt size={25} color="white" />
                 </Link>
               ) : (
                 <Link to="/surveyor/home" style={{ textDecoration: "none" }}>
-                  <FaQrcode size={25} color="white"/>
+                  <FaQrcode size={25} color="white" />
                 </Link>
               )}
             </div>
           </span>
           <div>
-            <b className="judulHeaderSurveyor" style={{color:"#F47523"}}>
+            <b className="judulHeaderSurveyor" style={{ color: "#F47523" }}>
               SIP-Rek!
             </b>
           </div>
-          <div class="text-right">
+          <div class="text-right tombolSignOut">
             <span>
-              <Link
-                onClick={() => this.logOutOfficer()}
-                className=""
-              >
-                <FaSignOutAlt size={25} color="white"/>
+              <Link onClick={() => this.logOutOfficer()} className="">
+                <FaSignOutAlt size={25} color="white" />
               </Link>
             </span>
           </div>

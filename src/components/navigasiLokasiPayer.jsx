@@ -19,27 +19,28 @@ class NavigasiLokasiPayer extends React.Component {
     return (
       <React.Fragment>
         <nav
-          className="navbar navbar-light bg-light navbarPayer "
+          className="navbar navbarPayer navbar-shadow"
           style={{ position: "fixed", zIndex: "4", width: "100%" }}
         >
-          <div className="col-md-3 col-sm-3 kotakTombolHome">
-            <span
-              onClick={() => this.goHomePayer()}
-              class="btn btn-xs btn-outline-secondary tombolKeHomePayer"
-            >
-              <FaHome />
-            </span>
+          <span className="navbar-brand" style={{ display: "flex" }}>
+            <div className="">
+              <span className="btn" style={{padding:"0px"}} onClick={() => this.goHomePayer()}>
+                <FaHome className="" size={30} style={{color:"white"}}/>
+              </span>
+            </div>
+          </span>
+          <div>
+            <b style={{color:"#F47523", fontSize:"28px"}}>
+              Detail Lokasi
+            </b>
           </div>
-
-          <div className="col-md-6 col-sm-11 judulHeaderLokasiPayer">
-            <span>Detail Lokasi Reklame</span>
-          </div>
-          <div class="col-md-3 col-sm-1 text-right kotakTombolLogOut">
+          <div class="text-right">
             <span
               onClick={() => this.logOutPayer()}
-              class="btn btn-xs btn-outline-secondary tombolKeluarPayer"
+              className="btn"
+              style={{color:"white", padding:"0px"}}
             >
-              <FaSignOutAlt />
+              <FaSignOutAlt size={30}/>
             </span>
           </div>
         </nav>
