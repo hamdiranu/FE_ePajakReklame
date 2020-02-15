@@ -8,7 +8,6 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
 }
 
 .judulDetilReklameSurveyor {
@@ -141,7 +140,6 @@ textarea.form-control {
 
 .gifLoading {
   text-align: center;
-  background-color: #fafcfb;
   padding-bottom: 84px;
 }
 

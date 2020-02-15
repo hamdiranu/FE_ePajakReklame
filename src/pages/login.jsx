@@ -139,7 +139,11 @@ class Login extends Component {
                 className="fadeIn fourth"
                 value="Log In"
                 disabled={!this.props.formValid}
-                style={{ marginBottom: "15px", marginTop: "10px" }}
+                style={{
+                  marginBottom: "15px",
+                  marginTop: "10px",
+                  cursor: "pointer"
+                }}
                 onClick={e => this.loginUser(e)}
               />
             </form>

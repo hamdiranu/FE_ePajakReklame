@@ -20,18 +20,6 @@ body {
   transition: 0.3s;
 }
 
-.idKodeUnik {
-  padding-right: 35px;
-}
-
-.statusScan {
-  padding-left: 70px;
-}
-
-.downloadQr {
-  padding-left: 34px;
-}
-
 .buttonTambahData {
   background-color: #62e7c8;
 }

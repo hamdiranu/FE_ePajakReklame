@@ -481,6 +481,29 @@ export const actions = store => ({
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("tipeReklamePayer");
+    localStorage.removeItem("jenisObjekPajak");
+    localStorage.removeItem("luasObjekPajak");
+    localStorage.removeItem("tarifTambahan");
+    localStorage.removeItem("sudutPandang");
+    localStorage.removeItem("letakPemasangan");
+    localStorage.removeItem("klasifikasiJalan");
+    localStorage.removeItem("judulObjekPajak");
+    localStorage.removeItem("panjangObjekPajak");
+    localStorage.removeItem("lebarObjekPajak");
+    localStorage.removeItem("mukaObjekPajak");
+    localStorage.removeItem("ketinggianObjekPajak");
+    localStorage.removeItem("jumlahReklameObjekPajak");
+    localStorage.removeItem("masaPajakTahun");
+    localStorage.removeItem("masaPajakBulan");
+    localStorage.removeItem("jangkaWaktuObjekPajak");
+    localStorage.removeItem("tanggalPembongkaran");
+    localStorage.removeItem("tanggalPemasangan");
+    localStorage.removeItem("fotoReklamePayer");
+    localStorage.removeItem("namaObjekPajak");
+    localStorage.removeItem("latitudeReklamePayer");
+    localStorage.removeItem("longitudeReklamePayer");
+    localStorage.removeItem("alamatReklamePayer");
     store.setState({ formOfficer: false, npwpd: "", nip: "", pin: "" });
   },
 
