@@ -546,6 +546,7 @@ export const actions = store => ({
     });
   },
 
+
   handleGantiStatusPajak: (state, event) => {
     store.setState({ [event.target.name]: event.target.value });
     if (event.target.value === "batal") {
