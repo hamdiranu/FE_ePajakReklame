@@ -3,7 +3,10 @@
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: white;
+  background-color: #f7f7f7;
+}
+
+.pageLogin {
   background-image: url("../images/pattern_triangles.png");
 }
 

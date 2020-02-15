@@ -13,10 +13,11 @@ body {
 
 .judulMapsHomeSurveyor {
   text-align: center;
-  font-size: 24px;
-  color: white;
+  font-size: 30px;
+  color: #17345f;
+  font-weight: 900;
   width: fit-content;
-  /* border-radius: 10px; */
+  /* border-radius: 10px;
   background-image: linear-gradient(
     to bottom,
     #ffc153,
@@ -25,7 +26,7 @@ body {
     #d36808,
     #c94200
   );
-  background-size: 100%;
+  background-size: 100%; */
 }
 
 .rowJudulLokasi {
@@ -34,6 +35,7 @@ body {
 
 .legend {
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .markerLegend {
@@ -62,9 +64,14 @@ body {
   /* border-radius: 10px; */
 }
 
+.kotakMapsSurveyor {
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
 .kontenPetaSurveyor {
   padding-top: 70px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   padding-bottom: 10px;
   min-height: 100vh;
 }
@@ -81,8 +88,14 @@ body {
 
 @media (max-width: 767px) {
   .judulMapsHomeSurveyor {
-    font-size: 18px;
+    font-size: 20px;
     padding-bottom: 0px;
+    padding-top: 20px;
+  }
+
+  .kotakMapsSurveyor {
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
 
   .leaflet-container {
@@ -115,6 +128,10 @@ body {
     padding-top: 58px;
     padding-bottom: 0px;
     min-height: 100vh;
+  }
+
+  .legend {
+    margin-bottom: 0px;
   }
 }
 

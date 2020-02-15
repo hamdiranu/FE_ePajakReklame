@@ -60,6 +60,10 @@ class DaftarKodeQrOfficer extends Component {
       await this.props.getSemuaListKodeQROfficer();
     }
   };
+
+  goToHomeOfficer = () => {
+    this.props.history.push("/officer/home");
+  };
   render() {
     const toDataURL = url =>
       fetch(url)
@@ -228,7 +232,10 @@ class DaftarKodeQrOfficer extends Component {
         <div className="kontenDaftarKodeQrOfficer">
           <div className="container">
             <div className="col-md-2" style={{ paddingLeft: "0px" }}>
-              <div className="tombolBacktoDaftarSSPD">
+              <div
+                className="tombolBacktoDaftarSSPD"
+                onClick={() => this.goToHomeOfficer()}
+              >
                 <TiArrowBackOutline />
                 <Link to="/officer/home">
                   <div className="kotakButtonKembali" style={{}}>

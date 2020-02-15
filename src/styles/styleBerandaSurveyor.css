@@ -8,11 +8,11 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 .kontenBerandaSurveyor {
-  background-color: #F7F7F7;
+  background-color: white;
   padding-bottom: 65px;
   padding-top: 30px;
   min-height: 100vh;
@@ -81,7 +81,7 @@ body {
   }
 
   .kontenBerandaSurveyor {
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     padding-bottom: 13px;
     padding-top: 30px;
   }
@@ -130,7 +130,7 @@ body {
   }
 
   .kontenBerandaSurveyor {
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     padding-bottom: 13px;
     padding-top: 30px;
   }
