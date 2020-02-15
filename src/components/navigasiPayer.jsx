@@ -27,9 +27,10 @@ class NavigasiPayer extends React.Component {
             </div>
           </span>
           <div>
-            <b style={{color:"#F47523", fontSize:"28px"}}>
+            <span className="judulHeaderPayer"
+              style={{color:"#F47523", fontSize:"28px", fontWeight:"500"}}>
               SIP-Rek!
-            </b>
+            </span>
           </div>
           <div class="text-right">
             <span

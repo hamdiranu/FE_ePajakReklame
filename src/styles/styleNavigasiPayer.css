@@ -1,4 +1,5 @@
 /* Style untuk tampilan navbar officer */
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
 
 html,
 body {
@@ -52,7 +53,8 @@ body {
 }
 
 .judulHeaderPayer {
-  font-size: 30px;
+  font-size: 28px;
+  font-family: "Fugaz One", sans-serif !important;
 }
 
 .navbarPayer{

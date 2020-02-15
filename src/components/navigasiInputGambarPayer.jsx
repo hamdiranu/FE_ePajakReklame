@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
-import { FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
+import { FaFileImage, FaSignOutAlt } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi pada Page Input Gambar Payer
 class NavigasiPayer extends React.Component {
@@ -38,7 +38,7 @@ class NavigasiPayer extends React.Component {
           <span class="navbar-brand" style={{ display: "flex" }}>
             <div className="btn" onClick={() => this.myFunction()} style={{padding:"0px"}}>
               <div style={{ textDecoration: "none" }}>
-                <FaPlusCircle id="buttonUnggah" size={30} style={{color:"white"}}/>
+                <FaFileImage id="buttonUnggah" size={30} style={{color:"white"}}/>
                 <input type="file"
                   style={{width:"50%", display:"none"}}
                   id="fileItem"

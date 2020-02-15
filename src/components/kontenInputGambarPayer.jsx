@@ -38,12 +38,6 @@ class KontenInputGambarPayer extends React.Component {
                   <h5 className="mb-0 mx-3">
                     Mohon upload foto reklame yang akan dilaporkan
                   </h5>
-                  {/* <input type="file"
-                    // className="upload-gambar custom-file-input
-                    style={{width:"50%"}}
-                    id="fileItem"
-                    onChange={this.handleChange}>
-                  </input> */}
                 </div>
               :
                 <div>
