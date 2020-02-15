@@ -8,7 +8,6 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
 }
 
 .judulPeriodeBerlaku {
@@ -176,10 +175,6 @@ body {
   .kotakInputLokasi {
     display: flex;
     margin-bottom: 35px;
-  }
-
-  .kotakMaps {
-    margin-top: 5px;
   }
 
   .rowButtonInfo {

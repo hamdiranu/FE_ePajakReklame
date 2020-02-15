@@ -270,7 +270,11 @@ class KontenDetailPajakPayer extends React.Component {
                 <div className="rowButtonDetail">
                   <div className="jarakButton">
                     <Button
-                      style={{ backgroundColor: "red" }}
+                      style={{
+                        backgroundColor: "#E43C25",
+                        border: "1px solid #E43C25",
+                        borderRadius: "5px"
+                      }}
                       onClick={() => this.goToLokasiPajak()}
                     >
                       Kembali
@@ -291,11 +295,25 @@ class KontenDetailPajakPayer extends React.Component {
                       <Button
                         disabled={false}
                         onClick={() => this.goToInfoPajak()}
+                        style={{
+                          backgroundColor: "#486FB6",
+                          border: "1px solid #486FB6",
+                          borderRadius: "5px"
+                        }}
                       >
                         Lanjutkan
                       </Button>
                     ) : (
-                      <Button disabled={true}>Lanjutkan</Button>
+                      <Button
+                        disabled={true}
+                        style={{
+                          backgroundColor: "#486FB6",
+                          border: "1px solid #486FB6",
+                          borderRadius: "5px"
+                        }}
+                      >
+                        Lanjutkan
+                      </Button>
                     )}
                   </div>
                 </div>

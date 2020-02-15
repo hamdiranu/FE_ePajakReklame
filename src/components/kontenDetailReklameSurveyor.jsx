@@ -72,7 +72,6 @@ class KontenDetailReklameSurveyor extends React.Component {
                     animate={true}
                     easeLinearity={0.35}
                     className="kotakPeta"
-                    
                   >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                     <Marker
@@ -104,33 +103,59 @@ class KontenDetailReklameSurveyor extends React.Component {
                 <div className="col-md-6 md-info-reklame">
                   <div className="container">
                     <div className="row">
-                      <div className="col-md-12" style={{color:"#1a3454", fontSize:"2.3vh"}}>
-                        NO SSPD {this.props.detilReklameSurveyor.bukti_pembayaran.nomor_sspd}
+                      <div
+                        className="col-md-12"
+                        style={{ color: "#1a3454", fontSize: "2.3vh" }}
+                      >
+                        NO SSPD{" "}
+                        {
+                          this.props.detilReklameSurveyor.bukti_pembayaran
+                            .nomor_sspd
+                        }
                       </div>
-                      <div className="col-md-12" style={{color:"#f47522", fontSize:"2.3vh"}}>
-                        <b>{this.props.detilReklameSurveyor.objek_pajak.nama_reklame.toUpperCase()}</b>
-                      </div>                      
+                      <div
+                        className="col-md-12"
+                        style={{ color: "#f47522", fontSize: "2.3vh" }}
+                      >
+                        <b>
+                          {this.props.detilReklameSurveyor.objek_pajak.nama_reklame.toUpperCase()}
+                        </b>
+                      </div>
                     </div>
-                  </div>                  
+                  </div>
                   <div className="container my-3">
                     <div className="row align-items-center">
                       <div className="col-md-12 info-reklame">
                         <div className="row">
-                          <div className="col-md-3" style={{width:"25%"}}>Judul</div>
-                          <div className="col-md-1" style={{width:"8%"}}>:</div>
-                          <div className="col-md-8" style={{width:"66%"}}>
+                          <div className="col-md-3" style={{ width: "26%" }}>
+                            Judul
+                          </div>
+                          <div className="col-md-1" style={{ width: "8%" }}>
+                            :
+                          </div>
+                          <div
+                            className="col-md-8"
+                            style={{ width: "64%", paddingLeft: "0px" }}
+                          >
                             {
                               this.props.detilReklameSurveyor.objek_pajak
                                 .judul_reklame
                             }
                           </div>
-                        </div>                        
+                        </div>
                       </div>
                       <div className="col-md-12 info-reklame">
                         <div className="row">
-                          <div className="col-md-3" style={{width:"25%"}}>Jenis</div>
-                          <div className="col-md-1" style={{width:"8%"}}>:</div>
-                          <div className="col-md-8" style={{width:"66%"}}>
+                          <div className="col-md-3" style={{ width: "26%" }}>
+                            Jenis
+                          </div>
+                          <div className="col-md-1" style={{ width: "8%" }}>
+                            :
+                          </div>
+                          <div
+                            className="col-md-8"
+                            style={{ width: "64%", paddingLeft: "0px" }}
+                          >
                             {
                               this.props.detilReklameSurveyor.objek_pajak
                                 .jenis_reklame
@@ -140,9 +165,16 @@ class KontenDetailReklameSurveyor extends React.Component {
                       </div>
                       <div className="col-md-12 info-reklame">
                         <div className="row">
-                          <div className="col-md-3" style={{width:"25%"}}>Jumlah</div>
-                          <div className="col-md-1" style={{width:"8%"}}>:</div>
-                          <div className="col-md-8" style={{width:"66%"}}>
+                          <div className="col-md-3" style={{ width: "26%" }}>
+                            Jumlah
+                          </div>
+                          <div className="col-md-1" style={{ width: "8%" }}>
+                            :
+                          </div>
+                          <div
+                            className="col-md-8"
+                            style={{ width: "64%", paddingLeft: "0px" }}
+                          >
                             {
                               this.props.detilReklameSurveyor.bukti_pembayaran
                                 .jumlah_reklame
@@ -152,9 +184,19 @@ class KontenDetailReklameSurveyor extends React.Component {
                       </div>
                       <div className="col-md-12 info-reklame">
                         <div className="row">
-                          <div className="col-md-3" style={{width:"25%"}}>QR Valid</div>
-                          <div className="col-md-1" style={{width:"8%"}}>:</div>
-                          <div className="col-md-8" style={{width:"66%"}}>
+                          <div
+                            className="col-md-3"
+                            style={{ width: "26%", paddingRight: "0px" }}
+                          >
+                            QR Valid
+                          </div>
+                          <div className="col-md-1" style={{ width: "8%" }}>
+                            :
+                          </div>
+                          <div
+                            className="col-md-8"
+                            style={{ width: "64%", paddingLeft: "0px" }}
+                          >
                             {this.props.detilReklameSurveyor.kode_QR_terscan} /{" "}
                             {
                               this.props.detilReklameSurveyor.bukti_pembayaran
@@ -163,12 +205,29 @@ class KontenDetailReklameSurveyor extends React.Component {
                           </div>
                         </div>
                       </div>
-                      {this.props.statusPelanggaran ?
+                      {this.props.statusPelanggaran ? (
                         <div className="col-md-12 info-reklame">
                           <div className="row">
-                            <div className="col-md-3" style={{width:"25%", color:"#e43c25"}}>Pelanggaran</div>
-                            <div className="col-md-1" style={{width:"8%", color:"#e43c25"}}>:</div>
-                            <div className="col-md-8" style={{width:"66%", color:"#e43c25"}}>
+                            <div
+                              className="col-md-3"
+                              style={{ width: "26%", color: "#e43c25" }}
+                            >
+                              Pelanggaran
+                            </div>
+                            <div
+                              className="col-md-1"
+                              style={{ width: "8%", color: "#e43c25" }}
+                            >
+                              :
+                            </div>
+                            <div
+                              className="col-md-8"
+                              style={{
+                                width: "64%",
+                                color: "#e43c25",
+                                paddingLeft: "0px"
+                              }}
+                            >
                               {
                                 this.props.detilReklameSurveyor.bukti_pembayaran
                                   .pelanggaran
@@ -176,9 +235,9 @@ class KontenDetailReklameSurveyor extends React.Component {
                             </div>
                           </div>
                         </div>
-                      : 
+                      ) : (
                         <div className="spacePelanggaranKosong"></div>
-                      }                      
+                      )}
                     </div>
                   </div>
                   <div className="container">
@@ -191,7 +250,10 @@ class KontenDetailReklameSurveyor extends React.Component {
                           Scan Kode QR
                         </Button>
                       </div>
-                      <div className="col-md-12" style={{color:"#1a3454"}}>
+                      <div
+                        className="col-md-12"
+                        style={{ color: "#1a3454", marginBottom: "10px" }}
+                      >
                         Laporkan Pelanggaran :
                       </div>
                       <div className="col-md-12">
@@ -211,7 +273,7 @@ class KontenDetailReklameSurveyor extends React.Component {
                           <Button
                             onClick={() => this.laporPelanggaran()}
                             variant="danger"
-                            style={{backgroundColor:"#e43c25"}}
+                            style={{ backgroundColor: "#e43c25" }}
                           >
                             Laporkan
                           </Button>

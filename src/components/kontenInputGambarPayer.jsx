@@ -28,29 +28,41 @@ class KontenInputGambarPayer extends React.Component {
       <div className="kontenInputGambarPayer">
         <div className="container-fluid">
           <div className="py-3">
-            <div className="isiKotakPreviewGambar" style={{width:"81vw", maxWidth:"550px"}}>
-              {localStorage.getItem("fotoReklamePayer") === null ?
-                <div style={{height:"61vh",
-                  width:"80vw",
-                  maxWidth:"548px",
-                  paddingTop:"27vh",
-                  paddingBottom:"27vh"}}>
+            <div
+              className="isiKotakPreviewGambar"
+              style={{ width: "81vw", maxWidth: "550px" }}
+            >
+              {localStorage.getItem("fotoReklamePayer") === null ? (
+                <div
+                  style={{
+                    height: "61vh",
+                    width: "80vw",
+                    maxWidth: "548px",
+                    paddingTop: "27vh",
+                    paddingBottom: "27vh"
+                  }}
+                >
                   <h5 className="mb-0 mx-3">
                     Mohon upload foto reklame yang akan dilaporkan
                   </h5>
                 </div>
-              :
+              ) : (
                 <div>
-                  <img src={localStorage.getItem("fotoReklamePayer")} style={{width:"80vw", maxWidth:"548px"}} alt=""/>
+                  <img
+                    src={localStorage.getItem("fotoReklamePayer")}
+                    style={{ width: "80vw", maxWidth: "548px" }}
+                    alt=""
+                  />
                 </div>
-              }
+              )}
             </div>
           </div>
           <div className="container">
             <div className="row infoInput">
               <div className="radioButtonJenisReklame">
                 <div className="form-check form-check-inline ">
-                  {localStorage.getItem("tipeReklamePayer") === "Reklame Non Permanen" ?
+                  {localStorage.getItem("tipeReklamePayer") ===
+                  "Reklame Non Permanen" ? (
                     <input
                       className="bulletRadio"
                       onClick={e => this.props.handleInput(e)}
@@ -60,7 +72,7 @@ class KontenInputGambarPayer extends React.Component {
                       id="non-permanen"
                       checked="checked"
                     />
-                  :
+                  ) : (
                     <input
                       className="bulletRadio"
                       onClick={e => this.props.handleInput(e)}
@@ -69,11 +81,14 @@ class KontenInputGambarPayer extends React.Component {
                       value="Reklame Non Permanen"
                       id="non-permanen"
                     />
-                  }                  
-                  <label for="non-permanen" className="form-check-label">Non-Permanen</label>
+                  )}
+                  <label for="non-permanen" className="form-check-label">
+                    Non-Permanen
+                  </label>
                 </div>
                 <div className="form-check form-check-inline jarakRadioButton">
-                  {localStorage.getItem("tipeReklamePayer") === "Reklame Permanen" ?
+                  {localStorage.getItem("tipeReklamePayer") ===
+                  "Reklame Permanen" ? (
                     <input
                       className="bulletRadio"
                       onClick={e => this.props.handleInput(e)}
@@ -83,36 +98,67 @@ class KontenInputGambarPayer extends React.Component {
                       id="permanen"
                       checked="checked"
                     />
-                  :
+                  ) : (
                     <input
-                    className="bulletRadio"
-                    onClick={e => this.props.handleInput(e)}
-                    type="radio"
-                    name="tipeReklame"
-                    value="Reklame Permanen"
-                    id="permanen"
-                  />
-                  }                  
-                  <label for="permanen" className="form-check-label">Permanen</label>
+                      className="bulletRadio"
+                      onClick={e => this.props.handleInput(e)}
+                      type="radio"
+                      name="tipeReklame"
+                      value="Reklame Permanen"
+                      id="permanen"
+                    />
+                  )}
+                  <label for="permanen" className="form-check-label">
+                    Permanen
+                  </label>
                 </div>
               </div>
             </div>
-            <div className="row mt-2">
-              <div className="col-md-6 text-center" style={{width:"50%"}}>
-                <Link to="/payer/home"
-                  className="btn btn-primary">Beranda
+            <div className="row mt-2" style={{ marginBottom: "20px" }}>
+              <div className="col-md-6 text-center" style={{ width: "50%" }}>
+                <Link
+                  to="/payer/home"
+                  className="btn btn-primary"
+                  style={{
+                    backgroundColor: "#E43C25",
+                    border: "1px solid #E43C25",
+                    borderRadius: "5px"
+                  }}
+                >
+                  Beranda
                 </Link>
               </div>
-              <div className="col-md-6 text-center" style={{width:"50%"}}>
-                {localStorage.getItem("fotoReklamePayer") !== null & localStorage.getItem("tipeReklamePayer") !== null?
-                  <Link to="/payer/input-lokasi"
-                    className="btn btn-primary">Lanjutkan
-                  </Link>
-                :
+              <div
+                className="col-md-6 text-center"
+                style={{
+                  width: "50%"
+                }}
+              >
+                {(localStorage.getItem("fotoReklamePayer") !== null) &
+                (localStorage.getItem("tipeReklamePayer") !== null) ? (
                   <Link
-                    className="btn btn-primary disabled">Lanjutkan
+                    to="/payer/input-lokasi"
+                    style={{
+                      backgroundColor: "#486FB6",
+                      border: "1px solid #486FB6",
+                      borderRadius: "5px"
+                    }}
+                    className="btn btn-primary"
+                  >
+                    Lanjutkan
                   </Link>
-                }
+                ) : (
+                  <Link
+                    className="btn btn-primary disabled"
+                    style={{
+                      backgroundColor: "#486FB6",
+                      border: "1px solid #486FB6",
+                      borderRadius: "5px"
+                    }}
+                  >
+                    Lanjutkan
+                  </Link>
+                )}
               </div>
             </div>
           </div>
