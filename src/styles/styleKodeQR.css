@@ -31,9 +31,9 @@ body {
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* .no-sspd{
-  font-size: 12px;
-} */
+.no-sspd{
+  min-width: 13.3vw;
+}
 .buttonUnduhSemuaQR {
   text-align: left !important;
   vertical-align: center;

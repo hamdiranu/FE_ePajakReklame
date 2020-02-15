@@ -19,9 +19,9 @@ class KontenInformasiPajakPayer extends React.Component {
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
 
-  goToNotaPajak = () => {
-    this.props.putInputPayer();
-    this.props.history.push("/payer/nota-pajak");
+  goToNotaPajak = async() => {
+    await this.props.putInputPayer();
+    await this.props.history.push("/payer/nota-pajak");
   };
 
   constructor(props) {
@@ -195,20 +195,33 @@ class KontenInformasiPajakPayer extends React.Component {
             <div className="rowButtonInfo">
               <div className="jarakButton">
                 <Button
-                  variant="danger"
+                  style={{
+                    backgroundColor: "#E43C25",
+                    border: "1px solid #E43C25",
+                    borderRadius: "5px"
+                  }}
                   onClick={() => this.goToDetailObjekPajak()}
                 >
                   Kembali
                 </Button>
               </div>
               <div>
-                <Button
-                  variant="primary"
-                  style={{ fontSize: "16px" }}
-                  onClick={() => this.goToNotaPajak()}
-                >
-                  Lanjutkan
-                </Button>
+                {localStorage.getItem("masaPajakBulan") &&
+                localStorage.getItem("masaPajakTahun") &&
+                localStorage.getItem("jangkaWaktuObjekPajak") &&
+                localStorage.getItem("tanggalPemasangan") &&
+                localStorage.getItem("tanggalPembongkaran") ? (
+                  <Button
+                    variant="primary"
+                    style={{ fontSize: "16px" }}
+                    onClick={() => this.goToNotaPajak()}
+                    className="button3vw"
+                  >
+                    Cek Tarif
+                  </Button>
+                ) : (
+                  <Button disabled={true}>Cek Tarif</Button>
+                )}
               </div>
             </div>
           </div>

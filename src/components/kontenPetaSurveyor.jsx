@@ -47,11 +47,11 @@ class KontenPetaSurveyor extends React.Component {
     return (
       <div className="kontenPetaSurveyor">
         <div className="container-fluid">
-          {/* <div className="rowJudulLokasi">
+          <div className="rowJudulLokasi">
             <div className="container judulMapsHomeSurveyor">
               <span>Lokasi Reklame</span>
             </div>
-          </div> */}
+          </div>
           <LeafletMap
             center={[-7.9768, 112.637]}
             zoom={13.5}
@@ -63,7 +63,7 @@ class KontenPetaSurveyor extends React.Component {
             dragging={true}
             animate={true}
             easeLinearity={0.35}
-            className="my-5"
+            className="kotakMapsSurveyor"
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -113,7 +113,7 @@ class KontenPetaSurveyor extends React.Component {
           <div className="row" style={{ textAlign: "center" }}>
             <div className="col-md-4 col-sm-12">
               <div className="container-fluid">
-                <div className="row my-1">
+                <div className="row my-3">
                   <div className="text-right col-md-3 col-sm-3 legendBagianMarker">
                     <img className="markerLegend" src={markerHijau} alt="" />
                   </div>
@@ -125,7 +125,7 @@ class KontenPetaSurveyor extends React.Component {
             </div>
             <div className="col-md-4 col-sm-12">
               <div className="container-fluid">
-                <div className="row my-1">
+                <div className="row my-3">
                   <div className="text-right col-md-3 col-sm-3 legendBagianMarker">
                     <img className="markerLegend" src={markerBiru} alt="" />
                   </div>
@@ -137,7 +137,7 @@ class KontenPetaSurveyor extends React.Component {
             </div>
             <div className="col-md-4 col-sm-12">
               <div className="container-fluid">
-                <div className="row my-1">
+                <div className="row my-3">
                   <div className="text-right col-md-3 col-sm-3 legendBagianMarker">
                     <img className="markerLegend" src={markerMerah} alt="" />
                   </div>

@@ -8,7 +8,6 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
 }
 
 .judulDetilReklameSurveyor {
@@ -44,8 +43,13 @@ body {
   /* animation: animate 2s linear infinite; */
 }
 
-.isiTextAreaPelanggaran{
+.isiTextAreaPelanggaran {
   min-height: 120px;
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 3rem;
 }
 
 @keyframes animate {
@@ -90,17 +94,16 @@ body {
 
 .kontenDetilReklameSurveyor {
   padding-top: 58px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   padding-bottom: 4px;
   min-height: 100vh;
-  
 }
 
 textarea.form-control {
   height: 100%;
 }
 
-.info-reklame{
+.info-reklame {
   font-size: 2.3vh;
   color: #122756;
 }
@@ -137,7 +140,6 @@ textarea.form-control {
 
 .gifLoading {
   text-align: center;
-  background-color: #fafcfb;
   padding-bottom: 84px;
 }
 
@@ -145,21 +147,21 @@ textarea.form-control {
   width: 790px;
 }
 
-.md-info-reklame{
+.md-info-reklame {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 @media (max-width: 767px) {
-  .tombolReport button{
+  .tombolReport button {
     font-size: 3vw;
   }
 
-  .md-info-reklame{
+  .md-info-reklame {
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  .info-reklame{
+  .info-reklame {
     font-size: 2.2vh;
   }
 

@@ -8,7 +8,6 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
 }
 
 .judulPeriodeBerlaku {
@@ -123,6 +122,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .button3vw{
+    font-size: 3vw !important;
+  }
+
   .judulPeriodeBerlaku {
     text-align: center;
   }
@@ -176,10 +179,6 @@ body {
   .kotakInputLokasi {
     display: flex;
     margin-bottom: 35px;
-  }
-
-  .kotakMaps {
-    margin-top: 5px;
   }
 
   .rowButtonInfo {

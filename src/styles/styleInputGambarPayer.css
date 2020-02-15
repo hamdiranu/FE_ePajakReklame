@@ -8,7 +8,6 @@ body {
   margin: 0px;
   padding: 0px !important;
   overflow-x: hidden;
-  background-color: white;
 }
 
 .kontenInputGambarPayer {
@@ -55,7 +54,7 @@ body {
   margin-top: 20px;
   display: table;
 }
-.upload-gambar{
+.upload-gambar {
   z-index: 1;
 }
 /* .custom-file-input::-webkit-file-upload-button {
@@ -190,6 +189,11 @@ body {
   .radioButtonJenisReklame {
     margin: auto;
     margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .navbar-brand {
+    margin-right: 0px;
   }
 
   .tombolLanjutkan {
@@ -204,7 +208,12 @@ body {
   }
 
   .jarakRadioButton {
-    padding-left: 35px;
+    padding-left: 15px;
+  }
+
+  .bulletRadio {
+    width: 15px;
+    height: 15px;
   }
 
   .infoInput {

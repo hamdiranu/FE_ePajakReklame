@@ -1,15 +1,33 @@
 .report-payer-gambar{
     width:100%
 }
+.namaReklame{
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;   
+}
+.totalPajak{
+    font-size: 20px;
+}
+.statusBayarLaporan{
+    font-size: 20px;
+}
 @media (max-width: 767px) {
+    .namaReklame{
+        text-align: left;
+        font-size: 4.5vw;   
+    }
+    .totalPajak{
+        font-size: 4vw;
+    }
+    .statusBayarLaporan{
+        font-size: 4vw;
+    }
     .button-detail-report{
         font-size: 3vw;
     }
     .judul-detail-laporan{
         font-size: 4vw;
-    }
-    .total-pajak{
-        font-size: 3vw;
     }
     .table-non-pdf{
         font-size: 3vw;

@@ -8,9 +8,14 @@ import swal from "sweetalert";
 
 // Kelas untuk Komponen Halaman Beranda Surveyor
 class KontenBerandaSurveyor extends React.Component {
-  componentDidMount = () => {
-    store.setState({ statusPageHomeSurveyor: true });
-    store.setState({ statusSuksesScan: false, statusGagalScan: false });
+  componentDidMount = async () => {
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "surveyor"){
+      await this.props.history.push("/login")
+    }
+    else{
+      store.setState({ statusPageHomeSurveyor: true });
+      store.setState({ statusSuksesScan: false, statusGagalScan: false });
+    }
   };
 
   constructor(props) {
@@ -52,12 +57,16 @@ class KontenBerandaSurveyor extends React.Component {
         <div className="container containerKotakScannerQr">
           <div className="row">
             <div className="col-md-6 col-sm-12">
-              <QrReader
-                className="kotakScannerQr"
-                delay={this.props.scannerDelay}
-                onError={this.handleError}
-                onScan={e => this.handleScan(e)}
-              />
+              {localStorage.getItem("token") === "" || localStorage.getItem("role") !== "surveyor" ?
+                <span></span>
+              :
+                <QrReader
+                  className="kotakScannerQr"
+                  delay={this.props.scannerDelay}
+                  onError={this.handleError}
+                  onScan={e => this.handleScan(e)}
+                />
+              }              
             </div>
             <div className="col-md-6 col-sm-12 kotakPetunjuk">
               <div className="container-fluid">
