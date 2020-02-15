@@ -12,29 +12,34 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA";
 
 class LokasiPetaPayer extends Component {
-  componentDidMount() {
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [
-        this.props.longitudeInputDefault,
-        this.props.latitudeInputDefault
-      ],
-      zoom: this.props.zoomPetaDefault
-    });
-
-    map.on("move", () => {
-      store.setState({
-        longitudeInputDefault: map.getCenter().lng.toFixed(4),
-        latitudeInputDefault: map.getCenter().lat.toFixed(4),
-        zoomPetaDefault: map.getZoom().toFixed(2)
+  componentDidMount = async () => {
+    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
+      await this.props.history.push("/login")
+    }
+    else{
+      const map = new mapboxgl.Map({
+        container: this.mapContainer,
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [
+          this.props.longitudeInputDefault,
+          this.props.latitudeInputDefault
+        ],
+        zoom: this.props.zoomPetaDefault
       });
-      console.log(
-        "lat , long : ",
-        this.props.latitudeInputDefault,
-        this.props.longitudeInputDefault
-      );
-    });
+  
+      map.on("move", () => {
+        store.setState({
+          longitudeInputDefault: map.getCenter().lng.toFixed(4),
+          latitudeInputDefault: map.getCenter().lat.toFixed(4),
+          zoomPetaDefault: map.getZoom().toFixed(2)
+        });
+        console.log(
+          "lat , long : ",
+          this.props.latitudeInputDefault,
+          this.props.longitudeInputDefault
+        );
+      });
+    }    
   }
 
   handleKonfirmasiLokasi = async () => {

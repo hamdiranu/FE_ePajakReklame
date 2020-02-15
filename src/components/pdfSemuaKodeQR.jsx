@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         textAlign: "center",
         marginVertical: 70,
-        marginHorizontal: 80,
+        marginHorizontal: 55,
     },
     movieTitle:{
         top: 20,
