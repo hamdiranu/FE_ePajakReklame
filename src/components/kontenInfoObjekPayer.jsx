@@ -20,7 +20,7 @@ class KontenInformasiPajakPayer extends React.Component {
   };
 
   goToNotaPajak = () => {
-    this.props.postInputPayer();
+    this.props.putInputPayer();
     this.props.history.push("/payer/nota-pajak");
   };
 

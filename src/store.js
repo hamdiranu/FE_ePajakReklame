@@ -430,7 +430,13 @@ export const actions = store => ({
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database
   postBuktiPembayaran: async (state, event) => {
     if (!RegExp("[0-9]{5}").test(state.nomorSSPD)) {
-    } else if (!RegExp("[0-9]{1}").test(state.jumlahReklame)) {
+      console.log("input nomor sspd error")
+    } else if (!(RegExp("[0-9]{1}").test(state.jumlahReklame) && (Number(state.jumlahReklame) >= 1))) {
+      swal({
+        title: "Oops!",
+        text: "Jumlah reklame harus berupa angka dan minimal berjumlah 1",
+        icon: "warning"
+      });
     } else {
       const mydata = {
         nomor_sspd: state.nomorSSPD,
@@ -638,8 +644,6 @@ export const actions = store => ({
   searchLokasi: async (state, event) => {
     const req = {
       method: "get",
-      // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+state.kataKunciLokasi+"&inputtype="+inputtype+"&fields="+fields+"&key="+key,
-      // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyA_Td2kGqTcpU5wZ7t2iOcYdLrWNhrcCvI&input=jalan tidar",
       url:
         "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
         state.kataKunciLokasi +

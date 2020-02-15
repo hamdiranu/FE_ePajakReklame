@@ -972,5 +972,5 @@ class DetilLaporanPayer extends Component {
   }
 }
 
-export default connect("laporanID, detilLaporan, detilObjekPajak, listKodeQRUntukUnduh, buktiPembayaranPayer, payerInfo",
+export default connect("laporanID, detilLaporan, detilObjekPajak, listKodeQRUntukUnduh, buktiPembayaranPayer, payerInfo, tokenSnap",
   actions)(withRouter(DetilLaporanPayer));

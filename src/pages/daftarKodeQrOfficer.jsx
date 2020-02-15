@@ -25,7 +25,6 @@ import {
   StyleSheet,
   Image
 } from "@react-pdf/renderer";
-import logoLoading from "../images/loading12.gif";
 
 class ComponentToPrint extends React.Component {
   render() {
@@ -138,9 +137,6 @@ class DaftarKodeQrOfficer extends Component {
                     alt=""
                     style={{ width: "60%", height: "60%" }}
                   />
-                  {/* ) : (
-                    <img className="logoLoading" src={logoLoading} alt="" />
-                  )} */}
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <ReactToPrint

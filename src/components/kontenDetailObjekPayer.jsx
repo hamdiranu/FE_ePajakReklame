@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
-import gifLoading from "../images/loading11.gif";
+import gifLoading from "../images/loading15.gif";
 
 // Kelas untuk Komponen Halaman Input Detail Objek Pajak Payer
 class KontenDetailPajakPayer extends React.Component {
