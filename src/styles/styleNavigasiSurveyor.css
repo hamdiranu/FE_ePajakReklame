@@ -49,6 +49,24 @@ body {
   font-size: 19px;
 }
 
+.tombolMapsLokasi svg {
+  transition: 0.3s;
+}
+
+.tombolMapsLokasi svg:hover {
+  transform: scale(1.3);
+  transition: 0.3s;
+}
+
+.tombolSignOut svg {
+  transition: 0.3s;
+}
+
+.tombolSignOut svg:hover {
+  transform: scale(1.3);
+  transition: 0.3s;
+}
+
 .areaName {
   font-size: 16px;
 }
