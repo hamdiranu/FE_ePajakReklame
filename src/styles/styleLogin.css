@@ -6,6 +6,10 @@ body {
   background-color: #f7f7f7;
 }
 
+.pageLogin {
+  background-image: url("../images/pattern_triangles.png");
+}
+
 .loginWrapper {
   display: flex;
   align-items: center;
@@ -199,7 +203,17 @@ input[type="submit"] {
   font-size: 12px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
+  .pageLogin {
+    height: 1366px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageLogin {
+    height: 1024px;
+  }
+
   .navigasiKota {
     font-size: 15px;
     padding-left: 0px;
@@ -284,17 +298,21 @@ input[type="submit"] {
 
 @media (max-width: 414px) {
   #loginFormContent {
-    margin-top: 70px;
+    margin-top: 0px;
   }
 
   .loginInputPassword svg {
     left: 245px;
   }
+
+  .pageLogin {
+    height: 736px;
+  }
 }
 
 @media (max-width: 411px) {
   #loginFormContent {
-    margin-top: 50px;
+    margin-top: 0px;
   }
 
   .pilihRole {
@@ -321,21 +339,49 @@ input[type="submit"] {
   .pinPayer {
     font-size: 16px;
   }
+
+  .pageLogin {
+    height: 750px;
+  }
+
+  @media (max-height: 823px) {
+    .pageLogin {
+      height: 823px;
+    }
+  }
+
+  @media (max-height: 731px) {
+    .pageLogin {
+      height: 731px;
+    }
+  }
 }
 
 @media (max-width: 375px) {
   #loginFormContent {
-    margin-top: 35px;
+    margin-top: 0px;
   }
 
   .loginInputPassword svg {
     left: 225px;
   }
+
+  @media (max-height: 812px) {
+    .pageLogin {
+      height: 812px;
+    }
+  }
+
+  @media (max-height: 667px) {
+    .pageLogin {
+      height: 667px;
+    }
+  }
 }
 
 @media (max-width: 360px) {
   #loginFormContent {
-    margin-top: 30px;
+    margin-top: 0px;
   }
 
   .loginInputPassword svg {
@@ -365,11 +411,15 @@ input[type="submit"] {
   .pinPayer {
     font-size: 14px;
   }
+
+  .pageLogin {
+    height: 640px;
+  }
 }
 
 @media (max-width: 320px) {
   #loginFormContent {
-    margin-top: 9px;
+    margin-top: 0px;
   }
 
   .loginInputPassword svg {
@@ -398,5 +448,9 @@ input[type="submit"] {
 
   .pinPayer {
     font-size: 14px;
+  }
+
+  .pageLogin {
+    height: 568px;
   }
 }

@@ -99,7 +99,7 @@ class KontenInputGambarPayer extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="row mt-2">
+            <div className="row mt-2" style={{ marginBottom: "20px" }}>
               <div className="col-md-6 text-center" style={{ width: "50%" }}>
                 <Link
                   to="/payer/home"

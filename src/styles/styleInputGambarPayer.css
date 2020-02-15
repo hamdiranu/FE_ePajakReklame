@@ -189,6 +189,11 @@ body {
   .radioButtonJenisReklame {
     margin: auto;
     margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .navbar-brand {
+    margin-right: 0px;
   }
 
   .tombolLanjutkan {
@@ -203,7 +208,12 @@ body {
   }
 
   .jarakRadioButton {
-    padding-left: 35px;
+    padding-left: 15px;
+  }
+
+  .bulletRadio {
+    width: 15px;
+    height: 15px;
   }
 
   .infoInput {
