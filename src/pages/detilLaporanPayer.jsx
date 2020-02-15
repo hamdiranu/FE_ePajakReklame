@@ -753,29 +753,34 @@ class DetilLaporanPayer extends Component {
         <div className="pt-5"></div>
         <div className="pt-5"></div>
         <div className="container" style={{marginLeft:"auto !important", marginRight:"auto !important"}}>
-          <div className="row align-items-center my-1">
-            <div className="col-md-6 text-center judul-detail-laporan" style={{width:"50%"}}>
-              {this.props.detilObjekPajak.nama_reklame}
-            </div>            
+          <div className="row align-items-center my-1">            
+            <div className="col-md-6" style={{width:"50%"}}></div>
             {this.props.detilLaporan.pembatalan_laporan === false ?
               <React.Fragment>
                 {this.props.detilLaporan.status_pembayaran===true ?
-                  <div className="col-md-6 text-center judul-detail-laporan" style={{width:"50%"}}>
+                  <div className="col-md-6 text-center statusBayarLaporan" style={{width:"50%"}}>
                     Status : <span style={{color:"green"}}> Sudah Bayar </span>
                   </div>
                 :
-                  <div className="col-md-6 text-center judul-detail-laporan" style={{width:"50%"}}>
+                  <div className="col-md-6 text-center statusBayarLaporan" style={{width:"50%"}}>
                     Status : <span style={{color:"red"}}> Belum Bayar </span>
                   </div>
                 }
               </React.Fragment>
             :
-              <div></div>
+              <div className="col-md-6" style={{width:"50%"}}></div>
             }
             <div className="col-md-6" style={{width:"50%"}}></div>
-            <div className="col-md-6 text-center total-pajak"
+            <div className="col-md-6 text-center totalPajak"
               style={{width:"50%"}}>
-              Total Pajak : Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
+              Total Pajak : 
+            </div>
+            <div className="col-md-6 namaReklame" style={{width:"50%"}}>
+              {this.props.detilObjekPajak.nama_reklame}
+            </div>
+            <div className="col-md-6 text-center totalPajak"
+              style={{width:"50%"}}>
+              Rp. {currencyFormatter.format(this.props.detilLaporan.total_pajak, {
                 code: "IDR",
                 symbol: ""
               })}
@@ -784,20 +789,22 @@ class DetilLaporanPayer extends Component {
           <div className="row mx-0 align-items-center my-2">
             <div className="col-md-6" style={{width:"50%"}}>
               <div className="row">
-                <img className="report-payer-gambar"
+                <img className="report-paye r-gambar"
                   src={this.props.detilObjekPajak.foto} alt=""/>
               </div>
             </div>
             <div className="col-md-6" style={{width:"50%"}}>
               {this.props.detilLaporan.pembatalan_laporan ?
-                <div className="judul-detail-laporan text-center">Status : Batal Lapor</div>
+                <div className="judul-detail-laporan text-center">Status : <span style={{color:"red"}}>Batal Lapor</span></div>
               :
                 <React.Fragment>
                   <div className="row my-3">
                     <div className="col-md-12 text-center">
                       <ReactToPrint
                         trigger={() => <button
-                          className="btn btn-info button-detail-report">Laporan (SKPD)</button>
+                          className="btn button-detail-report" style={{backgroundColor:"#FFC414", fontWeight:"700"}}>
+                            Laporan (SKPD)
+                          </button>
                         }
                         content={() => this.kontenLaporan}
                       />                      
@@ -815,8 +822,9 @@ class DetilLaporanPayer extends Component {
                       <div className="row my-3">
                         <div className="col-md-12 text-center">
                           <ReactToPrint
-                            trigger={() => <button className="btn btn-warning button-detail-report"
-                            >Bukti Bayar (SSPD)</button>
+                            trigger={() => <button className="btn button-detail-report" style={{backgroundColor:"#62E7C8", fontWeight:"700"}}>
+                              Bukti Bayar (SSPD)
+                              </button>
                             }
                             content={() => this.kontenBuktiBayar}
                           />
@@ -833,7 +841,7 @@ class DetilLaporanPayer extends Component {
                                       document={<PdfDocument data={this.props.listKodeQRUntukUnduh}
                                         nomor_sspd={this.props.buktiPembayaranPayer.nomor_sspd}/>}
                                       fileName={namaFileSemuaKodeQR}
-                                      className="btn btn-dark button-detail-report"
+                                      className="btn button-detail-report" style={{backgroundColor:"#496FB6", color:"white", fontWeight:"700"}}
                                     >
                                       {({ blob, url, loading, error }) =>
                                         loading ? "Loading..." :
@@ -853,7 +861,7 @@ class DetilLaporanPayer extends Component {
                             </React.Fragment>
                           :
                             <button onClick={(e) => this.props.postGenerateQRPayer(this.props.buktiPembayaranPayer.id)}
-                              className="btn btn-dark button-detail-report">
+                              className="btn button-detail-report" style={{backgroundColor:"#F47522", fontWeight:"700"}}>
                               Generate KodeQR
                             </button>
                           }
@@ -864,14 +872,14 @@ class DetilLaporanPayer extends Component {
                     <React.Fragment>
                       <div className="row my-3">
                         <div className="col-md-12 text-center">
-                          <button onClick={() => this.tombolBayar()} className="btn btn-success button-detail-report">
+                          <button onClick={() => this.tombolBayar()} className="btn button-detail-report" style={{backgroundColor:"#62E7C8", fontWeight:"700"}}>
                             <FaCcAmazonPay/> Bayar Sekarang
                           </button>
                         </div>
                       </div>
                       <div className="row my-3">
                         <div className="col-md-12 text-center">
-                          <button onClick={this.putBatalLaporanPayer} className="btn btn-danger button-detail-report">
+                          <button onClick={this.putBatalLaporanPayer} className="btn button-detail-report" style={{backgroundColor:"#E43C25", fontWeight:"700"}}>
                             <FaWindowClose/> Pembatalan
                           </button>
                         </div>

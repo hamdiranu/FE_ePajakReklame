@@ -19,14 +19,8 @@ body {
   padding-top: 90px;
   padding-bottom: 20px;
   display: flex;
-  background-image: linear-gradient(
-    to left,
-    #c09340,
-    #ddb84d,
-    #fbefb3,
-    #ddb84d,
-    #c09340
-  );
+  background-image: url('../images/backgroundHomePayer.png');
+  background-size: contain;
 }
 
 .col {
@@ -44,7 +38,7 @@ body {
 }
 
 .logoPerusahaan {
-  width: 170px;
+  width: 10vw;
 }
 
 .bagianInfoWp {
@@ -84,6 +78,10 @@ body {
   text-align: left;
 }
 
+.namaPayer {
+  font-size: 3vw;
+}
+
 @media (max-width: 767px) {
   .containerPerusahaanPayer {
     padding-bottom: 20px;
@@ -105,10 +103,15 @@ body {
     width: 35%;
     padding-right: 0px;
     padding-left: 0px;
+    padding-top:  10px;
   }
 
   .borderLogoPerusahaan {
     text-align: end;
+  }
+
+  .logoPerusahaan {
+    width: 13vw;
   }
 
   .infoPerusahaan {
@@ -116,10 +119,6 @@ body {
     width: 65%;
     margin: auto;
     padding-left: 10px;
-  }
-
-  .logoPerusahaan {
-    width: 90px;
   }
 
   .rowStatusLaporan {
@@ -159,20 +158,27 @@ body {
 
   .detilLaporan {
     font-size: 13px;
+    text-align: end;
   }
 
-  .totalPajak {
+  .totalPajakPayer {
     font-size: 17px;
     padding-left: 0px;
+    text-align: end;
+    font-weight: bold;
   }
 
-  .namaReklame {
+  .namaReklamePayer {
     font-size: 18px;
+  }
+
+  .namaPayer {
+    font-size: 5vw;
   }
 }
 
 @media (max-width: 375px) {
-  .totalPajak {
+  .totalPajakPayer {
     font-size: 16px;
   }
 }
@@ -196,13 +202,14 @@ body {
     font-size: 12px;
   }
 
-  .totalPajak {
+  .totalPajakPayer {
     font-size: 13px;
     padding-left: 0px;
   }
 
-  .namaReklame {
+  .namaReklamePayer {
     font-size: 16px;
+    font-weight: bold;
   }
 
   .infoPerusahaan {
@@ -229,13 +236,15 @@ body {
     font-size: 12px;
   }
 
-  .totalPajak {
+  .totalPajakPayer {
     font-size: 13px;
     padding-left: 0px;
+    text-align: end;
   }
 
-  .namaReklame {
+  .namaReklamePayer {
     font-size: 16px;
+    font-weight: bold;
   }
 
   .infoPerusahaan {
