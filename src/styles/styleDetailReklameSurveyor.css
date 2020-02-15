@@ -44,6 +44,10 @@ body {
   /* animation: animate 2s linear infinite; */
 }
 
+.isiTextAreaPelanggaran{
+  min-height: 120px;
+}
+
 @keyframes animate {
   0% {
     background-position: 0%;
@@ -80,23 +84,29 @@ body {
 
 .textAreaPelanggaran {
   padding: 0px 40px;
-  height: 94px;
+  height: 100%;
+  width: 100%;
 }
 
 .kontenDetilReklameSurveyor {
   padding-top: 58px;
-  background-color: white;
+  background-color: #F7F7F7;
   padding-bottom: 4px;
+  min-height: 100vh;
+  
 }
 
 textarea.form-control {
-  height: 120px;
+  height: 100%;
+}
+
+.info-reklame{
+  font-size: 2.3vh;
+  color: #122756;
 }
 
 .tombolReport {
   text-align: center;
-  padding-top: 30px;
-  margin-top: 15px;
 }
 
 .leaflet-container {
@@ -135,7 +145,24 @@ textarea.form-control {
   width: 790px;
 }
 
+.md-info-reklame{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
 @media (max-width: 767px) {
+  .tombolReport button{
+    font-size: 3vw;
+  }
+
+  .md-info-reklame{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .info-reklame{
+    font-size: 2.2vh;
+  }
+
   .petaDetikReklame {
     padding-right: 15px;
   }
@@ -173,12 +200,13 @@ textarea.form-control {
   }
 
   .kontenDetilReklameSurveyor {
-    padding-top: 50px;
+    padding-top: 57px;
   }
 
   .textAreaPelanggaran {
     padding: 0px 0px;
-    height: 94px;
+    height: 100%;
+    width: 100%;
   }
 
   .gifLoading {

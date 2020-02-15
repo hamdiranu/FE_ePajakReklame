@@ -18,7 +18,9 @@ class LoginOfficer extends React.Component {
             marginBottom: "10px"
           }}
         >
-          <span style={{ marginLeft: "5px" }}>NIP :</span>
+          <span className="nipPetugas" style={{ marginLeft: "5px" }}>
+            NIP :
+          </span>
           <input
             type="text"
             id="nip"
@@ -42,7 +44,9 @@ class LoginOfficer extends React.Component {
             marginBottom: "10px"
           }}
         >
-          <span style={{ marginLeft: "5px" }}>PIN :</span>
+          <span className="pinPetugas" style={{ marginLeft: "5px" }}>
+            PIN :
+          </span>
           <div className="loginInputPassword">
             <input
               type={this.props.statusInputPassword}

@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions, store } from "../store";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
-import gifLoading from "../images/loading11.gif";
+import gifLoading from "../images/loading15.gif";
 
 // Kelas untuk Komponen Halaman Input Detail Objek Pajak Payer
 class KontenDetailPajakPayer extends React.Component {
@@ -11,12 +11,11 @@ class KontenDetailPajakPayer extends React.Component {
     await this.props.getListDropDownInput();
     if (localStorage.getItem("tipeReklamePayer") === "Reklame Non Permanen") {
       store.setState({
-        listJenisReklame: [
-          "Spanduk, Umbul-umbul, Banner, Layar Toko",
-          "Baligo"
-        ]
+        listJenisReklame: ["Spanduk, Umbul-umbul, Banner, Layar Toko", "Baligo"]
       });
-    } else if (localStorage.getItem("tipeReklamePayer") === "Reklame Permanen") {
+    } else if (
+      localStorage.getItem("tipeReklamePayer") === "Reklame Permanen"
+    ) {
       store.setState({ listJenisReklame: ["Billboard/Bando", "LED"] });
     }
   };
@@ -64,7 +63,7 @@ class KontenDetailPajakPayer extends React.Component {
                       <option value="" selected disabled>
                         pilih
                       </option>
-                      {store.getState().listJenisReklame.map(jenis => (
+                      {this.props.listJenisReklame.map(jenis => (
                         <option value={jenis}>{jenis}</option>
                       ))}
                     </select>
@@ -110,6 +109,92 @@ class KontenDetailPajakPayer extends React.Component {
                 </div>
               </div>
               <div className="col-md-6 col-sm-12 ">
+                <div className="inputDetailObjekPajak">
+                  <span>Letak Pemasangan</span>
+                  <select
+                    onChange={e => this.props.handleInputPost(e)}
+                    name="letakPemasangan"
+                    class="custom-select"
+                  >
+                    <option value="" selected disabled>
+                      pilih
+                    </option>
+                    {store
+                      .getState()
+                      .listDropDown["list_letak_pemasangan"].map(letak => (
+                        <option value={letak}>{letak}</option>
+                      ))}
+                  </select>
+                </div>
+                <div className="inputDetailObjekPajak">
+                  <span>Klasifikasi Jalan</span>
+                  <select
+                    onChange={e => this.props.handleInputPost(e)}
+                    name="klasifikasiJalan"
+                    class="custom-select"
+                  >
+                    <option value="" selected disabled>
+                      pilih
+                    </option>
+                    {store
+                      .getState()
+                      .listDropDown["list_klasifikasi_jalan"].map(
+                        klasifikasi => (
+                          <option value={klasifikasi}>{klasifikasi}</option>
+                        )
+                      )}
+                  </select>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <div className="col-4 colKiri">
+                    <span>Muka</span>
+                    <div className="kotakInputLokasi">
+                      <FormControl
+                        className="barInputDetail"
+                        placeholder="0"
+                        aria-label="judul"
+                        aria-describedby="basic-addon1"
+                        name="mukaObjekPajak"
+                        onChange={e => this.props.handleInputPost(e)}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <span>Ketinggian</span>
+                    <div className="kotakInputLokasi">
+                      <FormControl
+                        className="barInputDetail"
+                        placeholder="0"
+                        aria-label="judul"
+                        aria-describedby="basic-addon1"
+                        name="ketinggianObjekPajak"
+                        onChange={e => this.props.handleInputPost(e)}
+                      />
+                      <InputGroup.Prepend className="kotakSimbolMeter">
+                        <InputGroup.Text
+                          style={{ padding: "3px 11px" }}
+                          className="kotakMeter"
+                          id="basic-addon1"
+                        >
+                          m
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                    </div>
+                  </div>
+                  <div className="col-4 colKanan">
+                    <span>Jumlah</span>
+                    <div className="kotakInputLokasi">
+                      <FormControl
+                        className="barInputDetail"
+                        placeholder="0"
+                        aria-label="judul"
+                        aria-describedby="basic-addon1"
+                        name="jumlahReklameObjekPajak"
+                        onChange={e => this.props.handleInputPost(e)}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div style={{ display: "flex" }}>
                   <div className="col-4 colKiri">
                     <span>Panjang</span>
@@ -174,97 +259,11 @@ class KontenDetailPajakPayer extends React.Component {
                           className="kotakMeter"
                           id="basic-addon1"
                         >
-                          m
+                          m<sup>2</sup>
                         </InputGroup.Text>
                       </InputGroup.Prepend>
                     </div>
                   </div>
-                </div>
-                <div style={{ display: "flex" }}>
-                  <div className="col-4 colKiri">
-                    <span>Muka</span>
-                    <div className="kotakInputLokasi">
-                      <FormControl
-                        className="barInputDetail"
-                        placeholder="0"
-                        aria-label="judul"
-                        aria-describedby="basic-addon1"
-                        name="mukaObjekPajak"
-                        onChange={e => this.props.handleInputPost(e)}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <span>Ketinggian</span>
-                    <div className="kotakInputLokasi">
-                      <FormControl
-                        className="barInputDetail"
-                        placeholder="0"
-                        aria-label="judul"
-                        aria-describedby="basic-addon1"
-                        name="ketinggianObjekPajak"
-                        onChange={e => this.props.handleInputPost(e)}
-                      />
-                      <InputGroup.Prepend className="kotakSimbolMeter">
-                        <InputGroup.Text
-                          style={{ padding: "3px 11px" }}
-                          className="kotakMeter"
-                          id="basic-addon1"
-                        >
-                          m
-                        </InputGroup.Text>
-                      </InputGroup.Prepend>
-                    </div>
-                  </div>
-                  <div className="col-4 colKanan">
-                    <span>Jumlah</span>
-                    <div className="kotakInputLokasi">
-                      <FormControl
-                        className="barInputDetail"
-                        placeholder="0"
-                        aria-label="judul"
-                        aria-describedby="basic-addon1"
-                        name="jumlahReklameObjekPajak"
-                        onChange={e => this.props.handleInputPost(e)}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="inputDetailObjekPajak">
-                  <span>Letak Pemasangan</span>
-                  <select
-                    onChange={e => this.props.handleInputPost(e)}
-                    name="letakPemasangan"
-                    class="custom-select"
-                  >
-                    <option value="" selected disabled>
-                      pilih
-                    </option>
-                    {store
-                      .getState()
-                      .listDropDown["list_letak_pemasangan"].map(letak => (
-                        <option value={letak}>{letak}</option>
-                      ))}
-                  </select>
-                </div>
-                <div className="inputDetailObjekPajak">
-                  <span>Klasifikasi Jalan</span>
-                  <select
-                    onChange={e => this.props.handleInputPost(e)}
-                    name="klasifikasiJalan"
-                    class="custom-select"
-                  >
-                    <option value="" selected disabled>
-                      pilih
-                    </option>
-                    {store
-                      .getState()
-                      .listDropDown["list_klasifikasi_jalan"].map(
-                        klasifikasi => (
-                          <option value={klasifikasi}>{klasifikasi}</option>
-                        )
-                      )}
-                  </select>
                 </div>
               </div>
               <div className="container-fluid">
@@ -278,9 +277,26 @@ class KontenDetailPajakPayer extends React.Component {
                     </Button>
                   </div>
                   <div>
-                    <Button onClick={() => this.goToInfoPajak()}>
-                      Lanjutkan
-                    </Button>
+                    {localStorage.getItem("panjangObjekPajak") * 1 &&
+                    localStorage.getItem("lebarObjekPajak") * 1 &&
+                    localStorage.getItem("judulObjekPajak") &&
+                    localStorage.getItem("jenisObjekPajak") &&
+                    localStorage.getItem("tarifTambahan") &&
+                    localStorage.getItem("sudutPandang") &&
+                    localStorage.getItem("mukaObjekPajak") * 1 &&
+                    localStorage.getItem("ketinggianObjekPajak") * 1 &&
+                    localStorage.getItem("jumlahReklameObjekPajak") * 1 &&
+                    localStorage.getItem("letakPemasangan") &&
+                    localStorage.getItem("klasifikasiJalan") ? (
+                      <Button
+                        disabled={false}
+                        onClick={() => this.goToInfoPajak()}
+                      >
+                        Lanjutkan
+                      </Button>
+                    ) : (
+                      <Button disabled={true}>Lanjutkan</Button>
+                    )}
                   </div>
                 </div>
               </div>

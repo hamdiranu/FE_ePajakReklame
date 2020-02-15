@@ -82,7 +82,10 @@ const initialState = {
   statusSuksesbayar: true,
   dataStatusSuksesBayar: "",
   detailObjekPajakPost: {},
-  detailLaporanPost: {}
+  detailLaporanPost: {},
+  tokenSnap: "",
+  detailLaporanPut: {},
+  laporanIDPost: "",
 };
 
 export const store = createStore(initialState);
@@ -100,6 +103,12 @@ export const actions = store => ({
 
   // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input
   handleInputPost: (state, event) => {
+    localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
+  },
+
+  // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input
+  handleInputPostNama: (state, event) => {
+    store.setState({ [event.target.name]: event.target.value });
     localStorage.setItem(`${[event.target.name]}`, `${event.target.value}`);
   },
 
@@ -347,7 +356,7 @@ export const actions = store => ({
     const pageBuktiPembayaran = event;
     const req = {
       method: "get",
-      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${pageBuktiPembayaran}`,
+      url: `https://alterratax.my.id/bukti_pembayaran/officer?rp=10&p=${pageBuktiPembayaran}`,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
@@ -370,9 +379,9 @@ export const actions = store => ({
   getCariBuktiPembayaran: async (state, event) => {
     let url = "";
     if (state.kataKunci === "") {
-      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=2&p=${state.pageBuktiPembayaran}`;
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?p=${state.pageBuktiPembayaran}`;
     } else {
-      url = `https://alterratax.my.id/bukti_pembayaran/officer?rp=500&nomor_sspd=${state.kataKunci}`;
+      url = `https://alterratax.my.id/bukti_pembayaran/officer?nomor_sspd=${state.kataKunci}`;
     }
     const req = {
       method: "get",
@@ -394,7 +403,7 @@ export const actions = store => ({
       });
   },
 
-  // Fungsi untuk generate QR code dan menyimpannya di database
+  // Fungsi untuk generate QR code dan menyimpannya di database oleh officer
   postGenerateQR: async (state, event) => {
     const id = event;
     const mydata = {
@@ -421,20 +430,11 @@ export const actions = store => ({
   // Fungsi untuk menambah data bukti pembayaran baru dan memasukannya ke database
   postBuktiPembayaran: async (state, event) => {
     if (!RegExp("[0-9]{5}").test(state.nomorSSPD)) {
+      console.log("input nomor sspd error")
+    } else if (!(RegExp("[0-9]{1}").test(state.jumlahReklame) && (Number(state.jumlahReklame) >= 1))) {
       swal({
         title: "Oops!",
-        text: "Nomor SSPD tidak sesuai ketentuan",
-        icon: "warning"
-      });
-    } else if (
-      !(
-        RegExp("[0-9]{1}").test(state.jumlahReklame) &&
-        Number(state.jumlahReklame) >= 1
-      )
-    ) {
-      swal({
-        title: "Oops!",
-        text: "Jumlah reklame harus berupa Angka dan minimal 1",
+        text: "Jumlah reklame harus berupa angka dan minimal berjumlah 1",
         icon: "warning"
       });
     } else {
@@ -476,6 +476,11 @@ export const actions = store => ({
   handleLogOut: state => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    store.setState({ npwpd: "", nip: "", pin: "" });
+  },
+
+  //Fungsi untuk menghapus data di localstorage ketika user logout
+  handleHapusLocal: state => {
     localStorage.removeItem("tipeReklamePayer");
     localStorage.removeItem("jenisObjekPajak");
     localStorage.removeItem("luasObjekPajak");
@@ -495,11 +500,10 @@ export const actions = store => ({
     localStorage.removeItem("tanggalPembongkaran");
     localStorage.removeItem("tanggalPemasangan");
     localStorage.removeItem("fotoReklamePayer");
-    localStorage.removeItem("namaReklamePayer");
+    localStorage.removeItem("namaObjekPajak");
     localStorage.removeItem("latitudeReklamePayer");
     localStorage.removeItem("longitudeReklamePayer");
     localStorage.removeItem("alamatReklamePayer");
-    store.setState({ npwpd: "", nip: "", pin: "" });
   },
 
   // Fungsi untuk mengubah state sesuai dengan inputan pada kotak input ketika login
@@ -640,8 +644,6 @@ export const actions = store => ({
   searchLokasi: async (state, event) => {
     const req = {
       method: "get",
-      // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+state.kataKunciLokasi+"&inputtype="+inputtype+"&fields="+fields+"&key="+key,
-      // url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyA_Td2kGqTcpU5wZ7t2iOcYdLrWNhrcCvI&input=jalan tidar",
       url:
         "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
         state.kataKunciLokasi +
@@ -705,15 +707,72 @@ export const actions = store => ({
       });
   },
 
-  // fungsi untuk post objekpajak oleh payer
-  postInputPayer: state => {
+  // fungsi untuk put objekpajak oleh payer
+  putInputPayer: state => {
     axios
+      .put(
+        "https://alterratax.my.id/objek_pajak/payer",
+        {
+          foto: localStorage.getItem("fotoReklamePayer"),
+          tipe_reklame: localStorage.getItem("tipeReklamePayer"),
+          nama_reklame: localStorage.getItem("namaObjekPajak"),
+          latitude: localStorage.getItem("latitudeReklamePayer"),
+          longitude: localStorage.getItem("longitudeReklamePayer"),
+          lokasi: localStorage.getItem("alamatReklamePayer"),
+          judul_reklame: localStorage.getItem("judulObjekPajak"),
+          jenis_reklame: localStorage.getItem("jenisObjekPajak"),
+          tarif_tambahan: localStorage.getItem("tarifTambahan"),
+          sudut_pandang: localStorage.getItem("sudutPandang"),
+          panjang: localStorage.getItem("panjangObjekPajak"),
+          luas: localStorage.getItem("luasObjekPajak"),
+          lebar: localStorage.getItem("lebarObjekPajak"),
+          muka: localStorage.getItem("mukaObjekPajak"),
+          tinggi: localStorage.getItem("ketinggianObjekPajak"),
+          jumlah: localStorage.getItem("jumlahReklameObjekPajak"),
+          letak_pemasangan: localStorage.getItem("letakPemasangan"),
+          klasifikasi_jalan: localStorage.getItem("klasifikasiJalan"),
+          masa_pajak: `${localStorage.getItem(
+            "masaPajakBulan"
+          )} ${localStorage.getItem("masaPajakTahun")}`,
+          jangka_waktu_pajak: localStorage.getItem("jangkaWaktuObjekPajak"),
+          tanggal_pemasangan: localStorage.getItem("tanggalPemasangan"),
+          tanggal_pembongkaran: localStorage.getItem("tanggalPembongkaran")
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(response => {
+        store.setState({ detailLaporanPut: response.data.laporan});
+        swal({
+          title: "Sukses",
+          text: "Data Sudah Lengkap",
+          icon: "success"
+        });
+      })
+      .catch(error => {
+        swal({
+          title: "Oops!",
+          text:
+            "Data Tidak Lengkap",
+          icon: "warning"
+        });
+        console.log(error);
+      });
+  },
+
+  // fungsi untuk post objekpajak oleh payer
+  postInputPayer: async state => {
+    await axios
       .post(
         "https://alterratax.my.id/objek_pajak/payer",
         {
           foto: localStorage.getItem("fotoReklamePayer"),
           tipe_reklame: localStorage.getItem("tipeReklamePayer"),
-          nama_reklame: localStorage.getItem("namaReklamePayer"),
+          nama_reklame: localStorage.getItem("namaObjekPajak"),
           latitude: localStorage.getItem("latitudeReklamePayer"),
           longitude: localStorage.getItem("longitudeReklamePayer"),
           lokasi: localStorage.getItem("alamatReklamePayer"),
@@ -741,9 +800,9 @@ export const actions = store => ({
           }
         }
       )
-      .then(response => {
-        store.setState({ detailObjekPajakPost: response.data.objek_pajak,
-          detailLaporanPost: response.data.laporan});
+      .then( async response => {
+        await store.setState({ detailObjekPajakPost: response.data.objek_pajak,
+          detailLaporanPost: response.data.laporan, laporanIDPost: response.data.laporan.id});
         swal({
           title: "Sukses",
           text: "Data sukses ditambahkan",
@@ -753,8 +812,7 @@ export const actions = store => ({
       .catch(error => {
         swal({
           title: "Oops!",
-          text:
-            "Gagal menambahkan data, silahkan cek ulang data input anda!",
+          text: "Gagal menambahkan data, silahkan cek ulang data input anda!",
           icon: "warning"
         });
         console.log("gagal axios");
@@ -777,5 +835,48 @@ export const actions = store => ({
       console.log(await toBase64(file));
     }
     Main();
-  }
+  },
+
+  // Axios ntuk mendapatkan token snap midtrans
+  getTokenSnap: async state => {
+    await axios
+      .get(
+        "https://alterratax.my.id/laporan/payer/bayar?laporan_id="+state.detilLaporan.id+"&total_pajak="+state.detilLaporan.total_pajak,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      )
+      .then(async response => {
+        await store.setState({
+          tokenSnap: response.data.token,
+        });
+      })
+      .catch(error => {
+        console.log("gagal axios");
+      });
+  },
+  
+  // Fungsi untuk generate QR code dan menyimpannya di database oleh payer
+  postGenerateQRPayer: async (state, event) => {
+    const mydata = {
+      bukti_pembayaran_id: event
+    };
+    const req = {
+      method: "post",
+      url: "https://alterratax.my.id/kode_qr/payer",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      },
+      data: mydata
+    };
+    await axios(req)
+      .then(function(response) {
+        store.setState({ pageKodeQR: 1 });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
 });
