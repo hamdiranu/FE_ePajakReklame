@@ -5,24 +5,38 @@ import { actions, store } from "../store";
 
 // Kelas untuk Komponen Halaman Input Gambar Reklame Payer
 class KontenInputGambarPayer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman input lokasi
+   */
   gambarToMaps = () => {
     this.props.history.push("/payer/input-lokasi");
   };
-  constructor(props){
-    super(props)
+
+  constructor(props) {
+    super(props);
     this.state = {
       file: null
-    }
-    this.handleChange = this.handleChange.bind(this)
-  };
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  /**
+   * Mengganti gambar pada kotak preview gambar
+   */
   handleChange(event) {
     this.setState({
       file: URL.createObjectURL(event.target.files[0])
     });
-    store.setState({blobGambar: URL.createObjectURL(event.target.files[0]),
-      objekGambar:event.target.files[0]});
-    localStorage.setItem(`fotoReklamePayer`, `${URL.createObjectURL(event.target.files[0])}`);
-  };
+    store.setState({
+      blobGambar: URL.createObjectURL(event.target.files[0]),
+      objekGambar: event.target.files[0]
+    });
+    localStorage.setItem(
+      `fotoReklamePayer`,
+      `${URL.createObjectURL(event.target.files[0])}`
+    );
+  }
+
   render() {
     return (
       <div className="kontenInputGambarPayer">

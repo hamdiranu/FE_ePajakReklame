@@ -10,24 +10,38 @@ import { FaSearch } from "react-icons/fa";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiaGFtZGlyYW51IiwiYSI6ImNrNjkxdjF4aTBiOGczbGxqOWdocnhrN3kifQ.4x6Q9f7hcT-xSqZv4plNxA";
 
-// Kelas untuk Komponen Halaman Input Lokasi Payer
 class KontenInputLokasiPayer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman input lokasi pada peta
+   */
   showMaps = () => {
     this.props.history.push("/payer/input-lokasi/peta");
   };
 
+  /**
+   * Mencari lokasi berdasarkan kata kunci
+   */
   handleSearchLokasi = async () => {
     await this.props.searchLokasi();
   };
 
+  /**
+   * Mengganti halaman menuju halaman input lokasi pada peta
+   */
   handlePilihLokasi = async koordinat => {
     this.props.history.push("/payer/input-lokasi/peta");
   };
 
+  /**
+   * Mengganti halaman menuju halaman input detail objek pajak
+   */
   goToObjekPajak = () => {
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
 
+  /**
+   * Mengganti halaman menuju halaman input gambar objek pajak
+   */
   goToInputGambarPajak = () => {
     this.props.history.push("/payer/input-gambar");
   };

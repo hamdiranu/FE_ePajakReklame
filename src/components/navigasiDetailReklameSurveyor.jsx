@@ -3,8 +3,10 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../store";
 
-// Kelas untuk Komponen Navigasi Surveyor
 class NavigasiSurveyor extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman login
+   */
   logOutOfficer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");

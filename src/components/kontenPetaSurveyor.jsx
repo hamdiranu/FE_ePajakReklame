@@ -53,8 +53,8 @@ class KontenPetaSurveyor extends React.Component {
             </div>
           </div>
           <LeafletMap
-            center={[-7.9768, 112.637]}
-            zoom={13.5}
+            center={[-6.83333, 107.48333]}
+            zoom={12}
             maxZoom={30}
             attributionControl={true}
             zoomControl={true}
