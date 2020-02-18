@@ -4,8 +4,10 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 
-// Kelas untuk Komponen Halaman Nota Pajak Payer
 class KontenNotaPayer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman detail laporan objek pajak
+   */
   goToDetailLaporan = async () => {
     await this.props.postInputPayer();
     await this.props.handleHapusLocal();
@@ -13,6 +15,7 @@ class KontenNotaPayer extends React.Component {
       `/payer/detail-laporan/${this.props.laporanIDPost}`
     );
   };
+
   render() {
     var currencyFormatter = require("currency-formatter");
     return (

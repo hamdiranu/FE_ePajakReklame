@@ -5,13 +5,16 @@ import { actions } from "../store";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 
-// Kelas untuk Komponen Halaman Status Pembayaran
 class StatusPembayaran extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman detail laporan objek pajak
+   */
   goToDetailObjekPajak = () => {
     this.props.history.push(
       `/payer/detail-laporan/${this.props.detilLaporan.id}`
     );
   };
+
   render() {
     var currencyFormatter = require("currency-formatter");
     console.log("cek isi state response", this.props.dataStatusSuksesBayar);

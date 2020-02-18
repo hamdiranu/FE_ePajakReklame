@@ -309,6 +309,10 @@ input[type="submit"] {
   .pageLogin {
     height: 736px;
   }
+
+  .pilihRole {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 411px) {
@@ -361,6 +365,10 @@ input[type="submit"] {
 @media (max-width: 375px) {
   #loginFormContent {
     margin-top: 0px;
+  }
+
+  .pilihRole {
+    font-size: 12px;
   }
 
   .loginInputPassword svg {
