@@ -7,6 +7,9 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi Payer
 class NavigasiPayer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman login
+   */
   logOutPayer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
@@ -22,13 +25,15 @@ class NavigasiPayer extends React.Component {
           <span className="navbar-brand" style={{ display: "flex" }}>
             <div className="">
               <Link to="/payer/input-gambar" style={{ textDecoration: "none" }}>
-                <FiFilePlus className="" size={30} style={{color:"white"}}/>
+                <FiFilePlus className="" size={30} style={{ color: "white" }} />
               </Link>
             </div>
           </span>
           <div>
-            <span className="judulHeaderPayer"
-              style={{color:"#F47523", fontSize:"28px", fontWeight:"500"}}>
+            <span
+              className="judulHeaderPayer"
+              style={{ color: "#F47523", fontSize: "28px", fontWeight: "500" }}
+            >
               SIP-Rek!
             </span>
           </div>
@@ -36,9 +41,9 @@ class NavigasiPayer extends React.Component {
             <span
               onClick={() => this.logOutPayer()}
               className="btn"
-              style={{color:"white", padding:"0px"}}
+              style={{ color: "white", padding: "0px" }}
             >
-              <FaSignOutAlt size={30}/>
+              <FaSignOutAlt size={30} />
             </span>
           </div>
         </nav>

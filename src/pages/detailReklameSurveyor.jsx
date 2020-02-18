@@ -9,10 +9,14 @@ import KontenDetailReklameSurveyor from "../components/kontenDetailReklameSurvey
 
 class DetailReklameSurveyor extends Component {
   componentDidMount = async () => {
-    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "surveyor"){
-      await this.props.history.push("/login")
+    if (
+      localStorage.getItem("token") === null ||
+      localStorage.getItem("role") !== "surveyor"
+    ) {
+      await this.props.history.push("/login");
     }
   };
+
   render() {
     return (
       <React.Fragment>

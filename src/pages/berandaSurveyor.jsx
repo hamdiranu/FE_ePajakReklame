@@ -9,10 +9,14 @@ import KontenBerandaSurveyor from "../components/kontenBerandaSurveyor";
 
 class BerandaSurveyor extends Component {
   componentDidMount = async () => {
-    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "surveyor"){
-      await this.props.history.push("/login")
+    if (
+      localStorage.getItem("token") === null ||
+      localStorage.getItem("role") !== "surveyor"
+    ) {
+      await this.props.history.push("/login");
     }
   };
+
   render() {
     return (
       <React.Fragment>

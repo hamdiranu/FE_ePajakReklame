@@ -9,10 +9,14 @@ import KontenBerandaPayer from "../components/kontenBerandaPayer";
 
 class BerandaPayer extends Component {
   componentDidMount = async () => {
-    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "payer"){
-      await this.props.history.push("/login")
+    if (
+      localStorage.getItem("token") === null ||
+      localStorage.getItem("role") !== "payer"
+    ) {
+      await this.props.history.push("/login");
     }
   };
+
   render() {
     return (
       <React.Fragment>

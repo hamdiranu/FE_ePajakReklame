@@ -4,7 +4,6 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 
-// Kelas untuk Komponen Navigasi pada Page Input Informasi Pajak Payer
 class NavigasiPayer extends React.Component {
   /**
    * Mengganti halaman menuju halaman login

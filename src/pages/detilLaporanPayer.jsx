@@ -12,6 +12,9 @@ import { PdfDocument } from "../components/pdfSemuaKodeQR";
 import axios from "axios";
 import swal from "sweetalert";
 
+/**
+ * Komponen untuk tampilan PDF bukti pembayaran
+ */
 class BuktiBayarPDF extends React.Component {
   render() {
     const waktu_sspd = new Date(this.props.buktiPembayaranPayer.created_at);
@@ -42,7 +45,9 @@ class BuktiBayarPDF extends React.Component {
       "11" : "November",
       "12" : "Desember"
     };
+
     const currencyFormatter = require("currency-formatter");
+
     return(
       <React.Fragment>
         <div style={{border:"2px solid black"}} className="m-4">
@@ -302,6 +307,9 @@ class BuktiBayarPDF extends React.Component {
     );
   }
 }
+/**
+ * Komponen untuk tampilan PDF laporan
+ */
 class LaporanPDF extends React.Component {
   render() {
     const waktu_laporan = new Date(this.props.detilObjekPajak.created_at);

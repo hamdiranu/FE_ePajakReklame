@@ -5,6 +5,9 @@ import { actions } from "../store";
 
 // Kelas untuk Komponen Navigasi Officer
 class NavigasiOfficer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman login
+   */
   logOutOfficer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");

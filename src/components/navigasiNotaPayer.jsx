@@ -6,11 +6,17 @@ import { FaSignOutAlt, FaHome } from "react-icons/fa";
 
 // Kelas untuk Komponen Navigasi pada Halaman Nota Payer
 class NavigasiNotaPayer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman login
+   */
   logOutPayer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");
   };
 
+  /**
+   * Mengganti halaman menuju beranda payer
+   */
   goHomePayer = async () => {
     this.props.history.replace("/payer/home");
   };
@@ -24,23 +30,25 @@ class NavigasiNotaPayer extends React.Component {
         >
           <span className="navbar-brand" style={{ display: "flex" }}>
             <div className="">
-              <span className="btn" style={{padding:"0px"}} onClick={() => this.goHomePayer()}>
-                <FaHome className="" size={30} style={{color:"white"}}/>
+              <span
+                className="btn"
+                style={{ padding: "0px" }}
+                onClick={() => this.goHomePayer()}
+              >
+                <FaHome className="" size={30} style={{ color: "white" }} />
               </span>
             </div>
           </span>
           <div>
-            <b style={{color:"#F47523", fontSize:"28px"}}>
-              Nota Pajak
-            </b>
+            <b style={{ color: "#F47523", fontSize: "28px" }}>Nota Pajak</b>
           </div>
           <div class="text-right">
             <span
               onClick={() => this.logOutPayer()}
               className="btn"
-              style={{color:"white", padding:"0px"}}
+              style={{ color: "white", padding: "0px" }}
             >
-              <FaSignOutAlt size={30}/>
+              <FaSignOutAlt size={30} />
             </span>
           </div>
         </nav>

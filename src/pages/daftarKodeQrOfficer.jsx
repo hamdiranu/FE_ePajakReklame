@@ -26,11 +26,16 @@ import {
   Image
 } from "@react-pdf/renderer";
 
+/**
+ * Komponen untuk tampilan yang ingin dicetak
+ */
 class ComponentToPrint extends React.Component {
   render() {
     return (
-      <div className="text-center mt-5"
-        style={{backgroundColor:"white", minHeight:"100vh"}}>
+      <div
+        className="text-center mt-5"
+        style={{ backgroundColor: "white", minHeight: "100vh" }}
+      >
         <h2 className="mt-5">E-Pajak</h2>
         <h2>SSPD : {this.props.sspdKodeQR}</h2>
         <h2 className="mb-5">ID : {this.props.id}</h2>
@@ -43,12 +48,21 @@ class ComponentToPrint extends React.Component {
     );
   }
 }
+
+/**
+ * Komponen untuk tampilan komponen daftar kode Qr officer
+ */
 class DaftarKodeQrOfficer extends Component {
-  // fungsi get cari kodeQR berdasarkan idKodeQR
+  /**
+   * Mencari kodeQR berdasarkan id Kode QR
+   *
+   * @param {number} event Id kode Qr yang ingin dicari officer
+   */
   getCariKodeQR = async event => {
     await this.props.handleInput(event);
     this.props.cariKodeQR();
   };
+
   componentDidMount = async () => {
     if (
       localStorage.getItem("token") === null ||
@@ -62,9 +76,13 @@ class DaftarKodeQrOfficer extends Component {
     }
   };
 
+  /**
+   * Mengganti halaman menuju halaman beranda officer
+   */
   goToHomeOfficer = () => {
     this.props.history.push("/officer/home");
   };
+
   render() {
     const toDataURL = url =>
       fetch(url)
@@ -105,7 +123,7 @@ class DaftarKodeQrOfficer extends Component {
         alignItems: "center",
         textAlign: "center",
         marginVertical: 70,
-        marginHorizontal: 55,
+        marginHorizontal: 55
       },
       kodeQRTitle: {
         top: 20,
@@ -332,17 +350,28 @@ class DaftarKodeQrOfficer extends Component {
               <ul className="listSspd">
                 <li className="list-group-item dh">
                   <div className="row">
-                    <div className="col-3 idKodeUnik"
-                      style={{paddingRight:"15px", maxWidth:"269px"}}>
+                    <div
+                      className="col-3 idKodeUnik"
+                      style={{ paddingRight: "15px", maxWidth: "269px" }}
+                    >
                       ID
                     </div>
-                    <div className="col-3 kodeUnik" style={{minWidth:"291px"}}>Kode Unik</div>
-                    <div className="col-3 statusScan"
-                      style={{paddingLeft:"15px", maxWidth:"269px"}}>
+                    <div
+                      className="col-3 kodeUnik"
+                      style={{ minWidth: "291px" }}
+                    >
+                      Kode Unik
+                    </div>
+                    <div
+                      className="col-3 statusScan"
+                      style={{ paddingLeft: "15px", maxWidth: "269px" }}
+                    >
                       Status Scan
                     </div>
-                    <div className="col-3 downloadQr"
-                      style={{paddingLeft:"15px", maxWidth:"269px"}}>
+                    <div
+                      className="col-3 downloadQr"
+                      style={{ paddingLeft: "15px", maxWidth: "269px" }}
+                    >
                       Kode QR
                     </div>
                   </div>
@@ -354,18 +383,21 @@ class DaftarKodeQrOfficer extends Component {
                         <div className="col-8 col-sm order-sm-1 no-sspd dt-small">
                           {item.id}
                         </div>
-                        <div className="col-12 col-sm order-sm-2 nama-wp dt-title"
-                          style={{minWidth:"291px"}}>
+                        <div
+                          className="col-12 col-sm order-sm-2 nama-wp dt-title"
+                          style={{ minWidth: "291px" }}
+                        >
                           {item.kode_unik}
                         </div>
                         {item.status_scan === true ? (
-                          <div style={{minWidth:"274px"}}
-                            className="col-2 col-sm order-sm-3 statusSudahScan dt-small">
+                          <div
+                            style={{ minWidth: "274px" }}
+                            className="col-2 col-sm order-sm-3 statusSudahScan dt-small"
+                          >
                             <AiFillCheckCircle />
                           </div>
                         ) : (
-                          <div
-                            className="col-2 col-sm order-sm-3 statusBelumScan dt-small">
+                          <div className="col-2 col-sm order-sm-3 statusBelumScan dt-small">
                             <AiFillCloseCircle />
                           </div>
                         )}

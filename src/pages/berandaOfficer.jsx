@@ -8,19 +8,23 @@ import NavigasiOfficer from "../components/navigasiOfficer";
 import KontenBerandaOfficer from "../components/kontenBerandaOfficer";
 
 class BerandaOfficer extends Component {
-  
   componentDidMount = async () => {
-    if (localStorage.getItem("token") === null || localStorage.getItem("role") !== "officer"){
-      await this.props.history.push("/login")
+    if (
+      localStorage.getItem("token") === null ||
+      localStorage.getItem("role") !== "officer"
+    ) {
+      await this.props.history.push("/login");
     } else {
       await this.props.getDataOfficer();
-      await this.props.getDataBuktiPembayaranOfficer(this.props.pageBuktiPembayaran);
+      await this.props.getDataBuktiPembayaranOfficer(
+        this.props.pageBuktiPembayaran
+      );
     }
   };
 
   render() {
     return (
-       <React.Fragment>
+      <React.Fragment>
         <NavigasiOfficer />
         <KontenBerandaOfficer />
       </React.Fragment>
@@ -28,4 +32,7 @@ class BerandaOfficer extends Component {
   }
 }
 
-export default connect("pageBuktiPembayaran, maksPageBuktiPembayaran", actions)(withRouter(BerandaOfficer));
+export default connect(
+  "pageBuktiPembayaran, maksPageBuktiPembayaran",
+  actions
+)(withRouter(BerandaOfficer));

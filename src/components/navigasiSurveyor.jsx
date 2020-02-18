@@ -4,8 +4,10 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaMapMarkedAlt, FaQrcode, FaSignOutAlt } from "react-icons/fa";
 
-// Kelas untuk Komponen Navigasi Surveyor
 class NavigasiSurveyor extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman login
+   */
   logOutOfficer = async () => {
     this.props.handleLogOut();
     this.props.history.replace("/login");

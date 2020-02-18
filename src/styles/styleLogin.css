@@ -236,7 +236,7 @@ input[type="submit"] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
-    padding: 15px 32px;
+    padding: 10px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -252,7 +252,7 @@ input[type="submit"] {
     background-color: #56baed;
     border: none;
     color: white;
-    padding: 15px 35px;
+    padding: 10px 35px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
