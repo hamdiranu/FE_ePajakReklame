@@ -4,7 +4,6 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-// Kelas untuk Komponen Halaman Login Payer
 class LoginPayer extends React.Component {
   render() {
     return (

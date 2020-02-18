@@ -20,13 +20,20 @@ class KontenDetailPajakPayer extends React.Component {
     }
   };
 
+  /**
+   * Mengganti halaman menuju halaman input lokasi
+   */
   goToLokasiPajak = () => {
     this.props.history.push("/payer/input-lokasi");
   };
 
+  /**
+   * Mengganti halaman menuju halaman input informasi pajak
+   */
   goToInfoPajak = () => {
     this.props.history.push("/payer/input-informasi-pajak");
   };
+
   render() {
     return (
       <div className="container kontenInputDetailObjek">

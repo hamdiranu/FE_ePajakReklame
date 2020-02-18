@@ -6,8 +6,10 @@ import { Button, Form } from "react-bootstrap";
 import { FaSearch, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Modal, ButtonToolbar } from "react-bootstrap";
 
-// Kelas untuk Komponen Halaman Beranda Officer
 class KontenBerandaOfficer extends React.Component {
+  /**
+   * Mencari surat bukti pembayaran(SSPD) berdasarkan id
+   */
   handleCari = async event => {
     store.setState({ [event.target.name]: event.target.value });
     if (
@@ -18,11 +20,19 @@ class KontenBerandaOfficer extends React.Component {
     }
   };
 
+  /**
+   * Membuat kode Qr pada SSPD yang dipilih
+   *
+   * @param {number} id Id dari SSPD wajib pajak
+   */
   handleGenerateQR = async id => {
     await this.props.postGenerateQR(id);
     await this.props.history.replace("/officer/daftar-kode-QR/" + id);
   };
 
+  /**
+   * Menambah data SSPD oleh petugas wajib pajak
+   */
   handleTambahData = async () => {
     await this.props.postBuktiPembayaran();
     if (this.props.berhasilTambahData) {
