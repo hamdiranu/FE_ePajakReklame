@@ -4,11 +4,11 @@ import { connect } from "unistore/react";
 import { actions } from "../store";
 import { Form } from "react-bootstrap";
 
-// Kelas untuk Komponen Halaman Beranda Payer
 class KontenBerandaPayer extends React.Component {
   componentDidMount = () => {
     this.props.getDaftarLaporan();
   };
+
   render() {
     var currencyFormatter = require("currency-formatter");
     var filterDaftarLaporan = this.props.daftarLaporanPayer;
@@ -33,19 +33,33 @@ class KontenBerandaPayer extends React.Component {
           <div className="row rowInfoPerusahaan">
             <div className="col-md-12 col-sm-4 kotakBorderLogo">
               <div className="borderLogoPerusahaan">
-                <img className="logoPerusahaan" src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png" alt="" />
+                <img
+                  className="logoPerusahaan"
+                  src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png"
+                  alt=""
+                />
               </div>
             </div>
             <div className="col-md-12 col-sm-8 infoPerusahaan">
-              <span className="namaPayer" style={{color:"white", fontWeight:"700"}}>{this.props.payerInfo.nama}</span>
-              <span className="npwpPayer" style={{color:"white", fontWeight:"700"}}>{this.props.payerInfo.npwpd}</span>
+              <span
+                className="namaPayer"
+                style={{ color: "white", fontWeight: "700" }}
+              >
+                {this.props.payerInfo.nama}
+              </span>
+              <span
+                className="npwpPayer"
+                style={{ color: "white", fontWeight: "700" }}
+              >
+                {this.props.payerInfo.npwpd}
+              </span>
             </div>
           </div>
         </div>
         <div className="container-fluid rowGantiListStatus">
           <div className="row rowStatusLaporan">
             <div className="col-md-6 col-sm-6 kalimatStatusLaporan">
-              <span style={{fontWeight:"bold"}}>STATUS LAPORAN : </span>
+              <span style={{ fontWeight: "bold" }}>STATUS LAPORAN : </span>
             </div>
             <div className="col-md-6 col-sm-6 statusLaporan">
               <Form.Control

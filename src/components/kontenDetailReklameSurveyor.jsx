@@ -16,6 +16,9 @@ class KontenDetailReklameSurveyor extends React.Component {
     this.props.history.push("/surveyor/home");
   };
 
+  /**
+   * Mencatat laporan pelanggaran pada halaman detail reklame
+   */
   laporPelanggaran = async () => {
     await this.props.putLaporanPelanggaran();
     await this.props.history.push(
@@ -40,9 +43,11 @@ class KontenDetailReklameSurveyor extends React.Component {
     store.setState({ statusSuksesScan: false, statusGagalScan: false });
   };
 
+  /**
+   * Menampilkan snackbar saat sukses scan
+   */
   show = () => {
     if (this.props.showing) return;
-
     store.setState({ show: true, showing: true });
     setTimeout(() => {
       store.setState({ show: false, showing: false });

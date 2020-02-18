@@ -6,6 +6,11 @@ import { Button, DropdownButton, Dropdown } from "react-bootstrap";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
+/**
+ * Mengubah format tanggal menjadi yyyy/mm/dd
+ *
+ * @param {string} str String tanggal dari output Daypicker
+ */
 function convert(str) {
   var date = new Date(str),
     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -13,13 +18,18 @@ function convert(str) {
   return [date.getFullYear(), mnth, day].join("-");
 }
 
-// Kelas untuk Komponen Halaman Input Informasi Payer
 class KontenInformasiPajakPayer extends React.Component {
+  /**
+   * Mengganti halaman menuju halaman input detail objek pajak
+   */
   goToDetailObjekPajak = () => {
     this.props.history.push("/payer/input-detail-objek-pajak");
   };
 
-  goToNotaPajak = async() => {
+  /**
+   * Mengganti halaman menuju halaman nota pajak
+   */
+  goToNotaPajak = async () => {
     await this.props.putInputPayer();
     await this.props.history.push("/payer/nota-pajak");
   };
@@ -34,6 +44,12 @@ class KontenInformasiPajakPayer extends React.Component {
     };
   }
 
+  /**
+   * Memilih tanggal pemasangan reklame
+   *
+   * @param {string} day Input tanggal yang dipilih wajib pajak
+   * @param {string} selected tanggal yang ada dalam kotak inputan
+   */
   handleDayClickAwal(day, { selected }) {
     store.setState({
       periodePemasangan: selected ? undefined : day
@@ -44,6 +60,12 @@ class KontenInformasiPajakPayer extends React.Component {
     );
   }
 
+  /**
+   * Memilih tanggal pembongkaran reklame
+   *
+   * @param {string} day Input tanggal yang dipilih wajib pajak
+   * @param {string} selected tanggal yang ada dalam kotak inputan
+   */
   handleDayClickAkhir(day, { selected }) {
     store.setState({
       periodePembongkaran: selected ? undefined : day

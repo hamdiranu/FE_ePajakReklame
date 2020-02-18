@@ -24,13 +24,17 @@ class NavigasiPayer extends React.Component {
         >
           <span className="navbar-brand" style={{ display: "flex" }}>
             <div className="">
-              <span className="btn" style={{padding:"0px"}} onClick={() => this.goHomePayer()}>
-                <FaHome className="" size={30} style={{color:"white"}}/>
+              <span
+                className="btn"
+                style={{ padding: "0px" }}
+                onClick={() => this.goHomePayer()}
+              >
+                <FaHome className="" size={30} style={{ color: "white" }} />
               </span>
             </div>
           </span>
           <div>
-            <b style={{color:"#F47523", fontSize:"28px"}}>
+            <b style={{ color: "#F47523", fontSize: "22px" }}>
               Detail Objek Pajak
             </b>
           </div>
@@ -38,9 +42,9 @@ class NavigasiPayer extends React.Component {
             <span
               onClick={() => this.logOutPayer()}
               className="btn"
-              style={{color:"white", padding:"0px"}}
+              style={{ color: "white", padding: "0px" }}
             >
-              <FaSignOutAlt size={30}/>
+              <FaSignOutAlt size={30} />
             </span>
           </div>
         </nav>
