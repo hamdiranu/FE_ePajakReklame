@@ -9,6 +9,7 @@ import { Modal, ButtonToolbar } from "react-bootstrap";
 class KontenBerandaOfficer extends React.Component {
   /**
    * Mencari surat bukti pembayaran(SSPD) berdasarkan id
+   * @param {string} event Id SSPD yang diinput ke dalam search bar
    */
   handleCari = async event => {
     store.setState({ [event.target.name]: event.target.value });
